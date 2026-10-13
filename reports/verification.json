@@ -24,10 +24,21 @@
     "evaluationSourceAnchors": "empty arrays observed; not accepted as passed propagation",
     "nativeUnfold": "resolves source locators; quotes may be CNXML element opening tags rather than prose"
   },
-  "linux": "pending public CI",
-  "published": false,
+  "linux": {
+    "status": "passed",
+    "node": "20",
+    "platform": "Ubuntu 24.04 x64",
+    "workflow": "https://github.com/arxohq/arxo-openstax-mechanics/actions/runs/38479699988",
+    "commit": "8d2be5dd09bb5c39f896ac53def4d1e434e8e19b",
+    "scope": "eight identity/hash checks, twelve native examples twice, applied rules/anchors, inspect, unfold, 42 selected package scenarios"
+  },
+  "published": true,
   "releaseVerified": false,
   "corpus": "not_checked",
   "sourceDepth": "OpenStax CNXML completeness not_measured; inventory separate; Newton own 19 declared divisions classified by existing boundaries.depth",
-  "originalVsFreshOwnCLIR": "all eight canonical byte hashes equal"
+  "originalVsFreshOwnCLIR": "all eight canonical byte hashes equal",
+  "anonymousClone": "passed",
+  "anonymousReadmeExample": "passed; canonical equality",
+  "inventory": "338 allowlisted files including manifest; machine paths/caches/private materials excluded",
+  "sourceStability": "200 captured files rechecked against source after preparation"
 }

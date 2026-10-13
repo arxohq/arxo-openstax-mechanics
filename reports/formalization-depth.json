@@ -246,7 +246,8 @@
           "contentHash": "sha256:2d1e42098e687b05514ff06065be94127288d4588efd5466bf13a50a04ee8eeb",
           "level": "not_measured"
         }
-      ]
+      ],
+      "capturedModuleSnapshots": 13
     },
     {
       "spec": "openstax.kinematics@0.1.0",
@@ -397,7 +398,8 @@
           "contentHash": "sha256:39d99f6da0a9bf00fdad38edb70a7173aa4647de3fffaec552fd65a8fb0c5131",
           "level": "not_measured"
         }
-      ]
+      ],
+      "capturedModuleSnapshots": 13
     },
     {
       "spec": "openstax.dynamics@0.1.0",
@@ -534,7 +536,8 @@
           "contentHash": "sha256:5ddbcec64e618570139143a8d3ec70476d4af80d4cb35fe8ffea2c2d733a9251",
           "level": "not_measured"
         }
-      ]
+      ],
+      "capturedModuleSnapshots": 13
     },
     {
       "spec": "openstax.energy_momentum@0.1.0",
@@ -544,7 +547,7 @@
       "levels": {},
       "unit": "CNXML module element",
       "reason": "No admitted source-division declaration; counts below are inventory, not completeness",
-      "capturedModules": 20,
+      "capturedModules": 19,
       "capturedFragments": 17,
       "sourceHashes": {
         "packages/openstax.energy_momentum/sources/energy-momentum/m58307.cnxml": "sha256:959920a247c929ba24cbfe08aef08371383930f158e26c8a185bf40cd97a3c1e",
@@ -713,7 +716,8 @@
           "contentHash": "sha256:44b1f7748ded0a63f4ddc7221e94c438a2b1c287a5b2e51009ef11267abbc1ac",
           "level": "not_measured"
         }
-      ]
+      ],
+      "capturedModuleSnapshots": 20
     },
     {
       "spec": "openstax.rotation_equilibrium@0.1.0",
@@ -906,7 +910,8 @@
           "contentHash": "sha256:4b762aea0dd0078a17681f65c0ac7d0a43d11df46cdc8e75b543501115621654",
           "level": "not_measured"
         }
-      ]
+      ],
+      "capturedModuleSnapshots": 27
     },
     {
       "spec": "units.si@0.1.0",
@@ -923,7 +928,8 @@
       "ownNormTemplates": 0,
       "documents": [],
       "unmeasuredPublications": [],
-      "unmeasuredFragments": []
+      "unmeasuredFragments": [],
+      "capturedModuleSnapshots": 0
     },
     {
       "spec": "bipm.si_brochure@0.1.0",
@@ -1215,7 +1221,8 @@
           "contentHash": "sha256:438b979940ce804c0e451ac8027a09be0d7d49ad1757f238bb5ddb1e5b69aaae",
           "level": "not_measured"
         }
-      ]
+      ],
+      "capturedModuleSnapshots": 0
     },
     {
       "spec": "la.newton.principia@0.1.0",
@@ -1425,7 +1432,8 @@
         }
       ],
       "unmeasuredPublications": [],
-      "unmeasuredFragments": []
+      "unmeasuredFragments": [],
+      "capturedModuleSnapshots": 0
     }
   ]
 }

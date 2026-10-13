@@ -1,7 +1,7 @@
 format = "law.canon-publication/1"
 version = "0.1.0"
 repository = "https://github.com/arxohq/arxo-openstax-mechanics"
-releasedAt = "2026-10-13T22:42:57.322384Z"
+releasedAt = "2026-10-13T22:45:10.533195Z"
 packages = ["openstax.measurement@0.1.0", "openstax.kinematics@0.1.0", "openstax.dynamics@0.1.0", "openstax.energy_momentum@0.1.0", "openstax.rotation_equilibrium@0.1.0", "units.si@0.1.0", "bipm.si_brochure@0.1.0", "la.newton.principia@0.1.0"]
 files = [
   ".gitattributes",

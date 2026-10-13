@@ -20,3 +20,5 @@ python3.12 tools/canon_publication.py verify --artifact /tmp/arxo-openstax-mecha
 ```
 
 No model npm package, private authoring materials, source-history export, full corpus gate, MCP host, SDK change or central catalog update is part of this delivery. Caches, .law directories, machine paths and node_modules are outside the allowlist. Public runtime comes from npm. releaseVerified is false and corpus is not_checked.
+
+Public Ubuntu/Node 20 CI passed at commit `8d2be5dd09bb5c39f896ac53def4d1e434e8e19b`: https://github.com/arxohq/arxo-openstax-mechanics/actions/runs/38479699988. Later changes record delivery evidence and clarify snapshot counts/boundaries only; model and example bytes are unchanged. Anonymous HTTPS clone and the README example passed.
