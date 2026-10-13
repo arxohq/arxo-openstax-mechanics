@@ -1,0 +1,15 @@
+{
+  "dependencyEdges": [],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [],
+  "resolutionHash": "sha256:0819d90ceacc72419ca88a4a86d5fe49fa13021f649cec71cd2842a1e9992737",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:1fc6faeb979808b908b7dac7be37d9ab0601443dbbb1c5544f023362d39048d2",
+    "name": "la.newton.principia",
+    "namespace": "urn:la:newton:clir:principia",
+    "sourceHash": "sha256:a6a701baaf6afae891ebf1e0d747f975b7e652b9166762dfa30b3bb1e16c0da4",
+    "version": "0.1.0"
+  }
+}

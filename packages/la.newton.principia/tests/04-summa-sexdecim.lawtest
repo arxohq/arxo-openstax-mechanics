@@ -1,0 +1,28 @@
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+// Corol. III: сумма частей движения шестнадцать до и после соударения
+// («ponantur motus illis esse partium sex & decem, & summa erit partium
+// sexdecim» — 6+10 = 9+7).
+test "urn:query:prin-t04" {
+    given {
+        context {
+            decision_time @2026-08-31T12:00:00+05:00;
+            knowledge_time @2026-08-31T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+        assert "prin-t04-a0": congressus_in_eadem_recta(entity_ref("urn:case:prin:a"), entity_ref("urn:case:prin:b")) { origin case_input; }
+        assert "prin-t04-a1": motus_ante_secundum_plagas(entity_ref("urn:case:prin:a"), 6 pars_motus, 0 pars_motus) { origin case_input; }
+        assert "prin-t04-a2": motus_ante_secundum_plagas(entity_ref("urn:case:prin:b"), 10 pars_motus, 0 pars_motus) { origin case_input; }
+        assert "prin-t04-a3": motus_post_secundum_plagas(entity_ref("urn:case:prin:a"), 9 pars_motus, 0 pars_motus) { origin case_input; }
+        assert "prin-t04-a4": motus_post_secundum_plagas(entity_ref("urn:case:prin:b"), 7 pars_motus, 0 pars_motus) { origin case_input; }
+    }
+
+    evaluate truth(quantitas_motus_conservata(entity_ref("urn:case:prin:a"), entity_ref("urn:case:prin:b")));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+}

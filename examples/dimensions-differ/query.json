@@ -1,0 +1,15 @@
+{
+  "kind": "truth",
+  "literal": {
+    "args": [
+      {
+        "id": "urn:case:meas:eq:b",
+        "kind": "entity_ref"
+      }
+    ],
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:openstax:clir:measurement#dimensionally_consistent"
+  },
+  "queryId": "urn:openstax:clir:measurement#test/urn%3Aquery%3Ameas-t01b-inconsistent-equation/query/0"
+}

@@ -1,0 +1,213 @@
+// §3.3 «Average and Instantaneous Acceleration» и §3.4 «Motion with Constant
+// Acceleration»: ускорение и четыре уравнения равноускоренного движения.
+//
+// УРАВНЕНИЯ ПРОВЕРЯЮТ ПРЕДЪЯВЛЕННЫЙ РАСЧЁТ, А НЕ РЕШАЮТ ЗАДАЧУ. §3.4 даёт
+// набор из четырёх уравнений и учит ВЫБИРАТЬ то, которое выражает искомое
+// через известные, — то есть решать систему относительно неизвестного.
+// Решателя уравнений в языке нет и не будет: направление формулы выбирает
+// автор, а не движок (это прямо названо в DECISION-0154 §2 среди того, чего
+// владелец НЕ разрешал). Поэтому каждое уравнение здесь записано в ту
+// сторону, в какую его пишет источник, и служит ПРОВЕРКОЙ: дело предъявляет
+// величины и заявленный ответ, правило считает и сверяет.
+//
+// Практическая ценность у этого та же, что у §1.4: система отвечает не
+// «не знаю», а «нет, потому что v₀ + at даёт 30 м/с, а заявлено 25 м/с» —
+// либо отказом алгебры, если заявленное вообще не той единицы.
+//
+// КВАДРАТ ВРЕМЕНИ — ПРОИЗВЕДЕНИЕ ВЕЛИЧИНЫ НА СЕБЯ. `pow` над `Magnitude`
+// §49.1 не назван (§4.3 DECISION-0154), и это не помеха: t² есть
+// `magnitude(t) * magnitude(t)`, мультимножитель складывается показателями и
+// даёт {s:2}. Одна вторая записывается точной дробью `1 / 2` — деление целых
+// §58 даёт канонический `Rational`, а скаляр умножается на величину по
+// правилу §49.
+
+language "law.core" version "0.2";
+package openstax.kinematics version "0.1.0";
+namespace "urn:openstax:clir:kinematics";
+
+use self::{
+    Interval,
+    UP_M58284_AVERAGE_ACCELERATION,
+    UP_M58285_KINEMATIC_EQUATIONS,
+    elapsed_time,
+};
+
+// --- §3.3: ускорение ------------------------------------------------------------
+
+@source(UP_M58284_AVERAGE_ACCELERATION)
+relation velocity_change(i: Interval, value: Quantity) kind empirical {
+    label en official "§3.3: the change in velocity over the interval";
+    label ru unofficial "§3.3: изменение скорости на отрезке";
+}
+
+pub relation average_acceleration(i: Interval, value: Quantity) kind institutional {
+    label en official "§3.3: average acceleration — the rate of change in velocity; the change in velocity over time";
+    label ru unofficial "§3.3: среднее ускорение — скорость изменения скорости; изменение скорости за время";
+}
+
+@source(UP_M58284_AVERAGE_ACCELERATION)
+rule AverageAccelerationFromVelocityChange(i: Interval, dv: Quantity, t: Quantity) strict {
+    label en official "§3.3: average acceleration is the change in velocity divided by the elapsed time";
+    label ru unofficial "§3.3: среднее ускорение есть изменение скорости, делённое на истёкшее время";
+    when velocity_change(i, dv) and elapsed_time(i, t);
+    then average_acceleration(i, quantity_of(unit_convert(magnitude(dv), "m_per_s")
+                                             / unit_convert(magnitude(t), "s"), "m_per_s2"));
+}
+
+// --- §3.4: что предъявляет дело о равноускоренном движении ----------------------
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+pub relation constant_acceleration(i: Interval, a: Quantity) kind empirical {
+    label en official "§3.4: the case states the acceleration is constant over the interval and gives its value";
+    label ru unofficial "§3.4: дело сообщает, что ускорение на отрезке постоянно, и называет его значение";
+}
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+pub relation initial_velocity(i: Interval, v0: Quantity) kind empirical {
+    label en official "§3.4: the velocity at the beginning of the interval";
+    label ru unofficial "§3.4: скорость в начале отрезка";
+}
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+relation claimed_final_velocity(i: Interval, v: Quantity) kind empirical {
+    label en official "§3.4: the final velocity claimed for the interval, to be checked against v = v₀ + at";
+    label ru unofficial "§3.4: заявленная конечная скорость отрезка — проверяется по v = v₀ + at";
+}
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+relation claimed_displacement(i: Interval, x: Quantity) kind empirical {
+    label en official "§3.4: the displacement claimed for the interval, to be checked against x = v₀t + ½at²";
+    label ru unofficial "§3.4: заявленное перемещение отрезка — проверяется по x = v₀t + ½at²";
+}
+
+// --- Первое уравнение §3.4: v = v₀ + at -----------------------------------------
+
+pub relation final_velocity(i: Interval, v: Quantity) kind institutional {
+    label en official "§3.4: v = v₀ + at — the final velocity under constant acceleration";
+    label ru unofficial "§3.4: v = v₀ + at — конечная скорость при постоянном ускорении";
+}
+
+// Входы приводятся `unit_convert` к когерентным единицам, и лишь потом
+// складываются: `a·t` даёт тогда {m:1, s:−1} — ту же единицу, что у v₀.
+// Приведение стоит ЯВНО по §1.3 источника и по рамке 1 DECISION-0068;
+// подставь дело время в часах без него — мультимножители не совпадут, и
+// отказ назовёт обе единицы (замер — шапка модуля 01).
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+rule FinalVelocityUnderConstantAcceleration(
+    i: Interval,
+    a: Quantity,
+    v0: Quantity,
+    t: Quantity,
+) strict {
+    label en official "§3.4: v = v₀ + at (constant a)";
+    label ru unofficial "§3.4: v = v₀ + at (при постоянном a)";
+    when constant_acceleration(i, a) and initial_velocity(i, v0) and elapsed_time(i, t);
+    then final_velocity(i, quantity_of(unit_convert(magnitude(v0), "m_per_s")
+            + unit_convert(magnitude(a), "m_per_s2") * unit_convert(magnitude(t), "s"), "m_per_s"));
+}
+
+relation final_velocity_claim_holds(i: Interval) kind institutional {
+    label en official "§3.4: the claimed final velocity agrees with v = v₀ + at";
+    label ru unofficial "§3.4: заявленная конечная скорость согласуется с v = v₀ + at";
+}
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+rule ClaimedFinalVelocityAgrees(i: Interval, claimed: Quantity, computed: Quantity) strict {
+    label en official "§3.4: the claimed final velocity equals the one v = v₀ + at gives";
+    label ru unofficial "§3.4: заявленная конечная скорость равна той, что даёт v = v₀ + at";
+    when claimed_final_velocity(i, claimed)
+        and final_velocity(i, computed)
+        and magnitude(claimed) == magnitude(computed);
+    then final_velocity_claim_holds(i);
+}
+
+// Отрицательная голова: заявленная скорость, не равная вычисленной, ОПРОВЕРГАЕТ
+// расчёт. Ответ FALSE_ONLY — «нет», а не «не установлено». Сравнение здесь
+// законно ровно потому, что обе величины уже приведены к одной единице
+// предыдущим правилом.
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+rule ClaimedFinalVelocityRefuted(i: Interval, claimed: Quantity, computed: Quantity) strict {
+    label en official "§3.4: a claimed final velocity different from v₀ + at refutes the claim";
+    label ru unofficial "§3.4: заявленная конечная скорость, отличная от v₀ + at, опровергает заявление";
+    when claimed_final_velocity(i, claimed)
+        and final_velocity(i, computed)
+        and magnitude(claimed) != magnitude(computed);
+    then not final_velocity_claim_holds(i);
+}
+
+// --- Третье уравнение §3.4: x = v₀t + ½at² --------------------------------------
+
+pub relation displacement_under_constant_acceleration(i: Interval, x: Quantity) kind institutional {
+    label en official "§3.4: x − x₀ = v₀t + ½at² — the displacement under constant acceleration";
+    label ru unofficial "§3.4: x − x₀ = v₀t + ½at² — перемещение при постоянном ускорении";
+}
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+rule DisplacementUnderConstantAcceleration(
+    i: Interval,
+    a: Quantity,
+    v0: Quantity,
+    t: Quantity,
+) strict {
+    label en official "§3.4: x = x₀ + v₀t + ½at² (constant a)";
+    label ru unofficial "§3.4: x = x₀ + v₀t + ½at² (при постоянном a)";
+    when constant_acceleration(i, a) and initial_velocity(i, v0) and elapsed_time(i, t);
+    then displacement_under_constant_acceleration(i,
+        quantity_of(unit_convert(magnitude(v0), "m_per_s") * unit_convert(magnitude(t), "s")
+                    + (1 / 2) * unit_convert(magnitude(a), "m_per_s2")
+                      * unit_convert(magnitude(t), "s") * unit_convert(magnitude(t), "s"), "m"));
+}
+
+relation displacement_claim_holds(i: Interval) kind institutional {
+    label en official "§3.4: the claimed displacement agrees with v₀t + ½at²";
+    label ru unofficial "§3.4: заявленное перемещение согласуется с v₀t + ½at²";
+}
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+rule ClaimedDisplacementAgrees(i: Interval, claimed: Quantity, computed: Quantity) strict {
+    label en official "§3.4: the claimed displacement equals the one v₀t + ½at² gives";
+    label ru unofficial "§3.4: заявленное перемещение равно тому, что даёт v₀t + ½at²";
+    when claimed_displacement(i, claimed)
+        and displacement_under_constant_acceleration(i, computed)
+        and magnitude(claimed) == magnitude(computed);
+    then displacement_claim_holds(i);
+}
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+rule ClaimedDisplacementRefuted(i: Interval, claimed: Quantity, computed: Quantity) strict {
+    label en official "§3.4: a claimed displacement different from v₀t + ½at² refutes the claim";
+    label ru unofficial "§3.4: заявленное перемещение, отличное от v₀t + ½at², опровергает заявление";
+    when claimed_displacement(i, claimed)
+        and displacement_under_constant_acceleration(i, computed)
+        and magnitude(claimed) != magnitude(computed);
+    then not displacement_claim_holds(i);
+}
+
+// --- Четвёртое уравнение §3.4: v² = v₀² + 2a(x − x₀) -----------------------------
+
+// Уравнение БЕЗ ВРЕМЕНИ — то самое, ради которого §3.4 его и выводит.
+// Проверяется тождеством квадратов: обе стороны имеют мультимножитель
+// {m:2, s:−2}, и сравнение законно.
+relation velocity_squared_relation_holds(i: Interval) kind institutional {
+    label en official "§3.4: the presented v, v₀, a and displacement satisfy v² = v₀² + 2a(x − x₀)";
+    label ru unofficial "§3.4: предъявленные v, v₀, a и перемещение удовлетворяют v² = v₀² + 2a(x − x₀)";
+}
+
+@source(UP_M58285_KINEMATIC_EQUATIONS)
+rule TimelessEquationHolds(
+    i: Interval,
+    a: Quantity,
+    v0: Quantity,
+    v: Quantity,
+    x: Quantity,
+) strict {
+    label en official "§3.4: v² = v₀² + 2a(x − x₀) — the equation that does not contain time";
+    label ru unofficial "§3.4: v² = v₀² + 2a(x − x₀) — уравнение, не содержащее времени";
+    when constant_acceleration(i, a)
+        and initial_velocity(i, v0)
+        and claimed_final_velocity(i, v)
+        and claimed_displacement(i, x)
+        and magnitude(v) * magnitude(v)
+            == magnitude(v0) * magnitude(v0) + 2 * magnitude(a) * magnitude(x);
+    then velocity_squared_relation_holds(i);
+}

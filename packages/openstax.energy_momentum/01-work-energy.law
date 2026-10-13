@@ -1,0 +1,150 @@
+// §7.1 «Work», §7.2 «Kinetic Energy», §7.3 «Work-Energy Theorem»,
+// §7.4 «Power».
+//
+// ДЖОУЛЬ ВЫВОДИТСЯ, А НЕ ОБЪЯВЛЯЕТСЯ. `N · m` даёт мультимножитель
+// {kg:1, m:2, s:−2}, и раскрытие джоуля из реестра §49.2 даёт тот же набор —
+// поэтому `quantity_of(…, "J")` принимает заявление. Тождество «ньютон на
+// метр есть джоуль» здесь ДОКАЗЫВАЕТСЯ реестром, а не утверждается
+// комментарием при теге.
+//
+// КИНЕТИЧЕСКАЯ ЭНЕРГИЯ — ТОТ ЖЕ ДЖОУЛЬ ДРУГИМ ПУТЁМ. ½mv² даёт
+// kg · (m/s)² = {kg:1, m:2, s:−2}. Что работа и энергия измеряются одним и
+// тем же, у §7.3 есть содержание: теорема о работе и энергии приравнивает
+// их, и приравнивание законно ровно потому, что мультимножители совпали.
+// Совпадение проверяет язык, а не автор.
+
+language "law.core" version "0.2";
+package openstax.energy_momentum version "0.1.0";
+namespace "urn:openstax:clir:energy-momentum";
+
+use self::{
+    Object,
+    Process,
+    UP_M58308_KINETIC_ENERGY,
+    UP_M58309_WORK_ENERGY_THEOREM,
+    UP_M58310_AVERAGE_POWER,
+    UP_M58719_WORK,
+};
+
+// --- §7.1: работа постоянной силы ------------------------------------------------
+
+@source(UP_M58719_WORK)
+relation constant_force_along_displacement(p: Process, f: Quantity, d: Quantity) kind empirical {
+    label en official "§7.1: the case presents a constant force and the displacement along which it acts";
+    label ru unofficial "§7.1: дело предъявляет постоянную силу и перемещение, вдоль которого она действует";
+}
+
+pub relation work_done(p: Process, w: Quantity) kind institutional {
+    label en official "§7.1: the work done by a constant force along a displacement";
+    label ru unofficial "§7.1: работа, совершённая постоянной силой на перемещении";
+}
+
+@source(UP_M58719_WORK)
+rule WorkOfConstantForce(p: Process, f: Quantity, d: Quantity) strict {
+    label en official "§7.1: the work done by a constant force along the displacement is the product of the two — newton times metre is the joule";
+    label ru unofficial "§7.1: работа постоянной силы на перемещении есть их произведение — ньютон на метр даёт джоуль";
+    when constant_force_along_displacement(p, f, d);
+    then work_done(p, quantity_of(unit_convert(magnitude(f), "N")
+                                  * unit_convert(magnitude(d), "m"), "J"));
+}
+
+// --- §7.2: кинетическая энергия ---------------------------------------------------
+
+@source(UP_M58308_KINETIC_ENERGY)
+relation mass_and_speed(o: Object, p: Process, m: Quantity, v: Quantity) kind empirical {
+    label en official "§7.2: the case presents the mass and the speed of the object at a stage of the process";
+    label ru unofficial "§7.2: дело предъявляет массу и путевую скорость тела на этапе процесса";
+}
+
+pub relation kinetic_energy(o: Object, p: Process, k: Quantity) kind institutional {
+    label en official "§7.2: K = ½mv² — the kinetic energy of the object";
+    label ru unofficial "§7.2: K = ½mv² — кинетическая энергия тела";
+}
+
+@source(UP_M58308_KINETIC_ENERGY)
+rule KineticEnergyFromMassAndSpeed(o: Object, p: Process, m: Quantity, v: Quantity) strict {
+    label en official "§7.2: K = ½mv²; kilogram times metre-per-second squared gives the joule";
+    label ru unofficial "§7.2: K = ½mv²; килограмм на квадрат метра в секунду даёт джоуль";
+    when mass_and_speed(o, p, m, v);
+    then kinetic_energy(o, p, quantity_of((1 / 2) * unit_convert(magnitude(m), "kg")
+                                          * unit_convert(magnitude(v), "m_per_s")
+                                          * unit_convert(magnitude(v), "m_per_s"), "J"));
+}
+
+// --- §7.3: теорема о работе и кинетической энергии ---------------------------------
+
+@source(UP_M58309_WORK_ENERGY_THEOREM)
+relation kinetic_energy_before(o: Object, p: Process, k: Quantity) kind empirical {
+    label en official "§7.3: the kinetic energy of the object before the process";
+    label ru unofficial "§7.3: кинетическая энергия тела до процесса";
+}
+
+@source(UP_M58309_WORK_ENERGY_THEOREM)
+relation kinetic_energy_after(o: Object, p: Process, k: Quantity) kind empirical {
+    label en official "§7.3: the kinetic energy of the object after the process";
+    label ru unofficial "§7.3: кинетическая энергия тела после процесса";
+}
+
+pub relation work_energy_theorem_holds(o: Object, p: Process) kind institutional {
+    label en official "§7.3: the net work done on the object equals the change in its kinetic energy";
+    label ru unofficial "§7.3: работа результирующей силы над телом равна изменению его кинетической энергии";
+}
+
+// Приравнивание работы и разности энергий законно ровно потому, что
+// мультимножители обеих сторон совпали: {kg:1, m:2, s:−2}. Совпадение
+// проверяет язык.
+@source(UP_M58309_WORK_ENERGY_THEOREM)
+rule NetWorkEqualsChangeOfKineticEnergy(
+    o: Object,
+    p: Process,
+    w: Quantity,
+    k0: Quantity,
+    k1: Quantity,
+) strict {
+    label en official "§7.3: the work-energy theorem — the net work on a system equals the change in its kinetic energy";
+    label ru unofficial "§7.3: теорема о работе и энергии — работа результирующей силы над системой равна изменению её кинетической энергии";
+    when work_done(p, w)
+        and kinetic_energy_before(o, p, k0)
+        and kinetic_energy_after(o, p, k1)
+        and magnitude(w) == unit_convert(magnitude(k1), "J") - unit_convert(magnitude(k0), "J");
+    then work_energy_theorem_holds(o, p);
+}
+
+@source(UP_M58309_WORK_ENERGY_THEOREM)
+rule WorkEnergyTheoremRefuted(
+    o: Object,
+    p: Process,
+    w: Quantity,
+    k0: Quantity,
+    k1: Quantity,
+) strict {
+    label en official "§7.3: work that does not equal the change in kinetic energy refutes the account of the process";
+    label ru unofficial "§7.3: работа, не равная изменению кинетической энергии, опровергает описание процесса";
+    when work_done(p, w)
+        and kinetic_energy_before(o, p, k0)
+        and kinetic_energy_after(o, p, k1)
+        and magnitude(w) != unit_convert(magnitude(k1), "J") - unit_convert(magnitude(k0), "J");
+    then not work_energy_theorem_holds(o, p);
+}
+
+// --- §7.4: мощность ----------------------------------------------------------------
+
+@source(UP_M58310_AVERAGE_POWER)
+relation work_took(p: Process, t: Quantity) kind empirical {
+    label en official "§7.4: the time over which the work was done";
+    label ru unofficial "§7.4: время, за которое совершена работа";
+}
+
+pub relation average_power(p: Process, rate: Quantity) kind institutional {
+    label en official "§7.4: average power — the work done divided by the time it took";
+    label ru unofficial "§7.4: средняя мощность — работа, делённая на время её совершения";
+}
+
+@source(UP_M58310_AVERAGE_POWER)
+rule AveragePowerIsWorkOverTime(p: Process, w: Quantity, t: Quantity) strict {
+    label en official "§7.4: average power is the work done divided by the time interval; joule per second is the watt";
+    label ru unofficial "§7.4: средняя мощность есть работа, делённая на промежуток времени; джоуль в секунду даёт ватт";
+    when work_done(p, w) and work_took(p, t);
+    then average_power(p, quantity_of(unit_convert(magnitude(w), "J")
+                                      / unit_convert(magnitude(t), "s"), "W"));
+}

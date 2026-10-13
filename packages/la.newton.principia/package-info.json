@@ -1,0 +1,16 @@
+{
+  "format": "law.package-info/0.1",
+  "purpose": "Principia 1687: определения и законы движения Ньютона — аксиоматический каркас как исполняемая система правил",
+  "limitations": [
+    "Пакет применяет формулировки источника к предъявленным данным; доказательства и рассуждения авторов источника не перепроверяются, а физическая истинность теории из ответа не следует."
+  ],
+  "examples": [
+    "tests/01-aer-quadruplus.lawtest",
+    "tests/02-lex-prima-perseverat.lawtest",
+    "tests/03-lex-prima-cogitur.lawtest"
+  ],
+  "license": "Модель, сценарии и изложение распространяются под Apache-2.0 (см. LICENSE). Закреплённый текст — I. Newton, Philosophiae Naturalis Principia Mathematica (1687), латинский текст: общественное достояние; байты сняты с транскрипции Викитеки по закреплённой ревизии.",
+  "maintainer": "Rifat Dzhumagulov (hi@arxo.io)",
+  "repository": "https://github.com/arxohq/arxo-openstax-mechanics",
+  "deliveryLicenseNote": "Publisher texts and textual adaptations, including embedded copies, retain separate terms in the repository NOTICE. Apache-2.0 covers independently authored Arxo code."
+}

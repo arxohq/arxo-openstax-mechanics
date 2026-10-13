@@ -1,0 +1,65 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:eff3c81cb446bf7f0ab49f55ed0ac03c4da9e5e4d50948c39445a140be89cef9",
+      "evidence": [],
+      "id": "urn:openstax:clir:energy-momentum#t02c-pr",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:em:cart",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:em:roll",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:energy-momentum#process_over"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:energy-momentum"
+    },
+    {
+      "contentHash": "sha256:fcdf68bd21ef398dd2b5c85d08f00edd94b2938e2cf57d233133e4573875e4d4",
+      "evidence": [],
+      "id": "urn:openstax:clir:energy-momentum#t02c-f",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:em:cart",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:em:roll",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "N",
+            "value": "12"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:energy-momentum#external_force_on_system"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:energy-momentum"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-09-06T12:00:00Z",
+    "knowledgeTime": "2026-09-06T12:00:00Z",
+    "legalTime": "2026-09-06",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

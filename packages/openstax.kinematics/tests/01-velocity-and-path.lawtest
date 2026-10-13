@@ -1,0 +1,159 @@
+language "law.core" version "0.2";
+package openstax.kinematics version "0.1.0";
+namespace "urn:openstax:clir:kinematics";
+
+// §3.1: 300 м за 25 с — средняя скорость 12 м/с. ЕДИНИЦА ОТВЕТА ВЫВЕДЕНА:
+// мультимножитель частного {m:1, s:−1}, и тег `m_per_s` называет её, а не
+// назначает.
+test "urn:query:kin-t01a-average-velocity" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01a-s": displacement(entity_ref("urn:case:kin:i1"), 300 m) { origin case_input; }
+        assert "t01a-t": elapsed_time(entity_ref("urn:case:kin:i1"), 25 s) { origin case_input; }
+    }
+
+    evaluate truth(average_velocity(entity_ref("urn:case:kin:i1"), 12 m_per_s));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AverageVelocityFromDisplacement);
+}
+
+// ВХОД В ДРУГИХ ЕДИНИЦАХ: 36 км за 1 час. Ответ приходит в м/с — 10 м/с, —
+// потому что `quantity_of` СВЕРЯЕТ тег с вычисленным мультимножителем, а не
+// назначает его (§259.1), и правило обязано назвать одну единицу ответа.
+// Приведение входов делает `unit_convert` ЯВНО, ровно как велит §1.3
+// источника: «умножить на коэффициент пересчёта». Молчаливого перевода не
+// происходит нигде — он записан в самом правиле и виден в доказательстве.
+//
+// Пара с предыдущей сценой сторожит границу «единица входа ≠ единица
+// ответа»: 300 м / 25 с и 36 км / 1 ч идут через одно и то же правило, и оба
+// ответа выражены в м/с.
+test "urn:query:kin-t01b-input-units-are-converted-explicitly" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01b-s": displacement(entity_ref("urn:case:kin:i2"), 36 km) { origin case_input; }
+        assert "t01b-t": elapsed_time(entity_ref("urn:case:kin:i2"), 1 h) { origin case_input; }
+    }
+
+    evaluate truth(average_velocity(entity_ref("urn:case:kin:i2"), 10 m_per_s));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AverageVelocityFromDisplacement);
+}
+
+// §3.1, ГЛАВНОЕ РАЗЛИЧЕНИЕ ГЛАВЫ. Бегун пробежал 400 м по кругу и вернулся на
+// старт: путь 400 м, перемещение 0. Путь больше перемещения — траектория не
+// была прямой.
+test "urn:query:kin-t01c-path-longer-than-displacement" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01c-s": displacement(entity_ref("urn:case:kin:lap"), 0 m) { origin case_input; }
+        assert "t01c-d": distance_traveled(entity_ref("urn:case:kin:lap"), 400 m) { origin case_input; }
+    }
+
+    evaluate truth(path_longer_than_displacement(entity_ref("urn:case:kin:lap")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(PathExceedsDisplacement);
+}
+
+// ОБРАТНАЯ СТОРОНА ТОЙ ЖЕ ГРАНИЦЫ: прямая в одну сторону — путь равен
+// перемещению, и кривизна ОПРОВЕРГНУТА (FALSE_ONLY).
+test "urn:query:kin-t01d-straight-path" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01d-s": displacement(entity_ref("urn:case:kin:straight"), 300 m) { origin case_input; }
+        assert "t01d-d": distance_traveled(entity_ref("urn:case:kin:straight"), 300 m) { origin case_input; }
+    }
+
+    evaluate truth(path_longer_than_displacement(entity_ref("urn:case:kin:straight")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(StraightPathEqualsDisplacement);
+}
+
+// §3.2: у того же круга средняя ПУТЕВАЯ скорость не нулевая — 400 м за 50 с
+// даёт 8 м/с, тогда как средняя скорость нулевая. Два разных ответа на два
+// разных вопроса; алгебра их не различила бы никогда — обе величины в м/с.
+test "urn:query:kin-t01e-average-speed-is-not-average-velocity" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01e-s": displacement(entity_ref("urn:case:kin:lap"), 0 m) { origin case_input; }
+        assert "t01e-d": distance_traveled(entity_ref("urn:case:kin:lap"), 400 m) { origin case_input; }
+        assert "t01e-t": elapsed_time(entity_ref("urn:case:kin:lap"), 50 s) { origin case_input; }
+    }
+
+    evaluate truth(average_speed(entity_ref("urn:case:kin:lap"), 8 m_per_s));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AverageSpeedFromDistance);
+}
+
+// И его же средняя СКОРОСТЬ — ноль: перемещение нулевое.
+test "urn:query:kin-t01f-average-velocity-of-a-lap-is-zero" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01f-s": displacement(entity_ref("urn:case:kin:lap"), 0 m) { origin case_input; }
+        assert "t01f-t": elapsed_time(entity_ref("urn:case:kin:lap"), 50 s) { origin case_input; }
+    }
+
+    evaluate truth(average_velocity(entity_ref("urn:case:kin:lap"), 0 m_per_s));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+}
+
+// §3.1: нулевое перемещение — тело вернулось в исходное положение.
+test "urn:query:kin-t01g-returned-to-start" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01g-s": displacement(entity_ref("urn:case:kin:lap"), 0 m) { origin case_input; }
+    }
+
+    evaluate truth(returned_to_start(entity_ref("urn:case:kin:lap")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ZeroDisplacementIsReturn);
+}

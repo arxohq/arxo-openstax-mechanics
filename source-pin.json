@@ -1,0 +1,1331 @@
+{
+  "format": "arxo.openstax-mechanics-source-pin/1",
+  "repository": "https://github.com/arxohq/arxo-corpus",
+  "sourceCommit": "11a1d0f7b12de8e95326b3167b21a471c8939a87",
+  "capture": "selected working-tree bytes; hashes identify snapshot",
+  "openstaxCommit": "d0ed34a5851119a42e3d972dfc0ff49e4663977c",
+  "files": [
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources.law",
+      "path": "packages/openstax.measurement/sources.law",
+      "size": 30475,
+      "sha256": "sha256:b33d4101bfe8cfed0331ae09e3e0cd6db77a830e1f5f9c55a2561888b40f884c"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/package.law",
+      "path": "packages/openstax.measurement/package.law",
+      "size": 8414,
+      "sha256": "sha256:2b61d124d59496390d394028140ad13f282d27164bda5591d913722c87f318e1"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/03-uncertainty.law",
+      "path": "packages/openstax.measurement/03-uncertainty.law",
+      "size": 14370,
+      "sha256": "sha256:23ce5dd1f9a695cac95f5e2ab0b9ec9b6e003c4c647870a604a1a21969f80063"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/04-vectors.law",
+      "path": "packages/openstax.measurement/04-vectors.law",
+      "size": 24554,
+      "sha256": "sha256:ef7b8d55677eecb98ccbd82dec8b588ba3c51ff21e7c3661b13e8a2202330954"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/law.toml",
+      "path": "packages/openstax.measurement/law.toml",
+      "size": 2149,
+      "sha256": "sha256:ce8b2e4ddf546bdb1e97e08d2bd22dd86ea1f198a91fdfb2480d9f23267e4359"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/02-dimensions.law",
+      "path": "packages/openstax.measurement/02-dimensions.law",
+      "size": 17939,
+      "sha256": "sha256:dca99918362c8a06027383e7e09f621da9c7280d25f3690f70f78d2b48f677f1"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/01-quantities.law",
+      "path": "packages/openstax.measurement/01-quantities.law",
+      "size": 8934,
+      "sha256": "sha256:d356437c9953f643ac3872a7e023c8bfbe69c5ef87fddfd2c896a98acd55076d"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/tests/03-quantities-and-units.lawtest",
+      "path": "packages/openstax.measurement/tests/03-quantities-and-units.lawtest",
+      "size": 6263,
+      "sha256": "sha256:59153283a33d9b44bff8e003b1142b1dd1f34cd894e6451a38d4698c1255ba89"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/tests/04-uncertainty.lawtest",
+      "path": "packages/openstax.measurement/tests/04-uncertainty.lawtest",
+      "size": 8742,
+      "sha256": "sha256:ed4ef5ab9da9a502dc8c454351e0a6a27e0023fd1e07c44ec8c877efd4bfa60a"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/tests/01-dimensional-consistency.lawtest",
+      "path": "packages/openstax.measurement/tests/01-dimensional-consistency.lawtest",
+      "size": 11898,
+      "sha256": "sha256:4b803f7b8053530efec240a33531573413ec7db53c0021b938c8f9285dfe07d8"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/tests/05-vectors.lawtest",
+      "path": "packages/openstax.measurement/tests/05-vectors.lawtest",
+      "size": 10542,
+      "sha256": "sha256:5f9e21cd6ab07aa3394cbd0763c37578031a2c916ae740d137a966d3a649f123"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/tests/02-algebra-rejects-the-answer.lawtest",
+      "path": "packages/openstax.measurement/tests/02-algebra-rejects-the-answer.lawtest",
+      "size": 5298,
+      "sha256": "sha256:b2ea29cf0c18bc0a11ba719897ba99211ab005956be0df0ca654018ec2fa8a1f"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58272.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58272.cnxml",
+      "size": 37131,
+      "sha256": "sha256:ea6c3b0bc1942a32691d8ae39c9ded766900429ce8a567d504963e8c7ec66028"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58270.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58270.cnxml",
+      "size": 42940,
+      "sha256": "sha256:4116491d82fc9c69d374b14aefa1caa822e3258a18ef214ee4d0cc3724cb0f9c"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58269.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58269.cnxml",
+      "size": 45136,
+      "sha256": "sha256:f16c5725898ec4e66db1687639afa5f229895312adf24911e94abf70216c6322"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58274.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58274.cnxml",
+      "size": 34815,
+      "sha256": "sha256:91a1f32c827e3993d02e5c2b69ab72204a33a69d894ad5694523a8e8b903aade"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58276.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58276.cnxml",
+      "size": 2257,
+      "sha256": "sha256:c65e6709a3bd92b46d7e13c1c2f0ec35da6bc62bbd3b64a72e2b8da104e4a942"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58271.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58271.cnxml",
+      "size": 26564,
+      "sha256": "sha256:d29f5478b77cada00bdb769b4b87dd7f0e51ed39dffdba07a1d1a1dd1c283184"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58268.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58268.cnxml",
+      "size": 2174,
+      "sha256": "sha256:499dfb5d64df05e3bcb59723588a4f6428c6bd004d3b368361a1a3ada5f7261a"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58273.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58273.cnxml",
+      "size": 22622,
+      "sha256": "sha256:3ce8fd926c05a7479b685746bf7feea23c20dab6c909dc52ee920d04ca552494"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58277.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58277.cnxml",
+      "size": 129278,
+      "sha256": "sha256:90c66fec7014d2a2e4d26e0724af07d2ed238cdda4aa55d9e4497c007c6f8c71"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58275.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58275.cnxml",
+      "size": 23742,
+      "sha256": "sha256:5a1b0fff5b0763a19f3ab2238614bd65a21e6fb769e7b9a53355dfbeb86b61a4"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58279.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58279.cnxml",
+      "size": 157981,
+      "sha256": "sha256:7f31ae189b90e5b9a0491c376b2567b6189fb705db67513f7f08f34f1df08ced"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58280.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58280.cnxml",
+      "size": 257954,
+      "sha256": "sha256:ea9ae700aa4a47517fda9ff985f9190bb0e4e809f07f66a96e80088b676f3803"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/measurement/sources/measurement/m58278.cnxml",
+      "path": "packages/openstax.measurement/sources/measurement/m58278.cnxml",
+      "size": 112764,
+      "sha256": "sha256:e2ecdce98b5ecfa4472faf6749fd4683c8675a3f06f4e09c3b106eedf51cc45b"
+    },
+    {
+      "sourcePath": "corpus/clir/openstax-measurement.lawir.json",
+      "path": "registry/original/openstax.measurement.lawir.json",
+      "size": 159691,
+      "sha256": "sha256:a4a39de269d88faae789e910b6b51a8b0859de278b3b3cedb88df870525afffd"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources.law",
+      "path": "packages/openstax.kinematics/sources.law",
+      "size": 25454,
+      "sha256": "sha256:25f5cb86b75d1e184e9076f91a6f1695f7528d898cda9204ebab50ca78d18548"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/package.law",
+      "path": "packages/openstax.kinematics/package.law",
+      "size": 8757,
+      "sha256": "sha256:f7ed5709114cd9df34cd9bfea25e2569897b4c9c8e8d404d31957e6cd497793b"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/01-position-velocity.law",
+      "path": "packages/openstax.kinematics/01-position-velocity.law",
+      "size": 10844,
+      "sha256": "sha256:2a9e85da28d970fa2b526517bd4acd4a1679ec24856ec929d182dd6d4b28480e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/04-circular-and-relative.law",
+      "path": "packages/openstax.kinematics/04-circular-and-relative.law",
+      "size": 15802,
+      "sha256": "sha256:7637a60da15d550159baa00d6f71caeca6adbfaeba4a2119be48358d31f6283f"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/02-constant-acceleration.law",
+      "path": "packages/openstax.kinematics/02-constant-acceleration.law",
+      "size": 12933,
+      "sha256": "sha256:35cc785c4a6c09e997a71e791b1ba9af9bb85710dc8780907d8a4bb6d80f8186"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/law.toml",
+      "path": "packages/openstax.kinematics/law.toml",
+      "size": 1527,
+      "sha256": "sha256:08199bc917df4a61cbdf531502d894371edf0e623d78ac772df82c122c197f72"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/03-free-fall.law",
+      "path": "packages/openstax.kinematics/03-free-fall.law",
+      "size": 6280,
+      "sha256": "sha256:0e4caeaf7dd5133f1ded94a4fb680f0681b3659c17f3de6228b04f27df0d9588"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/tests/02-constant-acceleration.lawtest",
+      "path": "packages/openstax.kinematics/tests/02-constant-acceleration.lawtest",
+      "size": 7814,
+      "sha256": "sha256:fd34570fd6d1ef29228420a8071a86b5984d9b86f7eca996a55dbd8ffc4e1845"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/tests/03-free-fall-and-circular.lawtest",
+      "path": "packages/openstax.kinematics/tests/03-free-fall-and-circular.lawtest",
+      "size": 13496,
+      "sha256": "sha256:23a6a9f5a5ea565160d0deb41f141205570020ebe3a0f4f7eb9f58a66e5e6e4e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/tests/01-velocity-and-path.lawtest",
+      "path": "packages/openstax.kinematics/tests/01-velocity-and-path.lawtest",
+      "size": 7305,
+      "sha256": "sha256:94d7dc1809e620dbcf26aa026e04d85b23de632a6d989477959a933eace3b82a"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58290.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58290.cnxml",
+      "size": 71244,
+      "sha256": "sha256:efb0053dcce8d9f939778b949f6637d3544857bf768aee43ec1625cc90b155fe"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58289.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58289.cnxml",
+      "size": 77384,
+      "sha256": "sha256:563dd71390c1579b53a1a3a8ed7ec9719d0abe3aba563f6665713e93b49aded1"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58292.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58292.cnxml",
+      "size": 62707,
+      "sha256": "sha256:8db43155cf6783e6aac811e2c1b157db473bf83466f2ebb8364678b740639c8e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58293.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58293.cnxml",
+      "size": 127243,
+      "sha256": "sha256:4dafa84290432385285709af8c2c64c2731eb84eb46d9bb94917c25f20d1a8bc"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58291.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58291.cnxml",
+      "size": 110857,
+      "sha256": "sha256:1604b3b861add4549f21cb8eb150c3c94c4453088968e2e3dbffdecad5514751"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58288.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58288.cnxml",
+      "size": 2705,
+      "sha256": "sha256:d05d9a20943907fe808ef0214537800fcf4da1fd2d15a69108a15b3a8cf68c92"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58284.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58284.cnxml",
+      "size": 43592,
+      "sha256": "sha256:3d37834eb4de95572cee22e1affc1cb31c8a0951372656dfaa9801d37e4b5d2a"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58286.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58286.cnxml",
+      "size": 54316,
+      "sha256": "sha256:f52197a2e61e25c00449fc57383fedbe74142ff2b30412b907103c427801aeca"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58282.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58282.cnxml",
+      "size": 37181,
+      "sha256": "sha256:9d10d89ac7fb5be90bf4b5eecac2d7ef39505069f934d4484983c93dd7edfeed"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58287.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58287.cnxml",
+      "size": 88606,
+      "sha256": "sha256:189ebd7144ed8cc83757433ef555ad8ab6ef8243bde3875114a74ad2b4afac33"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58285.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58285.cnxml",
+      "size": 92105,
+      "sha256": "sha256:4d039708193f8fe970115237fd4d9be9eb90fb378ac2ca91c95c900475862be6"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58281.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58281.cnxml",
+      "size": 2470,
+      "sha256": "sha256:270825a92d273f17cacc69f09cbded46e0537c0c2b6c150ea98c427c0a58a062"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/kinematics/sources/kinematics/m58283.cnxml",
+      "path": "packages/openstax.kinematics/sources/kinematics/m58283.cnxml",
+      "size": 45591,
+      "sha256": "sha256:0562da89760c5d4b1ec572ae4dcdf3070694e11844925bb6213acb082e9793aa"
+    },
+    {
+      "sourcePath": "corpus/clir/openstax-kinematics.lawir.json",
+      "path": "registry/original/openstax.kinematics.lawir.json",
+      "size": 117250,
+      "sha256": "sha256:af8baff8604b7d65024d82dc08661cbdf193f0925d300aaf9adf4c5072806781"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/01-forces-and-laws.law",
+      "path": "packages/openstax.dynamics/01-forces-and-laws.law",
+      "size": 9298,
+      "sha256": "sha256:72376f39e93631533b9edb638dc5152c4328efd50a141cb617199b6e87c9a9ca"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources.law",
+      "path": "packages/openstax.dynamics/sources.law",
+      "size": 25092,
+      "sha256": "sha256:8f1b0de21cd0f9666cea4987c0dce7f6b848a56f495de485b507701844bda3a4"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/package.law",
+      "path": "packages/openstax.dynamics/package.law",
+      "size": 4417,
+      "sha256": "sha256:3c5da430e8de33d48c82ac92f9d5f65e61901286d335e22d9ea1001883e5b654"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/law.toml",
+      "path": "packages/openstax.dynamics/law.toml",
+      "size": 1737,
+      "sha256": "sha256:ccce1cddbbc3f4efa4a3a133a0bd000355c780066de0b3a8fe2d7387e62f727c"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/04-centripetal.law",
+      "path": "packages/openstax.dynamics/04-centripetal.law",
+      "size": 3069,
+      "sha256": "sha256:a41a7086a12739ab7bf3719254454434501c45f167c00b6b46fa1ac5b1e51fdb"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/03-friction.law",
+      "path": "packages/openstax.dynamics/03-friction.law",
+      "size": 8046,
+      "sha256": "sha256:690b95a41e542a914a360d183ec302bbf07f9472c6c9b28ca6f8db31c8ca1541"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/tests/03-friction-boundary.lawtest",
+      "path": "packages/openstax.dynamics/tests/03-friction-boundary.lawtest",
+      "size": 6323,
+      "sha256": "sha256:e62f66aa8bb9cde9027b724853954784f6549814dfe4662b22fc092d67e9c30a"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/tests/01-forces-mass-weight.lawtest",
+      "path": "packages/openstax.dynamics/tests/01-forces-mass-weight.lawtest",
+      "size": 7546,
+      "sha256": "sha256:c3e91f73768db24fe6861e81dd4eba64d3be402066512d1e532ef02c1943a8d7"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58296.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58296.cnxml",
+      "size": 28672,
+      "sha256": "sha256:973d86ef0486516edd9a193d763d8f3fa98708de15711fbc44a18f69f286384a"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58294.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58294.cnxml",
+      "size": 1916,
+      "sha256": "sha256:40e1e6b9560d415b9cd0abe109e07f4ab03b20d96deabada4d6b2ba5a70dfd02"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58295.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58295.cnxml",
+      "size": 38323,
+      "sha256": "sha256:1581edcde80603a1e1917e0abe6e1a50880c843066042a1450d0583a35f6ba00"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58297.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58297.cnxml",
+      "size": 79929,
+      "sha256": "sha256:7e9cace9acb5f28380e058b277fdcaf187baceec9a5d7633893ba352933d4636"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58305.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58305.cnxml",
+      "size": 70745,
+      "sha256": "sha256:fdc9f939dbb7c82cd9ab39e2ec551831364f0ee6b3f53a6a7b52cc7b5b6832d6"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58303.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58303.cnxml",
+      "size": 130943,
+      "sha256": "sha256:3d39b14c671756458801fd23006c94c2ae2832d4f22230596042fa7d9bd730f8"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58301.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58301.cnxml",
+      "size": 81792,
+      "sha256": "sha256:54b4e290e7aa37199e66cb9b7a235eacf03d139476f2e2c5abbd8872a4ae4080"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58299.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58299.cnxml",
+      "size": 47398,
+      "sha256": "sha256:f202c3e1cf973ab4ad3afc5b5f3e6f5f300efe399ce772ce1a1775921ba5bbda"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58306.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58306.cnxml",
+      "size": 113837,
+      "sha256": "sha256:b4138356d60e75166dda534e391279a1d12ed199cd418adadda67c77f47ec4fc"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58304.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58304.cnxml",
+      "size": 98880,
+      "sha256": "sha256:0bdd5583650b76a007b3b93ab5db42877fb8543999da5bc24d8f46f3ece90ad2"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58298.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58298.cnxml",
+      "size": 30536,
+      "sha256": "sha256:559b6efa11e1389d6f03bc95b573ba0e9bc24866ec99f067957ac5c897093108"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58300.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58300.cnxml",
+      "size": 77723,
+      "sha256": "sha256:7180641b14f91b2106fa93a4980191570c25ca75cd75752a20c64246cdb761a0"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/dynamics/sources/dynamics/m58302.cnxml",
+      "path": "packages/openstax.dynamics/sources/dynamics/m58302.cnxml",
+      "size": 1360,
+      "sha256": "sha256:92544c8d29b90099c8c7fb36b3b30a5ae92f466b349301c5d2a0da407c89435c"
+    },
+    {
+      "sourcePath": "corpus/clir/openstax-dynamics.lawir.json",
+      "path": "registry/original/openstax.dynamics.lawir.json",
+      "size": 75966,
+      "sha256": "sha256:4ff0b65673da2797806bb7d21213b72928921605d2e7520808e63e49d5fde43b"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources.law",
+      "path": "packages/openstax.energy_momentum/sources.law",
+      "size": 31073,
+      "sha256": "sha256:e088a0796140646dabaf32a78c5b35667bed0f56784563d576ef9dc66faa1e15"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/package.law",
+      "path": "packages/openstax.energy_momentum/package.law",
+      "size": 6210,
+      "sha256": "sha256:6a69431f00d907dbf0313809df78d93871fe176ae44a9a3b5430258260f7fdf3"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/02-conservation-energy.law",
+      "path": "packages/openstax.energy_momentum/02-conservation-energy.law",
+      "size": 7739,
+      "sha256": "sha256:103f05bba0e7c1b74829c7907a633a21c5a0e4ca09c8a4c03d05f15ca8a20643"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/law.toml",
+      "path": "packages/openstax.energy_momentum/law.toml",
+      "size": 1483,
+      "sha256": "sha256:09f59397e9ef15591998a6ff69320934db53e4e2736fbbdd46667c41f80d1ec3"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/01-work-energy.law",
+      "path": "packages/openstax.energy_momentum/01-work-energy.law",
+      "size": 8579,
+      "sha256": "sha256:4675d3cee118ae629619e56b116794c0f95d7cf75bf18f5e39be8e6f67a1f00c"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/03-momentum-collisions.law",
+      "path": "packages/openstax.energy_momentum/03-momentum-collisions.law",
+      "size": 23149,
+      "sha256": "sha256:5e985b4cd099a68364678c51654ed0a5a959024e1a3505c79bb27afa995d80d2"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/tests/02-conservation.lawtest",
+      "path": "packages/openstax.energy_momentum/tests/02-conservation.lawtest",
+      "size": 15337,
+      "sha256": "sha256:1940f046fb45e6416fd11430cbcea1905fc3da5950a2fe3e8488acf34843ed4d"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/tests/01-work-energy-power.lawtest",
+      "path": "packages/openstax.energy_momentum/tests/01-work-energy-power.lawtest",
+      "size": 5947,
+      "sha256": "sha256:5be6659a2952f02043c0f5b3c4f7a213685e24db81513d89caf2e9322a022914"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/tests/03-editions.lawtest",
+      "path": "packages/openstax.energy_momentum/tests/03-editions.lawtest",
+      "size": 4534,
+      "sha256": "sha256:4b627fe7c15cea3860ecfa60beab0baa602826fd24e9586a0d710769f947df0e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58317.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58317.cnxml",
+      "size": 2040,
+      "sha256": "sha256:8e97e3f65681e897fb7b5ebb1900d699a4c1e44edd1c7aa6eee4b7068343638d"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58661.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58661.cnxml",
+      "size": 56043,
+      "sha256": "sha256:68efd9d273e788e2be248f74e6048d82368e11b4ca143a8937cf673cb67c3b95"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58315.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58315.cnxml",
+      "size": 46060,
+      "sha256": "sha256:99812477eb69940e6299746237f821233fcf100badbe88a8eaf8e190dc2cd1af"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58308.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58308.cnxml",
+      "size": 32202,
+      "sha256": "sha256:b62469b558e3ffe9e3c6c0f7d7930119aba89a5886c7a95dbe0670d065c2cc77"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58719.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58719.cnxml",
+      "size": 85426,
+      "sha256": "sha256:c94baea42a6817b5cc6bace6974f2dce1192a419ad6d353861c7daffb63ed6af"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58311.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58311.cnxml",
+      "size": 1785,
+      "sha256": "sha256:83664fbd33b67e19854afff63638d834193dc3654de9afdff4eb4e12c24d0247"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58313.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58313.cnxml",
+      "size": 46084,
+      "sha256": "sha256:47f9563b225b86f809f4b778ca5b6bf588e0378a88426c0e1a9fb999e638620e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58314.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58314.cnxml",
+      "size": 51630,
+      "sha256": "sha256:6d99ce22b67a1d00e08301da806d71001f105e39e9577a95da3b5d640e927745"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58312.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58312.cnxml",
+      "size": 65353,
+      "sha256": "sha256:fcbabc3fe134d824e02352bc6bc72453f4433269cd1f64c7ded35672eab7289a"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58309.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58309.cnxml",
+      "size": 41254,
+      "sha256": "sha256:b4262183ef5296717c5797f734ac1b6eec5d67ed731580a5388bc364eeb7b8bf"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58310.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58310.cnxml",
+      "size": 57496,
+      "sha256": "sha256:4b37b5573d47afdd966e97df64602c0678a86c2e4c4f955092ab970acf82a8e6"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58321.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58321.cnxml",
+      "size": 56397,
+      "sha256": "sha256:016befc8ed5d8c8120e2bb620347ca18b85540ea8d81957a572f87b83ba8925b"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58321@204a1f03c799.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58321@204a1f03c799.cnxml",
+      "size": 56370,
+      "sha256": "sha256:e6076898dff04cf85d90f545ff354f19d05510c1d70d466cd1e2a0255f61019e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58307.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58307.cnxml",
+      "size": 2508,
+      "sha256": "sha256:959920a247c929ba24cbfe08aef08371383930f158e26c8a185bf40cd97a3c1e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58323.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58323.cnxml",
+      "size": 136756,
+      "sha256": "sha256:0b4a2b51c899079c9905949b3b4c6e1bf1e7ab57e25067701da478b33206fded"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58318.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58318.cnxml",
+      "size": 13865,
+      "sha256": "sha256:d6b2374a712a7269d988551296255df6dd913162ac0f98e1bc49a15734f935ef"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58322.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58322.cnxml",
+      "size": 59260,
+      "sha256": "sha256:dbaf991c9c4db07249355a79a3b440fb3f11f55dc9e0b64b348e392e4e353c0f"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58320.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58320.cnxml",
+      "size": 92629,
+      "sha256": "sha256:a8b61db8ac228b71e7b42b39e533b1f0f0b3c65d98ced8a3cd0591b1e4bf1005"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58324.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58324.cnxml",
+      "size": 93674,
+      "sha256": "sha256:acd75a9fb181ad0138a96a50d28481b80d33d91e170da33495fb9e79715422fe"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum/sources/energy-momentum/m58319.cnxml",
+      "path": "packages/openstax.energy_momentum/sources/energy-momentum/m58319.cnxml",
+      "size": 108759,
+      "sha256": "sha256:18685bddb3f94872875a5d0ae68b65f696ea8ded26a3053d5dc70ab40f6bb5cb"
+    },
+    {
+      "sourcePath": "corpus/clir/openstax-energy-momentum.lawir.json",
+      "path": "registry/original/openstax.energy_momentum.lawir.json",
+      "size": 128725,
+      "sha256": "sha256:eed62633709039c435ef692b00fae8f6782dd846d88b0950a689bf25306907c3"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources.law",
+      "path": "packages/openstax.rotation_equilibrium/sources.law",
+      "size": 38527,
+      "sha256": "sha256:e0f3673756ad6e5767787f3d79ccd8be24759c3a5d686f4f6c01ea6e2b5b7836"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/package.law",
+      "path": "packages/openstax.rotation_equilibrium/package.law",
+      "size": 5246,
+      "sha256": "sha256:ab3a6e1db6d0ac3326469eb2ef8e6951418efc707b0b63a0b2cbee3ba43fda61"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/01-rotation.law",
+      "path": "packages/openstax.rotation_equilibrium/01-rotation.law",
+      "size": 9484,
+      "sha256": "sha256:63807d0053031acff005cccf743097cd8e8b705f3c196f64ef8ad6df71cf2026"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/03-equilibrium.law",
+      "path": "packages/openstax.rotation_equilibrium/03-equilibrium.law",
+      "size": 7690,
+      "sha256": "sha256:4fed1936992a21fabbc72a3176f8802d12243e6e0b0f210f877600317071d1ba"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/law.toml",
+      "path": "packages/openstax.rotation_equilibrium/law.toml",
+      "size": 1659,
+      "sha256": "sha256:6d317e1ede4862807763c1e84c6e953c9e1582a5a86bcb42adc6e00339e93a07"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/04-gravitation.law",
+      "path": "packages/openstax.rotation_equilibrium/04-gravitation.law",
+      "size": 13966,
+      "sha256": "sha256:5fe452d92b15826027e88fcb15b763eba4832cba17ae5b2a69f01482fb05ee85"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/02-angular-momentum.law",
+      "path": "packages/openstax.rotation_equilibrium/02-angular-momentum.law",
+      "size": 7202,
+      "sha256": "sha256:a34b8a5735412e2caa608050e0bb33d5c86967d15e9bb2d9634e37bf77ce78c8"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/tests/01-rotation-and-equilibrium.lawtest",
+      "path": "packages/openstax.rotation_equilibrium/tests/01-rotation-and-equilibrium.lawtest",
+      "size": 10868,
+      "sha256": "sha256:3ffa7ff8895dabd8cb622b02be04d513fad14d7f0565ebe710a70eea9daeb2a4"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/tests/03-torque-ialpha-regression.lawtest",
+      "path": "packages/openstax.rotation_equilibrium/tests/03-torque-ialpha-regression.lawtest",
+      "size": 2720,
+      "sha256": "sha256:cf33dd218074bbe0b6e5eec656155d7e35c60b50eeb8c686e8db6a198fd6e3b7"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/tests/02-kepler-two-grounds.lawtest",
+      "path": "packages/openstax.rotation_equilibrium/tests/02-kepler-two-grounds.lawtest",
+      "size": 9444,
+      "sha256": "sha256:65c485930890f45fbd822521d9c4edbd808aebd46bbeacc853d6a7e2922a79c4"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58333.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58333.cnxml",
+      "size": 82176,
+      "sha256": "sha256:4c3b6eefc7d4507cf5b2113b7845222ac47922ad98435ca5d8914f589ceb1bfc"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58352.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58352.cnxml",
+      "size": 82445,
+      "sha256": "sha256:e0b6b32a78d00cf8e5bef5dda55d3a9eb20d01c228cd3d40ee7bc5a7fb3ea055"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58350.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58350.cnxml",
+      "size": 48759,
+      "sha256": "sha256:4107961d3aed1171e9a5a1c868daf2028dd36b1e6e1611c7467126a4b69c6454"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58328.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58328.cnxml",
+      "size": 46530,
+      "sha256": "sha256:324238e452461a3e6585e9254ee12409c52d338fbf4f944076f511b138d0240e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58331.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58331.cnxml",
+      "size": 56723,
+      "sha256": "sha256:4ca991076039973e0e8f227bd93cd20b49b88d4ed5b2ae0a0747b98048f59e48"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58335.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58335.cnxml",
+      "size": 71901,
+      "sha256": "sha256:90f931fdd8bd0c40da2fdb6003bf8a0985a560db1b12aa3eeca788af321a1a9e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58337.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58337.cnxml",
+      "size": 68666,
+      "sha256": "sha256:5eab3839b0d147388156a47b21db8c2443588dda499246b1c18e4da2d68c983f"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58329.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58329.cnxml",
+      "size": 52479,
+      "sha256": "sha256:0ff9bfd392605f4f10761a4c233a1e22031c2b45958f1e05ba7d00b2ca865054"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58351.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58351.cnxml",
+      "size": 30160,
+      "sha256": "sha256:adfa9f4780968a63b768be3a330fc866b7132eec78d5d311ce0a59008f27a3a6"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58330.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58330.cnxml",
+      "size": 63155,
+      "sha256": "sha256:95aa0380cb3acdd16b669d2e036b0f8e9180ffc565c753527e2bdee2333d1bfb"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58348.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58348.cnxml",
+      "size": 61414,
+      "sha256": "sha256:14d7a166da291e88e7b2bdbe6f6c6669597ea2273f969002f67dcff03fcab1a7"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58332.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58332.cnxml",
+      "size": 44551,
+      "sha256": "sha256:668c1ec72eaa28c570a27095ae0ca6d09697e6203cca2f97c0fc8c1190256a93"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58336.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58336.cnxml",
+      "size": 123955,
+      "sha256": "sha256:a42269d65f505bb3873692fd4c6173527a1f533d439969bbbff81ffabc6d5389"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58334.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58334.cnxml",
+      "size": 2001,
+      "sha256": "sha256:76e1fde4671842880a2d8d04ee82d8eefae18eea444a3de78b55a47433266b28"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58340.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58340.cnxml",
+      "size": 69019,
+      "sha256": "sha256:2956100d74fddacc628b87c75869cd548e3781c703ce94c74a0cdc61c84ebfdb"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58338.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58338.cnxml",
+      "size": 71322,
+      "sha256": "sha256:95baac6239e1db4df871cc77433e16bb642ccdacf6361e26c4b1d43473275677"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58342.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58342.cnxml",
+      "size": 81711,
+      "sha256": "sha256:09de7770510b44ced69dab961308484b4a5deb4f3e6c3ce584bc49dd047754da"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58327.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58327.cnxml",
+      "size": 54857,
+      "sha256": "sha256:7dd0e77b681d0f9adb168d34019928e47029870f932579d2edb05a957ee52b81"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58346.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58346.cnxml",
+      "size": 50713,
+      "sha256": "sha256:80f4d08a2fe4267ff037b5dbbca0186090e516c32b8d4c474eda7e1529abc6d1"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58344.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58344.cnxml",
+      "size": 1740,
+      "sha256": "sha256:0ee1a96dada93655a9a0ac16cf0965ae66d964ec3e5fd71e246333868cfc99a8"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58325.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58325.cnxml",
+      "size": 2131,
+      "sha256": "sha256:1c7b79d5bd03a5aa7bfeda34ba2b91b3fe610b55e4506bc11849d57acc74f9aa"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58343.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58343.cnxml",
+      "size": 37984,
+      "sha256": "sha256:964df18d2501dde6f9c088d1fdf91bb8040ba0e06c687ca91a4c3c58424b27fb"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58339.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58339.cnxml",
+      "size": 2179,
+      "sha256": "sha256:7b220142ca928345112eb1512aaafbd73dc4214a63586507e8f2a95e9870547a"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58341.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58341.cnxml",
+      "size": 101698,
+      "sha256": "sha256:332fb005903cdd75a6308bc66366aac9316d82a9257b9983e9c22fd004ef742c"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58345.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58345.cnxml",
+      "size": 41629,
+      "sha256": "sha256:f3dfa17943340e976226b5b29bd34607feabd0a181a122e848084ef838ceb884"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58326.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58326.cnxml",
+      "size": 65220,
+      "sha256": "sha256:fbfdd445eff3cfcbf4c9f57a1394fb7dc83baa2a0355ae06407b89d7b9730067"
+    },
+    {
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium/sources/rotation-equilibrium/m58347.cnxml",
+      "path": "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58347.cnxml",
+      "size": 46903,
+      "sha256": "sha256:d9dbe274a59a9d17cbc93f759d299f496c3f402b83458157e5c19e943bc09bd7"
+    },
+    {
+      "sourcePath": "corpus/clir/openstax-rotation-equilibrium.lawir.json",
+      "path": "registry/original/openstax.rotation_equilibrium.lawir.json",
+      "size": 138820,
+      "sha256": "sha256:e9a9b9108f552558fe472a920962d8a3c1a6317379ca67ab5f396ed8d3c92a64"
+    },
+    {
+      "sourcePath": "packs/units/si/law.toml",
+      "path": "packages/units.si/law.toml",
+      "size": 1627,
+      "sha256": "sha256:606d646028a97ef31aeb907d544a9ac6161ac0df311949afc561c484900a81cb"
+    },
+    {
+      "sourcePath": "packs/units/si/si.law",
+      "path": "packages/units.si/si.law",
+      "size": 39056,
+      "sha256": "sha256:40132e66f747e5b0e8bdb39bd09499e90c47a6bf55571d24656da7a67fbae969"
+    },
+    {
+      "sourcePath": "corpus/clir/units-si.lawir.json",
+      "path": "registry/original/units.si.lawir.json",
+      "size": 100732,
+      "sha256": "sha256:66c0e7b54e87269674eb01b97eb54b5d7570427424a5edf2066f7deffc34a601"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/sources.law",
+      "path": "packages/bipm.si_brochure/sources.law",
+      "size": 36411,
+      "sha256": "sha256:a0fab6f29df3f81aaaaebd86ae7bb21bb1c40be673f555b622dd19953f62bc0e"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/package.law",
+      "path": "packages/bipm.si_brochure/package.law",
+      "size": 9618,
+      "sha256": "sha256:6d7c0d0949c5f1140621abc68f6be8c039cf46d2cdb90a5bd93f6f92be985505"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/07-celsius.law",
+      "path": "packages/bipm.si_brochure/07-celsius.law",
+      "size": 2975,
+      "sha256": "sha256:4436fcb41e23ff2b1b35bd3bc3705cacf80e263f4038ebbf731257609282a845"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/06-algebra.law",
+      "path": "packages/bipm.si_brochure/06-algebra.law",
+      "size": 26599,
+      "sha256": "sha256:1040cbe9fc12fc03c27d24cd0d1348ea1f7065f4ef8e8d566f9b32750b89ede2"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/01-defining-constants.law",
+      "path": "packages/bipm.si_brochure/01-defining-constants.law",
+      "size": 3334,
+      "sha256": "sha256:b40bab3d53e6789dbebbad9b2e0a1d8a643182e0d58e8690d12d911e9dce3636"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/02-base-units.law",
+      "path": "packages/bipm.si_brochure/02-base-units.law",
+      "size": 10871,
+      "sha256": "sha256:c81de0149888146f54772df5e916b7c2e635a6e0a8ff1f410b241887fce6e574"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/03-derived-units.law",
+      "path": "packages/bipm.si_brochure/03-derived-units.law",
+      "size": 18214,
+      "sha256": "sha256:cc4d9e3477dbb75d6074068d8e286c2c8ae9e9a4dd2dade25739fdfa06cdf97f"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/law.toml",
+      "path": "packages/bipm.si_brochure/law.toml",
+      "size": 3293,
+      "sha256": "sha256:a2d22cb2468316651a0153184236340a367c0a1db59a7b213d24cad5f2f1dcad"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/04-prefixes.law",
+      "path": "packages/bipm.si_brochure/04-prefixes.law",
+      "size": 11488,
+      "sha256": "sha256:404841fbd400eae5ad48268b4db32a5ebc32a40aa6ec5fb242e7f3d9342ad098"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/05-non-si-units.law",
+      "path": "packages/bipm.si_brochure/05-non-si-units.law",
+      "size": 3982,
+      "sha256": "sha256:2411de3885b58bf26e10707ccce2cc78214e5c63dbc9f51aa7deb455b73f9fe3"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/13-celsius.lawtest",
+      "path": "packages/bipm.si_brochure/tests/13-celsius.lawtest",
+      "size": 1273,
+      "sha256": "sha256:7f706753d76dc782cb6f13daa4a12102e698aff6f2af8a8ee7f645d1bf1e4d62"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/07-compound-prefix.lawtest",
+      "path": "packages/bipm.si_brochure/tests/07-compound-prefix.lawtest",
+      "size": 608,
+      "sha256": "sha256:6432c66e9842f292ddd6c2511a30bda3dd7535ce1f84f6a5064c460c0b5adad8"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/02-units-unchanged-across-editions.lawtest",
+      "path": "packages/bipm.si_brochure/tests/02-units-unchanged-across-editions.lawtest",
+      "size": 1876,
+      "sha256": "sha256:95f270df1edb476331511c6d01b630dc54692f0d7976f7114c92b16248079bae"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/10-why-not-before-redefinition.lawtest",
+      "path": "packages/bipm.si_brochure/tests/10-why-not-before-redefinition.lawtest",
+      "size": 643,
+      "sha256": "sha256:5edef8d59f678786f1639c72cad5809ba4d03b58490f8be35e84892f8a977215"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/03-ampere-kelvin-mole-editions.lawtest",
+      "path": "packages/bipm.si_brochure/tests/03-ampere-kelvin-mole-editions.lawtest",
+      "size": 3372,
+      "sha256": "sha256:516840a2d6012ba9133f2d09b6c6773c106858254ff8a3fb415cb5567402c876"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/05-derived-units.lawtest",
+      "path": "packages/bipm.si_brochure/tests/05-derived-units.lawtest",
+      "size": 2383,
+      "sha256": "sha256:2d4ef36cd39dc03861c2ec9a115dd7f9eafb6499014ed3a176c2981e4be460cf"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/08-prefixes-2022.lawtest",
+      "path": "packages/bipm.si_brochure/tests/08-prefixes-2022.lawtest",
+      "size": 1673,
+      "sha256": "sha256:419eb85d69ddefb48e3671a2fe99b8d25d32b8daafcda3d0a8a42c114b3ba02b"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/09-non-si-units.lawtest",
+      "path": "packages/bipm.si_brochure/tests/09-non-si-units.lawtest",
+      "size": 962,
+      "sha256": "sha256:bc724f71994af3c2db6223fa9d3fada8060d44cf1596039ffc28d2df55eccff3"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/12-algebra-remaining-rows.lawtest",
+      "path": "packages/bipm.si_brochure/tests/12-algebra-remaining-rows.lawtest",
+      "size": 11760,
+      "sha256": "sha256:d09ac0f088e5e2293faf34b32101b85c51479ab2bd6e53714553cbd6ab35e0d9"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/04-defining-constants.lawtest",
+      "path": "packages/bipm.si_brochure/tests/04-defining-constants.lawtest",
+      "size": 1855,
+      "sha256": "sha256:0087c04b2a930168cfdb7fc513b9ec198dc244fa8ca42f1b46eb6f13610f7dc5"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/06-prefixes-and-kilogram.lawtest",
+      "path": "packages/bipm.si_brochure/tests/06-prefixes-and-kilogram.lawtest",
+      "size": 1898,
+      "sha256": "sha256:a7a836704e9dc86cb328246a6cc2d80a06a73f50f29b6a30a08e7228f4afcf39"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/11-algebra-verifies-tables.lawtest",
+      "path": "packages/bipm.si_brochure/tests/11-algebra-verifies-tables.lawtest",
+      "size": 16458,
+      "sha256": "sha256:c00855ae94871afff80e6cf464fcb3dc89988f05773ff0ba63c77b9b412412c3"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/tests/01-kilogram-redefinition.lawtest",
+      "path": "packages/bipm.si_brochure/tests/01-kilogram-redefinition.lawtest",
+      "size": 2004,
+      "sha256": "sha256:045cef584013bf96566590aadec544bcbf6aa9424bd7aeeb0c79308dba4386b5"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/sources/si-brochure/fr9.txt",
+      "path": "packages/bipm.si_brochure/sources/si-brochure/fr9.txt",
+      "size": 305548,
+      "sha256": "sha256:bceec64d96fc9c791aea38592c93bfa852600adecddfcac295c155d3646456b9"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/sources/si-brochure/en8.txt",
+      "path": "packages/bipm.si_brochure/sources/si-brochure/en8.txt",
+      "size": 219262,
+      "sha256": "sha256:75189f3babd57d9246af75c773507d027a0df049e5fb9eceb71fb9bb958f60e1"
+    },
+    {
+      "sourcePath": "corpus/laws/org/bipm/si-brochure/sources/si-brochure/en9.txt",
+      "path": "packages/bipm.si_brochure/sources/si-brochure/en9.txt",
+      "size": 266886,
+      "sha256": "sha256:e4de27dc33f988f97fc94da61a28830deb61d82944ff9023c1b8e8e119f2b980"
+    },
+    {
+      "sourcePath": "corpus/clir/bipm-si-brochure.lawir.json",
+      "path": "registry/original/bipm.si_brochure.lawir.json",
+      "size": 552395,
+      "sha256": "sha256:7f72e6b76f0ef32064341daf2fbf59edf21ee9b4c181feed02c416a6b7cf22d1"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/02-scholium-definitionum.law",
+      "path": "packages/la.newton.principia/02-scholium-definitionum.law",
+      "size": 11044,
+      "sha256": "sha256:3a571ac9a29a20f93825abc24f574679b640ec2b918d32553f4329a3bad3d792"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/sources.law",
+      "path": "packages/la.newton.principia/sources.law",
+      "size": 58365,
+      "sha256": "sha256:f55c8f27949e72f83139269a5a2664bb1c15aed16273cbd87c6e38e4b02579aa"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/00-package.law",
+      "path": "packages/la.newton.principia/00-package.law",
+      "size": 6037,
+      "sha256": "sha256:80cb065687650510f872bebc181beceaf3429c16853a0ee8d76492d1b78f03b5"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/05-scholium-legum.law",
+      "path": "packages/la.newton.principia/05-scholium-legum.law",
+      "size": 12680,
+      "sha256": "sha256:680721e773c2a68e27692df77be87a92027fec8872e006474f87132469f0e270"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/03-leges.law",
+      "path": "packages/la.newton.principia/03-leges.law",
+      "size": 10670,
+      "sha256": "sha256:20a7562bd623c2923b9a5408a7719ea35eec61d1bb0ea422d23985703a171c92"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/04-corollaria.law",
+      "path": "packages/la.newton.principia/04-corollaria.law",
+      "size": 12819,
+      "sha256": "sha256:ed4e34ce16ad6598d1b506778d20d51d66a563a53336b8d6d59e0f6616cf50e4"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/law.toml",
+      "path": "packages/la.newton.principia/law.toml",
+      "size": 4631,
+      "sha256": "sha256:3e56983220432b8020373927ecb4f1a9048c8d61ec2932022d3fb54790e8433c"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/01-definitiones.law",
+      "path": "packages/la.newton.principia/01-definitiones.law",
+      "size": 15989,
+      "sha256": "sha256:9b79ba1af7cc3c1c8626cd4d8c1b99f9bbe71b6bbe61c3c29b0e9d257d8b3252"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/analysis.law",
+      "path": "packages/la.newton.principia/analysis.law",
+      "size": 2854,
+      "sha256": "sha256:94531a7f8b58f488cdd90e768ad769d69f03c89faf4f96837984ff796622b9c9"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/tests/05-vitrea-quindecim.lawtest",
+      "path": "packages/la.newton.principia/tests/05-vitrea-quindecim.lawtest",
+      "size": 1103,
+      "sha256": "sha256:8160d6dae19be8d0a63d38f8c8f63c88a22aefe101bd82e169f641e0006a31f5"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/tests/04-summa-sexdecim.lawtest",
+      "path": "packages/la.newton.principia/tests/04-summa-sexdecim.lawtest",
+      "size": 1536,
+      "sha256": "sha256:732a9ea29207e813ac047a252439e88b81505fa9154232f357f58f043d652c20"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/tests/principia.lawtest",
+      "path": "packages/la.newton.principia/tests/principia.lawtest",
+      "size": 37426,
+      "sha256": "sha256:2715ad905f5a49a731f80859061ee16a8917a10b4a1d0a00bc6384d3aae14b26"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/tests/03-lex-prima-cogitur.lawtest",
+      "path": "packages/la.newton.principia/tests/03-lex-prima-cogitur.lawtest",
+      "size": 1053,
+      "sha256": "sha256:efcf44547ea374ffe41683c6498b75b579fef07b8860923c61bbc9820dfee3b0"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/tests/01-aer-quadruplus.lawtest",
+      "path": "packages/la.newton.principia/tests/01-aer-quadruplus.lawtest",
+      "size": 1008,
+      "sha256": "sha256:c2c1556c742d22c834e32833cc3b2c3bfcc216ec56045652b40211941c6332b0"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/tests/02-lex-prima-perseverat.lawtest",
+      "path": "packages/la.newton.principia/tests/02-lex-prima-perseverat.lawtest",
+      "size": 901,
+      "sha256": "sha256:b5ee4cb52eca58e685b50bbecf5a036e9ee6364490a766dcb7917b89d2954d78"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/sources/la-principia-1687/la.txt",
+      "path": "packages/la.newton.principia/sources/la-principia-1687/la.txt",
+      "size": 45331,
+      "sha256": "sha256:050c58607296e101e1df0bc37cdd03fd505be1901846e02dfead10d0ebc51fdf"
+    },
+    {
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687/sources/la-principia-1687/articles.json",
+      "path": "packages/la.newton.principia/sources/la-principia-1687/articles.json",
+      "size": 5920,
+      "sha256": "sha256:dfaaf0135bda5ab409497f60766dbc09823b87f7230d09a16f38ac9485fa3f28"
+    },
+    {
+      "sourcePath": "corpus/clir/la-principia-1687.lawir.json",
+      "path": "registry/original/la.newton.principia.lawir.json",
+      "size": 214341,
+      "sha256": "sha256:1fc6faeb979808b908b7dac7be37d9ab0601443dbbb1c5544f023362d39048d2"
+    }
+  ],
+  "publicMetadataTransformations": [
+    {
+      "path": "packages/openstax.measurement/package-info.json",
+      "originalHash": "sha256:b4a3f3f0cb9fed1a591de6f96d40fd265954fdc3607085648e63e3315a2133e4",
+      "publicHash": "sha256:556414565b263a9210a1f9458e9745732bea6de219eba4083c5fc3f0e19bf554",
+      "reason": "consumer metadata/README; executable sources unchanged"
+    },
+    {
+      "path": "packages/openstax.kinematics/package-info.json",
+      "originalHash": "sha256:fe83551dd88ff53814389a49b57a495a190aba1c8182ded127af669573e4af2b",
+      "publicHash": "sha256:6317b94d3f318c5b8a6b671655fdbdd2f2987c4400939e89cd8a281e6a84534a",
+      "reason": "consumer metadata/README; executable sources unchanged"
+    },
+    {
+      "path": "packages/openstax.dynamics/package-info.json",
+      "originalHash": "sha256:e53d72093408ae5f5ad8c8edee7e132ba19391401d8bbd15f0ee935aa19cfd78",
+      "publicHash": "sha256:b96bcd5523b4f5ced0d431d651fe1f845761d665c3e2df781eced580e565f39a",
+      "reason": "consumer metadata/README; executable sources unchanged"
+    },
+    {
+      "path": "packages/openstax.energy_momentum/package-info.json",
+      "originalHash": "sha256:c75b1a3717e74d9691d38c49cf8703f825f790561177e638a965d876d3f75693",
+      "publicHash": "sha256:ef952895ca875d79d620c86595d03442390cf92632a18b811f572fdec2057be1",
+      "reason": "consumer metadata/README; executable sources unchanged"
+    },
+    {
+      "path": "packages/units.si/package-info.json",
+      "originalHash": "sha256:9e00e5854731410166a9415836b741edf4764ba8566cc540df33a0457b2cd8a8",
+      "publicHash": "sha256:9ad746b68601fd0576d97103fa31b001a0978977f86058125b25a0ce00c17e37",
+      "reason": "consumer metadata/README; executable sources unchanged"
+    },
+    {
+      "path": "packages/bipm.si_brochure/package-info.json",
+      "originalHash": "sha256:68c2de8ccd28cdcf983ef84a0ed998bae7c09a61d0147a22eed9f90084ba4c3d",
+      "publicHash": "sha256:17bc28413e5014e494ca5b1f3c6f34410b0a62c867594e913850ac2fc4efe257",
+      "reason": "consumer metadata/README; executable sources unchanged"
+    },
+    {
+      "path": "packages/la.newton.principia/package-info.json",
+      "originalHash": "sha256:e9db5d2ed06a01370c9c0f264046b40d4379c57ed78b540e745a8cbb027d5cb0",
+      "publicHash": "sha256:99021719586e8f5286488c6d2418943a3c7bb2c14ef13c28035347d7a0a96492",
+      "reason": "consumer metadata/README; executable sources unchanged"
+    }
+  ],
+  "models": [
+    {
+      "name": "openstax.measurement",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:measurement",
+      "sourcePath": "corpus/laws/org/openstax/measurement",
+      "path": "packages/openstax.measurement",
+      "dependencies": {
+        "units.si": "0.1.0",
+        "bipm.si_brochure": "0.1.0"
+      },
+      "title": "OpenStax University Physics, т. 1, гл. 1–2: измерение, единицы, размерный анализ, значащие цифры и векторы — первый слой классической физики",
+      "spec": "openstax.measurement@0.1.0",
+      "hashes": {
+        "original": "sha256:a4a39de269d88faae789e910b6b51a8b0859de278b3b3cedb88df870525afffd",
+        "package": "sha256:a4a39de269d88faae789e910b6b51a8b0859de278b3b3cedb88df870525afffd",
+        "world": "sha256:c48a46da4ef9d36a5ed380a6c1eaa102b9cecc90af6c212b693f10e59cc46cfd"
+      }
+    },
+    {
+      "name": "openstax.kinematics",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:kinematics",
+      "sourcePath": "corpus/laws/org/openstax/kinematics",
+      "path": "packages/openstax.kinematics",
+      "dependencies": {
+        "units.si": "0.1.0",
+        "bipm.si_brochure": "0.1.0",
+        "openstax.measurement": "0.1.0"
+      },
+      "title": "OpenStax University Physics, т. 1, гл. 3–4: кинематика — перемещение против пути, четыре уравнения равноускоренного движения как проверка расчёта, свободное падение, движение по окружности и относительное движение",
+      "spec": "openstax.kinematics@0.1.0",
+      "hashes": {
+        "original": "sha256:af8baff8604b7d65024d82dc08661cbdf193f0925d300aaf9adf4c5072806781",
+        "package": "sha256:af8baff8604b7d65024d82dc08661cbdf193f0925d300aaf9adf4c5072806781",
+        "world": "sha256:6207dba454fe35805e185ca39f599055fcd73986b5ba30bf1260d8ae1162f865"
+      }
+    },
+    {
+      "name": "openstax.dynamics",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:dynamics",
+      "sourcePath": "corpus/laws/org/openstax/dynamics",
+      "path": "packages/openstax.dynamics",
+      "dependencies": {
+        "units.si": "0.1.0",
+        "bipm.si_brochure": "0.1.0",
+        "openstax.measurement": "0.1.0",
+        "openstax.kinematics": "0.1.0",
+        "la.newton.principia": "0.1.0"
+      },
+      "title": "OpenStax University Physics, т. 1, гл. 5–6: динамика — три закона Ньютона, масса и вес, трение с границей μ_s·N, центростремительная сила; два прочтения второго закона против оригинала Principia",
+      "spec": "openstax.dynamics@0.1.0",
+      "hashes": {
+        "original": "sha256:4ff0b65673da2797806bb7d21213b72928921605d2e7520808e63e49d5fde43b",
+        "package": "sha256:4ff0b65673da2797806bb7d21213b72928921605d2e7520808e63e49d5fde43b",
+        "world": "sha256:4bef56562abf0203920102ee986319d2f8395599d761924f902b3c08800d0dde"
+      }
+    },
+    {
+      "name": "openstax.energy_momentum",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:energy-momentum",
+      "sourcePath": "corpus/laws/org/openstax/energy-momentum",
+      "path": "packages/openstax.energy_momentum",
+      "dependencies": {
+        "units.si": "0.1.0",
+        "bipm.si_brochure": "0.1.0",
+        "openstax.measurement": "0.1.0",
+        "openstax.kinematics": "0.1.0",
+        "openstax.dynamics": "0.1.0"
+      },
+      "title": "OpenStax University Physics, т. 1, гл. 7–9: работа, энергия, импульс — сохранение как утверждение УСЛОВНОЕ; замкнутость системы и консервативность сил как разные условия разных законов",
+      "spec": "openstax.energy_momentum@0.1.0",
+      "hashes": {
+        "original": "sha256:eed62633709039c435ef692b00fae8f6782dd846d88b0950a689bf25306907c3",
+        "package": "sha256:eed62633709039c435ef692b00fae8f6782dd846d88b0950a689bf25306907c3",
+        "world": "sha256:dff3f331c78aa5eb67d86c0971bde9c2fd4d9009b1efbf91fee704e51fae8462"
+      }
+    },
+    {
+      "name": "openstax.rotation_equilibrium",
+      "version": "0.1.0",
+      "namespace": "urn:openstax:clir:rotation-equilibrium",
+      "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium",
+      "path": "packages/openstax.rotation_equilibrium",
+      "dependencies": {
+        "units.si": "0.1.0",
+        "bipm.si_brochure": "0.1.0",
+        "openstax.measurement": "0.1.0",
+        "openstax.kinematics": "0.1.0",
+        "openstax.dynamics": "0.1.0",
+        "openstax.energy_momentum": "0.1.0"
+      },
+      "title": "OpenStax University Physics, т. 1, гл. 10–13: вращение, момент импульса, ДВА условия статического равновесия, тяготение и законы Кеплера двумя основаниями — наблюдением Кеплера и выводом Ньютона",
+      "spec": "openstax.rotation_equilibrium@0.1.0",
+      "hashes": {
+        "original": "sha256:e9a9b9108f552558fe472a920962d8a3c1a6317379ca67ab5f396ed8d3c92a64",
+        "package": "sha256:e9a9b9108f552558fe472a920962d8a3c1a6317379ca67ab5f396ed8d3c92a64",
+        "world": "sha256:dc4cb35ecaea1c3ef603f24f71b7ab34145cbe387294cfb33aa45f84d5fc97ab"
+      }
+    },
+    {
+      "name": "units.si",
+      "version": "0.1.0",
+      "namespace": "urn:law:units:si",
+      "sourcePath": "packs/units/si",
+      "path": "packages/units.si",
+      "dependencies": {},
+      "title": "units.si",
+      "spec": "units.si@0.1.0",
+      "hashes": {
+        "original": "sha256:66c0e7b54e87269674eb01b97eb54b5d7570427424a5edf2066f7deffc34a601",
+        "package": "sha256:66c0e7b54e87269674eb01b97eb54b5d7570427424a5edf2066f7deffc34a601",
+        "world": "sha256:66c0e7b54e87269674eb01b97eb54b5d7570427424a5edf2066f7deffc34a601"
+      }
+    },
+    {
+      "name": "bipm.si_brochure",
+      "version": "0.1.0",
+      "namespace": "urn:bipm:clir:si-brochure",
+      "sourcePath": "corpus/laws/org/bipm/si-brochure",
+      "path": "packages/bipm.si_brochure",
+      "dependencies": {
+        "units.si": "0.1.0"
+      },
+      "title": "Брошюра SI (BIPM): определяющие константы, базовые и производные единицы, префиксы и внесистемные единицы; переопределение 20.05.2019 как смена редакции",
+      "spec": "bipm.si_brochure@0.1.0",
+      "hashes": {
+        "original": "sha256:7f72e6b76f0ef32064341daf2fbf59edf21ee9b4c181feed02c416a6b7cf22d1",
+        "package": "sha256:7f72e6b76f0ef32064341daf2fbf59edf21ee9b4c181feed02c416a6b7cf22d1",
+        "world": "sha256:72bb44f115962c1581802ed586c09ac767a8ecbba6e8b5df8129f8c2df93546e"
+      }
+    },
+    {
+      "name": "la.newton.principia",
+      "version": "0.1.0",
+      "namespace": "urn:la:newton:clir:principia",
+      "sourcePath": "corpus/laws/doctrine/math/principia-1687",
+      "path": "packages/la.newton.principia",
+      "dependencies": {},
+      "title": "Principia 1687: определения и законы движения Ньютона — аксиоматический каркас как исполняемая система правил",
+      "spec": "la.newton.principia@0.1.0",
+      "hashes": {
+        "original": "sha256:1fc6faeb979808b908b7dac7be37d9ab0601443dbbb1c5544f023362d39048d2",
+        "package": "sha256:1fc6faeb979808b908b7dac7be37d9ab0601443dbbb1c5544f023362d39048d2",
+        "world": "sha256:1fc6faeb979808b908b7dac7be37d9ab0601443dbbb1c5544f023362d39048d2"
+      }
+    }
+  ]
+}

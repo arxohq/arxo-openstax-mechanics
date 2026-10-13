@@ -1,0 +1,119 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:e108af40232e1c3dca278c522c3431517b97f980b3c50fc810c09a19dc132fb2",
+      "evidence": [],
+      "id": "urn:openstax:clir:kinematics#t02a-a",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:kin:rocket",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "m_per_s2",
+            "value": "20"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:kinematics#constant_acceleration"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:kinematics"
+    },
+    {
+      "contentHash": "sha256:47c045f890a571ad6622f3493cbe302e51349d4ae2dfb8bba8cbb302630e49f0",
+      "evidence": [],
+      "id": "urn:openstax:clir:kinematics#t02a-v0",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:kin:rocket",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "m_per_s",
+            "value": "0"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:kinematics#initial_velocity"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:kinematics"
+    },
+    {
+      "contentHash": "sha256:7e6441c56ecd8a9c6d92d52811c16d6071fbdb196a70943558462a35781202e4",
+      "evidence": [],
+      "id": "urn:openstax:clir:kinematics#t02a-t",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:kin:rocket",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "s",
+            "value": "20"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:kinematics#elapsed_time"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:kinematics"
+    },
+    {
+      "contentHash": "sha256:057107b80549e77874142c201fd772c7bce68a9a1939d5d558f8177d46cc5593",
+      "evidence": [],
+      "id": "urn:openstax:clir:kinematics#t02a-v",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:kin:rocket",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "m_per_s",
+            "value": "400"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:kinematics#claimed_final_velocity"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:kinematics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-09-06T12:00:00Z",
+    "knowledgeTime": "2026-09-06T12:00:00Z",
+    "legalTime": "2026-09-06",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

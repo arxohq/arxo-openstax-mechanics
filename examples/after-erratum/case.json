@@ -1,0 +1,34 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:e5472c67eeb0d35a9008d6cb70d933eeba7697d896419a485ed459b94533b923",
+      "evidence": [],
+      "id": "urn:openstax:clir:energy-momentum#t03b-tg",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:em:truck",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:em:smash",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:energy-momentum#objects_move_together_after"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:energy-momentum"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-05-01T12:00:00Z",
+    "knowledgeTime": "2026-05-01T12:00:00Z",
+    "legalTime": "2026-05-01",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

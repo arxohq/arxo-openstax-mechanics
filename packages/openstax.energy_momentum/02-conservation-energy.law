@@ -1,0 +1,126 @@
+// §8.2 «Conservative and Non-Conservative Forces» и §8.3 «Conservation of
+// Energy»: механическая энергия и условие её сохранения.
+//
+// УСЛОВИЕ ЗДЕСЬ ДРУГОЕ, ЧЕМ У ИМПУЛЬСА, И РАЗЛИЧИЕ СУЩЕСТВЕННО. Импульс
+// сохраняется при ЗАМКНУТОСТИ системы, механическая энергия — при
+// КОНСЕРВАТИВНОСТИ действующих сил. Замкнутая система с трением сохраняет
+// импульс и не сохраняет механическую энергию. Пакет держит оба условия
+// порознь, и сцена 02e показывает случай, где ответы расходятся.
+
+language "law.core" version "0.2";
+package openstax.energy_momentum version "0.1.0";
+namespace "urn:openstax:clir:energy-momentum";
+
+use self::{
+    Collection,
+    Process,
+    UP_M58313_CONSERVATIVE_FORCE,
+    UP_M58313_NON_CONSERVATIVE_FORCE,
+    UP_M58314_ENERGY_CONSERVATION,
+    UP_M58314_MECHANICAL_ENERGY,
+    process_over,
+};
+
+@source(UP_M58313_CONSERVATIVE_FORCE)
+relation force_acts_in(p: Process, name: Text) kind empirical {
+    label en official "§8.2: a force named by the case acts during the process";
+    label ru unofficial "§8.2: в процессе действует названная делом сила";
+}
+
+@source(UP_M58313_NON_CONSERVATIVE_FORCE)
+relation force_is_non_conservative(p: Process, name: Text) kind empirical {
+    label en official "§8.2: the case states the named force is non-conservative — the work it does depends on the path";
+    label ru unofficial "§8.2: дело сообщает, что названная сила неконсервативна — совершаемая ею работа зависит от пути";
+}
+
+@source(UP_M58314_MECHANICAL_ENERGY)
+relation mechanical_energy_before(c: Collection, p: Process, e: Quantity) kind empirical {
+    label en official "§8.3: the mechanical energy of the system before the process — the sum of its kinetic and potential energies";
+    label ru unofficial "§8.3: механическая энергия системы до процесса — сумма её кинетической и потенциальной энергий";
+}
+
+@source(UP_M58314_MECHANICAL_ENERGY)
+relation mechanical_energy_after(c: Collection, p: Process, e: Quantity) kind empirical {
+    label en official "§8.3: the mechanical energy of the system after the process";
+    label ru unofficial "§8.3: механическая энергия системы после процесса";
+}
+
+pub relation only_conservative_forces(p: Process) kind institutional {
+    label en official "§8.3: every force acting in the process is conservative";
+    label ru unofficial "§8.3: всякая действующая в процессе сила консервативна";
+}
+
+// Замыкание §59 по предъявленному составу сил: ни одна не объявлена
+// неконсервативной. Связывателем служит сам процесс — правило из одних
+// агрегатов не было бы range-restricted (LDC-E4101).
+@source(UP_M58313_CONSERVATIVE_FORCE)
+rule NoNonConservativeForcePresented(p: Process, anyname: Text) strict {
+    label en official "§8.2: a process in which no acting force is non-conservative is governed by conservative forces alone";
+    label ru unofficial "§8.2: процесс, ни одна действующая сила которого не объявлена неконсервативной, управляется одними консервативными силами";
+    when force_acts_in(p, anyname)
+        and (count distinct name: Text where force_is_non_conservative(p, name)) == 0;
+    then only_conservative_forces(p);
+}
+
+@source(UP_M58313_NON_CONSERVATIVE_FORCE)
+rule NonConservativeForceRefutesIt(p: Process, name: Text) strict {
+    label en official "§8.2: a single non-conservative force refutes that conservative forces alone act";
+    label ru unofficial "§8.2: одна неконсервативная сила опровергает, что действуют лишь консервативные";
+    when force_is_non_conservative(p, name);
+    then not only_conservative_forces(p);
+}
+
+pub relation mechanical_energy_conserved(c: Collection, p: Process) kind institutional {
+    label en official "§8.3: the mechanical energy of the system is the same before and after the process";
+    label ru unofficial "§8.3: механическая энергия системы одинакова до и после процесса";
+}
+
+@source(UP_M58314_ENERGY_CONSERVATION)
+rule ConservativeForcesConserveMechanicalEnergy(
+    c: Collection,
+    p: Process,
+    e0: Quantity,
+    e1: Quantity,
+) strict {
+    label en official "§8.3: when only conservative forces act, the mechanical energy of the system is conserved";
+    label ru unofficial "§8.3: когда действуют лишь консервативные силы, механическая энергия системы сохраняется";
+    when only_conservative_forces(p)
+        and mechanical_energy_before(c, p, e0)
+        and mechanical_energy_after(c, p, e1)
+        and magnitude(e0) == magnitude(e1);
+    then mechanical_energy_conserved(c, p);
+}
+
+@source(UP_M58314_ENERGY_CONSERVATION)
+rule MechanicalEnergyLostWhenTotalsDiffer(
+    c: Collection,
+    p: Process,
+    e0: Quantity,
+    e1: Quantity,
+) strict {
+    label en official "§8.3: mechanical energy that differs before and after is not conserved in this process";
+    label ru unofficial "§8.3: механическая энергия, разошедшаяся до и после, в этом процессе не сохраняется";
+    when mechanical_energy_before(c, p, e0)
+        and mechanical_energy_after(c, p, e1)
+        and magnitude(e0) != magnitude(e1);
+    then not mechanical_energy_conserved(c, p);
+}
+
+// §8.3: энергия не исчезает — она уходит из МЕХАНИЧЕСКОЙ формы. Учебник
+// говорит «energy conservation: the total energy of an isolated system is
+// constant», и потеря механической энергии при неконсервативной силе есть
+// переход, а не исчезновение. Пакет выводит именно это различение.
+pub relation energy_left_mechanical_form(c: Collection, p: Process) kind institutional {
+    label en official "§8.3: the energy did not vanish — a non-conservative force moved it out of mechanical form";
+    label ru unofficial "§8.3: энергия не исчезла — неконсервативная сила вывела её из механической формы";
+}
+
+@source(UP_M58314_ENERGY_CONSERVATION)
+rule NonConservativeWorkMovesEnergyOut(c: Collection, p: Process) strict {
+    label en official "§8.3: where mechanical energy is not conserved and a non-conservative force acts, the energy has left mechanical form rather than ceased to exist";
+    label ru unofficial "§8.3: там, где механическая энергия не сохранилась и действует неконсервативная сила, энергия покинула механическую форму, а не перестала существовать";
+    when process_over(c, p)
+        and refuted(mechanical_energy_conserved(c, p))
+        and refuted(only_conservative_forces(p));
+    then energy_left_mechanical_form(c, p);
+}

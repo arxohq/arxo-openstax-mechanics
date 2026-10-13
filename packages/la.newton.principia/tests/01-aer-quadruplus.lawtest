@@ -1,0 +1,24 @@
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+// Def. I: воздух вдвое плотнее в двойном объёме — четырёхкратен
+// («Aer duplo densior in duplo spatio quadruplus est»).
+test "urn:query:prin-t01" {
+    given {
+        context {
+            decision_time @2026-08-31T12:00:00+05:00;
+            knowledge_time @2026-08-31T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+        assert "prin-t01-a0": densitas_corporis(entity_ref("urn:case:prin:aer"), 2 pars_densitatis) { origin case_input; }
+        assert "prin-t01-a1": magnitudo_corporis(entity_ref("urn:case:prin:aer"), 2 pars_spatii) { origin case_input; }
+    }
+
+    evaluate truth(quantitas_materiae(entity_ref("urn:case:prin:aer"), 4 pars_materiae));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+}

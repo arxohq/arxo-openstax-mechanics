@@ -1,0 +1,83 @@
+// §3.5 «Free Fall»: свободное падение — движение под действием одной только
+// силы тяжести.
+//
+// g ПРЕДЪЯВЛЯЕТСЯ ДЕЛОМ, А НЕ ЗАПИСАНО КОНСТАНТОЙ ПАКЕТА. §3.5 даёт
+// 9,81 м/с² и в следующем же абзаце говорит: «g varies from 9.78 m/s² to
+// 9.83 m/s², depending on latitude, altitude, underlying geological
+// formations, and local topography». То есть ускорение свободного падения
+// есть факт О МЕСТЕ, а не о физике, и вписать его в правило значило бы
+// приписать всей Земле значение одной широты. Закреплённый фрагмент
+// UP_M58286_G_VALUE служит опорой для сцены — его цитирует дело, называя
+// своё g, — и остаётся источником, а не константой.
+//
+// СВОБОДНОЕ ПАДЕНИЕ — ЧАСТНЫЙ СЛУЧАЙ §3.4, И ЭТО ВЫВОДИТСЯ. §3.5 не даёт
+// новых уравнений: он подставляет a = −g в уже имеющиеся. Пакет делает
+// ровно это — правило переводит объявленное свободное падение в
+// `constant_acceleration` модуля 02, и дальше работают его проверки. Никакой
+// второй записи тех же формул здесь нет: она разошлась бы с первой при
+// первой же правке.
+//
+// ЗНАК. §3.5 выбирает ось вверх и получает a = −g. Направление здесь несёт
+// ЗНАК величины, а не отдельное поле: в одномерном движении главы 3 этого
+// довольно, и дело подаёт g положительным, а правило берёт его со знаком
+// минус — как это и записано в источнике.
+//
+// МИНУС ЗАПИСАН УМНОЖЕНИЕМ НА (0 − 1), А НЕ ВЫЧИТАНИЕМ ИЗ НУЛЯ. Таблица
+// операций §49.1 (§4.3 DECISION-0154) знает `Magnitude ± Magnitude` и
+// `Integer · Magnitude`, но не знает `Integer − Magnitude`: голый ноль
+// безразмерен, и вычесть из него величину нельзя — замер 06.09.2026 дал на
+// этом TYPE_ERROR. Скаляр (0 − 1) вычисляется целыми §58 и умножается на
+// величину по правилу §49, оставляя единицу нетронутой.
+
+language "law.core" version "0.2";
+package openstax.kinematics version "0.1.0";
+namespace "urn:openstax:clir:kinematics";
+
+use self::{
+    Interval,
+    UP_M58286_FREE_FALL,
+    UP_M58286_G_VALUE,
+    constant_acceleration,
+};
+
+@source(UP_M58286_FREE_FALL)
+pub relation in_free_fall(i: Interval) kind empirical {
+    label en official "§3.5: the case states the body moves in free fall over the interval — under the influence of gravity alone";
+    label ru unofficial "§3.5: дело сообщает, что на отрезке тело находится в свободном падении — под действием одной лишь тяжести";
+}
+
+@source(UP_M58286_G_VALUE)
+relation local_gravity(i: Interval, g: Quantity) kind empirical {
+    label en official "§3.5: the magnitude of the acceleration due to gravity at the place of the case — a fact about the place, not a constant of the package";
+    label ru unofficial "§3.5: модуль ускорения свободного падения в месте дела — факт о месте, а не константа пакета";
+}
+
+// Свободное падение ЕСТЬ равноускоренное движение с a = −g. Правило пишет в
+// ЛИСТ модуля 02 (`constant_acceleration`), и все четыре уравнения §3.4
+// применяются к нему без единой новой формулы.
+@source(UP_M58286_FREE_FALL, UP_M58286_G_VALUE)
+rule FreeFallIsConstantAcceleration(i: Interval, g: Quantity) strict {
+    label en official "§3.5: in free fall the acceleration is constant and equal to −g, so the constant-acceleration equations of §3.4 apply unchanged";
+    label ru unofficial "§3.5: в свободном падении ускорение постоянно и равно −g, поэтому уравнения §3.4 применяются без изменений";
+    when in_free_fall(i) and local_gravity(i, g);
+    then constant_acceleration(i,
+        quantity_of((0 - 1) * unit_convert(magnitude(g), "m_per_s2"), "m_per_s2"));
+}
+
+// §3.5 отделяет свободное падение от падения с сопротивлением: «an object
+// falling without air resistance or friction». Объявленное делом
+// сопротивление ОПРОВЕРГАЕТ свободное падение — ответ FALSE_ONLY, а не
+// молчание, и уравнения §3.4 к такому отрезку не применяются.
+@source(UP_M58286_FREE_FALL)
+relation air_resistance_significant(i: Interval) kind empirical {
+    label en official "the case states that air resistance or friction is not negligible over the interval";
+    label ru unofficial "дело сообщает, что сопротивлением воздуха или трением на отрезке пренебречь нельзя";
+}
+
+@source(UP_M58286_FREE_FALL)
+rule ResistanceRefutesFreeFall(i: Interval) strict {
+    label en official "§3.5: free fall is movement resulting from gravitational force ONLY — significant air resistance refutes it";
+    label ru unofficial "§3.5: свободное падение есть движение под действием ОДНОЙ ЛИШЬ тяжести — существенное сопротивление воздуха его опровергает";
+    when air_resistance_significant(i);
+    then not in_free_fall(i);
+}

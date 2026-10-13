@@ -1,0 +1,33 @@
+{
+  "format": "arxo.openstax-mechanics-verification/1",
+  "date": "2026-10-14",
+  "cli": "0.2.4",
+  "nodeLocal": "20.20.2",
+  "lowering": {
+    "checked": 8,
+    "passed": 8,
+    "executableSourceBytesChanged": 0
+  },
+  "linkedWorlds": {
+    "checked": 8,
+    "passed": 8
+  },
+  "selectedScenarios": {
+    "passed": 42,
+    "scope": "one declared file per package; units.si has no declared suite",
+    "status": "passed"
+  },
+  "readerExamples": {
+    "checked": 12,
+    "nativeExpectations": "passed",
+    "canonicalReplay": "passed twice from clean allowlisted export",
+    "evaluationSourceAnchors": "empty arrays observed; not accepted as passed propagation",
+    "nativeUnfold": "resolves source locators; quotes may be CNXML element opening tags rather than prose"
+  },
+  "linux": "pending public CI",
+  "published": false,
+  "releaseVerified": false,
+  "corpus": "not_checked",
+  "sourceDepth": "OpenStax CNXML completeness not_measured; inventory separate; Newton own 19 declared divisions classified by existing boundaries.depth",
+  "originalVsFreshOwnCLIR": "all eight canonical byte hashes equal"
+}

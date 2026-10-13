@@ -1,0 +1,135 @@
+language "law.core" version "0.2";
+package openstax.dynamics version "0.1.0";
+namespace "urn:openstax:clir:dynamics";
+
+// §6.2: максимум трения покоя есть μ_s·N. При N = 200 Н и μ_s = 0,4 это 80 Н.
+test "urn:query:dyn-t03a-maximum-static-friction" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03a-n": normal_force(entity_ref("urn:case:dyn:floor"), 200 N) { origin case_input; }
+        assert "t03a-mu": static_coefficient(entity_ref("urn:case:dyn:floor"), 0.4) { origin case_input; }
+    }
+
+    evaluate truth(maximum_static_friction(entity_ref("urn:case:dyn:floor"), 80 N));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(MaximumStaticFrictionIsCoefficientTimesNormal);
+}
+
+// НИЖЕ ГРАНИЦЫ: тянут с силой 70 Н при максимуме 80 — ящик стоит.
+test "urn:query:dyn-t03b-below-the-maximum-stays-at-rest" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03b-k": contact_of(entity_ref("urn:case:dyn:crate"), entity_ref("urn:case:dyn:floor")) { origin case_input; }
+        assert "t03b-n": normal_force(entity_ref("urn:case:dyn:floor"), 200 N) { origin case_input; }
+        assert "t03b-mu": static_coefficient(entity_ref("urn:case:dyn:floor"), 0.4) { origin case_input; }
+        assert "t03b-f": applied_parallel_force(entity_ref("urn:case:dyn:crate"), 70 N) { origin case_input; }
+    }
+
+    evaluate truth(stays_at_rest(entity_ref("urn:case:dyn:crate")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(BelowMaximumStaysAtRest);
+}
+
+// НА САМОЙ ГРАНИЦЕ: 80 Н при максимуме 80 Н. §6.2 пишет НЕРАВЕНСТВО
+// «f_s ≤ μ_s·N» — значит, на границе трение покоя ещё справляется, и
+// граница принадлежит покою. Сцена сторожит именно нестрогость знака: с
+// `<` вместо `<=` ответ стал бы FALSE_ONLY.
+test "urn:query:dyn-t03c-exactly-at-the-maximum" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03c-k": contact_of(entity_ref("urn:case:dyn:crate3"), entity_ref("urn:case:dyn:floor")) { origin case_input; }
+        assert "t03c-n": normal_force(entity_ref("urn:case:dyn:floor"), 200 N) { origin case_input; }
+        assert "t03c-mu": static_coefficient(entity_ref("urn:case:dyn:floor"), 0.4) { origin case_input; }
+        assert "t03c-f": applied_parallel_force(entity_ref("urn:case:dyn:crate3"), 80 N) { origin case_input; }
+    }
+
+    evaluate truth(stays_at_rest(entity_ref("urn:case:dyn:crate3")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(BelowMaximumStaysAtRest);
+}
+
+// ВЫШЕ ГРАНИЦЫ: 90 Н при максимуме 80 — срыв. Покой ОПРОВЕРГНУТ,
+// FALSE_ONLY. Пара со сценой 03b по обе стороны границы μ_s·N.
+test "urn:query:dyn-t03d-above-the-maximum-breaks-loose" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03d-k": contact_of(entity_ref("urn:case:dyn:crate2"), entity_ref("urn:case:dyn:floor")) { origin case_input; }
+        assert "t03d-n": normal_force(entity_ref("urn:case:dyn:floor"), 200 N) { origin case_input; }
+        assert "t03d-mu": static_coefficient(entity_ref("urn:case:dyn:floor"), 0.4) { origin case_input; }
+        assert "t03d-f": applied_parallel_force(entity_ref("urn:case:dyn:crate2"), 90 N) { origin case_input; }
+    }
+
+    evaluate truth(stays_at_rest(entity_ref("urn:case:dyn:crate2")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AboveMaximumBreaksLoose);
+}
+
+// §6.2, собственный пример источника: f_k = μ_k·N = (0,300)(490 Н) = 147 Н.
+// У скольжения РАВЕНСТВО, и приложенная сила в формулу не входит вовсе.
+test "urn:query:dyn-t03e-kinetic-friction-is-an-equality" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03e-n": normal_force(entity_ref("urn:case:dyn:slide"), 490 N) { origin case_input; }
+        assert "t03e-mu": kinetic_coefficient(entity_ref("urn:case:dyn:slide"), 0.300) { origin case_input; }
+    }
+
+    evaluate truth(kinetic_friction_force(entity_ref("urn:case:dyn:slide"), 147 N));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(KineticFrictionIsCoefficientTimesNormal);
+}
+
+// Почему ящик сорвался — вопросом к системе.
+test "urn:query:dyn-t03f-why-not-at-rest" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03f-k": contact_of(entity_ref("urn:case:dyn:crate2"), entity_ref("urn:case:dyn:floor")) { origin case_input; }
+        assert "t03f-n": normal_force(entity_ref("urn:case:dyn:floor"), 200 N) { origin case_input; }
+        assert "t03f-mu": static_coefficient(entity_ref("urn:case:dyn:floor"), 0.4) { origin case_input; }
+        assert "t03f-f": applied_parallel_force(entity_ref("urn:case:dyn:crate2"), 90 N) { origin case_input; }
+    }
+
+    evaluate why_not(stays_at_rest(entity_ref("urn:case:dyn:crate2")));
+
+    expect evaluation_status == COMPUTED;
+}

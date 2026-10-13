@@ -1,0 +1,15 @@
+{
+  "kind": "truth",
+  "literal": {
+    "args": [
+      {
+        "id": "urn:case:rot:couple",
+        "kind": "entity_ref"
+      }
+    ],
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:openstax:clir:rotation-equilibrium#static_equilibrium"
+  },
+  "queryId": "urn:openstax:clir:rotation-equilibrium#test/urn%3Aquery%3Arot-t01f-first-condition-alone-is-not-enough/query/0"
+}

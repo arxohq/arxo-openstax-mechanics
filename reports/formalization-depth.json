@@ -1,0 +1,1431 @@
+{
+  "format": "arxo.openstax-mechanics-depth/1",
+  "sourceCutoff": "OpenStax commit d0ed34a5851119a42e3d972dfc0ff49e4663977c",
+  "method": "existing boundaries.depth; own package CLIR only; structural deriving/constraint nodes do not establish full formalization",
+  "implementationHashes": {
+    ".claude/skills/formalize-act/scripts/boundaries.py": "sha256:4138459861a438324c7fdbdbb7ac192f1a996ff83354836484397de18e2451e6",
+    "corpus/tools/lib/act_split.py": "sha256:3289fb03603fe85293054b5966db860ebde93353cc41e5f2f5feb644b9d6de54",
+    "corpus/tools/lib/ja_numerals.py": "sha256:ba4f07ea426d71c281e50f23762fac570045cd1c5af9cecb40434ae0ed1ba439",
+    "corpus/lib/lawbin.py": "sha256:1ce73ab0067413112bafec7fa0c15ebd8f658a476403e61be9a97073965a4816"
+  },
+  "applicabilityImplementation": {
+    "source": "captured lawref helper from prior Wohngeld depth measurement; import-only override because corpus runtime pin is unpublished",
+    "sha256": "sha256:72c85d6e851b190c8b4d2c8e4fd48003ccc74e8e867fe9b182da3d9f2ad7847c"
+  },
+  "packages": [
+    {
+      "spec": "openstax.measurement@0.1.0",
+      "packageHash": "sha256:a4a39de269d88faae789e910b6b51a8b0859de278b3b3cedb88df870525afffd",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "unit": "CNXML module element",
+      "reason": "No admitted source-division declaration; counts below are inventory, not completeness",
+      "capturedModules": 13,
+      "capturedFragments": 27,
+      "sourceHashes": {
+        "packages/openstax.measurement/sources/measurement/m58268.cnxml": "sha256:499dfb5d64df05e3bcb59723588a4f6428c6bd004d3b368361a1a3ada5f7261a",
+        "packages/openstax.measurement/sources/measurement/m58269.cnxml": "sha256:f16c5725898ec4e66db1687639afa5f229895312adf24911e94abf70216c6322",
+        "packages/openstax.measurement/sources/measurement/m58270.cnxml": "sha256:4116491d82fc9c69d374b14aefa1caa822e3258a18ef214ee4d0cc3724cb0f9c",
+        "packages/openstax.measurement/sources/measurement/m58271.cnxml": "sha256:d29f5478b77cada00bdb769b4b87dd7f0e51ed39dffdba07a1d1a1dd1c283184",
+        "packages/openstax.measurement/sources/measurement/m58272.cnxml": "sha256:ea6c3b0bc1942a32691d8ae39c9ded766900429ce8a567d504963e8c7ec66028",
+        "packages/openstax.measurement/sources/measurement/m58273.cnxml": "sha256:3ce8fd926c05a7479b685746bf7feea23c20dab6c909dc52ee920d04ca552494",
+        "packages/openstax.measurement/sources/measurement/m58274.cnxml": "sha256:91a1f32c827e3993d02e5c2b69ab72204a33a69d894ad5694523a8e8b903aade",
+        "packages/openstax.measurement/sources/measurement/m58275.cnxml": "sha256:5a1b0fff5b0763a19f3ab2238614bd65a21e6fb769e7b9a53355dfbeb86b61a4",
+        "packages/openstax.measurement/sources/measurement/m58276.cnxml": "sha256:c65e6709a3bd92b46d7e13c1c2f0ec35da6bc62bbd3b64a72e2b8da104e4a942",
+        "packages/openstax.measurement/sources/measurement/m58277.cnxml": "sha256:90c66fec7014d2a2e4d26e0724af07d2ed238cdda4aa55d9e4497c007c6f8c71",
+        "packages/openstax.measurement/sources/measurement/m58278.cnxml": "sha256:e2ecdce98b5ecfa4472faf6749fd4683c8675a3f06f4e09c3b106eedf51cc45b",
+        "packages/openstax.measurement/sources/measurement/m58279.cnxml": "sha256:7f31ae189b90e5b9a0491c376b2567b6189fb705db67513f7f08f34f1df08ced",
+        "packages/openstax.measurement/sources/measurement/m58280.cnxml": "sha256:ea9ae700aa4a47517fda9ff985f9190bb0e4e809f07f66a96e80088b676f3803"
+      },
+      "ownRules": 36,
+      "ownNormTemplates": 0,
+      "documents": [],
+      "unmeasuredPublications": [
+        "urn:openstax:clir:measurement#M58268_CNXML",
+        "urn:openstax:clir:measurement#M58269_CNXML",
+        "urn:openstax:clir:measurement#M58270_CNXML",
+        "urn:openstax:clir:measurement#M58271_CNXML",
+        "urn:openstax:clir:measurement#M58272_CNXML",
+        "urn:openstax:clir:measurement#M58273_CNXML",
+        "urn:openstax:clir:measurement#M58274_CNXML",
+        "urn:openstax:clir:measurement#M58275_CNXML",
+        "urn:openstax:clir:measurement#M58276_CNXML",
+        "urn:openstax:clir:measurement#M58277_CNXML",
+        "urn:openstax:clir:measurement#M58278_CNXML",
+        "urn:openstax:clir:measurement#M58279_CNXML",
+        "urn:openstax:clir:measurement#M58280_CNXML"
+      ],
+      "unmeasuredFragments": [
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58270_BASE_QUANTITY",
+          "locator": "module/m58270#fs-id1168329139829",
+          "edition": "urn:openstax:clir:measurement#M58270_MAIN",
+          "contentHash": "sha256:ea37c07d280060bb2941af73752705e6f8172bc95f3a036ea37e6ad74b919f98",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58270_BASE_UNIT",
+          "locator": "module/m58270#fs-id1168329127240",
+          "edition": "urn:openstax:clir:measurement#M58270_MAIN",
+          "contentHash": "sha256:58ad1d0bab9a7c62459279b054e68984060c33ad3f3c32b3663bfdf344763784",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58270_DERIVED_UNITS",
+          "locator": "module/m58270#fs-id1168326842432",
+          "edition": "urn:openstax:clir:measurement#M58270_MAIN",
+          "contentHash": "sha256:f71cb9ee62e671343d79fbfb65bd10e4841dfce133e896c5ef7454e2c4d19fd6",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58270_PHYSICAL_QUANTITY",
+          "locator": "module/m58270#fs-id1168329175859",
+          "edition": "urn:openstax:clir:measurement#M58270_MAIN",
+          "contentHash": "sha256:17e2145d64921919b6927f24cad3aa865ae77f34f2344e7c71a7b28de718f0b6",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58270_SI_UNITS",
+          "locator": "module/m58270#fs-id1168326860103",
+          "edition": "urn:openstax:clir:measurement#M58270_MAIN",
+          "contentHash": "sha256:9e93d02c34bb7f9931c901c0bbd22db10460ab8a30c109986854d0dbe7e03a84",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58270_UNITS",
+          "locator": "module/m58270#fs-id1168329486946",
+          "edition": "urn:openstax:clir:measurement#M58270_MAIN",
+          "contentHash": "sha256:a56f4f4b3b3f12a337212fcdf5a9d7cd5ca2f4b122168a4d5c08eece2ca41ad4",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58271_CONVERSION_FACTOR",
+          "locator": "module/m58271#fs-id1168327920641",
+          "edition": "urn:openstax:clir:measurement#M58271_MAIN",
+          "contentHash": "sha256:050d9ec9b9cd88c34871606673d2466322af4871e8ddb8b9f799546d182b932e",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58272_CONSISTENCY_RULES",
+          "locator": "module/m58272#fs-id1168328228670",
+          "edition": "urn:openstax:clir:measurement#M58272_MAIN",
+          "contentHash": "sha256:f72804fe6bd48b9481c5eed7c3ff368b06bfcfedda5fd3effc01ea301870ab4b",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58272_DIMENSION",
+          "locator": "module/m58272#fs-id1168327872808",
+          "edition": "urn:openstax:clir:measurement#M58272_MAIN",
+          "contentHash": "sha256:3fc49046dea4084a8215c66026b9f29e7b8ebe8350fa47b07e38b43365f93730",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58272_DIMENSIONLESS",
+          "locator": "module/m58272#fs-id1168328321073",
+          "edition": "urn:openstax:clir:measurement#M58272_MAIN",
+          "contentHash": "sha256:ffdae2fcbf4146acc5dc4b4497307197489f696f7987ca853a2eb7c321af2b2d",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58272_INCONSISTENT_CANNOT_BE_LAW",
+          "locator": "module/m58272#fs-id1168327924785",
+          "edition": "urn:openstax:clir:measurement#M58272_MAIN",
+          "contentHash": "sha256:46126fd589d11001cf3782ac9c4c3f8eabc0d4b784d463a8ffd8a7968c23e590",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58274_ACCURACY",
+          "locator": "module/m58274#fs-id1168328355532",
+          "edition": "urn:openstax:clir:measurement#M58274_MAIN",
+          "contentHash": "sha256:94661ae7810796a23592e1153791c109acd52651ff946ef21fd6805eea0a784c",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58274_DISCREPANCY",
+          "locator": "module/m58274#fs-id1168328328497",
+          "edition": "urn:openstax:clir:measurement#M58274_MAIN",
+          "contentHash": "sha256:55fb49152a60ddb64a171477b01095b7cd86739f3665206d2d20a1c6d137bf83",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58274_PERCENT_UNCERTAINTY",
+          "locator": "module/m58274#fs-id1168327927708",
+          "edition": "urn:openstax:clir:measurement#M58274_MAIN",
+          "contentHash": "sha256:1615a4aac13c63b9a94ebc69be1c16cbe6728febb12f894cf73fc724e6f0f169",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58274_PRECISION",
+          "locator": "module/m58274#fs-id1168328286055",
+          "edition": "urn:openstax:clir:measurement#M58274_MAIN",
+          "contentHash": "sha256:9005fc32bf8bc5bedd7932ae15ad5d3439c1fb52d1652f3250e47a894e4c7a59",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58274_SIGNIFICANT_FIGURES",
+          "locator": "module/m58274#fs-id1168327925704",
+          "edition": "urn:openstax:clir:measurement#M58274_MAIN",
+          "contentHash": "sha256:9f0f55f22a7bfe5460983e3d42453d220f3a4cdd8ea08180707880b2122a3243",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58274_UNCERTAINTY",
+          "locator": "module/m58274#fs-id1168328241816",
+          "edition": "urn:openstax:clir:measurement#M58274_MAIN",
+          "contentHash": "sha256:9ea80b58c0dc0a4589baaf52b6ca9f9148f45ff098470404c2635ddc732b290e",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58277_ANTIPARALLEL_VECTORS",
+          "locator": "module/m58277#fs-id1167132688517",
+          "edition": "urn:openstax:clir:measurement#M58277_MAIN",
+          "contentHash": "sha256:fc6b917cda4c428cac16e5b8f748dd248e97dced898c261c8b19632969cd9637",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58277_ORTHOGONAL_VECTORS",
+          "locator": "module/m58277#fs-id1167132504151",
+          "edition": "urn:openstax:clir:measurement#M58277_MAIN",
+          "contentHash": "sha256:b6e3b5f9e89eba1c12e76fb3ddd4cf21b6af4ba6e240ea2b5d221bcc3ae0fa7a",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58277_PARALLEL_VECTORS",
+          "locator": "module/m58277#fs-id1167132520196",
+          "edition": "urn:openstax:clir:measurement#M58277_MAIN",
+          "contentHash": "sha256:66bf0f708f4ca0e482ce9eec61c4c46ae66130b3e1f85c1ce1d207f5a4b9bbae",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58277_SCALAR_QUANTITY",
+          "locator": "module/m58277#fs-id1167132586350",
+          "edition": "urn:openstax:clir:measurement#M58277_MAIN",
+          "contentHash": "sha256:45d6c0c7fd31d50ffb80ab35c23b76fc6d3b693b78ae979fe4311f4672d73e9a",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58277_VECTOR",
+          "locator": "module/m58277#fs-id1167132550493",
+          "edition": "urn:openstax:clir:measurement#M58277_MAIN",
+          "contentHash": "sha256:bebfa48766e5844b493b9e90bf5ad43bb2138a49110b139f5a151b64b7c6ef09",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58277_VECTOR_QUANTITY",
+          "locator": "module/m58277#fs-id1167132579726",
+          "edition": "urn:openstax:clir:measurement#M58277_MAIN",
+          "contentHash": "sha256:64bbeb93a6620b17a95d21b826092c6c38a35512d46454904689c9e7839ba758",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58278_DIRECTION_ANGLE",
+          "locator": "module/m58278#fs-id1167132612567",
+          "edition": "urn:openstax:clir:measurement#M58278_MAIN",
+          "contentHash": "sha256:b49a40a860f655a6b53f4da69068ee1777508ed6d3acfa13a94c3f3226e63011",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58278_VECTOR_COMPONENTS",
+          "locator": "module/m58278#fs-id1167132546151",
+          "edition": "urn:openstax:clir:measurement#M58278_MAIN",
+          "contentHash": "sha256:c620b539252545bb3583108aaa0f7aefc62de98ee928347651baa58d3f39221f",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58279_EQUAL_VECTORS",
+          "locator": "module/m58279#fs-id1167133549546",
+          "edition": "urn:openstax:clir:measurement#M58279_MAIN",
+          "contentHash": "sha256:c3f3d2111b19673a2d826d51b3fdf7d1927631e8fe9b19d882b2f312a6d0f221",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:measurement#UP_M58279_NULL_VECTOR",
+          "locator": "module/m58279#fs-id1167132506101",
+          "edition": "urn:openstax:clir:measurement#M58279_MAIN",
+          "contentHash": "sha256:2d1e42098e687b05514ff06065be94127288d4588efd5466bf13a50a04ee8eeb",
+          "level": "not_measured"
+        }
+      ]
+    },
+    {
+      "spec": "openstax.kinematics@0.1.0",
+      "packageHash": "sha256:af8baff8604b7d65024d82dc08661cbdf193f0925d300aaf9adf4c5072806781",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "unit": "CNXML module element",
+      "reason": "No admitted source-division declaration; counts below are inventory, not completeness",
+      "capturedModules": 13,
+      "capturedFragments": 15,
+      "sourceHashes": {
+        "packages/openstax.kinematics/sources/kinematics/m58281.cnxml": "sha256:270825a92d273f17cacc69f09cbded46e0537c0c2b6c150ea98c427c0a58a062",
+        "packages/openstax.kinematics/sources/kinematics/m58282.cnxml": "sha256:9d10d89ac7fb5be90bf4b5eecac2d7ef39505069f934d4484983c93dd7edfeed",
+        "packages/openstax.kinematics/sources/kinematics/m58283.cnxml": "sha256:0562da89760c5d4b1ec572ae4dcdf3070694e11844925bb6213acb082e9793aa",
+        "packages/openstax.kinematics/sources/kinematics/m58284.cnxml": "sha256:3d37834eb4de95572cee22e1affc1cb31c8a0951372656dfaa9801d37e4b5d2a",
+        "packages/openstax.kinematics/sources/kinematics/m58285.cnxml": "sha256:4d039708193f8fe970115237fd4d9be9eb90fb378ac2ca91c95c900475862be6",
+        "packages/openstax.kinematics/sources/kinematics/m58286.cnxml": "sha256:f52197a2e61e25c00449fc57383fedbe74142ff2b30412b907103c427801aeca",
+        "packages/openstax.kinematics/sources/kinematics/m58287.cnxml": "sha256:189ebd7144ed8cc83757433ef555ad8ab6ef8243bde3875114a74ad2b4afac33",
+        "packages/openstax.kinematics/sources/kinematics/m58288.cnxml": "sha256:d05d9a20943907fe808ef0214537800fcf4da1fd2d15a69108a15b3a8cf68c92",
+        "packages/openstax.kinematics/sources/kinematics/m58289.cnxml": "sha256:563dd71390c1579b53a1a3a8ed7ec9719d0abe3aba563f6665713e93b49aded1",
+        "packages/openstax.kinematics/sources/kinematics/m58290.cnxml": "sha256:efb0053dcce8d9f939778b949f6637d3544857bf768aee43ec1625cc90b155fe",
+        "packages/openstax.kinematics/sources/kinematics/m58291.cnxml": "sha256:1604b3b861add4549f21cb8eb150c3c94c4453088968e2e3dbffdecad5514751",
+        "packages/openstax.kinematics/sources/kinematics/m58292.cnxml": "sha256:8db43155cf6783e6aac811e2c1b157db473bf83466f2ebb8364678b740639c8e",
+        "packages/openstax.kinematics/sources/kinematics/m58293.cnxml": "sha256:4dafa84290432385285709af8c2c64c2731eb84eb46d9bb94917c25f20d1a8bc"
+      },
+      "ownRules": 22,
+      "ownNormTemplates": 0,
+      "documents": [],
+      "unmeasuredPublications": [
+        "urn:openstax:clir:kinematics#M58281_CNXML",
+        "urn:openstax:clir:kinematics#M58282_CNXML",
+        "urn:openstax:clir:kinematics#M58283_CNXML",
+        "urn:openstax:clir:kinematics#M58284_CNXML",
+        "urn:openstax:clir:kinematics#M58285_CNXML",
+        "urn:openstax:clir:kinematics#M58286_CNXML",
+        "urn:openstax:clir:kinematics#M58287_CNXML",
+        "urn:openstax:clir:kinematics#M58288_CNXML",
+        "urn:openstax:clir:kinematics#M58289_CNXML",
+        "urn:openstax:clir:kinematics#M58290_CNXML",
+        "urn:openstax:clir:kinematics#M58291_CNXML",
+        "urn:openstax:clir:kinematics#M58292_CNXML",
+        "urn:openstax:clir:kinematics#M58293_CNXML"
+      ],
+      "unmeasuredFragments": [
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58282_AVERAGE_VELOCITY",
+          "locator": "module/m58282#fs-id1168326791706",
+          "edition": "urn:openstax:clir:kinematics#M58282_MAIN",
+          "contentHash": "sha256:33528c545c979ed6f3dfb37946464c69eaeae161bdff3389568e75e44ee25083",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58282_DISPLACEMENT",
+          "locator": "module/m58282#fs-id1168329400874",
+          "edition": "urn:openstax:clir:kinematics#M58282_MAIN",
+          "contentHash": "sha256:8f74a978d0c268badc12d48e2dcd872c55db4c67913ad9eb5d4c7a7d90a63397",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58282_DISTANCE_TRAVELED",
+          "locator": "module/m58282#fs-id1168326897289",
+          "edition": "urn:openstax:clir:kinematics#M58282_MAIN",
+          "contentHash": "sha256:4b5d3fa24c86d83f012083e3d31a84fe2c2a53cf401b682fe4ba4f159d45621d",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58282_ELAPSED_TIME",
+          "locator": "module/m58282#fs-id1168326925589",
+          "edition": "urn:openstax:clir:kinematics#M58282_MAIN",
+          "contentHash": "sha256:79eb8febb51a8124e21b11a171b28cafeaed2ca20a396a2caa56cf5be9349961",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58282_POSITION",
+          "locator": "module/m58282#fs-id1168329394923",
+          "edition": "urn:openstax:clir:kinematics#M58282_MAIN",
+          "contentHash": "sha256:b75f875d06a647f0c6618f5ddf3bd3604b8320c1c089ebbb7987b97897a1ac7c",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58283_AVERAGE_SPEED",
+          "locator": "module/m58283#fs-id1168329478735",
+          "edition": "urn:openstax:clir:kinematics#M58283_MAIN",
+          "contentHash": "sha256:e6f1e8dc7c9f37b9979f73beedde1161991c2834d9210a25654a68c31c1c695c",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58284_AVERAGE_ACCELERATION",
+          "locator": "module/m58284#fs-id1168328300463",
+          "edition": "urn:openstax:clir:kinematics#M58284_MAIN",
+          "contentHash": "sha256:ce39f4e216b18f6e3807fa3b486e4393d141399fbcde46c161fb7c4242631c60",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58285_KINEMATIC_EQUATIONS",
+          "locator": "module/m58285#fs-id1168326976101",
+          "edition": "urn:openstax:clir:kinematics#M58285_MAIN",
+          "contentHash": "sha256:063c2ca2e0a194be7e005343188580580f8bcdb693268ff1030d0d6c1c2f5da4",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58286_FREE_FALL",
+          "locator": "module/m58286#fs-id1168328329319",
+          "edition": "urn:openstax:clir:kinematics#M58286_MAIN",
+          "contentHash": "sha256:9913991c4c261fd3ea09f03d4e45707c77f8f0a385c445f7dddec8f622070c99",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58286_G_VALUE",
+          "locator": "module/m58286#fs-id1168325737439",
+          "edition": "urn:openstax:clir:kinematics#M58286_MAIN",
+          "contentHash": "sha256:d0806beb84ca96a537ba2b1278db0d6787f68413d66459ea478bd07ec1ab4cbe",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58292_CENTRIPETAL_ACCELERATION",
+          "locator": "module/m58292#fs-id1165168910019",
+          "edition": "urn:openstax:clir:kinematics#M58292_MAIN",
+          "contentHash": "sha256:56b1b818b9c6831083f7e83bbee45cee68b5ca219f625757d56c972fa573a80e",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58292_TANGENTIAL_ACCELERATION",
+          "locator": "module/m58292#fs-id1165168910030",
+          "edition": "urn:openstax:clir:kinematics#M58292_MAIN",
+          "contentHash": "sha256:f7970014573073237ea5cf771601cb062f29b4d497a0331f32be270aebdf90b5",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58293_REFERENCE_FRAME",
+          "locator": "module/m58293#fs-id1165039252507",
+          "edition": "urn:openstax:clir:kinematics#M58293_MAIN",
+          "contentHash": "sha256:ad67e4aee4accaf50cb29136378fd19e25a347101fd3c03804556c1cbab5ec98",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58293_RELATIVE_VELOCITY",
+          "locator": "module/m58293#fs-id1165039252518",
+          "edition": "urn:openstax:clir:kinematics#M58293_MAIN",
+          "contentHash": "sha256:395af163dbcecbdc2dc405fe28feda295b6bf9ea0c509d49969e0c393c642242",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:kinematics#UP_M58293_TWO_DIMENSIONAL_SPEED",
+          "locator": "module/m58293#fs-id1165039111736",
+          "edition": "urn:openstax:clir:kinematics#M58293_MAIN",
+          "contentHash": "sha256:39d99f6da0a9bf00fdad38edb70a7173aa4647de3fffaec552fd65a8fb0c5131",
+          "level": "not_measured"
+        }
+      ]
+    },
+    {
+      "spec": "openstax.dynamics@0.1.0",
+      "packageHash": "sha256:4ff0b65673da2797806bb7d21213b72928921605d2e7520808e63e49d5fde43b",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "unit": "CNXML module element",
+      "reason": "No admitted source-division declaration; counts below are inventory, not completeness",
+      "capturedModules": 13,
+      "capturedFragments": 13,
+      "sourceHashes": {
+        "packages/openstax.dynamics/sources/dynamics/m58294.cnxml": "sha256:40e1e6b9560d415b9cd0abe109e07f4ab03b20d96deabada4d6b2ba5a70dfd02",
+        "packages/openstax.dynamics/sources/dynamics/m58295.cnxml": "sha256:1581edcde80603a1e1917e0abe6e1a50880c843066042a1450d0583a35f6ba00",
+        "packages/openstax.dynamics/sources/dynamics/m58296.cnxml": "sha256:973d86ef0486516edd9a193d763d8f3fa98708de15711fbc44a18f69f286384a",
+        "packages/openstax.dynamics/sources/dynamics/m58297.cnxml": "sha256:7e9cace9acb5f28380e058b277fdcaf187baceec9a5d7633893ba352933d4636",
+        "packages/openstax.dynamics/sources/dynamics/m58298.cnxml": "sha256:559b6efa11e1389d6f03bc95b573ba0e9bc24866ec99f067957ac5c897093108",
+        "packages/openstax.dynamics/sources/dynamics/m58299.cnxml": "sha256:f202c3e1cf973ab4ad3afc5b5f3e6f5f300efe399ce772ce1a1775921ba5bbda",
+        "packages/openstax.dynamics/sources/dynamics/m58300.cnxml": "sha256:7180641b14f91b2106fa93a4980191570c25ca75cd75752a20c64246cdb761a0",
+        "packages/openstax.dynamics/sources/dynamics/m58301.cnxml": "sha256:54b4e290e7aa37199e66cb9b7a235eacf03d139476f2e2c5abbd8872a4ae4080",
+        "packages/openstax.dynamics/sources/dynamics/m58302.cnxml": "sha256:92544c8d29b90099c8c7fb36b3b30a5ae92f466b349301c5d2a0da407c89435c",
+        "packages/openstax.dynamics/sources/dynamics/m58303.cnxml": "sha256:3d39b14c671756458801fd23006c94c2ae2832d4f22230596042fa7d9bd730f8",
+        "packages/openstax.dynamics/sources/dynamics/m58304.cnxml": "sha256:0bdd5583650b76a007b3b93ab5db42877fb8543999da5bc24d8f46f3ece90ad2",
+        "packages/openstax.dynamics/sources/dynamics/m58305.cnxml": "sha256:fdc9f939dbb7c82cd9ab39e2ec551831364f0ee6b3f53a6a7b52cc7b5b6832d6",
+        "packages/openstax.dynamics/sources/dynamics/m58306.cnxml": "sha256:b4138356d60e75166dda534e391279a1d12ed199cd418adadda67c77f47ec4fc"
+      },
+      "ownRules": 10,
+      "ownNormTemplates": 0,
+      "documents": [],
+      "unmeasuredPublications": [
+        "urn:openstax:clir:dynamics#M58294_CNXML",
+        "urn:openstax:clir:dynamics#M58295_CNXML",
+        "urn:openstax:clir:dynamics#M58296_CNXML",
+        "urn:openstax:clir:dynamics#M58297_CNXML",
+        "urn:openstax:clir:dynamics#M58298_CNXML",
+        "urn:openstax:clir:dynamics#M58299_CNXML",
+        "urn:openstax:clir:dynamics#M58300_CNXML",
+        "urn:openstax:clir:dynamics#M58301_CNXML",
+        "urn:openstax:clir:dynamics#M58302_CNXML",
+        "urn:openstax:clir:dynamics#M58303_CNXML",
+        "urn:openstax:clir:dynamics#M58304_CNXML",
+        "urn:openstax:clir:dynamics#M58305_CNXML",
+        "urn:openstax:clir:dynamics#M58306_CNXML"
+      ],
+      "unmeasuredFragments": [
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58296_FIRST_LAW",
+          "locator": "module/m58296#fs-id1165039114071",
+          "edition": "urn:openstax:clir:dynamics#M58296_MAIN",
+          "contentHash": "sha256:ba6e7efd36665f6e2e3c50850be64dc080ccb6fa8067565a2284d078d4a082c6",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58296_INERTIA",
+          "locator": "module/m58296#fs-id1165039302065",
+          "edition": "urn:openstax:clir:dynamics#M58296_MAIN",
+          "contentHash": "sha256:763c08eead0c39a5c712487f02584e38914d4c3c03decb5ae4634cbceac46705",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58296_INERTIAL_FRAME",
+          "locator": "module/m58296#fs-id1165039108359",
+          "edition": "urn:openstax:clir:dynamics#M58296_MAIN",
+          "contentHash": "sha256:efd2bf704e7ab3405dbf6b9632d9a20c387aab3838347551dffdb0b96fe73349",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58297_SECOND_LAW",
+          "locator": "module/m58297#fs-id1165039477315",
+          "edition": "urn:openstax:clir:dynamics#M58297_MAIN",
+          "contentHash": "sha256:55d369457a69d165a4647da240bf11eeaed948bc7d793044169f6731d3e86e60",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58297_SECOND_LAW_STATEMENT",
+          "locator": "module/m58297#fs-id1165039096883",
+          "edition": "urn:openstax:clir:dynamics#M58297_MAIN",
+          "contentHash": "sha256:0e54109ab52e24772f3f2bb45d73fcea25af5ed3999eee276449366678c4c95d",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58298_WEIGHT",
+          "locator": "module/m58298#fs-id1165036785178",
+          "edition": "urn:openstax:clir:dynamics#M58298_MAIN",
+          "contentHash": "sha256:8f0a46533ae72bbbea2ad17a177691a82282d367ab6fb48e9676b7cf532a2ad0",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58299_THIRD_LAW",
+          "locator": "module/m58299#fs-id1165036735376",
+          "edition": "urn:openstax:clir:dynamics#M58299_MAIN",
+          "contentHash": "sha256:8e4a2d48824168ed6f73684061dcd077f54f45e769df4285dda4679b78e9e328",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58304_FRICTION",
+          "locator": "module/m58304#fs-id1165038031500",
+          "edition": "urn:openstax:clir:dynamics#M58304_MAIN",
+          "contentHash": "sha256:2ad7f5f4cdd5b3d91fed5387b98dfd9479f7b745cd7edf93c01a4a1eb6562f73",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58304_KINETIC_FRICTION",
+          "locator": "module/m58304#fs-id1165038337854",
+          "edition": "urn:openstax:clir:dynamics#M58304_MAIN",
+          "contentHash": "sha256:64a918f9ddeda8f5f814c44b0f9d7b58c81d7556008330dadf571f462eae72a2",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58304_KINETIC_MAGNITUDE",
+          "locator": "module/m58304#fs-id1165038277974",
+          "edition": "urn:openstax:clir:dynamics#M58304_MAIN",
+          "contentHash": "sha256:eb5d7639f17b5f54f175e37b7e369e352f093b84d1f46652c9e1af78851f1414",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58304_STATIC_FRICTION",
+          "locator": "module/m58304#fs-id1165036846773",
+          "edition": "urn:openstax:clir:dynamics#M58304_MAIN",
+          "contentHash": "sha256:32ed01c4d0423e0b8ed753ab39625afef7d6242e8694726a80b78a75773d4cae",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58304_STATIC_MAGNITUDE",
+          "locator": "module/m58304#fs-id1165036855503",
+          "edition": "urn:openstax:clir:dynamics#M58304_MAIN",
+          "contentHash": "sha256:f5979ffe69df1010d1cfcf8d23b2204a7c15a04c8c0f5fb3cb5926285001ac87",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:dynamics#UP_M58305_CENTRIPETAL_FORCE",
+          "locator": "module/m58305#fs-id1165039353624",
+          "edition": "urn:openstax:clir:dynamics#M58305_MAIN",
+          "contentHash": "sha256:5ddbcec64e618570139143a8d3ec70476d4af80d4cb35fe8ffea2c2d733a9251",
+          "level": "not_measured"
+        }
+      ]
+    },
+    {
+      "spec": "openstax.energy_momentum@0.1.0",
+      "packageHash": "sha256:eed62633709039c435ef692b00fae8f6782dd846d88b0950a689bf25306907c3",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "unit": "CNXML module element",
+      "reason": "No admitted source-division declaration; counts below are inventory, not completeness",
+      "capturedModules": 20,
+      "capturedFragments": 17,
+      "sourceHashes": {
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58307.cnxml": "sha256:959920a247c929ba24cbfe08aef08371383930f158e26c8a185bf40cd97a3c1e",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58308.cnxml": "sha256:b62469b558e3ffe9e3c6c0f7d7930119aba89a5886c7a95dbe0670d065c2cc77",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58309.cnxml": "sha256:b4262183ef5296717c5797f734ac1b6eec5d67ed731580a5388bc364eeb7b8bf",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58310.cnxml": "sha256:4b37b5573d47afdd966e97df64602c0678a86c2e4c4f955092ab970acf82a8e6",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58311.cnxml": "sha256:83664fbd33b67e19854afff63638d834193dc3654de9afdff4eb4e12c24d0247",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58312.cnxml": "sha256:fcbabc3fe134d824e02352bc6bc72453f4433269cd1f64c7ded35672eab7289a",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58313.cnxml": "sha256:47f9563b225b86f809f4b778ca5b6bf588e0378a88426c0e1a9fb999e638620e",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58314.cnxml": "sha256:6d99ce22b67a1d00e08301da806d71001f105e39e9577a95da3b5d640e927745",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58315.cnxml": "sha256:99812477eb69940e6299746237f821233fcf100badbe88a8eaf8e190dc2cd1af",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58317.cnxml": "sha256:8e97e3f65681e897fb7b5ebb1900d699a4c1e44edd1c7aa6eee4b7068343638d",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58318.cnxml": "sha256:d6b2374a712a7269d988551296255df6dd913162ac0f98e1bc49a15734f935ef",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58319.cnxml": "sha256:18685bddb3f94872875a5d0ae68b65f696ea8ded26a3053d5dc70ab40f6bb5cb",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58320.cnxml": "sha256:a8b61db8ac228b71e7b42b39e533b1f0f0b3c65d98ced8a3cd0591b1e4bf1005",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58321.cnxml": "sha256:016befc8ed5d8c8120e2bb620347ca18b85540ea8d81957a572f87b83ba8925b",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58321@204a1f03c799.cnxml": "sha256:e6076898dff04cf85d90f545ff354f19d05510c1d70d466cd1e2a0255f61019e",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58322.cnxml": "sha256:dbaf991c9c4db07249355a79a3b440fb3f11f55dc9e0b64b348e392e4e353c0f",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58323.cnxml": "sha256:0b4a2b51c899079c9905949b3b4c6e1bf1e7ab57e25067701da478b33206fded",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58324.cnxml": "sha256:acd75a9fb181ad0138a96a50d28481b80d33d91e170da33495fb9e79715422fe",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58661.cnxml": "sha256:68efd9d273e788e2be248f74e6048d82368e11b4ca143a8937cf673cb67c3b95",
+        "packages/openstax.energy_momentum/sources/energy-momentum/m58719.cnxml": "sha256:c94baea42a6817b5cc6bace6974f2dce1192a419ad6d353861c7daffb63ed6af"
+      },
+      "ownRules": 22,
+      "ownNormTemplates": 0,
+      "documents": [],
+      "unmeasuredPublications": [
+        "urn:openstax:clir:energy-momentum#M58307_CNXML",
+        "urn:openstax:clir:energy-momentum#M58308_CNXML",
+        "urn:openstax:clir:energy-momentum#M58309_CNXML",
+        "urn:openstax:clir:energy-momentum#M58310_CNXML",
+        "urn:openstax:clir:energy-momentum#M58311_CNXML",
+        "urn:openstax:clir:energy-momentum#M58312_CNXML",
+        "urn:openstax:clir:energy-momentum#M58313_CNXML",
+        "urn:openstax:clir:energy-momentum#M58314_CNXML",
+        "urn:openstax:clir:energy-momentum#M58315_CNXML",
+        "urn:openstax:clir:energy-momentum#M58317_CNXML",
+        "urn:openstax:clir:energy-momentum#M58318_CNXML",
+        "urn:openstax:clir:energy-momentum#M58319_CNXML",
+        "urn:openstax:clir:energy-momentum#M58320_CNXML",
+        "urn:openstax:clir:energy-momentum#M58321_CNXML",
+        "urn:openstax:clir:energy-momentum#M58321_PRIOR_CNXML",
+        "urn:openstax:clir:energy-momentum#M58322_CNXML",
+        "urn:openstax:clir:energy-momentum#M58323_CNXML",
+        "urn:openstax:clir:energy-momentum#M58324_CNXML",
+        "urn:openstax:clir:energy-momentum#M58661_CNXML",
+        "urn:openstax:clir:energy-momentum#M58719_CNXML"
+      ],
+      "unmeasuredFragments": [
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58308_KINETIC_ENERGY",
+          "locator": "module/m58308#fs-id1165036767566",
+          "edition": "urn:openstax:clir:energy-momentum#M58308_MAIN",
+          "contentHash": "sha256:6a874f396086a22ec37d55343c740ea935d0e88ae1769d4339c5b9b75969587e",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58309_THEOREM_STATEMENT",
+          "locator": "module/m58309#fs-id1165036884203",
+          "edition": "urn:openstax:clir:energy-momentum#M58309_MAIN",
+          "contentHash": "sha256:8a51a6e3a9ea5ed78fb700975354cbb5d7bf49b57f975eb0fbe79e6fd641651c",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58309_WORK_ENERGY_THEOREM",
+          "locator": "module/m58309#fs-id1165038306067",
+          "edition": "urn:openstax:clir:energy-momentum#M58309_MAIN",
+          "contentHash": "sha256:8e4de2fe306dfcaae622da4bc8dc0f908a33f9af0f79fc1a05d332ff36f41fab",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58310_AVERAGE_POWER",
+          "locator": "module/m58310#fs-id1165038026773",
+          "edition": "urn:openstax:clir:energy-momentum#M58310_MAIN",
+          "contentHash": "sha256:4a65c0280debbb4721ba400ebf049b1e6efe5f3ab81d5630b503eca5bf6953ea",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58313_CONSERVATIVE_FORCE",
+          "locator": "module/m58313#fs-id1165039295908",
+          "edition": "urn:openstax:clir:energy-momentum#M58313_MAIN",
+          "contentHash": "sha256:cdca659903493309256485e36710d099dff665aba20a24ed157658d97d9fffa0",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58313_NON_CONSERVATIVE_FORCE",
+          "locator": "module/m58313#fs-id1165039477062",
+          "edition": "urn:openstax:clir:energy-momentum#M58313_MAIN",
+          "contentHash": "sha256:36bca51fb3ff3f4a105ed64211a7ec6f7d2903eb956ac47e3a42d9db72d3dae6",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58314_ENERGY_CONSERVATION",
+          "locator": "module/m58314#fs-id1165038024912",
+          "edition": "urn:openstax:clir:energy-momentum#M58314_MAIN",
+          "contentHash": "sha256:9f124b462f8c2be671354f2512949d21aad6fb690fb70a7d50c007b9deb889bf",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58314_MECHANICAL_ENERGY",
+          "locator": "module/m58314#fs-id1165038016114",
+          "edition": "urn:openstax:clir:energy-momentum#M58314_MAIN",
+          "contentHash": "sha256:9031b2d90b4f067301ace8425c6e4443013a485ce032d47cfd19cf211b0d5c39",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58318_MOMENTUM",
+          "locator": "module/m58318#fs-id1167133546182",
+          "edition": "urn:openstax:clir:energy-momentum#M58318_MAIN",
+          "contentHash": "sha256:697f331a5af1781986b696b33ed53a518ee384c89157154cd0311b9565288070",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58320_CLOSED_SYSTEM",
+          "locator": "module/m58320#fs-id1167134928870",
+          "edition": "urn:openstax:clir:energy-momentum#M58320_MAIN",
+          "contentHash": "sha256:ec1b39797d109600d8949e2f9b50a36e74c08241eff7b282bcc2838d0f1b50d2",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58320_LAW_OF_CONSERVATION",
+          "locator": "module/m58320#fs-id1167134540321",
+          "edition": "urn:openstax:clir:energy-momentum#M58320_MAIN",
+          "contentHash": "sha256:11b7f63b04c4f8fba3fd18de42e320f4f78b9636100904f3ee841c2d1f8d42f8",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58320_SYSTEM",
+          "locator": "module/m58320#fs-id1167131257470",
+          "edition": "urn:openstax:clir:energy-momentum#M58320_MAIN",
+          "contentHash": "sha256:a2f3bd17ed25885f93391fb40d65481d1fbefb8a9d19146259b0bc1bf63262c9",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58321_ELASTIC",
+          "locator": "module/m58321#fs-id1167134866786",
+          "edition": "urn:openstax:clir:energy-momentum#M58321_MAIN",
+          "contentHash": "sha256:71292950ffea0d85c1ae92a6df13de0a283133ce897f1cc23714fd425a8adabc",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58321_INELASTIC",
+          "locator": "module/m58321#fs-id1167131552107",
+          "edition": "urn:openstax:clir:energy-momentum#M58321_MAIN",
+          "contentHash": "sha256:721fce0a2265c6343da062cc334c28a3dccff2b1fb0f32c8686b7fa6c6663458",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58321_PERFECTLY_INELASTIC",
+          "locator": "module/m58321#fs-id1167131501190",
+          "edition": "urn:openstax:clir:energy-momentum#M58321_MAIN",
+          "contentHash": "sha256:e55c5b2b7c810c638fd152f2ef0fccad838bc527b07359764d29f142e5c289e9",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58321_PERFECTLY_INELASTIC_PRIOR",
+          "locator": "module/m58321#fs-id1167131501190",
+          "edition": "urn:openstax:clir:energy-momentum#M58321_PRIOR",
+          "contentHash": "sha256:013edb332bc004dbd31edab1b8a4da1ccc4b6e2cbd12856b912e22a392ab51e2",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:energy-momentum#UP_M58719_WORK",
+          "locator": "module/m58719#fs-id1165039354076",
+          "edition": "urn:openstax:clir:energy-momentum#M58719_MAIN",
+          "contentHash": "sha256:44b1f7748ded0a63f4ddc7221e94c438a2b1c287a5b2e51009ef11267abbc1ac",
+          "level": "not_measured"
+        }
+      ]
+    },
+    {
+      "spec": "openstax.rotation_equilibrium@0.1.0",
+      "packageHash": "sha256:e9a9b9108f552558fe472a920962d8a3c1a6317379ca67ab5f396ed8d3c92a64",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "unit": "CNXML module element",
+      "reason": "No admitted source-division declaration; counts below are inventory, not completeness",
+      "capturedModules": 27,
+      "capturedFragments": 17,
+      "sourceHashes": {
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58325.cnxml": "sha256:1c7b79d5bd03a5aa7bfeda34ba2b91b3fe610b55e4506bc11849d57acc74f9aa",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58326.cnxml": "sha256:fbfdd445eff3cfcbf4c9f57a1394fb7dc83baa2a0355ae06407b89d7b9730067",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58327.cnxml": "sha256:7dd0e77b681d0f9adb168d34019928e47029870f932579d2edb05a957ee52b81",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58328.cnxml": "sha256:324238e452461a3e6585e9254ee12409c52d338fbf4f944076f511b138d0240e",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58329.cnxml": "sha256:0ff9bfd392605f4f10761a4c233a1e22031c2b45958f1e05ba7d00b2ca865054",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58330.cnxml": "sha256:95aa0380cb3acdd16b669d2e036b0f8e9180ffc565c753527e2bdee2333d1bfb",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58331.cnxml": "sha256:4ca991076039973e0e8f227bd93cd20b49b88d4ed5b2ae0a0747b98048f59e48",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58332.cnxml": "sha256:668c1ec72eaa28c570a27095ae0ca6d09697e6203cca2f97c0fc8c1190256a93",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58333.cnxml": "sha256:4c3b6eefc7d4507cf5b2113b7845222ac47922ad98435ca5d8914f589ceb1bfc",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58334.cnxml": "sha256:76e1fde4671842880a2d8d04ee82d8eefae18eea444a3de78b55a47433266b28",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58335.cnxml": "sha256:90f931fdd8bd0c40da2fdb6003bf8a0985a560db1b12aa3eeca788af321a1a9e",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58336.cnxml": "sha256:a42269d65f505bb3873692fd4c6173527a1f533d439969bbbff81ffabc6d5389",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58337.cnxml": "sha256:5eab3839b0d147388156a47b21db8c2443588dda499246b1c18e4da2d68c983f",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58338.cnxml": "sha256:95baac6239e1db4df871cc77433e16bb642ccdacf6361e26c4b1d43473275677",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58339.cnxml": "sha256:7b220142ca928345112eb1512aaafbd73dc4214a63586507e8f2a95e9870547a",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58340.cnxml": "sha256:2956100d74fddacc628b87c75869cd548e3781c703ce94c74a0cdc61c84ebfdb",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58341.cnxml": "sha256:332fb005903cdd75a6308bc66366aac9316d82a9257b9983e9c22fd004ef742c",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58342.cnxml": "sha256:09de7770510b44ced69dab961308484b4a5deb4f3e6c3ce584bc49dd047754da",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58343.cnxml": "sha256:964df18d2501dde6f9c088d1fdf91bb8040ba0e06c687ca91a4c3c58424b27fb",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58344.cnxml": "sha256:0ee1a96dada93655a9a0ac16cf0965ae66d964ec3e5fd71e246333868cfc99a8",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58345.cnxml": "sha256:f3dfa17943340e976226b5b29bd34607feabd0a181a122e848084ef838ceb884",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58346.cnxml": "sha256:80f4d08a2fe4267ff037b5dbbca0186090e516c32b8d4c474eda7e1529abc6d1",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58347.cnxml": "sha256:d9dbe274a59a9d17cbc93f759d299f496c3f402b83458157e5c19e943bc09bd7",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58348.cnxml": "sha256:14d7a166da291e88e7b2bdbe6f6c6669597ea2273f969002f67dcff03fcab1a7",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58350.cnxml": "sha256:4107961d3aed1171e9a5a1c868daf2028dd36b1e6e1611c7467126a4b69c6454",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58351.cnxml": "sha256:adfa9f4780968a63b768be3a330fc866b7132eec78d5d311ce0a59008f27a3a6",
+        "packages/openstax.rotation_equilibrium/sources/rotation-equilibrium/m58352.cnxml": "sha256:e0b6b32a78d00cf8e5bef5dda55d3a9eb20d01c228cd3d40ee7bc5a7fb3ea055"
+      },
+      "ownRules": 21,
+      "ownNormTemplates": 0,
+      "documents": [],
+      "unmeasuredPublications": [
+        "urn:openstax:clir:rotation-equilibrium#M58325_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58326_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58327_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58328_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58329_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58330_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58331_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58332_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58333_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58334_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58335_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58336_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58337_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58338_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58339_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58340_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58341_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58342_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58343_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58344_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58345_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58346_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58347_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58348_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58350_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58351_CNXML",
+        "urn:openstax:clir:rotation-equilibrium#M58352_CNXML"
+      ],
+      "unmeasuredFragments": [
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58329_MOMENT_OF_INERTIA",
+          "locator": "module/m58329#fs-id1167132283419",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58329_MAIN",
+          "contentHash": "sha256:63d30b9abf749d1eae49941e0d8c489167b3bb916798a50496ac156d8f67e8e2",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58329_ROTATIONAL_KINETIC_ENERGY",
+          "locator": "module/m58329#fs-id1167132283430",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58329_MAIN",
+          "contentHash": "sha256:d581143b902b52b242b2496355a7a5fe4b2d533c097a7a2058040f29e2255aff",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58331_LEVER_ARM",
+          "locator": "module/m58331#fs-id1167132312261",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58331_MAIN",
+          "contentHash": "sha256:ffc4b3f3e9067a04abca68e6a292a6f71439b09acfae3ea618fe13d0826523ae",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58331_TORQUE",
+          "locator": "module/m58331#fs-id1167133606821",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58331_MAIN",
+          "contentHash": "sha256:736234a7e1b1237bb2b3fd4dbb598f898c209ec1168112a7cdbb7c76d73c846e",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58332_SECOND_LAW_ROTATION",
+          "locator": "module/m58332#fs-id1167131118823",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58332_MAIN",
+          "contentHash": "sha256:54d21614b3d2064b10da2ea297281a8173dd72fc41f148a4835a7637ea7d4b73",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58332_SECOND_LAW_ROTATION_STATEMENT",
+          "locator": "module/m58332#fs-id1167134886602",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58332_MAIN",
+          "contentHash": "sha256:f146654e096c4d0958af0e097a8d692856e6d3dbb12d8ec8ca5d27f88b5a0989",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58336_ANGULAR_MOMENTUM",
+          "locator": "module/m58336#fs-id1165037215309",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58336_MAIN",
+          "contentHash": "sha256:68eb62ce9e72795be109989dc3dff014df351d094ce0201f0233e7481f23e2c4",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM",
+          "locator": "module/m58337#fs-id1165037004448",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58337_MAIN",
+          "contentHash": "sha256:f52bd7f4d799a5637a4109d19dbce919b4818e5eed72d07e5a1f6ef38c48ef72",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58340_EQUILIBRIUM",
+          "locator": "module/m58340#fs-id1163713557656",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58340_MAIN",
+          "contentHash": "sha256:899726a0e620a3c871e3d6fbe0607dfab1a5d5201878eb2ff126c50568625ef5",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58340_FIRST_EQUILIBRIUM_CONDITION",
+          "locator": "module/m58340#fs-id1163713530656",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58340_MAIN",
+          "contentHash": "sha256:4d071c00560815b3e4bb8d0c18659c271c1c9244465f5f35f3965c2b0ae1948d",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58340_SECOND_EQUILIBRIUM_CONDITION",
+          "locator": "module/m58340#fs-id1163709759627",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58340_MAIN",
+          "contentHash": "sha256:75b7de89997a4e6f22147d479ad2a24d487292e1e4a5913d8451d9493f780cec",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58340_STATIC_EQUILIBRIUM",
+          "locator": "module/m58340#fs-id1163709774761",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58340_MAIN",
+          "contentHash": "sha256:e5cd56b42f36bdaf2654b13c90e29ad42b516b74c2f2c78dd12b3a37fb8c8c78",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58345_GRAVITATIONAL_CONSTANT",
+          "locator": "module/m58345#fs-id1168328252700",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58345_MAIN",
+          "contentHash": "sha256:38d3259e4c9e49fe99952dd7d3d1b8a4e3936a571667788b79d0a4d8b03df25d",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58345_LAW_OF_GRAVITATION",
+          "locator": "module/m58345#fs-id1168328193986",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58345_MAIN",
+          "contentHash": "sha256:2e6ab2ccaa83db5daafa9b85cb967d9bdd31532f7aa97f1ff6afd4745d573745",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58350_KEPLER_FIRST_LAW",
+          "locator": "module/m58350#fs-id1168329517229",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58350_MAIN",
+          "contentHash": "sha256:e60126a6d0f5d919f0d9488de767256608dc3546aadd43e25fd33ba2490ad149",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58350_KEPLER_SECOND_LAW",
+          "locator": "module/m58350#fs-id1168326790250",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58350_MAIN",
+          "contentHash": "sha256:c75de579b497c244eb9ace8df39728aab7aa3217edfc5bf0bb4669ca28d938ef",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:openstax:clir:rotation-equilibrium#UP_M58350_KEPLER_THIRD_LAW",
+          "locator": "module/m58350#fs-id1168329137868",
+          "edition": "urn:openstax:clir:rotation-equilibrium#M58350_MAIN",
+          "contentHash": "sha256:4b762aea0dd0078a17681f65c0ac7d0a43d11df46cdc8e75b543501115621654",
+          "level": "not_measured"
+        }
+      ]
+    },
+    {
+      "spec": "units.si@0.1.0",
+      "packageHash": "sha256:66c0e7b54e87269674eb01b97eb54b5d7570427424a5edf2066f7deffc34a601",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "unit": null,
+      "reason": "No admitted source-division declaration; counts below are inventory, not completeness",
+      "capturedModules": 0,
+      "capturedFragments": 0,
+      "sourceHashes": {},
+      "ownRules": 0,
+      "ownNormTemplates": 0,
+      "documents": [],
+      "unmeasuredPublications": [],
+      "unmeasuredFragments": []
+    },
+    {
+      "spec": "bipm.si_brochure@0.1.0",
+      "packageHash": "sha256:7f72e6b76f0ef32064341daf2fbf59edf21ee9b4c181feed02c416a6b7cf22d1",
+      "status": "not_measured",
+      "denominator": null,
+      "levels": {},
+      "unit": null,
+      "reason": "No admitted source-division declaration; counts below are inventory, not completeness",
+      "capturedModules": 0,
+      "capturedFragments": 38,
+      "sourceHashes": {
+        "packages/bipm.si_brochure/sources/si-brochure/en8.txt": "sha256:75189f3babd57d9246af75c773507d027a0df049e5fb9eceb71fb9bb958f60e1",
+        "packages/bipm.si_brochure/sources/si-brochure/en9.txt": "sha256:e4de27dc33f988f97fc94da61a28830deb61d82944ff9023c1b8e8e119f2b980",
+        "packages/bipm.si_brochure/sources/si-brochure/fr9.txt": "sha256:bceec64d96fc9c791aea38592c93bfa852600adecddfcac295c155d3646456b9"
+      },
+      "ownRules": 60,
+      "ownNormTemplates": 0,
+      "documents": [],
+      "unmeasuredPublications": [
+        "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN_TEXT",
+        "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN_TEXT",
+        "urn:bipm:clir:si-brochure#SI_BROCHURE_9_FR_TEXT"
+      ],
+      "unmeasuredFragments": [
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_DEF_AMPERE",
+          "locator": "section/2.1.1.4/ampere",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:93336aeb2ff2e22bf448085409715e1c9a355b2b21e48dfecce089271447a9e7",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_DEF_CANDELA",
+          "locator": "section/2.1.1.7/candela",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:afd7e38883e3d5f8999140646da138d89d6e60e08cfe433ccc5ff8b5c421cbf8",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_DEF_KELVIN",
+          "locator": "section/2.1.1.5/kelvin",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:76e7367412d5df1403fb0a76f262c19631c61b747ad4800b9d17475024b68e51",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_DEF_KILOGRAM",
+          "locator": "section/2.1.1.2/kilogram",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:c03030e82ee7081f0348864e5fbb6b9e87bbacfec084be3422b85bc2a4af59bd",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_DEF_METRE",
+          "locator": "section/2.1.1.1/metre",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:f8c30e57e937de71a32dd91558971817e6613e33657020e79d475ac6828a968f",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_DEF_MOLE",
+          "locator": "section/2.1.1.6/mole",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:051186c9eb3aedcfcf8ec3d8dc915bbd96ba198c36ce3d09c4b8be9ed6054ebd",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_DEF_SECOND",
+          "locator": "section/2.1.1.3/second",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:5987b64556dc5e96b5008b603d59f9752e7bdf8daedda7b3e16f7e0dc8196f97",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_TABLE_1",
+          "locator": "section/2.1/table-1",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:4727df83a94a22d52cf463a389e28e32dd13bd16662ebb979a4111c908e6e46a",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_TABLE_3",
+          "locator": "section/2.2.2/table-3",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:8340126accbc697dd46c0c1b0e071e72be8df9b22000c4df5153d78965347493",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_TABLE_5",
+          "locator": "section/3.1/table-5",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:aeb3accdd5d5d553ca60d149733fa7bcc7892c7b1f44b711a59699eb04676e07",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI8_TABLE_6",
+          "locator": "section/4.1/table-6",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_8_EN",
+          "contentHash": "sha256:873876e680dc171c54c5e4e5a5de61637be674d7ea8598cdf87d5f3e75d9e415",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_APP1_2018_INDEX",
+          "locator": "appendix/1/index/26th-cgpm-2018",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:4b6aba47b2881245561c5bb8386dc696dac6c34a91251fad597eafe6d4d7a48e",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_APP1_2022_INDEX",
+          "locator": "appendix/1/index/27th-cgpm-2022",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:48bce5b2febc51159a0c992204e1fb34aed87ab7ab5e5481880b7ab23f14c8d9",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_APP1_2022_RESOLUTION_3",
+          "locator": "appendix/1/27th-cgpm-2022/resolution-3",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:9f5d40e085f96932d4856b7a346773d77abcd80d7e2c924767e98697f2b0fde7",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_DEF_AMPERE",
+          "locator": "section/2.3.1/ampere",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:db29b28b07ca798d50e5a4cb96ab8b99ca5bf0ecf6a3816454ce2abef259a8e3",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_DEF_CANDELA",
+          "locator": "section/2.3.1/candela",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:7f24a13591a376da0adc967b269dce38bc75d086d651cd30cf57a1a48704cac5",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_DEF_KELVIN",
+          "locator": "section/2.3.1/kelvin",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:ca7fda49b3222948e41fb9ddd43b898bd542a8dcf1e72cbcb2a5a8c9a5661f6d",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_DEF_KILOGRAM",
+          "locator": "section/2.3.1/kilogram",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:d80dc8023bc7ac9d1a7795cee3e0c5faf12040fa42bc68be947a0d3afb3100ce",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_DEF_METRE",
+          "locator": "section/2.3.1/metre",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:cf18457e939ac15228c5f21175c80389a8f0e65ddcefe2a13279a598fc9a71fa",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_DEF_MOLE",
+          "locator": "section/2.3.1/mole",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:7fdbc6c811f24256f49326682f52fd28eb0ada3913619b339f03dbeae525dd7b",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_DEF_SECOND",
+          "locator": "section/2.3.1/second",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:f2066c4fd9e09488f47dc798c470461fbaa8d100064252187dc123bccc50f4c2",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S2_2_DEFINITION_OF_SI",
+          "locator": "section/2.2/definition",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:9ba3706d38178f40e0a639e30a842ab4eff445c422b385b7380cb0a6946832fb",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S2_2_UNIT_RELATIONS",
+          "locator": "section/2.2/relations",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:88347fe2d0e4192e0511303679a98808d5791e988cc16bd46ffd2e126c4de3f2",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S2_3_1_CELSIUS",
+          "locator": "section/2.3.1/celsius",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:878e6a234d826c3cbf3aa2bb6053e15147ae7f977e1dd54d510cfc2e3eae129d",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S2_3_4_COHERENT",
+          "locator": "section/2.3.4/coherent",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:60a99961fff027d3d84256dd1d89c15ae8aa9731b83f74416960d2c4b39fe7a6",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S2_3_4_COMPLETE_SET",
+          "locator": "section/2.3.4/complete-set",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:cc29da09e81842f8c76adea8e9b1ed7c0e488a2fdfdb2c87473ae723f82a6c28",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S2_3_4_PREFIX_EXCEPTION",
+          "locator": "section/2.3.4/prefix-exception",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:e8b575f40b9c34db5c98e0d2538e24d63f9b0a1e67e6b6836de8309fe68d1701",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S2_3_4_SPECIAL_NAMES",
+          "locator": "section/2.3.4/special-names",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:46341a1f4cb6acab5bad15d945757b5a968ee9d4a1ae7dd8bd36071a43c33759",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S3_COMPOUND",
+          "locator": "section/3/compound",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:eca0a788a8e1f5c426f281d1bf430a93fd3c910eb1ffbfc15ba36115b2a506ca",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S3_INSEPARABLE",
+          "locator": "section/3/inseparable",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:774676d8fc7de8ce7642a59e39fc78b24fc041396df5fd33da4dea196e78863c",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S3_INTRO",
+          "locator": "section/3/intro",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:5bfb6e5f532d0690bf9d7ef0a566a3ac40c50dd3ebb639fb263520bba4fb2363",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S3_KILOGRAM",
+          "locator": "section/3/kilogram",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:038cbf964c330974d4ded8e9327e11fcff270745d5e104fa377e7e1580a52cbb",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_S4_INTRO",
+          "locator": "section/4/intro",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:67b5004d123cf8ae761873ef968332f5624422f3ef0a6412113b004c6e7a935f",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_TABLE_1",
+          "locator": "section/2.2/table-1",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:e54f7471179694ff1b3430b1c322949ecbdafa930bfddaf59bb1fa9dac3b3602",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_TABLE_2",
+          "locator": "section/2.3.1/table-2",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:977e769c7e60e7dbdb9e8436c2ec83d1460fbe077b96d9b0ac6dc52012688787",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_TABLE_4",
+          "locator": "section/2.3.4/table-4",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:fadb2628075c5d25160786db80204776475ad4d7dc917933a627d698230fd5c6",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_TABLE_7",
+          "locator": "section/3/table-7",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:5dc7fda3de4b4cfb10586b3b0b1c40f9d5400b17828cbfb82192d9fa2b015782",
+          "level": "not_measured"
+        },
+        {
+          "id": "urn:bipm:clir:si-brochure#SI9_TABLE_8",
+          "locator": "section/4/table-8",
+          "edition": "urn:bipm:clir:si-brochure#SI_BROCHURE_9_EN",
+          "contentHash": "sha256:438b979940ce804c0e451ac8027a09be0d7d49ad1757f238bb5ddb1e5b69aaae",
+          "level": "not_measured"
+        }
+      ]
+    },
+    {
+      "spec": "la.newton.principia@0.1.0",
+      "packageHash": "sha256:1fc6faeb979808b908b7dac7be37d9ab0601443dbbb1c5544f023362d39048d2",
+      "status": "measured",
+      "denominator": 19,
+      "levels": {
+        "EXECUTABLE": 16,
+        "SOURCE_ONLY": 3
+      },
+      "unit": "declared source division",
+      "reason": null,
+      "capturedModules": 0,
+      "capturedFragments": 19,
+      "sourceHashes": {
+        "packages/la.newton.principia/sources/la-principia-1687/articles.json": "sha256:dfaaf0135bda5ab409497f60766dbc09823b87f7230d09a16f38ac9485fa3f28",
+        "packages/la.newton.principia/sources/la-principia-1687/la.txt": "sha256:050c58607296e101e1df0bc37cdd03fd505be1901846e02dfead10d0ebc51fdf"
+      },
+      "ownRules": 49,
+      "ownNormTemplates": 0,
+      "documents": [
+        {
+          "path": "packages/la.newton.principia/sources/la-principia-1687/la.txt",
+          "edition": "declared",
+          "unit": "la_paragraph",
+          "denominator": 19,
+          "sourceHash": "sha256:050c58607296e101e1df0bc37cdd03fd505be1901846e02dfead10d0ebc51fdf",
+          "declarationHash": "sha256:dfaaf0135bda5ab409497f60766dbc09823b87f7230d09a16f38ac9485fa3f28",
+          "levels": {
+            "EXECUTABLE": 16,
+            "SOURCE_ONLY": 3
+          },
+          "units": [
+            {
+              "article": "1",
+              "title": "Def. I.",
+              "level": "EXECUTABLE",
+              "deriving": 2,
+              "interpreted": 0,
+              "anchoring": 5,
+              "defeasible": 0
+            },
+            {
+              "article": "2",
+              "title": "Def. II.",
+              "level": "EXECUTABLE",
+              "deriving": 2,
+              "interpreted": 0,
+              "anchoring": 4,
+              "defeasible": 0
+            },
+            {
+              "article": "3",
+              "title": "Def. III.",
+              "level": "EXECUTABLE",
+              "deriving": 2,
+              "interpreted": 0,
+              "anchoring": 2,
+              "defeasible": 0
+            },
+            {
+              "article": "4",
+              "title": "Def. IV.",
+              "level": "EXECUTABLE",
+              "deriving": 6,
+              "interpreted": 0,
+              "anchoring": 6,
+              "defeasible": 0
+            },
+            {
+              "article": "5",
+              "title": "Def. V.",
+              "level": "EXECUTABLE",
+              "deriving": 3,
+              "interpreted": 0,
+              "anchoring": 3,
+              "defeasible": 0
+            },
+            {
+              "article": "6",
+              "title": "Def. VI.",
+              "level": "EXECUTABLE",
+              "deriving": 1,
+              "interpreted": 0,
+              "anchoring": 1,
+              "defeasible": 0
+            },
+            {
+              "article": "7",
+              "title": "Def. VII.",
+              "level": "EXECUTABLE",
+              "deriving": 1,
+              "interpreted": 0,
+              "anchoring": 1,
+              "defeasible": 0
+            },
+            {
+              "article": "8",
+              "title": "Def. VIII.",
+              "level": "EXECUTABLE",
+              "deriving": 3,
+              "interpreted": 0,
+              "anchoring": 3,
+              "defeasible": 0
+            },
+            {
+              "article": "9",
+              "title": "Scholium.",
+              "level": "EXECUTABLE",
+              "deriving": 8,
+              "interpreted": 0,
+              "anchoring": 8,
+              "defeasible": 0
+            },
+            {
+              "article": "10",
+              "title": "Lex. I.",
+              "level": "EXECUTABLE",
+              "deriving": 6,
+              "interpreted": 0,
+              "anchoring": 8,
+              "defeasible": 2
+            },
+            {
+              "article": "11",
+              "title": "Lex. II.",
+              "level": "EXECUTABLE",
+              "deriving": 5,
+              "interpreted": 0,
+              "anchoring": 5,
+              "defeasible": 0
+            },
+            {
+              "article": "12",
+              "title": "Lex. III.",
+              "level": "EXECUTABLE",
+              "deriving": 3,
+              "interpreted": 0,
+              "anchoring": 3,
+              "defeasible": 0
+            },
+            {
+              "article": "13",
+              "title": "Corol. I.",
+              "level": "SOURCE_ONLY",
+              "deriving": 0,
+              "interpreted": 0,
+              "anchoring": 0,
+              "defeasible": 0
+            },
+            {
+              "article": "14",
+              "title": "Corol. II.",
+              "level": "EXECUTABLE",
+              "deriving": 2,
+              "interpreted": 0,
+              "anchoring": 4,
+              "defeasible": 0
+            },
+            {
+              "article": "15",
+              "title": "Corol. III.",
+              "level": "EXECUTABLE",
+              "deriving": 3,
+              "interpreted": 0,
+              "anchoring": 3,
+              "defeasible": 0
+            },
+            {
+              "article": "16",
+              "title": "Corol. IIII.",
+              "level": "EXECUTABLE",
+              "deriving": 2,
+              "interpreted": 0,
+              "anchoring": 2,
+              "defeasible": 0
+            },
+            {
+              "article": "17",
+              "title": "Corol. V.",
+              "level": "SOURCE_ONLY",
+              "deriving": 0,
+              "interpreted": 0,
+              "anchoring": 0,
+              "defeasible": 0
+            },
+            {
+              "article": "18",
+              "title": "Corol. VI.",
+              "level": "SOURCE_ONLY",
+              "deriving": 0,
+              "interpreted": 0,
+              "anchoring": 0,
+              "defeasible": 0
+            },
+            {
+              "article": "19",
+              "title": "Scholium",
+              "level": "EXECUTABLE",
+              "deriving": 8,
+              "interpreted": 0,
+              "anchoring": 10,
+              "defeasible": 0
+            }
+          ],
+          "unresolvedAnchors": 0
+        }
+      ],
+      "unmeasuredPublications": [],
+      "unmeasuredFragments": []
+    }
+  ]
+}

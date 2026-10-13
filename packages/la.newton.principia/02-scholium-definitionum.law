@@ -1,0 +1,156 @@
+// Единица 9: Scholium к определениям — абсолютные и относительные время,
+// пространство, место, движение.
+//
+// ЧТО ВЗЯТО ПРАВИЛАМИ: арифметика корабля (Земля 10010 на восток, корабль
+// 10 на запад по Земле, матрос 1 на восток по кораблю → истинно 10001 на
+// восток, относительно Земли 9 на запад — числа самого текста); фикция
+// относительного покоя («corpus quod relative quiescit in Navi, movebitur
+// vere … ea cum Velocitate qua Navis»); участие частей в движении целого
+// («partes … participant motus eorundem totorum»); взаимный покой истинно
+// покоящихся («corpora vere quiescentia quiescunt inter se»); различение
+// истинного кругового движения по действию — стремлению отойти от оси
+// (опыт с вращающимся сосудом).
+//
+// ЧТО НЕ ВЗЯТО И ПОЧЕМУ (объявленный остаток единицы): метафизика
+// абсолютных времени и пространства (I–III) — определительная проза без
+// вычислимого условия; общий разбор направлений композиции движений вне
+// коллинеарной оси восток–запад — геометрия направлений, граница пакета
+// (00-package.law). Правила корабля написаны для знакового режима самого
+// примера (истинная скорость носителя не меньше относительной встречной) —
+// иные режимы выражаются теми же правилами с переставленными сторонами дела.
+
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+use self::{
+    Corpus,
+    PRIN_2,
+    PRIN_9,
+    UnaParsVelocitatis,
+    velocitas_corporis,
+};
+
+relation movetur_vere_in_ortum(x: Corpus, v: Quantity) kind empirical {
+    label ru unofficial "дано: тело истинно движется на восток с данной скоростью («moveatur vere in Orientem», схолия к определениям)";
+}
+relation fertur_relative_in_ortum_in(x: Corpus, ambiens: Corpus, v: Quantity) kind empirical {
+    label ru unofficial "дано: тело несётся на восток относительно объемлющего тела («Nauta ambulet in Navi Orientem versus», схолия к определениям)";
+}
+relation fertur_relative_in_occasum_in(x: Corpus, ambiens: Corpus, v: Quantity) kind empirical {
+    label ru unofficial "дано: тело несётся на запад относительно объемлющего тела («feratur Navis in Occidentem», схолия к определениям)";
+}
+relation quiescit_relative_in(x: Corpus, ambiens: Corpus) kind empirical {
+    label ru unofficial "дано: тело относительно покоится в объемлющем теле («corpus quod relative quiescit in Navi», схолия к определениям)";
+}
+relation servat_positionem_ad(pars: Corpus, totum: Corpus) kind empirical {
+    label ru unofficial "дано: часть сохраняет данное положение к целому («partes quæ datas servant positiones ad tota», схолия к определениям)";
+}
+relation vere_quiescit(x: Corpus) kind empirical {
+    label ru unofficial "дано: тело истинно покоится («corpora vere quiescentia», схолия к определениям)";
+}
+relation conatus_recedendi_ab_axe(x: Corpus) kind empirical {
+    label ru unofficial "дано: у тела наблюдается стремление отойти от оси вращения — подъём воды к стенкам сосуда (схолия к определениям)";
+}
+
+relation velocitas_vera_in_ortum(x: Corpus, v: Quantity) kind institutional {
+    label ru unofficial "истинная и абсолютная скорость тела на восток в неподвижном пространстве (ед. 9)";
+}
+relation motus_relativus_in_occasum_in(x: Corpus, ambiens: Corpus, v: Quantity) kind institutional {
+    label ru unofficial "относительное движение тела на запад в объемлющем теле (ед. 9)";
+}
+relation quiescunt_inter_se(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "тела покоятся друг относительно друга — свойство истинного покоя (ед. 9)";
+}
+relation motus_circularis_verus(x: Corpus) kind institutional {
+    label ru unofficial "круговое движение тела истинно — узнано по действию, стремлению отойти от оси (ед. 9)";
+}
+
+// Земля истинно на восток, корабль относительно Земли на запад, пассажир
+// относительно корабля на восток: истинное движение пассажира — сумма со
+// знаками. Числа текста: 10010 − 10 + 1 = 10001.
+@source(PRIN_9)
+rule MotusVerusExMotibusRelativis(
+    t: Corpus,
+    n: Corpus,
+    p: Corpus,
+    te: Quantity,
+    vn: Quantity,
+    vp: Quantity,
+) strict {
+    label ru unofficial "Ед. 9. Истинное движение слагается из истинного движения Земли, относительного движения корабля по Земле и относительного движения тела по кораблю: 10010 − 10 + 1 = 10001 на восток";
+    when movetur_vere_in_ortum(t, te)
+        and fertur_relative_in_occasum_in(n, t, vn)
+        and fertur_relative_in_ortum_in(p, n, vp)
+        and (te >= vn);
+    then velocitas_vera_in_ortum(p, with_unit((te / UnaParsVelocitatis) - (vn / UnaParsVelocitatis) + (vp / UnaParsVelocitatis), "pars_velocitatis"));
+}
+
+// Относительное движение пассажира по Земле: 10 − 1 = 9 на запад.
+@source(PRIN_9)
+rule MotusRelativusInTerra(t: Corpus, n: Corpus, p: Corpus, vn: Quantity, vp: Quantity) strict {
+    label ru unofficial "Ед. 9. Относительное движение тела по Земле слагается из относительных движений корабля по Земле и тела по кораблю: 10 − 1 = 9 на запад";
+    when fertur_relative_in_occasum_in(n, t, vn)
+        and fertur_relative_in_ortum_in(p, n, vp)
+        and (vn >= vp);
+    then motus_relativus_in_occasum_in(p, t, with_unit((vn / UnaParsVelocitatis) - (vp / UnaParsVelocitatis), "pars_velocitatis"));
+}
+
+// Фикция §147, и она несущая: относительный покой ПРИНИМАЕТСЯ истинным
+// движением со скоростью носителя — выведенную скорость читает Def. II
+// через мост VelocitasVeraEstVelocitas ниже.
+@source(PRIN_9)
+fiction QuiesRelativaParticipatMotum strict {
+    label ru unofficial "Ед. 9. Тело, относительно покоящееся в истинно движущемся корабле, движется истинно и абсолютно с той скоростью, с которой движется корабль";
+    for c: Corpus;
+    for n: Corpus;
+    for v: Quantity;
+    when quiescit_relative_in(c, n) and monotone(velocitas_vera_in_ortum(n, v));
+    deem velocitas_vera_in_ortum(c, v);
+}
+
+// Свойство движения: части, сохраняющие положение к целому, участвуют в
+// движении целого.
+@source(PRIN_9)
+rule PartesParticipantMotusTotorum(pars: Corpus, totum: Corpus, v: Quantity) strict {
+    label ru unofficial "Ед. 9. Части, сохраняющие данные положения к целому, участвуют в движениях этих целых";
+    when servat_positionem_ad(pars, totum) and monotone(velocitas_vera_in_ortum(totum, v));
+    then velocitas_vera_in_ortum(pars, v);
+}
+
+// Данное делом истинное движение — истинная скорость (мост входа).
+@source(PRIN_9)
+rule MotusVerusDatus(x: Corpus, v: Quantity) strict {
+    label ru unofficial "Ед. 9. Истинное движение, данное делом, есть истинная скорость тела";
+    when movetur_vere_in_ortum(x, v);
+    then velocitas_vera_in_ortum(x, v);
+}
+
+// Мост к Def. II: истинная скорость — скорость тела; с массой она даёт
+// количество движения. Названная в метке отсылка обязана быть проводом.
+@source(PRIN_9, PRIN_2)
+rule VelocitasVeraEstVelocitas(x: Corpus, v: Quantity) strict {
+    label ru unofficial "Ед. 9 → Def. II. Истинная скорость тела есть его скорость для меры количества движения";
+    when velocitas_vera_in_ortum(x, v);
+    then velocitas_corporis(x, v);
+}
+
+// Свойство покоя: истинно покоящиеся тела покоятся между собой.
+@source(PRIN_9)
+rule QuiescentiaInterSe(a: Corpus, b: Corpus) strict {
+    label ru unofficial "Ед. 9. «Corpora vere quiescentia quiescunt inter se»: истинно покоящиеся тела покоятся друг относительно друга";
+    when vere_quiescit(a) and vere_quiescit(b);
+    then quiescunt_inter_se(a, b);
+}
+
+// Опыт с сосудом: истинное круговое движение узнаётся по действию —
+// стремлению отойти от оси. Обратной стороны (нет стремления → нет
+// истинного вращения) текст правилом не даёт: вода до передачи движения
+// вращающемуся сосуду плоска, и её истинное вращение «nondum» — молчание
+// честно остаётся молчанием (пара сценариев сторожит обе стороны).
+@source(PRIN_9)
+rule MotusVerusExEffectu(x: Corpus) strict {
+    label ru unofficial "Ед. 9. Подъём воды к стенкам сосуда — стремление отойти от оси — указывает истинное круговое движение";
+    when conatus_recedendi_ab_axe(x);
+    then motus_circularis_verus(x);
+}

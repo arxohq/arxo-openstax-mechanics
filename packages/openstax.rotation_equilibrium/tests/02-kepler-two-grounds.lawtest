@@ -1,0 +1,175 @@
+language "law.core" version "0.2";
+package openstax.rotation_equilibrium version "0.1.0";
+namespace "urn:openstax:clir:rotation-equilibrium";
+
+// ВТОРОЙ МОСТ КОРПУСА В ДЕЛЕ: ОДНО УТВЕРЖДЕНИЕ, ДВА ОСНОВАНИЯ.
+//
+// ОСНОВАНИЕ ПЕРВОЕ — НАБЛЮДЕНИЕ. Дело предъявляет то, что видел Кеплер в
+// данных Браге: орбита эллиптична. Вывод получен, и `applied` называет
+// эмпирическое правило. Массы и тяготение здесь не нужны вовсе — так и
+// работали астрономы за восемьдесят лет до «Начал».
+test "urn:query:rot-t02a-kepler-from-observation" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02a-o": orbits(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02a-e": orbit_observed_elliptical(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+    }
+
+    evaluate truth(orbit_is_elliptical(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(KeplerFirstLawFromObservation);
+}
+
+// ОСНОВАНИЕ ВТОРОЕ — ВЫВОД ИЗ ТЯГОТЕНИЯ. Наблюдения НЕТ вовсе; есть массы и
+// обращение, из них выводится притяжение (§13.1), а из притяжения — форма
+// орбиты (§13.5). Так отвечают о планете, которую ещё не наблюдали, и о
+// спутнике на расчётной орбите.
+test "urn:query:rot-t02b-kepler-from-gravitation" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02b-o": orbits(entity_ref("urn:case:rot:probe"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02b-ga": gravitational_attraction_asserted(entity_ref("urn:case:rot:probe"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02b-mp": body_mass(entity_ref("urn:case:rot:probe"), 1200 kg) { origin case_input; }
+        assert "t02b-ms": body_mass(entity_ref("urn:case:rot:sun"), 2 kg) { origin case_input; }
+    }
+
+    evaluate truth(orbit_is_elliptical(entity_ref("urn:case:rot:probe"), entity_ref("urn:case:rot:sun")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(KeplerFirstLawFromGravitation);
+    expect applied(EveryMassAttractsEveryOther);
+}
+
+// ОБА ОСНОВАНИЯ СРАЗУ — и они не спорят. Наблюдение подтверждает вывод,
+// вывод объясняет наблюдение; в доказательстве видны ОБА правила. Ровно
+// поэтому здесь не `interpretation_group`: выбирать делу не из чего.
+test "urn:query:rot-t02c-both-grounds-agree" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02c-o": orbits(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02c-e": orbit_observed_elliptical(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02c-ga": gravitational_attraction_asserted(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02c-mm": body_mass(entity_ref("urn:case:rot:mars"), 6 kg) { origin case_input; }
+        assert "t02c-ms": body_mass(entity_ref("urn:case:rot:sun"), 2 kg) { origin case_input; }
+    }
+
+    evaluate truth(orbit_is_elliptical(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(KeplerFirstLawFromObservation);
+    expect applied(KeplerFirstLawFromGravitation);
+}
+
+// §13.1: закон ВСЕМИРНОГО тяготения — условий на род тел он не ставит,
+// довольно массы у обоих.
+test "urn:query:rot-t02d-every-mass-attracts" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02d-ga": gravitational_attraction_asserted(entity_ref("urn:case:rot:apple"), entity_ref("urn:case:rot:earth")) { origin case_input; }
+        assert "t02d-ma": body_mass(entity_ref("urn:case:rot:apple"), 1 kg) { origin case_input; }
+        assert "t02d-me": body_mass(entity_ref("urn:case:rot:earth"), 60 kg) { origin case_input; }
+    }
+
+    evaluate truth(attracts_gravitationally(entity_ref("urn:case:rot:apple"), entity_ref("urn:case:rot:earth")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(EveryMassAttractsEveryOther);
+}
+
+// §13.5, ТРЕТИЙ ЗАКОН: отношение T²/a³ у двух тел вокруг одного центра
+// совпадает. Обе величины предъявлены В ОДНОЙ единице, и отношение
+// БЕЗРАЗМЕРНО — единицу сокращает операция (E-0068), как у относительной
+// погрешности §1.6. 8/4 и 18/9 дают одно и то же число 2.
+test "urn:query:rot-t02e-third-law-holds" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02e-o1": orbits(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02e-o2": orbits(entity_ref("urn:case:rot:venus"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02e-t1": orbital_period_squared(entity_ref("urn:case:rot:mars"), 8 s) { origin case_input; }
+        assert "t02e-a1": semi_major_axis_cubed(entity_ref("urn:case:rot:mars"), 4 s) { origin case_input; }
+        assert "t02e-t2": orbital_period_squared(entity_ref("urn:case:rot:venus"), 18 s) { origin case_input; }
+        assert "t02e-a2": semi_major_axis_cubed(entity_ref("urn:case:rot:venus"), 9 s) { origin case_input; }
+    }
+
+    evaluate truth(third_law_holds_for_pair(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:venus")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(SameRatioSatisfiesThirdLaw);
+}
+
+// ОБРАТНАЯ СТОРОНА: отношения 2 и 3 разошлись — третий закон для этой пары
+// ОПРОВЕРГНУТ. Так проверяют предъявленные наблюдения на согласие с законом.
+test "urn:query:rot-t02f-third-law-refuted" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02f-o1": orbits(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02f-o2": orbits(entity_ref("urn:case:rot:odd"), entity_ref("urn:case:rot:sun")) { origin case_input; }
+        assert "t02f-t1": orbital_period_squared(entity_ref("urn:case:rot:mars"), 8 s) { origin case_input; }
+        assert "t02f-a1": semi_major_axis_cubed(entity_ref("urn:case:rot:mars"), 4 s) { origin case_input; }
+        assert "t02f-t2": orbital_period_squared(entity_ref("urn:case:rot:odd"), 27 s) { origin case_input; }
+        assert "t02f-a2": semi_major_axis_cubed(entity_ref("urn:case:rot:odd"), 9 s) { origin case_input; }
+    }
+
+    evaluate truth(third_law_holds_for_pair(entity_ref("urn:case:rot:mars"), entity_ref("urn:case:rot:odd")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(DifferentRatiosRefuteThirdLaw);
+}
+
+// Само отношение — вопросом к системе: 8/4 = 2, точной дробью.
+test "urn:query:rot-t02g-third-law-ratio-value" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02g-t": orbital_period_squared(entity_ref("urn:case:rot:mars"), 8 s) { origin case_input; }
+        assert "t02g-a": semi_major_axis_cubed(entity_ref("urn:case:rot:mars"), 4 s) { origin case_input; }
+    }
+
+    evaluate truth(third_law_ratio(entity_ref("urn:case:rot:mars"), 2/1));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ThirdLawRatioFromPeriodAndAxis);
+}

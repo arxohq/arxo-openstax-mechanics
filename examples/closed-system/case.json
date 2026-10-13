@@ -1,0 +1,119 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:13197b085c9651ee79b917776fe7d5edf2fa3164d5cc98f71ea733b191a09f5d",
+      "evidence": [],
+      "id": "urn:openstax:clir:energy-momentum#t02a-pr",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:em:pair",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:em:hit",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:energy-momentum#process_over"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:energy-momentum"
+    },
+    {
+      "contentHash": "sha256:dc1cb08598674bd24dbd115a915fa70731cf93c97948147cf0b871b9bb121c5c",
+      "evidence": [],
+      "id": "urn:openstax:clir:energy-momentum#t02a-cl",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:em:pair",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:em:hit",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:energy-momentum#declared_closed"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:energy-momentum"
+    },
+    {
+      "contentHash": "sha256:c509a46081c06b69bb7630dada62eebf306cb0cbc31306e50d2bfce3790fd6c6",
+      "evidence": [],
+      "id": "urn:openstax:clir:energy-momentum#t02a-b",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:em:pair",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:em:hit",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "kg_m_per_s",
+            "value": "40"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:energy-momentum#total_momentum_before"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:energy-momentum"
+    },
+    {
+      "contentHash": "sha256:396fda909c001ca2afda81e915c5dc22b6050e3c31333abc87adba55c788f80d",
+      "evidence": [],
+      "id": "urn:openstax:clir:energy-momentum#t02a-a",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:em:pair",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:em:hit",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "kg_m_per_s",
+            "value": "40"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:energy-momentum#total_momentum_after"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:energy-momentum"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-09-06T12:00:00Z",
+    "knowledgeTime": "2026-09-06T12:00:00Z",
+    "legalTime": "2026-09-06",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

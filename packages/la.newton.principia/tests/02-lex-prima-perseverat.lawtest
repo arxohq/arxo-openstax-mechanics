@@ -1,0 +1,23 @@
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+// Lex. I: без приложенных сил состояние сохраняется презумпцией
+// («Corpus omne perseverare in statu suo…»).
+test "urn:query:prin-t02" {
+    given {
+        context {
+            decision_time @2026-08-31T12:00:00+05:00;
+            knowledge_time @2026-08-31T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+        assert "prin-t02-a0": status_corporis_prius(entity_ref("urn:case:prin:corpus"), MovendiUniformiter) { origin case_input; }
+    }
+
+    evaluate truth(status_corporis_posterius(entity_ref("urn:case:prin:corpus"), MovendiUniformiter));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+}

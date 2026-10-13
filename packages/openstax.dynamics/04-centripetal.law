@@ -1,0 +1,50 @@
+// §6.3 «Centripetal Force»: сила, удерживающая тело на окружности.
+//
+// ЦЕНТРОСТРЕМИТЕЛЬНАЯ СИЛА — НЕ НОВЫЙ РОД СИЛЫ, А РОЛЬ. §6.3 подчёркивает
+// это прямо: центростремительной называют ту силу — натяжение, трение,
+// тяжесть, реакцию опоры, — которая в данном случае направлена к центру и
+// сообщает телу центростремительное ускорение. Поэтому пакет не заводит для
+// неё своего источника: он ЧИТАЕТ ускорение из `openstax.kinematics` (§4.4,
+// a_c = v²/r) и умножает на массу по второму закону.
+//
+// ЦЕПОЧКА ЧЕРЕЗ ТРИ ПАКЕТА, И ЭТО ЕЁ СМЫСЛ. Радиус и скорость предъявляет
+// дело; кинематика считает a_c; динамика умножает на массу. Ни один шаг не
+// повторён дважды, и правка формулы a_c в кинематике доедет сюда сама.
+
+language "law.core" version "0.2";
+package openstax.dynamics version "0.1.0";
+namespace "urn:openstax:clir:dynamics";
+
+use self::{
+    System,
+    UP_M58305_CENTRIPETAL_FORCE,
+    mass_of,
+};
+
+@source(UP_M58305_CENTRIPETAL_FORCE)
+relation moves_as(s: System, b: openstax.kinematics::Body) kind empirical {
+    label en official "the case states the system moves as the presented kinematic body";
+    label ru unofficial "дело сообщает, что система движется как предъявленное кинематическое тело";
+}
+
+relation centripetal_force(s: System, f: Quantity) kind institutional {
+    label en official "§6.3: F_c = m·a_c — the net force directed toward the centre that keeps the body on its circular path";
+    label ru unofficial "§6.3: F_c = m·a_c — направленная к центру результирующая сила, удерживающая тело на круговой траектории";
+}
+
+@source(UP_M58305_CENTRIPETAL_FORCE)
+rule CentripetalForceIsMassTimesCentripetalAcceleration(
+    s: System,
+    b: openstax.kinematics::Body,
+    i: openstax.kinematics::Interval,
+    m: Quantity,
+    ac: Quantity,
+) strict {
+    label en official "§6.3: the centripetal force is the mass times the centripetal acceleration computed in §4.4";
+    label ru unofficial "§6.3: центростремительная сила есть масса, умноженная на центростремительное ускорение, вычисленное в §4.4";
+    when moves_as(s, b)
+        and mass_of(s, m)
+        and openstax.kinematics::centripetal_acceleration(b, i, ac);
+    then centripetal_force(s, quantity_of(unit_convert(magnitude(m), "kg")
+                                          * unit_convert(magnitude(ac), "m_per_s2"), "N"));
+}

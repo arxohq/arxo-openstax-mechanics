@@ -1,0 +1,335 @@
+// §9.1 «Linear Momentum», §9.2 «Impulse and Collisions», §9.3 «Conservation
+// of Linear Momentum», §9.4 «Types of Collisions».
+//
+// СОХРАНЕНИЕ ЕСТЬ УТВЕРЖДЕНИЕ УСЛОВНОЕ, И УСЛОВИЕ — ЕГО СОДЕРЖАНИЕ. §9.3
+// формулирует закон так: «the total momentum of a CLOSED system is
+// conserved», и тут же определяет замкнутость — «no net external force acts
+// on it». Ответ «импульс сохраняется» без названного условия бесполезен, а
+// с ним — проверяем: пакет держит пару правил, и предъявленная внешняя сила
+// ОПРОВЕРГАЕТ сохранение, а не оставляет его невыведенным.
+//
+// УПРУГОЕ И НЕУПРУГОЕ РАЗЛИЧАЮТСЯ КИНЕТИЧЕСКОЙ ЭНЕРГИЕЙ, А НЕ ИМПУЛЬСОМ.
+// §9.4 подчёркивает: импульс сохраняется в ЛЮБОМ столкновении замкнутой
+// системы, кинетическая энергия — только в упругом. Это ровно то место, где
+// школьник путается, и различение здесь ВЫВОДИТСЯ: упругое — когда суммарная
+// кинетическая энергия «до» равна «после», неупругое — когда не равна.
+// Абсолютно неупругое §9.4 определяет иначе — по общей конечной скорости, —
+// и это отдельный признак, а не крайняя степень первого.
+
+language "law.core" version "0.2";
+package openstax.energy_momentum version "0.1.0";
+namespace "urn:openstax:clir:energy-momentum";
+
+use self::{
+    Collection,
+    Object,
+    Process,
+    UP_M58318_MOMENTUM,
+    UP_M58320_CLOSED_SYSTEM,
+    UP_M58320_LAW_OF_CONSERVATION,
+    UP_M58320_SYSTEM,
+    UP_M58321_ELASTIC,
+    UP_M58321_INELASTIC,
+    UP_M58321_PERFECTLY_INELASTIC,
+    UP_M58321_PERFECTLY_INELASTIC_PRIOR,
+    mass_and_speed,
+};
+
+// --- §9.1: импульс ------------------------------------------------------------------
+
+pub relation momentum_of(o: Object, p: Process, value: Quantity) kind institutional {
+    label en official "§9.1: p = mv — the linear momentum of the object";
+    label ru unofficial "§9.1: p = mv — импульс тела";
+}
+
+@source(UP_M58318_MOMENTUM)
+rule MomentumIsMassTimesVelocity(o: Object, p: Process, m: Quantity, v: Quantity) strict {
+    label en official "§9.1: the linear momentum of an object is the product of its mass and its velocity";
+    label ru unofficial "§9.1: импульс тела есть произведение его массы на скорость";
+    when mass_and_speed(o, p, m, v);
+    then momentum_of(o, p, quantity_of(unit_convert(magnitude(m), "kg")
+                                       * unit_convert(magnitude(v), "m_per_s"), "kg_m_per_s"));
+}
+
+// --- §9.3: система, её замкнутость и суммы импульсов ---------------------------------
+
+// СВЯЗЫВАТЕЛЬ §190. `refuted(P)` СПРАШИВАЕТ, но не связывает: правило, тело
+// которого состоит из одного отрицательного чтения, не range-restricted
+// (LDC-E4101 — замер 06.09.2026). Дело предъявляет процесс над системой
+// отдельным фактом, и это вопрос дела, а не служебная подпорка: «сохранился
+// ли импульс» спрашивают о НАЗВАННОЙ паре «система — процесс».
+@source(UP_M58320_SYSTEM)
+relation process_over(c: Collection, p: Process) kind empirical {
+    label en official "§9.3: the case presents the process undergone by the system";
+    label ru unofficial "§9.3: дело предъявляет процесс, происходящий с системой";
+}
+
+@source(UP_M58320_SYSTEM)
+relation belongs_to(o: Object, c: Collection) kind empirical {
+    label en official "§9.3: the object belongs to the system whose momentum is in question";
+    label ru unofficial "§9.3: тело входит в систему, об импульсе которой идёт речь";
+}
+
+@source(UP_M58320_CLOSED_SYSTEM)
+relation declared_closed(c: Collection, p: Process) kind empirical {
+    label en official "§9.3: the case declares the system closed over the process — no mass enters or leaves";
+    label ru unofficial "§9.3: дело объявляет систему замкнутой на протяжении процесса — вещество не входит и не выходит";
+}
+
+@source(UP_M58320_CLOSED_SYSTEM)
+relation external_force_on_system(c: Collection, p: Process, f: Quantity) kind empirical {
+    label en official "§9.3: a net external force acting on the system during the process";
+    label ru unofficial "§9.3: результирующая внешняя сила, действующая на систему в течение процесса";
+}
+
+@source(UP_M58320_LAW_OF_CONSERVATION)
+relation total_momentum_before(c: Collection, p: Process, value: Quantity) kind empirical {
+    label en official "§9.3: the total momentum of the system before the process";
+    label ru unofficial "§9.3: суммарный импульс системы до процесса";
+}
+
+@source(UP_M58320_LAW_OF_CONSERVATION)
+relation total_momentum_after(c: Collection, p: Process, value: Quantity) kind empirical {
+    label en official "§9.3: the total momentum of the system after the process";
+    label ru unofficial "§9.3: суммарный импульс системы после процесса";
+}
+
+pub relation closed_system(c: Collection, p: Process) kind institutional {
+    label en official "§9.3: a closed system — one on which no net external force acts during the process";
+    label ru unofficial "§9.3: замкнутая система — та, на которую в течение процесса не действует результирующая внешняя сила";
+}
+
+// ОБЪЯВЛЕНИЕ ДЕЛА — ПРЕЗУМПЦИЯ, ФАКТ ЕЁ ОПРОВЕРГАЕТ. Правило `defeasible`,
+// а опровергающее — `strict`: строгое побеждает оспоримое (§95), и
+// предъявленная внешняя сила снимает объявленную замкнутость. Обе строгими
+// они давали бы конфликт §62 и ответ BOTH — замер 06.09.2026 на сцене 02b:
+// «система объявлена замкнутой» и «на систему действует 12 Н» противоречат
+// друг другу, и §9.3 разрешает спор в пользу факта, потому что определяет
+// замкнутость через ОТСУТСТВИЕ СИЛЫ, а не через заявление.
+@source(UP_M58320_CLOSED_SYSTEM)
+rule DeclaredClosedIsClosed(c: Collection, p: Process) defeasible {
+    label en official "§9.3: a system declared closed, with no external force presented, is a closed system";
+    label ru unofficial "§9.3: система, объявленная замкнутой и без предъявленной внешней силы, есть замкнутая система";
+    when declared_closed(c, p);
+    then closed_system(c, p);
+}
+
+// Предъявленная НЕНУЛЕВАЯ внешняя сила опровергает замкнутость — независимо
+// от того, что дело о системе объявило. Объявление и факт здесь спорят, и
+// побеждает факт: §9.3 определяет замкнутость через отсутствие силы, а не
+// через заявление.
+@source(UP_M58320_CLOSED_SYSTEM)
+rule ExternalForceRefutesClosure(c: Collection, p: Process, f: Quantity) strict {
+    label en official "§9.3: a nonzero net external force on the system refutes that the system is closed";
+    label ru unofficial "§9.3: ненулевая результирующая внешняя сила на систему опровергает её замкнутость";
+    when external_force_on_system(c, p, f) and f != 0 * f;
+    then not closed_system(c, p);
+}
+
+pub relation momentum_conserved(c: Collection, p: Process) kind institutional {
+    label en official "§9.3: the total momentum of the system is the same before and after the process";
+    label ru unofficial "§9.3: суммарный импульс системы одинаков до и после процесса";
+}
+
+@source(UP_M58320_LAW_OF_CONSERVATION)
+rule ClosedSystemConservesMomentum(
+    c: Collection,
+    p: Process,
+    before: Quantity,
+    after: Quantity,
+) defeasible {
+    label en official "§9.3: the total momentum of a closed system is conserved — it is the same before and after";
+    label ru unofficial "§9.3: суммарный импульс замкнутой системы сохраняется — он одинаков до и после";
+    when closed_system(c, p)
+        and total_momentum_before(c, p, before)
+        and total_momentum_after(c, p, after)
+        and magnitude(before) == magnitude(after);
+    then momentum_conserved(c, p);
+}
+
+// Суммы разошлись при объявленной замкнутости — сохранение ОПРОВЕРГНУТО.
+// Это донос на дело: либо система не замкнута, либо суммы посчитаны неверно.
+@source(UP_M58320_LAW_OF_CONSERVATION)
+rule MomentumNotConservedWhenTotalsDiffer(
+    c: Collection,
+    p: Process,
+    before: Quantity,
+    after: Quantity,
+) strict {
+    label en official "§9.3: totals that differ before and after refute conservation of momentum for this process";
+    label ru unofficial "§9.3: разошедшиеся суммы «до» и «после» опровергают сохранение импульса в этом процессе";
+    when total_momentum_before(c, p, before)
+        and total_momentum_after(c, p, after)
+        and magnitude(before) != magnitude(after);
+    then not momentum_conserved(c, p);
+}
+
+// КАСКАД §111, НАЗВАННЫЙ ЗДЕСЬ. Стоило сделать `DeclaredClosedIsClosed`
+// оспоримым, как ВСЕ строгие читатели `closed_system` покраснели
+// LDC-E4103: строгое правило не вправе читать вывод оспоримого, пока не
+// завершены производители обеих полярностей (§111). Каскад прошёл по цепочке
+// «замкнутость → сохранение импульса → сохранение при неупругом
+// столкновении», и все три стали оспоримыми.
+//
+// Это верно по существу, а не уступка компилятору: замкнутость системы есть
+// СУЖДЕНИЕ о мире, которое новый факт способен опровергнуть, и всё, что из
+// неё следует, наследует ту же оспоримость. Строгими остались правила,
+// читающие одни предъявленные факты, — расхождение сумм импульса опровергает
+// сохранение независимо от любых суждений о замкнутости.
+//
+// Незамкнутая система: сохранения не утверждается вовсе. `refuted` читает
+// ОПРОВЕРГНУТУЮ замкнутость — не «не выведена», а именно опровергнута
+// предъявленной внешней силой.
+pub relation conservation_not_available(c: Collection, p: Process) kind institutional {
+    label en official "§9.3: conservation of momentum is not available for this system — its closure is refuted";
+    label ru unofficial "§9.3: сохранение импульса для этой системы неприменимо — её замкнутость опровергнута";
+}
+
+@source(UP_M58320_LAW_OF_CONSERVATION)
+rule OpenSystemHasNoConservationLaw(c: Collection, p: Process) defeasible {
+    label en official "§9.3: the law speaks of a closed system — where closure is refuted, conservation cannot be invoked";
+    label ru unofficial "§9.3: закон говорит о замкнутой системе — там, где замкнутость опровергнута, на сохранение ссылаться нельзя";
+    when process_over(c, p) and refuted(closed_system(c, p));
+    then conservation_not_available(c, p);
+}
+
+// --- §9.4: роды столкновений ----------------------------------------------------------
+
+@source(UP_M58321_ELASTIC)
+relation total_kinetic_energy_before(c: Collection, p: Process, k: Quantity) kind empirical {
+    label en official "§9.4: the total kinetic energy of the system before the collision";
+    label ru unofficial "§9.4: суммарная кинетическая энергия системы до столкновения";
+}
+
+@source(UP_M58321_ELASTIC)
+relation total_kinetic_energy_after(c: Collection, p: Process, k: Quantity) kind empirical {
+    label en official "§9.4: the total kinetic energy of the system after the collision";
+    label ru unofficial "§9.4: суммарная кинетическая энергия системы после столкновения";
+}
+
+@source(UP_M58321_PERFECTLY_INELASTIC)
+relation objects_move_together_after(c: Collection, p: Process) kind empirical {
+    label en official "§9.4: the case states the objects stick together and move with a common velocity after the collision";
+    label ru unofficial "§9.4: дело сообщает, что после столкновения тела слиплись и движутся с общей скоростью";
+}
+
+pub relation elastic_collision(c: Collection, p: Process) kind institutional {
+    label en official "§9.4: an elastic collision — one that conserves the total kinetic energy of the system";
+    label ru unofficial "§9.4: упругое столкновение — сохраняющее суммарную кинетическую энергию системы";
+}
+
+@source(UP_M58321_ELASTIC)
+rule KineticEnergyPreservedIsElastic(c: Collection, p: Process, k0: Quantity, k1: Quantity) strict {
+    label en official "§9.4: a collision in which the total kinetic energy is the same before and after is elastic";
+    label ru unofficial "§9.4: столкновение, у которого суммарная кинетическая энергия до и после одинакова, упруго";
+    when total_kinetic_energy_before(c, p, k0)
+        and total_kinetic_energy_after(c, p, k1)
+        and magnitude(k0) == magnitude(k1);
+    then elastic_collision(c, p);
+}
+
+@source(UP_M58321_INELASTIC)
+rule KineticEnergyLostRefutesElasticity(
+    c: Collection,
+    p: Process,
+    k0: Quantity,
+    k1: Quantity,
+) strict {
+    label en official "§9.4: a collision in which the total kinetic energy changes is not elastic — it is inelastic";
+    label ru unofficial "§9.4: столкновение, у которого суммарная кинетическая энергия изменилась, не упруго — оно неупруго";
+    when total_kinetic_energy_before(c, p, k0)
+        and total_kinetic_energy_after(c, p, k1)
+        and magnitude(k0) != magnitude(k1);
+    then not elastic_collision(c, p);
+}
+
+pub relation inelastic_collision(c: Collection, p: Process) kind institutional {
+    label en official "§9.4: an inelastic collision — one that does not conserve the total kinetic energy";
+    label ru unofficial "§9.4: неупругое столкновение — не сохраняющее суммарной кинетической энергии";
+}
+
+@source(UP_M58321_INELASTIC)
+rule NotElasticIsInelastic(c: Collection, p: Process) strict {
+    label en official "§9.4: a collision whose elasticity is refuted is an inelastic collision";
+    label ru unofficial "§9.4: столкновение, упругость которого опровергнута, есть неупругое столкновение";
+    when process_over(c, p) and refuted(elastic_collision(c, p));
+    then inelastic_collision(c, p);
+}
+
+// §9.4 определяет АБСОЛЮТНО неупругое отдельным признаком — общей конечной
+// скоростью, — а не «наибольшей потерей энергии». Отсюда своё правило, а не
+// градация первого.
+pub relation perfectly_inelastic_collision(c: Collection, p: Process) kind institutional {
+    label en official "§9.4: a perfectly inelastic collision — the objects stick together and move with one common velocity afterwards";
+    label ru unofficial "§9.4: абсолютно неупругое столкновение — тела слипаются и движутся дальше с одной общей скоростью";
+}
+
+// --- УРОВЕНЬ РЕДАКЦИЙ: ОДНО ОПРЕДЕЛЕНИЕ, ДВЕ ДАТЫ -----------------------------------
+//
+// OpenStax ПРАВИТ УЧЕБНИК, И ПРАВКА БЫВАЕТ СОДЕРЖАТЕЛЬНОЙ. До errata 28340
+// (23.04.2026) §9.4 определял абсолютно неупругое столкновение так:
+//
+//     «after which all objects are MOTIONLESS, the final kinetic energy is
+//      ZERO, and the loss of kinetic energy is a maximum»,
+//
+// а после — так:
+//
+//     «after which all objects are STUCK TOGETHER, MOVING WITH THE SAME
+//      VELOCITY; momentum is conserved, and the loss of kinetic energy is a
+//      maximum».
+//
+// Это не опечатка. Прежнее определение ВЕРНО ЛИШЬ В СИСТЕМЕ ЦЕНТРА МАСС:
+// два одинаковых шара, летящих навстречу с равными скоростями, слипаясь,
+// действительно останавливаются, — но грузовик, врезавшийся в стоящую
+// машину, слипается с ней и едет дальше. По прежнему определению такое
+// столкновение абсолютно неупругим НЕ БЫЛО, хотя потеря кинетической
+// энергии в нём максимальна.
+//
+// Поэтому редакций две, у каждой своё окно §31, и правила датированы
+// `effective`. `law_editions` между 2026-04-01 и 2026-05-01 покажет ровно
+// эту смену: на первую дату применяется правило о неподвижности, на вторую —
+// правило об общей скорости, и грузовик со стоящей машиной меняет ответ.
+//
+// ЭТО И ЕСТЬ ПРИЧИНА ДЕРЖАТЬ РЕДАКЦИИ, А НЕ ТОЛЬКО ПОСЛЕДНИЙ ТЕКСТ: дело,
+// разобранное до 23.04.2026 по тогдашнему учебнику, разобрано ПРАВИЛЬНО для
+// своей даты, и корпус обязан уметь это воспроизвести.
+
+@source(UP_M58321_PERFECTLY_INELASTIC_PRIOR)
+relation objects_motionless_after(c: Collection, p: Process) kind empirical {
+    label en official "§9.4 as it read before errata 28340: the case states all objects are motionless after the collision";
+    label ru unofficial "§9.4 в редакции до errata 28340: дело сообщает, что после столкновения все тела неподвижны";
+}
+
+@source(UP_M58321_PERFECTLY_INELASTIC_PRIOR)
+rule AllMotionlessIsPerfectlyInelastic(c: Collection, p: Process) strict {
+    label en official "§9.4 before errata 28340: a collision after which all objects are motionless and the final kinetic energy is zero is perfectly inelastic";
+    label ru unofficial "§9.4 в редакции до errata 28340: столкновение, после которого все тела неподвижны и конечная кинетическая энергия нулевая, абсолютно неупруго";
+    effective [@2024-11-08, @2026-04-23);
+    when objects_motionless_after(c, p);
+    then perfectly_inelastic_collision(c, p);
+}
+
+@source(UP_M58321_PERFECTLY_INELASTIC)
+rule MovingTogetherIsPerfectlyInelastic(c: Collection, p: Process) strict {
+    label en official "§9.4 since errata 28340: objects that stick together and move with a common velocity after the collision collided perfectly inelastically";
+    label ru unofficial "§9.4 в редакции с errata 28340: тела, слипшиеся и движущиеся после столкновения с общей скоростью, столкнулись абсолютно неупруго";
+    effective [@2026-04-23, infinity);
+    when objects_move_together_after(c, p);
+    then perfectly_inelastic_collision(c, p);
+}
+
+// ИМПУЛЬС СОХРАНЯЕТСЯ И В НЕУПРУГОМ СТОЛКНОВЕНИИ — это и есть то, что §9.4
+// велит не путать. Правило выводит утверждение прямо, чтобы система могла
+// ответить на вопрос «а импульс-то сохранился?» у неупругого случая.
+pub relation momentum_conserved_though_inelastic(c: Collection, p: Process) kind institutional {
+    label en official "§9.4: momentum is conserved in this collision even though it is inelastic — kinetic energy and momentum are conserved under different conditions";
+    label ru unofficial "§9.4: импульс в этом столкновении сохраняется, хотя оно неупруго, — кинетическая энергия и импульс сохраняются при разных условиях";
+}
+
+@source(UP_M58321_INELASTIC, UP_M58320_LAW_OF_CONSERVATION)
+rule InelasticStillConservesMomentum(c: Collection, p: Process) defeasible {
+    label en official "§9.4: in a closed system momentum is conserved in ANY collision, elastic or not";
+    label ru unofficial "§9.4: в замкнутой системе импульс сохраняется в ЛЮБОМ столкновении, упругом или нет";
+    when inelastic_collision(c, p) and momentum_conserved(c, p);
+    then momentum_conserved_though_inelastic(c, p);
+}

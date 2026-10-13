@@ -1,0 +1,504 @@
+// Source-модель: закреплённые байты 13 модулей CNXML
+// University Physics Volume 1, chapters 3–4 и 15 фрагментов по идентификаторам элементов —
+// определения и нормативные утверждения учебника.
+//
+// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
+// `corpus/tools/sources/sync/sync_openstax_fragments.py`; сверка без записи —
+// его же ключом `--check`. Тексты вырезаются из `sources/kinematics/*.cnxml`,
+// поэтому разойтись с публикацией они не могут.
+//
+// ПРОВЕНАНС. Байты — CNXML-исходники модулей на коммите main
+// d0ed34a5851119a42e3d972dfc0ff49e4663977c репозитория
+// github.com/openstax/osbooks-university-physics-bundle (2026-06-11).
+// PINNED_OFFICIAL_BYTES: это те самые байты, которые издатель публикует, а не
+// извлечение из рендера. `retrieved_at` — константа (DECISION-0005 п. 6).
+//
+// ЛИЦЕНЗИЯ ИСТОЧНИКА — CC BY-NC-SA 4.0. University Physics распространяется
+// под Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+// (лицензия объявлена в самом `university-physics-volume-N.collection.xml`,
+// элемент `md:license`). У неё ДВА ограничения, которых нет у прочих
+// источников корпуса: некоммерческое использование и share-alike. Закрепление
+// байтов с атрибуцией лицензией допускается; ограничение названо здесь и в
+// `[metadata]` пакета — решение владельца проекта 06.09.2026.
+//
+// ЕДИНИЦА ЦИТИРОВАНИЯ — ЭЛЕМЕНТ МОДУЛЯ. Локатор `module/<модуль>#<id>`;
+// разметка CNXML внутри фрагмента сохранена как есть (§13).
+
+language "law.core" version "0.2";
+package openstax.kinematics version "0.1.0";
+namespace "urn:openstax:clir:kinematics";
+
+source M58281 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 3 Motion Along a Straight Line, module m58281";
+    label en official "Introduction";
+}
+
+edition M58281_MAIN of M58281 {
+    label en official "m58281/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58281/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58281_CNXML of M58281_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58281/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:270825a92d273f17cacc69f09cbded46e0537c0c2b6c150ea98c427c0a58a062";
+    local_path "sources/kinematics/m58281.cnxml";
+}
+
+source M58282 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 3 Motion Along a Straight Line, module m58282";
+    label en official "Position, Displacement, and Average Velocity";
+}
+
+edition M58282_MAIN of M58282 {
+    label en official "m58282/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58282/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58282_CNXML of M58282_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58282/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:9d10d89ac7fb5be90bf4b5eecac2d7ef39505069f934d4484983c93dd7edfeed";
+    local_path "sources/kinematics/m58282.cnxml";
+}
+
+source M58283 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 3 Motion Along a Straight Line, module m58283";
+    label en official "Instantaneous Velocity and Speed";
+}
+
+edition M58283_MAIN of M58283 {
+    label en official "m58283/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58283/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58283_CNXML of M58283_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58283/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:0562da89760c5d4b1ec572ae4dcdf3070694e11844925bb6213acb082e9793aa";
+    local_path "sources/kinematics/m58283.cnxml";
+}
+
+source M58284 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 3 Motion Along a Straight Line, module m58284";
+    label en official "Average and Instantaneous Acceleration";
+}
+
+edition M58284_MAIN of M58284 {
+    label en official "m58284/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58284/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58284_CNXML of M58284_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58284/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:3d37834eb4de95572cee22e1affc1cb31c8a0951372656dfaa9801d37e4b5d2a";
+    local_path "sources/kinematics/m58284.cnxml";
+}
+
+source M58285 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 3 Motion Along a Straight Line, module m58285";
+    label en official "Motion with Constant Acceleration";
+}
+
+edition M58285_MAIN of M58285 {
+    label en official "m58285/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58285/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58285_CNXML of M58285_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58285/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:4d039708193f8fe970115237fd4d9be9eb90fb378ac2ca91c95c900475862be6";
+    local_path "sources/kinematics/m58285.cnxml";
+}
+
+source M58286 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 3 Motion Along a Straight Line, module m58286";
+    label en official "Free Fall";
+}
+
+edition M58286_MAIN of M58286 {
+    label en official "m58286/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58286/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58286_CNXML of M58286_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58286/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:f52197a2e61e25c00449fc57383fedbe74142ff2b30412b907103c427801aeca";
+    local_path "sources/kinematics/m58286.cnxml";
+}
+
+source M58287 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 3 Motion Along a Straight Line, module m58287";
+    label en official "Finding Velocity and Displacement from Acceleration";
+}
+
+edition M58287_MAIN of M58287 {
+    label en official "m58287/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58287/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58287_CNXML of M58287_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58287/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:189ebd7144ed8cc83757433ef555ad8ab6ef8243bde3875114a74ad2b4afac33";
+    local_path "sources/kinematics/m58287.cnxml";
+}
+
+source M58288 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 4 Motion in Two and Three Dimensions, module m58288";
+    label en official "Introduction";
+}
+
+edition M58288_MAIN of M58288 {
+    label en official "m58288/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58288/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58288_CNXML of M58288_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58288/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:d05d9a20943907fe808ef0214537800fcf4da1fd2d15a69108a15b3a8cf68c92";
+    local_path "sources/kinematics/m58288.cnxml";
+}
+
+source M58289 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 4 Motion in Two and Three Dimensions, module m58289";
+    label en official "Displacement and Velocity Vectors";
+}
+
+edition M58289_MAIN of M58289 {
+    label en official "m58289/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58289/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58289_CNXML of M58289_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58289/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:563dd71390c1579b53a1a3a8ed7ec9719d0abe3aba563f6665713e93b49aded1";
+    local_path "sources/kinematics/m58289.cnxml";
+}
+
+source M58290 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 4 Motion in Two and Three Dimensions, module m58290";
+    label en official "Acceleration Vector";
+}
+
+edition M58290_MAIN of M58290 {
+    label en official "m58290/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58290/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58290_CNXML of M58290_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58290/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:efb0053dcce8d9f939778b949f6637d3544857bf768aee43ec1625cc90b155fe";
+    local_path "sources/kinematics/m58290.cnxml";
+}
+
+source M58291 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 4 Motion in Two and Three Dimensions, module m58291";
+    label en official "Projectile Motion";
+}
+
+edition M58291_MAIN of M58291 {
+    label en official "m58291/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58291/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58291_CNXML of M58291_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58291/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:1604b3b861add4549f21cb8eb150c3c94c4453088968e2e3dbffdecad5514751";
+    local_path "sources/kinematics/m58291.cnxml";
+}
+
+source M58292 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 4 Motion in Two and Three Dimensions, module m58292";
+    label en official "Uniform and Nonuniform Circular Motion";
+}
+
+edition M58292_MAIN of M58292 {
+    label en official "m58292/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58292/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58292_CNXML of M58292_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58292/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:8db43155cf6783e6aac811e2c1b157db473bf83466f2ebb8364678b740639c8e";
+    local_path "sources/kinematics/m58292.cnxml";
+}
+
+source M58293 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 4 Motion in Two and Three Dimensions, module m58293";
+    label en official "Relative Motion in One and Two Dimensions";
+}
+
+edition M58293_MAIN of M58293 {
+    label en official "m58293/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58293/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58293_CNXML of M58293_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58293/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:4dafa84290432385285709af8c2c64c2731eb84eb46d9bb94917c25f20d1a8bc";
+    local_path "sources/kinematics/m58293.cnxml";
+}
+
+// m58282 «Position, Displacement, and Average Velocity» — fs-id1168329394923
+fragment UP_M58282_POSITION in M58282_MAIN {
+    kind defn;
+    locator "module/m58282#fs-id1168329394923";
+    text en official """<definition id="fs-id1168329394923">
+<term>position</term>
+<meaning id="fs-id1168329181740">the location of an object at a particular time</meaning>
+</definition>""";
+    content_hash "sha256:70b53ce53d88b0a1ae9ed76b84fe7b6eb5a2d1f0403ddbcd4c1542bad4e2420a";
+}
+
+// m58282 «Position, Displacement, and Average Velocity» — fs-id1168329400874
+fragment UP_M58282_DISPLACEMENT in M58282_MAIN {
+    kind defn;
+    locator "module/m58282#fs-id1168329400874";
+    text en official """<definition id="fs-id1168329400874">
+<term>displacement</term>
+<meaning id="fs-id1168329511515">the change in position of an object</meaning>
+</definition>""";
+    content_hash "sha256:b05bb14d9ce704668584b0efade185aa83ae986c57bb826e7b08b1155930690b";
+}
+
+// m58282 «Position, Displacement, and Average Velocity» — fs-id1168326897289
+fragment UP_M58282_DISTANCE_TRAVELED in M58282_MAIN {
+    kind defn;
+    locator "module/m58282#fs-id1168326897289";
+    text en official """<definition id="fs-id1168326897289">
+<term>distance traveled</term>
+<meaning id="fs-id1168326925585">the total length of the path traveled between two positions</meaning>
+</definition>""";
+    content_hash "sha256:71c9f99b355ff52cbe0239077e7c18e138449b304761e933db5dfcba5c271e75";
+}
+
+// m58282 «Position, Displacement, and Average Velocity» — fs-id1168326925589
+fragment UP_M58282_ELAPSED_TIME in M58282_MAIN {
+    kind defn;
+    locator "module/m58282#fs-id1168326925589";
+    text en official """<definition id="fs-id1168326925589">
+<term>elapsed time</term>
+<meaning id="fs-id1168326801364">the difference between the ending time and the beginning time</meaning>
+</definition>""";
+    content_hash "sha256:8ad8739d9cb44fb6d39604fddebbc727ddfa16f13fd73d51e20303a9658bed86";
+}
+
+// m58282 «Position, Displacement, and Average Velocity» — fs-id1168326791706
+fragment UP_M58282_AVERAGE_VELOCITY in M58282_MAIN {
+    kind defn;
+    locator "module/m58282#fs-id1168326791706";
+    text en official """<definition id="fs-id1168326791706">
+<term>average velocity</term>
+<meaning id="fs-id1168329400870">the displacement divided by the time over which displacement occurs under constant acceleration</meaning>
+</definition>""";
+    content_hash "sha256:bcc82506309bf116722c917a7a5c7d396e5f5804a623c7ad78a4b530fed76687";
+}
+
+// m58283 «Instantaneous Velocity and Speed» — fs-id1168329478735
+fragment UP_M58283_AVERAGE_SPEED in M58283_MAIN {
+    kind defn;
+    locator "module/m58283#fs-id1168329478735";
+    text en official """<definition id="fs-id1168329478735">
+<term>average speed</term>
+<meaning id="fs-id1168326838470">the total distance traveled divided by elapsed time</meaning>
+</definition>""";
+    content_hash "sha256:c333a9af34229a95dd0c11994a2bba9abf91e1833578e9a7f5265a8608a85e60";
+}
+
+// m58284 «Average and Instantaneous Acceleration» — fs-id1168328300463
+fragment UP_M58284_AVERAGE_ACCELERATION in M58284_MAIN {
+    kind defn;
+    locator "module/m58284#fs-id1168328300463";
+    text en official """<definition id="fs-id1168328300463">
+<term>average acceleration</term>
+<meaning id="fs-id1168328180604">the rate of change in velocity; the change in velocity over time</meaning>
+</definition>""";
+    content_hash "sha256:05e19a873c16515f124ae09745c19badfe52a6cd9b0f40bb3af3105de12ccecc";
+}
+
+// m58285 «Motion with Constant Acceleration» — fs-id1168326976101
+fragment UP_M58285_KINEMATIC_EQUATIONS in M58285_MAIN {
+    kind section;
+    locator "module/m58285#fs-id1168326976101";
+    text en official """<note id="fs-id1168326976101">
+<title>Summary of Kinematic Equations (constant <emphasis effect="italics">a</emphasis>)</title>
+<equation id="fs-id1168329502284" class="unnumbered"><label/><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:mover><m:mi>v</m:mi><m:mtext>–</m:mtext></m:mover><m:mi>t</m:mi></m:mrow></m:math></equation>
+<equation id="fs-id1168329198282" class="unnumbered"><label/><m:math><m:mrow><m:mover><m:mi>v</m:mi><m:mtext>–</m:mtext></m:mover><m:mo>=</m:mo><m:mfrac><m:mrow><m:msub><m:mi>v</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:mi>v</m:mi></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math></equation>
+<equation id="fs-id1168329511512" class="unnumbered"><label/><m:math><m:mrow><m:mi>v</m:mi><m:mo>=</m:mo><m:msub><m:mi>v</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:mi>a</m:mi><m:mi>t</m:mi></m:mrow></m:math></equation>
+<equation id="fs-id1168326938891" class="unnumbered"><label/><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mi>v</m:mi><m:mn>0</m:mn></m:msub><m:mi>t</m:mi><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mi>a</m:mi><m:msup><m:mi>t</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<equation id="fs-id1168326907357" class="unnumbered"><label/><m:math><m:mrow><m:msup><m:mi>v</m:mi><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:msubsup><m:mi>v</m:mi><m:mn>0</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mn>2</m:mn><m:mi>a</m:mi><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>x</m:mi><m:mo>−</m:mo><m:msub><m:mi>x</m:mi><m:mn>0</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
+</note>""";
+    content_hash "sha256:591e50880b27bcb1a07abe49b95e09becb90009c0bba2892f338e1dc4ee93cf0";
+}
+
+// m58286 «Free Fall» — fs-id1168328329319
+fragment UP_M58286_FREE_FALL in M58286_MAIN {
+    kind defn;
+    locator "module/m58286#fs-id1168328329319";
+    text en official """<definition id="fs-id1168328329319">
+<term>free fall</term>
+<meaning id="fs-id1168328319810">the state of movement that results from gravitational force only</meaning>
+</definition>""";
+    content_hash "sha256:98b58711b88c65c3c877a37b53e6f9a565ba54a3b3b607d6c9ffadaf83a684ec";
+}
+
+// m58286 «Free Fall» — fs-id1168325737439
+fragment UP_M58286_G_VALUE in M58286_MAIN {
+    kind section;
+    locator "module/m58286#fs-id1168325737439";
+    text en official """<equation id="fs-id1168325737439" class="unnumbered"><label/><m:math><m:mrow><m:mi>g</m:mi><m:mo>=</m:mo><m:mn>9.81</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>m/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width="0.5em"/><m:mo stretchy="false">(</m:mo><m:mtext>or</m:mtext><m:mspace width="0.2em"/><m:mn>32.2</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>ft/s</m:mtext><m:mn>2</m:mn></m:msup><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math></equation>""";
+    content_hash "sha256:2d28795dff045f9c8cd937ce683cae70e893366855946512b251d7b81ad1dfc9";
+}
+
+// m58292 «Uniform and Nonuniform Circular Motion» — fs-id1165168910019
+fragment UP_M58292_CENTRIPETAL_ACCELERATION in M58292_MAIN {
+    kind defn;
+    locator "module/m58292#fs-id1165168910019";
+    text en official """<definition id="fs-id1165168910019">
+<term>centripetal acceleration</term>
+<meaning id="fs-id1165168910025">component of acceleration of an object moving in a circle that is directed radially inward toward the center of the circle</meaning>
+</definition>""";
+    content_hash "sha256:b84e86865848ba798366decf5711be381a7ac1734820d3f84c1b7851ae2c07ea";
+}
+
+// m58292 «Uniform and Nonuniform Circular Motion» — fs-id1165168910030
+fragment UP_M58292_TANGENTIAL_ACCELERATION in M58292_MAIN {
+    kind defn;
+    locator "module/m58292#fs-id1165168910030";
+    text en official """<definition id="fs-id1165168910030">
+<term>tangential acceleration</term>
+<meaning id="fs-id1165168910036">magnitude of which is the time rate of change of speed. Its direction is tangent to the circle.</meaning>
+</definition>""";
+    content_hash "sha256:dd65bc56c7217b1eaa14d038db352940dd6c3780c46321396dada8a61ba77190";
+}
+
+// m58293 «Relative Motion in One and Two Dimensions» — fs-id1165039252507
+fragment UP_M58293_REFERENCE_FRAME in M58293_MAIN {
+    kind defn;
+    locator "module/m58293#fs-id1165039252507";
+    text en official """<definition id="fs-id1165039252507">
+<term>reference frame</term>
+<meaning id="fs-id1165039252512">coordinate system in which the position, velocity, and acceleration of an object at rest or moving is measured</meaning>
+</definition>""";
+    content_hash "sha256:4d724f4cad2636be2869c2e10aba7829b6d4681c4385c9b521227f2ebac6bc8d";
+}
+
+// m58293 «Relative Motion in One and Two Dimensions» — fs-id1165039111736
+fragment UP_M58293_TWO_DIMENSIONAL_SPEED in M58293_MAIN {
+    kind section;
+    locator "module/m58293#fs-id1165039111736";
+    text en official """<equation id="fs-id1165039111736" class="unnumbered"><label/><m:math><m:mrow><m:mrow><m:mo>|</m:mo><m:mrow><m:msub><m:mstyle mathvariant="bold" mathsize="normal"><m:mover accent="true"><m:mi>v</m:mi><m:mo stretchy="false">→</m:mo></m:mover></m:mstyle><m:mrow><m:mtext>CT</m:mtext></m:mrow></m:msub></m:mrow><m:mo>|</m:mo></m:mrow><m:mo>=</m:mo><m:msqrt><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>80.0</m:mn><m:mspace width="0.2em"/><m:mrow><m:mrow><m:mtext>km</m:mtext></m:mrow><m:mtext>/</m:mtext><m:mrow><m:msup><m:mrow><m:mtext>h</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mo stretchy="false">(</m:mo></m:mrow></m:mrow><m:mn>70.0</m:mn><m:mspace width="0.2em"/><m:mrow><m:mrow><m:mtext>km</m:mtext></m:mrow><m:mtext>/</m:mtext><m:mrow><m:msup><m:mrow><m:mtext>h</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mrow></m:mrow></m:msqrt><m:mo>=</m:mo><m:mn>106.</m:mn><m:mspace width="0.2em"/><m:mrow><m:mrow><m:mtext>km</m:mtext></m:mrow><m:mtext>/</m:mtext><m:mtext>h</m:mtext></m:mrow></m:mrow></m:math></equation>""";
+    content_hash "sha256:86c02e2a91302cce11f703903f2c22477ceaf49945acc79019f0bba93ab66de9";
+}
+
+// m58293 «Relative Motion in One and Two Dimensions» — fs-id1165039252518
+fragment UP_M58293_RELATIVE_VELOCITY in M58293_MAIN {
+    kind defn;
+    locator "module/m58293#fs-id1165039252518";
+    text en official """<definition id="fs-id1165039252518">
+<term>relative velocity</term>
+<meaning id="fs-id1165039252523">velocity of an object as observed from a particular reference frame, or the velocity of one reference frame with respect to another reference frame</meaning>
+</definition>""";
+    content_hash "sha256:1f58247b5fedf91fbf5e212456a36fe9751153c77c20330829459c954bff7e46";
+}

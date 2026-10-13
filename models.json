@@ -1,0 +1,102 @@
+[
+  {
+    "name": "openstax.measurement",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:measurement",
+    "sourcePath": "corpus/laws/org/openstax/measurement",
+    "path": "packages/openstax.measurement",
+    "dependencies": {
+      "units.si": "0.1.0",
+      "bipm.si_brochure": "0.1.0"
+    },
+    "title": "OpenStax University Physics, т. 1, гл. 1–2: измерение, единицы, размерный анализ, значащие цифры и векторы — первый слой классической физики"
+  },
+  {
+    "name": "openstax.kinematics",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:kinematics",
+    "sourcePath": "corpus/laws/org/openstax/kinematics",
+    "path": "packages/openstax.kinematics",
+    "dependencies": {
+      "units.si": "0.1.0",
+      "bipm.si_brochure": "0.1.0",
+      "openstax.measurement": "0.1.0"
+    },
+    "title": "OpenStax University Physics, т. 1, гл. 3–4: кинематика — перемещение против пути, четыре уравнения равноускоренного движения как проверка расчёта, свободное падение, движение по окружности и относительное движение"
+  },
+  {
+    "name": "openstax.dynamics",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:dynamics",
+    "sourcePath": "corpus/laws/org/openstax/dynamics",
+    "path": "packages/openstax.dynamics",
+    "dependencies": {
+      "units.si": "0.1.0",
+      "bipm.si_brochure": "0.1.0",
+      "openstax.measurement": "0.1.0",
+      "openstax.kinematics": "0.1.0",
+      "la.newton.principia": "0.1.0"
+    },
+    "title": "OpenStax University Physics, т. 1, гл. 5–6: динамика — три закона Ньютона, масса и вес, трение с границей μ_s·N, центростремительная сила; два прочтения второго закона против оригинала Principia"
+  },
+  {
+    "name": "openstax.energy_momentum",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:energy-momentum",
+    "sourcePath": "corpus/laws/org/openstax/energy-momentum",
+    "path": "packages/openstax.energy_momentum",
+    "dependencies": {
+      "units.si": "0.1.0",
+      "bipm.si_brochure": "0.1.0",
+      "openstax.measurement": "0.1.0",
+      "openstax.kinematics": "0.1.0",
+      "openstax.dynamics": "0.1.0"
+    },
+    "title": "OpenStax University Physics, т. 1, гл. 7–9: работа, энергия, импульс — сохранение как утверждение УСЛОВНОЕ; замкнутость системы и консервативность сил как разные условия разных законов"
+  },
+  {
+    "name": "openstax.rotation_equilibrium",
+    "version": "0.1.0",
+    "namespace": "urn:openstax:clir:rotation-equilibrium",
+    "sourcePath": "corpus/laws/org/openstax/rotation-equilibrium",
+    "path": "packages/openstax.rotation_equilibrium",
+    "dependencies": {
+      "units.si": "0.1.0",
+      "bipm.si_brochure": "0.1.0",
+      "openstax.measurement": "0.1.0",
+      "openstax.kinematics": "0.1.0",
+      "openstax.dynamics": "0.1.0",
+      "openstax.energy_momentum": "0.1.0"
+    },
+    "title": "OpenStax University Physics, т. 1, гл. 10–13: вращение, момент импульса, ДВА условия статического равновесия, тяготение и законы Кеплера двумя основаниями — наблюдением Кеплера и выводом Ньютона"
+  },
+  {
+    "name": "units.si",
+    "version": "0.1.0",
+    "namespace": "urn:law:units:si",
+    "sourcePath": "packs/units/si",
+    "path": "packages/units.si",
+    "dependencies": {},
+    "title": "units.si"
+  },
+  {
+    "name": "bipm.si_brochure",
+    "version": "0.1.0",
+    "namespace": "urn:bipm:clir:si-brochure",
+    "sourcePath": "corpus/laws/org/bipm/si-brochure",
+    "path": "packages/bipm.si_brochure",
+    "dependencies": {
+      "units.si": "0.1.0"
+    },
+    "title": "Брошюра SI (BIPM): определяющие константы, базовые и производные единицы, префиксы и внесистемные единицы; переопределение 20.05.2019 как смена редакции"
+  },
+  {
+    "name": "la.newton.principia",
+    "version": "0.1.0",
+    "namespace": "urn:la:newton:clir:principia",
+    "sourcePath": "corpus/laws/doctrine/math/principia-1687",
+    "path": "packages/la.newton.principia",
+    "dependencies": {},
+    "title": "Principia 1687: определения и законы движения Ньютона — аксиоматический каркас как исполняемая система правил"
+  }
+]

@@ -1,0 +1,1068 @@
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+// Сценарии перенесены из прежнего Python-раннера семейства `principia`.
+// Заголовки — прежние ID сценариев (scenario-manifest); ожидания
+// выведены из ПРЕЖНИХ проверок, а не из ответов движка.
+
+test "PRIN-01-AER-DUPLO-DENSIOR-QUADRUPLUS" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": densitas_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_densitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f1": magnitudo_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_spatii) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(quantitas_materiae(entity_ref("urn:case:prin:corpus-a"), 4 pars_materiae));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(quantitas_materiae(entity_ref("urn:case:prin:corpus-a"), 5 pars_materiae));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-02-MOTUS-A-SEX-PARTIUM" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(quantitas_motus(entity_ref("urn:case:prin:corpus-a"), 6 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(quantitas_motus(entity_ref("urn:case:prin:corpus-a"), 5 pars_motus));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-03-VIS-INSITA-PROPORTIONALIS" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(vis_insita(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(vis_insita_exercetur(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-04-VIS-INSITA-EXERCETUR-SUB-ICTU" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f2": ictus_in_corpus(entity_ref("urn:case:prin:corpus-a"), 1 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(vis_insita_exercetur(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-05-VIS-IMPRESSA-EX-PRESSIONE" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": pressio_in_corpus(entity_ref("urn:case:prin:corpus-a"), 2 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(vis_impressa_in(entity_ref("urn:case:prin:corpus-a"), 2 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-06-GRAVITAS-CENTRIPETA-IMPRESSA" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": gravitas_in(entity_ref("urn:case:prin:corpus-a"), 2 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(vis_centripeta_in(entity_ref("urn:case:prin:corpus-a"), 2 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(vis_impressa_in(entity_ref("urn:case:prin:corpus-a"), 2 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-07-VIRTUS-MAGNETICA-MAIOR" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": efficacia_causae_maior(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(quantitas_absoluta_maior(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(quantitas_absoluta_maior(entity_ref("urn:case:prin:corpus-b"), entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-08-VIS-MOTRIX-EX-ACCELERATRICE-DUCTA" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f2": velocitas_genita_dato_tempore(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f3": motus_genitus_dato_tempore(entity_ref("urn:case:prin:corpus-a"), 6 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(vis_motrix_in(entity_ref("urn:case:prin:corpus-a"), 6 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(mensurae_motricis_discrepant(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-09-MENSURAE-DISCREPANT" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f2": velocitas_genita_dato_tempore(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f3": motus_genitus_dato_tempore(entity_ref("urn:case:prin:corpus-a"), 5 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(mensurae_motricis_discrepant(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-10-NAUTA-10001-IN-ORIENTEM" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": movetur_vere_in_ortum(entity_ref("urn:case:prin:terra"), 10010 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f1": fertur_relative_in_occasum_in(entity_ref("urn:case:prin:navis"), entity_ref("urn:case:prin:terra"), 10 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f2": fertur_relative_in_ortum_in(entity_ref("urn:case:prin:nauta"), entity_ref("urn:case:prin:navis"), 1 pars_velocitatis) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(velocitas_vera_in_ortum(entity_ref("urn:case:prin:nauta"), 10001 pars_velocitatis));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(motus_relativus_in_occasum_in(entity_ref("urn:case:prin:nauta"), entity_ref("urn:case:prin:terra"), 9 pars_velocitatis));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(velocitas_vera_in_ortum(entity_ref("urn:case:prin:nauta"), 10000 pars_velocitatis));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-11-QUIES-RELATIVA-PARTICIPAT" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": movetur_vere_in_ortum(entity_ref("urn:case:prin:navis"), 10 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f1": quiescit_relative_in(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:navis")) {
+            origin case_input;
+        }
+
+        assert "assert-f2": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(velocitas_vera_in_ortum(entity_ref("urn:case:prin:corpus-a"), 10 pars_velocitatis));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(quantitas_motus(entity_ref("urn:case:prin:corpus-a"), 30 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-12-VAS-CONATUS-INDICAT" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": conatus_recedendi_ab_axe(entity_ref("urn:case:prin:corpus-a")) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(motus_circularis_verus(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-12-VAS-CONATUS-INDICAT/2" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": vere_quiescit(entity_ref("urn:case:prin:corpus-a")) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(motus_circularis_verus(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-13-LEX1-PERSEVERAT" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": status_corporis_prius(entity_ref("urn:case:prin:corpus-a"), MovendiUniformiter) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(status_corporis_posterius(entity_ref("urn:case:prin:corpus-a"), MovendiUniformiter));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-14-LEX1-COGITUR-EX-ICTU" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": status_corporis_prius(entity_ref("urn:case:prin:corpus-a"), MovendiUniformiter) {
+            origin case_input;
+        }
+
+        assert "assert-f1": ictus_in_corpus(entity_ref("urn:case:prin:corpus-a"), 1 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(status_corporis_posterius(entity_ref("urn:case:prin:corpus-a"), MovendiUniformiter));
+    expect truth_status == FALSE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-15-LEX1-COGITUR-CATENA-GRAVITATIS" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": status_corporis_prius(entity_ref("urn:case:prin:corpus-a"), Quiescendi) {
+            origin case_input;
+        }
+
+        assert "assert-f1": gravitas_in(entity_ref("urn:case:prin:corpus-a"), 1 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(status_corporis_posterius(entity_ref("urn:case:prin:corpus-a"), Quiescendi));
+    expect truth_status == FALSE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-16-LEX2-ADDITUR-TRES" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f2": vis_impressa_conspirans(entity_ref("urn:case:prin:corpus-a"), 3 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(motus_novus(entity_ref("urn:case:prin:corpus-a"), 9 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-17-LEX2-QUIESCET-AMISSO-MOTU" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-b"), 1 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-b"), 10 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f2": vis_impressa_contraria(entity_ref("urn:case:prin:corpus-b"), 10 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(motus_novus(entity_ref("urn:case:prin:corpus-b"), 0 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(motus_novus_in_plagam_contrariam(entity_ref("urn:case:prin:corpus-b"), 0 pars_motus));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-18-LEX2-REGREDIETUR-CUM-UNA-PARTE" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-b"), 1 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-b"), 10 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f2": vis_impressa_contraria(entity_ref("urn:case:prin:corpus-b"), 11 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(motus_novus_in_plagam_contrariam(entity_ref("urn:case:prin:corpus-b"), 1 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(motus_novus(entity_ref("urn:case:prin:corpus-b"), 1 pars_motus));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-19-LEX3-REACTIO-AEQUALIS" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": premit_vel_trahit(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b"), 5 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(reagit_in(entity_ref("urn:case:prin:corpus-b"), entity_ref("urn:case:prin:corpus-a"), 5 pars_motus));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(reagit_in(entity_ref("urn:case:prin:corpus-b"), entity_ref("urn:case:prin:corpus-a"), 4 pars_motus));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-20-LEX3-ACTIONES-INAEQUALES-ASSERTAE" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": premit_vel_trahit(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b"), 5 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f1": premit_vel_trahit(entity_ref("urn:case:prin:corpus-b"), entity_ref("urn:case:prin:corpus-a"), 4 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(actiones_mutuae_inaequales_assertae(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-21-LIBRA-IN-AEQUILIBRIO" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": pondus_suspensum_a_radio(entity_ref("urn:case:prin:corpus-a"), 2 pars_ponderis, 3 pars_distantiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": pondus_suspensum_a_radio(entity_ref("urn:case:prin:corpus-b"), 3 pars_ponderis, 2 pars_distantiae) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(libra_in_aequilibrio(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(pondus_praevalet(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-22-PONDUS-PRAEVALET" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": pondus_suspensum_a_radio(entity_ref("urn:case:prin:corpus-a"), 3 pars_ponderis, 3 pars_distantiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": pondus_suspensum_a_radio(entity_ref("urn:case:prin:corpus-b"), 3 pars_ponderis, 2 pars_distantiae) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(pondus_praevalet(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(libra_in_aequilibrio(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-23-SUMMA-SEXDECIM-MANET" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": congressus_in_eadem_recta(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+
+        assert "assert-f1": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 6 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f2": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-b"), 10 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f3": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 9 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f4": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-b"), 7 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(quantitas_motus_conservata(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(quantitas_motus_mutata_contra_corollarium(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-24-OBVIAM-DETRACTIONE-QUATUORDECIM" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": congressus_in_eadem_recta(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+
+        assert "assert-f1": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 12 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f2": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-b"), 0 pars_motus, 6 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f3": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 0 pars_motus, 2 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f4": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-b"), 8 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(quantitas_motus_conservata(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(actio_et_reactio_aequales(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-25-SUMMA-MUTATA-CONTRA-COROLLARIUM" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": congressus_in_eadem_recta(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+
+        assert "assert-f1": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 6 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f2": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-b"), 10 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f3": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 9 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f4": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-b"), 8 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(quantitas_motus_mutata_contra_corollarium(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(quantitas_motus_conservata(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-26-PENDULUM-NOVEM-DUAE-SEPTEM" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": congressus_in_eadem_recta(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+
+        assert "assert-f1": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 9 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f2": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-b"), 0 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f3": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 2 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f4": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-b"), 7 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(actio_et_reactio_aequales(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(quantitas_motus_conservata(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-27-VELOCITAS-UT-MOTUS-POST-AD-ANTE" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": velocitas_ante_reflexionem(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f1": motus_ante_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 6 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+
+        assert "assert-f2": motus_post_secundum_plagas(entity_ref("urn:case:prin:corpus-a"), 18 pars_motus, 0 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(velocitas_post_reflexionem(entity_ref("urn:case:prin:corpus-a"), 6 pars_velocitatis));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(velocitas_post_reflexionem(entity_ref("urn:case:prin:corpus-a"), 2 pars_velocitatis));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-28-CENTRUM-RECIPROCE-UT-CORPORA" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": corpus_datum_massa(entity_ref("urn:case:prin:corpus-b"), 2 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f2": distantia_a_centro_communi(entity_ref("urn:case:prin:corpus-a"), 2 pars_distantiae) {
+            origin case_input;
+        }
+
+        assert "assert-f3": distantia_a_centro_communi(entity_ref("urn:case:prin:corpus-b"), 3 pars_distantiae) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(centrum_commune_recte_constitutum(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(centrum_commune_male_constitutum(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-29-CENTRUM-MALE-CONSTITUTUM" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": corpus_datum_massa(entity_ref("urn:case:prin:corpus-b"), 2 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f2": distantia_a_centro_communi(entity_ref("urn:case:prin:corpus-a"), 2 pars_distantiae) {
+            origin case_input;
+        }
+
+        assert "assert-f3": distantia_a_centro_communi(entity_ref("urn:case:prin:corpus-b"), 4 pars_distantiae) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(centrum_commune_male_constitutum(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-30-VITREA-QUINDECIM-AD-SEXDECIM" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpora_vitrea(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_relativa_concursus(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b"), 16 pars_velocitatis) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(velocitas_relativa_reditus(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b"), 15 pars_velocitatis));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(velocitas_relativa_reditus(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b"), 16 pars_velocitatis));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-31-MAGNES-ET-FERRUM-AEQUALITER" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": trahunt_se_mutuo(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+
+        assert "assert-f1": fluitant_iuxta_quiescentia(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(attractio_mutua_aequalis(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-31-MAGNES-ET-FERRUM-AEQUALITER/2" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": trahunt_se_mutuo(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(attractio_mutua_aequalis(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-32-AGENS-SUSTINET" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": vis_et_velocitas_agentis(entity_ref("urn:case:prin:corpus-a"), 2 pars_virium, 3 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f1": vis_et_velocitas_resistentis(entity_ref("urn:case:prin:corpus-a"), 3 pars_virium, 2 pars_velocitatis) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(agens_sustinet_resistentiam(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(agens_vincit_resistentiam(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-33-AGENS-VINCIT" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": vis_et_velocitas_agentis(entity_ref("urn:case:prin:corpus-a"), 3 pars_virium, 3 pars_velocitatis) {
+            origin case_input;
+        }
+
+        assert "assert-f1": vis_et_velocitas_resistentis(entity_ref("urn:case:prin:corpus-a"), 3 pars_virium, 2 pars_velocitatis) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(agens_vincit_resistentiam(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(agens_sustinet_resistentiam(entity_ref("urn:case:prin:corpus-a")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-34-DESCENSUS-DUPLICATA-RATIONE" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": descensus_gravis(entity_ref("urn:case:prin:corpus-a"), 1 pars_temporis, 1 pars_distantiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": descensus_gravis(entity_ref("urn:case:prin:corpus-b"), 2 pars_temporis, 4 pars_distantiae) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(descensus_in_duplicata_ratione(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+
+    evaluate truth(descensus_discrepat_a_duplicata_ratione(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == NEITHER;
+    expect issues_within(info);
+}
+
+test "PRIN-35-DESCENSUS-DISCREPAT" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": descensus_gravis(entity_ref("urn:case:prin:corpus-a"), 1 pars_temporis, 1 pars_distantiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": descensus_gravis(entity_ref("urn:case:prin:corpus-b"), 2 pars_temporis, 3 pars_distantiae) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(descensus_discrepat_a_duplicata_ratione(entity_ref("urn:case:prin:corpus-a"), entity_ref("urn:case:prin:corpus-b")));
+    expect truth_status == TRUE_ONLY;
+    expect issues_within(info);
+}
+
+test "PRIN-36-UNITAS-ALIENA-CLAMAT" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+
+        assert "assert-f0": corpus_datum_massa(entity_ref("urn:case:prin:corpus-a"), 3 pars_materiae) {
+            origin case_input;
+        }
+
+        assert "assert-f1": velocitas_corporis(entity_ref("urn:case:prin:corpus-a"), 2 pars_motus) {
+            origin case_input;
+        }
+    }
+
+    evaluate truth(quantitas_motus(entity_ref("urn:case:prin:corpus-a"), 6 pars_motus));
+    expect truth_status == NEITHER;
+    expect issue(TYPE_ERROR);
+}
+
+test "PRIN-37-PROJECTILIA-RETARDANTUR" {
+    given {
+        context {
+            decision_time @2026-08-26T12:00:00+05:00;
+            knowledge_time @2026-08-26T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+    }
+
+    evaluate truth(status_corporis_posterius(ProjectileExemplum, MovendiUniformiter));
+    expect truth_status == FALSE_ONLY;
+    expect issues_within(info);
+}

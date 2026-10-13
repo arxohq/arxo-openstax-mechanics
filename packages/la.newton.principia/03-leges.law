@@ -1,0 +1,157 @@
+// Единицы 10–12: Axiomata, sive Leges Motus.
+//
+// LEX I — ПРЕЗУМПЦИЯ С БАРЬЕРОМ (канон поражаемого слоя): состояние тела
+// предполагается сохраняющимся, ПОКА приложенные силы не принудят его
+// перемениться («nisi quatenus a viribus impressis cogitur statum illum
+// mutare»). Производители барьера cogitur_statum_mutare — ТОЛЬКО строгие
+// правила (страта презумпции не дрейфует); сам барьер собирает всю цепь
+// определений: удар, давление, тяжесть → центростремительная → приложенная
+// (Def. IV–V) плюс названные законом примеры — сопротивление воздуха.
+//
+// LEX II — АРИФМЕТИКА «ЧАСТЕЙ» ПО БУКВЕ ТЕКСТА: порождённое движение
+// «motui ejus vel conspiranti additur, vel contrario subducitur» —
+// сонаправленной силе правило прибавления, противоположной — вычитания;
+// случай силы, превосходящей движение (тело обращается вспять), взят из
+// числового опыта схолии («fiet motus duarum partium in plagam contrariam»,
+// ед. 19). Косая композиция («vel obliquo oblique adjicitur») — геометрия
+// направлений, объявленная граница пакета (00-package.law).
+//
+// LEX III — ПРАВИЛО РЕАКЦИИ И ГРОМКИЙ СТОРОЖ: давлению всякого тела на
+// другое отвечает равное противонаправленное; дело, утверждающее ОБА
+// действия неравными, объявляется противоречием закону, а не проглатывается.
+
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+use self::{
+    Corpus,
+    PRIN_10,
+    PRIN_11,
+    PRIN_12,
+    PRIN_19,
+    PRIN_4,
+    StatusCorporis,
+    UnaParsMotus,
+    pressio_in_corpus,
+    quantitas_motus,
+    vis_impressa_in,
+};
+
+// --- Lex. I: перевес и барьер -------------------------------------------------
+
+relation status_corporis_prius(c: Corpus, s: StatusCorporis) kind empirical {
+    label ru unofficial "дано: состояние тела прежде — покой либо равномерное прямолинейное движение (Lex. I)";
+}
+relation status_corporis_posterius(c: Corpus, s: StatusCorporis) kind institutional {
+    label ru unofficial "состояние тела после: сохранено законом I либо переменено приложенной силой";
+}
+pub relation cogitur_statum_mutare(c: Corpus) kind institutional {
+    label ru unofficial "тело принуждено приложенными силами переменить состояние — барьер презумпции закона I";
+}
+relation resistentia_aeris_in(c: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: сопротивление воздуха телу — названный законом I пример приложенной силы («a resistentia aeris retardantur»)";
+}
+
+@source(PRIN_10)
+rule CogiturAViribusImpressis(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Lex. I. Приложенная сила принуждает тело переменить состояние";
+    when vis_impressa_in(c, f);
+    then cogitur_statum_mutare(c);
+}
+
+// Сопротивление воздуха — давление среды: мост к Def. IV.
+@source(PRIN_10, PRIN_4)
+rule ResistentiaAerisEstPressio(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Lex. I → Def. IV. Сопротивление воздуха, замедляющее снаряды, есть давление на тело";
+    when resistentia_aeris_in(c, f);
+    then pressio_in_corpus(c, f);
+}
+
+@source(PRIN_10)
+presumption PerseverantiaInStatuSuo(c: Corpus, s: StatusCorporis) {
+    label la official "Corpus omne perseverare in statu suo quiescendi vel movendi uniformiter in directum, nisi quatenus a viribus impressis cogitur statum illum mutare";
+    label ru unofficial "Lex. I. Всякое тело пребывает в своём состоянии покоя или равномерного прямолинейного движения, пока приложенные силы не принудят его переменить это состояние";
+    when status_corporis_prius(c, s);
+    presume status_corporis_posterius(c, s);
+    unless status_corporis_prius(c, s) and cogitur_statum_mutare(c)
+    then not status_corporis_posterius(c, s);
+}
+
+// --- Lex. II: перемена движения -----------------------------------------------
+
+pub relation vis_impressa_conspirans(c: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: движущая сила, приложенная сонаправленно движению тела, в частях движения (Lex. II: «conspiranti»)";
+}
+pub relation vis_impressa_contraria(c: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: движущая сила, приложенная противоположно движению тела, в частях движения (Lex. II: «contrario»)";
+}
+pub relation motus_novus(c: Corpus, p: Quantity) kind institutional {
+    label ru unofficial "новое количество движения (импульс) тела в прежнюю сторону — изменение движения силой по закону II";
+}
+pub relation motus_novus_in_plagam_contrariam(c: Corpus, p: Quantity) kind institutional {
+    label ru unofficial "новое количество движения тела в противоположную сторону — сила превзошла прежнее движение (ед. 19: «fiet motus … in plagam contrariam»)";
+}
+
+// Сонаправленная и противоположная силы — тоже приложенные: барьер закона I
+// и проявление vis insitæ слышат их через этот мост.
+@source(PRIN_11, PRIN_4)
+rule VisConspiransEstImpressa(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Lex. II → Def. IV. Сонаправленная движущая сила — приложенная сила";
+    when vis_impressa_conspirans(c, f);
+    then vis_impressa_in(c, f);
+}
+@source(PRIN_11, PRIN_4)
+rule VisContrariaEstImpressa(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Lex. II → Def. IV. Противоположная движущая сила — приложенная сила";
+    when vis_impressa_contraria(c, f);
+    then vis_impressa_in(c, f);
+}
+
+@source(PRIN_11)
+rule MotuiConspirantiAdditur(c: Corpus, p: Quantity, f: Quantity) strict {
+    label ru unofficial "Lex. II. Перемена движения пропорциональна приложенной движущей силе: сонаправленному движению порождённое прибавляется";
+    when quantitas_motus(c, p) and vis_impressa_conspirans(c, f);
+    then motus_novus(c, with_unit((p / UnaParsMotus) + (f / UnaParsMotus), "pars_motus"));
+}
+
+@source(PRIN_11)
+rule MotuiContrarioSubducitur(c: Corpus, p: Quantity, f: Quantity) strict {
+    label ru unofficial "Lex. II. Противоположному движению порождённое вычитается — пока сила не превосходит движения";
+    when quantitas_motus(c, p) and vis_impressa_contraria(c, f) and (p >= f);
+    then motus_novus(c, with_unit((p / UnaParsMotus) - (f / UnaParsMotus), "pars_motus"));
+}
+
+@source(PRIN_11, PRIN_19)
+rule MotusVertiturInPlagamContrariam(c: Corpus, p: Quantity, f: Quantity) strict {
+    label ru unofficial "Lex. II и ед. 19. Сила, превосходящая прежнее движение, обращает тело вспять с остатком частей: «subducantur aliæ partes duæ & fiet motus duarum partium in plagam contrariam»";
+    when quantitas_motus(c, p) and vis_impressa_contraria(c, f) and (f > p);
+    then motus_novus_in_plagam_contrariam(c, with_unit((f / UnaParsMotus) - (p / UnaParsMotus), "pars_motus"));
+}
+
+// --- Lex. III: действие и противодействие -------------------------------------
+
+relation premit_vel_trahit(a: Corpus, b: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: тело a давит на тело b или тянет его с данной мерой действия, в частях движения (Lex. III: «Quicquid premit vel trahit alterum»)";
+}
+pub relation reagit_in(b: Corpus, a: Corpus, f: Quantity) kind institutional {
+    label ru unofficial "тело b противодействует телу a равной мерой в противоположную сторону — по закону III";
+}
+relation actiones_mutuae_inaequales_assertae(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "дело утверждает взаимные действия двух тел неравными — противоречие закону III, объявленное громко";
+}
+
+@source(PRIN_12)
+rule ReactioContrariaEtAequalis(a: Corpus, b: Corpus, f: Quantity) strict {
+    label la official "Actioni contrariam semper & æqualem esse reactionem";
+    label ru unofficial "Lex. III. Действию всегда противоположно и равно противодействие: что давит или тянет другое, тем же давится или тянется";
+    when premit_vel_trahit(a, b, f);
+    then reagit_in(b, a, f);
+}
+
+@source(PRIN_12)
+rule ActionesMutuaeAequalesSunt(a: Corpus, b: Corpus, f: Quantity, g: Quantity) strict {
+    label ru unofficial "Lex. III. Сторож: взаимные действия двух тел, заявленные делом с разными мерами, объявляются противоречием закону — «corporum duorum actiones in se mutuo semper esse æquales»";
+    when premit_vel_trahit(a, b, f) and premit_vel_trahit(b, a, g) and (f != g);
+    then actiones_mutuae_inaequales_assertae(a, b);
+}

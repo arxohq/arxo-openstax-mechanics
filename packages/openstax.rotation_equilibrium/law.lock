@@ -1,0 +1,256 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "bipm.si_brochure",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "units.si"
+    },
+    {
+      "features": [],
+      "from": "openstax.dynamics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "bipm.si_brochure"
+    },
+    {
+      "features": [],
+      "from": "openstax.dynamics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "la.newton.principia"
+    },
+    {
+      "features": [],
+      "from": "openstax.dynamics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.kinematics"
+    },
+    {
+      "features": [],
+      "from": "openstax.dynamics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.measurement"
+    },
+    {
+      "features": [],
+      "from": "openstax.dynamics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "units.si"
+    },
+    {
+      "features": [],
+      "from": "openstax.energy_momentum",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "bipm.si_brochure"
+    },
+    {
+      "features": [],
+      "from": "openstax.energy_momentum",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.dynamics"
+    },
+    {
+      "features": [],
+      "from": "openstax.energy_momentum",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.kinematics"
+    },
+    {
+      "features": [],
+      "from": "openstax.energy_momentum",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.measurement"
+    },
+    {
+      "features": [],
+      "from": "openstax.energy_momentum",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "units.si"
+    },
+    {
+      "features": [],
+      "from": "openstax.kinematics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "bipm.si_brochure"
+    },
+    {
+      "features": [],
+      "from": "openstax.kinematics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.measurement"
+    },
+    {
+      "features": [],
+      "from": "openstax.kinematics",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "units.si"
+    },
+    {
+      "features": [],
+      "from": "openstax.measurement",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "bipm.si_brochure"
+    },
+    {
+      "features": [],
+      "from": "openstax.measurement",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "units.si"
+    },
+    {
+      "features": [],
+      "from": "openstax.rotation_equilibrium",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "bipm.si_brochure"
+    },
+    {
+      "features": [],
+      "from": "openstax.rotation_equilibrium",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.dynamics"
+    },
+    {
+      "features": [],
+      "from": "openstax.rotation_equilibrium",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.energy_momentum"
+    },
+    {
+      "features": [],
+      "from": "openstax.rotation_equilibrium",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.kinematics"
+    },
+    {
+      "features": [],
+      "from": "openstax.rotation_equilibrium",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "openstax.measurement"
+    },
+    {
+      "features": [],
+      "from": "openstax.rotation_equilibrium",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "units.si"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [
+    {
+      "artifactHash": "sha256:7f72e6b76f0ef32064341daf2fbf59edf21ee9b4c181feed02c416a6b7cf22d1",
+      "features": [
+        "core-executable"
+      ],
+      "name": "bipm.si_brochure",
+      "namespace": "urn:bipm:clir:si-brochure",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/bipm.si_brochure/0.1.0",
+      "sourceHash": "sha256:ce9a0ddc9bd189412576776d2cec543982e6c1f2dbc8c3aa0e427196bcb9372b",
+      "version": "0.1.0"
+    },
+    {
+      "artifactHash": "sha256:1fc6faeb979808b908b7dac7be37d9ab0601443dbbb1c5544f023362d39048d2",
+      "features": [
+        "core-executable"
+      ],
+      "name": "la.newton.principia",
+      "namespace": "urn:la:newton:clir:principia",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/la.newton.principia/0.1.0",
+      "sourceHash": "sha256:a6a701baaf6afae891ebf1e0d747f975b7e652b9166762dfa30b3bb1e16c0da4",
+      "version": "0.1.0"
+    },
+    {
+      "artifactHash": "sha256:4ff0b65673da2797806bb7d21213b72928921605d2e7520808e63e49d5fde43b",
+      "features": [
+        "core-executable"
+      ],
+      "name": "openstax.dynamics",
+      "namespace": "urn:openstax:clir:dynamics",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/openstax.dynamics/0.1.0",
+      "sourceHash": "sha256:d7eca0ef15971e9cfa82671eb11f33e77ec6c196e3e9b248ab0a6859211f6ac4",
+      "version": "0.1.0"
+    },
+    {
+      "artifactHash": "sha256:eed62633709039c435ef692b00fae8f6782dd846d88b0950a689bf25306907c3",
+      "features": [
+        "core-executable"
+      ],
+      "name": "openstax.energy_momentum",
+      "namespace": "urn:openstax:clir:energy-momentum",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/openstax.energy_momentum/0.1.0",
+      "sourceHash": "sha256:58564dcae2071e30a971ecea871f6aa6a1432a151e01ba455c22e20ceaddf92a",
+      "version": "0.1.0"
+    },
+    {
+      "artifactHash": "sha256:af8baff8604b7d65024d82dc08661cbdf193f0925d300aaf9adf4c5072806781",
+      "features": [
+        "core-executable"
+      ],
+      "name": "openstax.kinematics",
+      "namespace": "urn:openstax:clir:kinematics",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/openstax.kinematics/0.1.0",
+      "sourceHash": "sha256:3b5324811af02fcdbdcb1796e78d436181304ceed0ad44f67affe14a40e5bf49",
+      "version": "0.1.0"
+    },
+    {
+      "artifactHash": "sha256:a4a39de269d88faae789e910b6b51a8b0859de278b3b3cedb88df870525afffd",
+      "features": [
+        "core-executable"
+      ],
+      "name": "openstax.measurement",
+      "namespace": "urn:openstax:clir:measurement",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/openstax.measurement/0.1.0",
+      "sourceHash": "sha256:086d2ab1cc9ef20bb2f89c081a527f383f75bea0c7f8574afa8308906dcea468",
+      "version": "0.1.0"
+    },
+    {
+      "artifactHash": "sha256:66c0e7b54e87269674eb01b97eb54b5d7570427424a5edf2066f7deffc34a601",
+      "features": [
+        "core-executable"
+      ],
+      "name": "units.si",
+      "namespace": "urn:law:units:si",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/units.si/0.1.0",
+      "sourceHash": "sha256:8c1171418932715c7d39a5d9c75454c1bfa6abf5ba17cfe7a9363a7ce7fe25ec",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:d7d9b374463ddef3404bde1cada08808683c3cc871b1b9c7f340f601fa36bc28",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:e9a9b9108f552558fe472a920962d8a3c1a6317379ca67ab5f396ed8d3c92a64",
+    "name": "openstax.rotation_equilibrium",
+    "namespace": "urn:openstax:clir:rotation-equilibrium",
+    "sourceHash": "sha256:3e240bf5ecd7003885f8c02e629935bc3c034cec3aacc539cb2705718a1be459",
+    "version": "0.1.0"
+  },
+  "semanticLayer": "L1"
+}

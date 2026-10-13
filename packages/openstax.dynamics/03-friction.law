@@ -1,0 +1,121 @@
+// §6.2 «Friction»: трение покоя с ГРАНИЦЕЙ и трение скольжения.
+//
+// ДВЕ ФОРМУЛЫ, И РАЗЛИЧАЕТ ИХ ЗНАК ОТНОШЕНИЯ, А НЕ ЧИСЛО. §6.2 даёт
+// «f_s ≤ μ_s·N» и «f_k = μ_k·N» — у покоя НЕРАВЕНСТВО, у скольжения
+// РАВЕНСТВО, и это не небрежность источника. Трение покоя есть реакция: оно
+// ровно таково, чтобы удержать тело, и растёт вместе с приложенной силой —
+// но не выше μ_s·N. Достигнув границы, тело срывается, и дальше действует
+// уже другая формула. Пакет держит обе стороны этой границы выводами:
+// ниже максимума — покой сохраняется, выше — опровергается, и ответ на
+// «удержится ли» бывает FALSE_ONLY, а не только «не установлено».
+//
+// КОЭФФИЦИЕНТ ПРИНАДЛЕЖИТ ПАРЕ ПОВЕРХНОСТЕЙ. Отсюда сущность `Contact`:
+// «дерево по дереву» и «дерево по льду» — разные контакты одного тела, и
+// приписать μ телу значило бы утверждать, что оно скользит одинаково по
+// всему. Значение μ дело предъявляет: §6.2 даёт таблицу типичных значений и
+// прямо называет их приблизительными.
+//
+// КОЭФФИЦИЕНТ БЕЗРАЗМЕРЕН, И ЭТО ПРОВЕРЯЕТСЯ. f и N — обе силы; их отношение
+// безразмерно по построению (E-0068), поэтому μ объявлен `Decimal`, а не
+// величиной. Подай дело μ с единицей — тип не сойдётся статически.
+
+language "law.core" version "0.2";
+package openstax.dynamics version "0.1.0";
+namespace "urn:openstax:clir:dynamics";
+
+use self::{
+    Contact,
+    System,
+    UP_M58304_FRICTION,
+    UP_M58304_KINETIC_FRICTION,
+    UP_M58304_STATIC_FRICTION,
+};
+
+@source(UP_M58304_FRICTION)
+relation contact_of(s: System, k: Contact) kind empirical {
+    label en official "§6.2: the system rests on or slides along the presented contact of surfaces";
+    label ru unofficial "§6.2: система покоится на предъявленном контакте поверхностей или скользит по нему";
+}
+
+@source(UP_M58304_FRICTION)
+relation normal_force(k: Contact, n: Quantity) kind empirical {
+    label en official "§6.2: the normal force N pressing the two surfaces together";
+    label ru unofficial "§6.2: сила нормального давления N, прижимающая поверхности друг к другу";
+}
+
+@source(UP_M58304_STATIC_FRICTION)
+relation static_coefficient(k: Contact, mu: Decimal) kind empirical {
+    label en official "§6.2: μ_s, the coefficient of static friction of this pair of surfaces — dimensionless, since it is a ratio of two forces";
+    label ru unofficial "§6.2: μ_s — коэффициент трения покоя этой пары поверхностей; безразмерен, ибо есть отношение двух сил";
+}
+
+@source(UP_M58304_KINETIC_FRICTION)
+relation kinetic_coefficient(k: Contact, mu: Decimal) kind empirical {
+    label en official "§6.2: μ_k, the coefficient of kinetic friction of this pair of surfaces";
+    label ru unofficial "§6.2: μ_k — коэффициент трения скольжения этой пары поверхностей";
+}
+
+@source(UP_M58304_STATIC_FRICTION)
+relation applied_parallel_force(s: System, f: Quantity) kind empirical {
+    label en official "§6.2: the force applied parallel to the surfaces, which friction opposes";
+    label ru unofficial "§6.2: сила, приложенная вдоль поверхностей, которой противодействует трение";
+}
+
+// --- Граница трения покоя ---------------------------------------------------------
+
+relation maximum_static_friction(k: Contact, f: Quantity) kind institutional {
+    label en official "§6.2: μ_s·N — the greatest force static friction can supply before the surfaces begin to slide";
+    label ru unofficial "§6.2: μ_s·N — наибольшая сила, которую способно дать трение покоя, прежде чем поверхности начнут скользить";
+}
+
+@source(UP_M58304_STATIC_FRICTION)
+rule MaximumStaticFrictionIsCoefficientTimesNormal(k: Contact, n: Quantity, mu: Decimal) strict {
+    label en official "§6.2: the magnitude of static friction is f_s ≤ μ_s·N, so its maximum is μ_s·N";
+    label ru unofficial "§6.2: модуль трения покоя есть f_s ≤ μ_s·N, поэтому его максимум равен μ_s·N";
+    when normal_force(k, n) and static_coefficient(k, mu);
+    then maximum_static_friction(k, quantity_of(mu * unit_convert(magnitude(n), "N"), "N"));
+}
+
+relation stays_at_rest(s: System) kind institutional {
+    label en official "§6.2: static friction is able to balance the applied force, and the system does not slide";
+    label ru unofficial "§6.2: трение покоя уравновешивает приложенную силу, и система не скользит";
+}
+
+// НИЖЕ ГРАНИЦЫ: трение покоя справляется.
+@source(UP_M58304_STATIC_FRICTION)
+rule BelowMaximumStaysAtRest(s: System, k: Contact, f: Quantity, fmax: Quantity) strict {
+    label en official "§6.2: an applied force not exceeding μ_s·N is balanced by static friction, and the system stays at rest";
+    label ru unofficial "§6.2: приложенная сила, не превышающая μ_s·N, уравновешивается трением покоя, и система остаётся в покое";
+    when contact_of(s, k)
+        and applied_parallel_force(s, f)
+        and maximum_static_friction(k, fmax)
+        and f <= fmax;
+    then stays_at_rest(s);
+}
+
+// ВЫШЕ ГРАНИЦЫ: срыв. Покой ОПРОВЕРГНУТ — FALSE_ONLY.
+@source(UP_M58304_STATIC_FRICTION)
+rule AboveMaximumBreaksLoose(s: System, k: Contact, f: Quantity, fmax: Quantity) strict {
+    label en official "§6.2: an applied force exceeding μ_s·N cannot be balanced by static friction — the system slides";
+    label ru unofficial "§6.2: приложенная сила, превышающая μ_s·N, не может быть уравновешена трением покоя — система срывается";
+    when contact_of(s, k)
+        and applied_parallel_force(s, f)
+        and maximum_static_friction(k, fmax)
+        and f > fmax;
+    then not stays_at_rest(s);
+}
+
+// --- Трение скольжения: равенство, а не неравенство ---------------------------------
+
+relation kinetic_friction_force(k: Contact, f: Quantity) kind institutional {
+    label en official "§6.2: f_k = μ_k·N — the magnitude of kinetic friction, which does not depend on the applied force";
+    label ru unofficial "§6.2: f_k = μ_k·N — модуль трения скольжения, не зависящий от приложенной силы";
+}
+
+@source(UP_M58304_KINETIC_FRICTION)
+rule KineticFrictionIsCoefficientTimesNormal(k: Contact, n: Quantity, mu: Decimal) strict {
+    label en official "§6.2: the magnitude of kinetic friction is f_k = μ_k·N";
+    label ru unofficial "§6.2: модуль трения скольжения равен f_k = μ_k·N";
+    when normal_force(k, n) and kinetic_coefficient(k, mu);
+    then kinetic_friction_force(k, quantity_of(mu * unit_convert(magnitude(n), "N"), "N"));
+}

@@ -1,0 +1,42 @@
+[package]
+name = "openstax.rotation_equilibrium"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:openstax:clir:rotation-equilibrium"
+
+[dependencies]
+"units.si" = "0.1.0"
+"bipm.si_brochure" = "0.1.0"
+"openstax.measurement" = "0.1.0"
+"openstax.kinematics" = "0.1.0"
+"openstax.dynamics" = "0.1.0"
+"openstax.energy_momentum" = "0.1.0"
+
+[features]
+enabled = ["law.units/0.1"]
+semanticLayer = "L1"
+
+# Каталожная метадата (DECISION-0051; docs/PACKAGE-METADATA.ru.md).
+[metadata]
+act = "openstax-rotation-equilibrium"
+title = "OpenStax University Physics, т. 1, гл. 10–13: вращение, момент импульса, ДВА условия статического равновесия, тяготение и законы Кеплера двумя основаниями — наблюдением Кеплера и выводом Ньютона"
+primarySource = "M58350"
+jurisdiction = "none"
+instrument = "treatise"
+sourceFidelity = "pinned_official_bytes"
+issuer = "OpenStax, Rice University — University Physics Volume 1 (osbooks-university-physics-bundle, commit d0ed34a)"
+legalStatus = "doctrine"
+verifiedAgainstSource = true
+# Лицензия CC BY-NC-SA 4.0 — см. шапку sources.law.
+
+[[tests]]
+family = "openstax_rotation_equilibrium"
+suites = [
+  "tests/01-rotation-and-equilibrium.lawtest",
+  "tests/02-kepler-two-grounds.lawtest",
+  "tests/03-torque-ialpha-regression.lawtest",
+]
+world = ["openstax.rotation_equilibrium", "openstax.energy_momentum", "openstax.dynamics", "openstax.kinematics", "openstax.measurement", "la.newton.principia", "bipm.si_brochure", "units.si"]
+
+[authoring]
+local_imports = "explicit"

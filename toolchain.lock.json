@@ -1,0 +1,13 @@
+{
+  "format": "arxo.openstax-mechanics-runtime-pin/1",
+  "installation": "npm install -g @arxo/cli@0.2.4",
+  "tool": "0.2.4",
+  "semantics": "law.core/0.2.11",
+  "node": ">=20",
+  "targets": [
+    "darwin-arm64",
+    "linux-x64"
+  ],
+  "corpusRuntime": "UNPINNED relative to unpublished corpus runtime.lock; published npm CLI explicitly selected",
+  "releaseVerified": false
+}

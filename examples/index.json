@@ -1,0 +1,351 @@
+[
+  {
+    "name": "dimensions-match",
+    "spec": "openstax.measurement@0.1.0",
+    "sourceSuite": "packages/openstax.measurement/tests/01-dimensional-consistency.lawtest",
+    "sourceTest": "urn:query:meas-t01a-consistent-equation",
+    "offset": 0,
+    "expectations": [
+      {
+        "field": "result_kind",
+        "op": "eq",
+        "value": "PROPOSITION"
+      },
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:measurement#EquationConsistentWhenNoTermDiffers"
+      }
+    ],
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:00a8a72ba7f097e15063ea910cfb53049615df2aa9527af3e4af01b2e9d0f035"
+  },
+  {
+    "name": "dimensions-differ",
+    "spec": "openstax.measurement@0.1.0",
+    "sourceSuite": "packages/openstax.measurement/tests/01-dimensional-consistency.lawtest",
+    "sourceTest": "urn:query:meas-t01b-inconsistent-equation",
+    "offset": 1,
+    "expectations": [
+      {
+        "field": "result_kind",
+        "op": "eq",
+        "value": "PROPOSITION"
+      },
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "FALSE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:measurement#EquationInconsistentWhenTermDiffers"
+      }
+    ],
+    "truth": "FALSE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:2c9c25a6fd978f5e0862e04d9bca19ce322623978241a99c399fd3316ae0de58"
+  },
+  {
+    "name": "velocity-confirmed",
+    "spec": "openstax.kinematics@0.1.0",
+    "sourceSuite": "packages/openstax.kinematics/tests/02-constant-acceleration.lawtest",
+    "sourceTest": "urn:query:kin-t02a-rocket-final-velocity",
+    "offset": 0,
+    "expectations": [
+      {
+        "field": "result_kind",
+        "op": "eq",
+        "value": "PROPOSITION"
+      },
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:kinematics#ClaimedFinalVelocityAgrees"
+      }
+    ],
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:9acb23d90eb11dbd6e8c2b19747f4a7680376329980657fa4508c5b9f270b416"
+  },
+  {
+    "name": "velocity-refuted",
+    "spec": "openstax.kinematics@0.1.0",
+    "sourceSuite": "packages/openstax.kinematics/tests/02-constant-acceleration.lawtest",
+    "sourceTest": "urn:query:kin-t02b-rocket-wrong-answer-refuted",
+    "offset": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "FALSE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:kinematics#ClaimedFinalVelocityRefuted"
+      }
+    ],
+    "truth": "FALSE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:6332e39a5d565da3ff470d444a7c695941259b60561cb7269c2388fd6d96d2df"
+  },
+  {
+    "name": "friction-at-limit",
+    "spec": "openstax.dynamics@0.1.0",
+    "sourceSuite": "packages/openstax.dynamics/tests/03-friction-boundary.lawtest",
+    "sourceTest": "urn:query:dyn-t03c-exactly-at-the-maximum",
+    "offset": 2,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:dynamics#BelowMaximumStaysAtRest"
+      }
+    ],
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:ae3863d7238353f2e135bdc88454b582dc4ca50f6b8d4510448f36bcc12439ef"
+  },
+  {
+    "name": "friction-above-limit",
+    "spec": "openstax.dynamics@0.1.0",
+    "sourceSuite": "packages/openstax.dynamics/tests/03-friction-boundary.lawtest",
+    "sourceTest": "urn:query:dyn-t03d-above-the-maximum-breaks-loose",
+    "offset": 3,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "FALSE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:dynamics#AboveMaximumBreaksLoose"
+      }
+    ],
+    "truth": "FALSE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:b1461646a6b73351462caddf9e963359d9fda9e3781a47b41d6a55c1e37a9afd"
+  },
+  {
+    "name": "closed-system",
+    "spec": "openstax.energy_momentum@0.1.0",
+    "sourceSuite": "packages/openstax.energy_momentum/tests/02-conservation.lawtest",
+    "sourceTest": "urn:query:em-t02a-closed-system-conserves-momentum",
+    "offset": 0,
+    "expectations": [
+      {
+        "field": "result_kind",
+        "op": "eq",
+        "value": "PROPOSITION"
+      },
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:energy-momentum#ClosedSystemConservesMomentum"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:energy-momentum#DeclaredClosedIsClosed"
+      }
+    ],
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:01558f19d2aeb4c7e199150678892d80afba4d8b1ace0c251d07d5e9cf0305ce"
+  },
+  {
+    "name": "open-system",
+    "spec": "openstax.energy_momentum@0.1.0",
+    "sourceSuite": "packages/openstax.energy_momentum/tests/02-conservation.lawtest",
+    "sourceTest": "urn:query:em-t02c-open-system-has-no-conservation-law",
+    "offset": 2,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:energy-momentum#OpenSystemHasNoConservationLaw"
+      }
+    ],
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:045c399c9f7ca2aaf86a644f7a1db906eeb75a8316761ef14d9d0189bdf877f1"
+  },
+  {
+    "name": "before-erratum",
+    "spec": "openstax.energy_momentum@0.1.0",
+    "sourceSuite": "packages/openstax.energy_momentum/tests/03-editions.lawtest",
+    "sourceTest": "urn:query:em-t03a-before-errata-moving-together-is-not-enough",
+    "offset": 0,
+    "expectations": [
+      {
+        "field": "result_kind",
+        "op": "eq",
+        "value": "PROPOSITION"
+      },
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "NEITHER"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      }
+    ],
+    "truth": "NEITHER",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:e6ee55ed06a8c74add71dff6dee9958f0ea50f20dfe96e6698155b0acbddccc0"
+  },
+  {
+    "name": "after-erratum",
+    "spec": "openstax.energy_momentum@0.1.0",
+    "sourceSuite": "packages/openstax.energy_momentum/tests/03-editions.lawtest",
+    "sourceTest": "urn:query:em-t03b-after-errata-moving-together-suffices",
+    "offset": 1,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:energy-momentum#MovingTogetherIsPerfectlyInelastic"
+      }
+    ],
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:04f4260219da0843c8309c5f38e255b6c731bc7258b1f8c39b22d267731752f5"
+  },
+  {
+    "name": "equilibrium",
+    "spec": "openstax.rotation_equilibrium@0.1.0",
+    "sourceSuite": "packages/openstax.rotation_equilibrium/tests/01-rotation-and-equilibrium.lawtest",
+    "sourceTest": "urn:query:rot-t01e-static-equilibrium",
+    "offset": 4,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "TRUE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:rotation-equilibrium#BothConditionsGiveEquilibrium"
+      }
+    ],
+    "truth": "TRUE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:f8281b6d5f35d8496dc6305bc1fa9d4d8123c596ac5898b3609d16f1ca2b395e"
+  },
+  {
+    "name": "force-balance-alone",
+    "spec": "openstax.rotation_equilibrium@0.1.0",
+    "sourceSuite": "packages/openstax.rotation_equilibrium/tests/01-rotation-and-equilibrium.lawtest",
+    "sourceTest": "urn:query:rot-t01f-first-condition-alone-is-not-enough",
+    "offset": 5,
+    "expectations": [
+      {
+        "field": "truth_status",
+        "op": "eq",
+        "value": "FALSE_ONLY"
+      },
+      {
+        "field": "evaluation_status",
+        "op": "eq",
+        "value": "COMPUTED"
+      },
+      {
+        "negated": false,
+        "observation": "applied",
+        "value": "urn:openstax:clir:rotation-equilibrium#FailedSecondConditionBreaksEquilibrium"
+      }
+    ],
+    "truth": "FALSE_ONLY",
+    "evaluation": "COMPUTED",
+    "resultHash": "sha256:06b63d400c01a118869a559d22ef9facd3e3eb0f876890d9e4ee12cbdbecb071"
+  }
+]

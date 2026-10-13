@@ -1,0 +1,135 @@
+// §10.4 «Moment of Inertia and Rotational Kinetic Energy», §10.6 «Torque»,
+// §10.7 «Newton's Second Law for Rotation».
+//
+// ГЛАВА 10 — ЭТО ГЛАВЫ 5 И 7 ЗАНОВО, С ДРУГИМИ ВЕЛИЧИНАМИ. Момент инерции
+// играет роль массы, момент силы — роль силы, τ = Iα повторяет F = ma.
+// Соответствие проверяемо АЛГЕБРОЙ: kg·m² на рад/с² даёт {kg:1, m:2, s:−2} —
+// тот же набор, что у джоуля и у ньютон-метра. Что момент силы измеряется в
+// тех же единицах, что и энергия, есть факт, а не совпадение имён, и он
+// прямо назван в §10.6.
+//
+// РАДИАН НЕ УЧАСТВУЕТ В РАЗМЕРНОСТИ, И ЭТО ПРАВИЛЬНО. Плоский угол по
+// таблице 4 брошюры — величина размерности один, поэтому угловая скорость
+// имеет мультимножитель {s:−1}, а не «рад/с» как отдельную размерность.
+// Пакет пользуется тегом `per_s`: он честно называет то, что считает
+// алгебра. Различить «оборот в секунду» и «герц» она не может — и не должна:
+// брошюра их и не различает размерностью.
+
+language "law.core" version "0.2";
+package openstax.rotation_equilibrium version "0.1.0";
+namespace "urn:openstax:clir:rotation-equilibrium";
+
+use self::{
+    RigidBody,
+    UP_M58329_MOMENT_OF_INERTIA,
+    UP_M58329_ROTATIONAL_KINETIC_ENERGY,
+    UP_M58331_TORQUE,
+    UP_M58332_SECOND_LAW_ROTATION,
+};
+
+// ЛОКАЛЬНАЯ единица с⁻² — только этого пакета (не `pub`, не экспорт).
+// Угловое ускорение — рад/с², радиан безразмерен (брошюра, таблица 4),
+// так что его размерность — с⁻²; но в реестре единиц с⁻² НЕТ (есть лишь
+// с⁻¹: per_s, Hz), а определения единиц приходят пакетом семейства
+// packs/units (§49.2) — заводить с⁻² в реестре с миграцией всех пинов
+// есть отдельная задача линии единиц, не этого пакета. Без тега с⁻²
+// движок не может сверить τ = Iα в ==/!= (§58.1, UNIT_MISMATCH: нужен
+// с⁻², а per_s даёт с⁻¹), и scalar_of на размерную величину тоже
+// отказывает (§259.1). Поэтому пакет объявляет с⁻² сам: per_s2 = per_s².
+// Дела так и предъявляют α: `<число> per_s2` (см. сценарии t01h/t01i,
+// t03a/t03b). Когда с⁻² появится в реестре — удалить это объявление и
+// перейти на реестровый тег.
+// Производная форма — множитель обязан совпадать атомами (§58.1, E-0151):
+// простой атом per_s2 давал то же канон-имя при другом множителе и ронял
+// сверку. per_s² раскрывается в s⁻² через атом s из units.si — тем же
+// приёмом ω² в правиле K = ½Iω² ниже. Имена разрешаются при понижении
+// с --imports (конвейер CLIR); голый `lawc check` без контекста их не
+// видит (LDC-E2110) — см. обоснование решения в записи линии.
+derived unit per_s2 = per_s * per_s;
+
+@source(UP_M58329_MOMENT_OF_INERTIA)
+relation moment_of_inertia(b: RigidBody, i: Quantity) kind empirical {
+    label en official "§10.4: the moment of inertia of the body about its axis — the case presents it, since computing it needs an integral over the body";
+    label ru unofficial "§10.4: момент инерции тела относительно оси — предъявляется делом, ибо его вычисление требует интеграла по телу";
+}
+
+@source(UP_M58329_ROTATIONAL_KINETIC_ENERGY)
+relation angular_velocity(b: RigidBody, w: Quantity) kind empirical {
+    label en official "§10.4: the angular velocity of the body";
+    label ru unofficial "§10.4: угловая скорость тела";
+}
+
+@source(UP_M58332_SECOND_LAW_ROTATION)
+relation angular_acceleration(b: RigidBody, a: Quantity) kind empirical {
+    label en official "§10.7: the angular acceleration of the body";
+    label ru unofficial "§10.7: угловое ускорение тела";
+}
+
+@source(UP_M58331_TORQUE)
+relation applied_torque(b: RigidBody, t: Quantity) kind empirical {
+    label en official "§10.6: the net torque applied to the body about its axis";
+    label ru unofficial "§10.6: результирующий момент силы, приложенный к телу относительно оси";
+}
+
+// --- §10.4: вращательная кинетическая энергия ------------------------------------
+
+pub relation rotational_kinetic_energy(b: RigidBody, k: Quantity) kind institutional {
+    label en official "§10.4: K = ½Iω² — the kinetic energy of a rotating rigid body";
+    label ru unofficial "§10.4: K = ½Iω² — кинетическая энергия вращающегося твёрдого тела";
+}
+
+@source(UP_M58329_ROTATIONAL_KINETIC_ENERGY)
+rule RotationalKineticEnergyFromInertiaAndSpeed(b: RigidBody, i: Quantity, w: Quantity) strict {
+    label en official "§10.4: K = ½Iω²; kilogram-metre-squared times per-second squared gives the joule";
+    label ru unofficial "§10.4: K = ½Iω²; килограмм-метр-квадрат на квадрат обратной секунды даёт джоуль";
+    when moment_of_inertia(b, i) and angular_velocity(b, w);
+    then rotational_kinetic_energy(b, quantity_of((1 / 2) * unit_convert(magnitude(i), "kg_m2")
+                                                  * unit_convert(magnitude(w), "per_s")
+                                                  * unit_convert(magnitude(w), "per_s"), "J"));
+}
+
+// --- §10.7: второй закон для вращения ---------------------------------------------
+
+pub relation torque_accounts_for_rotation(b: RigidBody) kind institutional {
+    label en official "§10.7: τ = Iα — the applied torque accounts for the angular acceleration of the body";
+    label ru unofficial "§10.7: τ = Iα — приложенный момент силы объясняет угловое ускорение тела";
+}
+
+// ТОТ ЖЕ НАБОР ЕДИНИЦ, ЧТО У ЭНЕРГИИ. Момент силы измеряется в {kg:1, m:2,
+// s:−2} — как джоуль. §10.6 называет это прямо и предупреждает не путать
+// величины: одинаковая единица не делает момент силы энергией. Алгебра
+// различить их не может, и различает их СЛОВАРЬ — разные предикаты, как
+// перемещение и путь в кинематике.
+// τ = Iα — ОДИН множитель α (m58332: «τ_net = Στ_i = Iα», определение
+// UP_M58332_SECOND_LAW_ROTATION). Прежде тело умножало на α дважды
+// (I·α·α): численно неверно, но размерностно сходилось (с⁻²), поэтому
+// движок считал молча. Одиночный α требует тега с⁻² — локальный per_s2
+// выше; α предъявляется им же. Числовой контракт: τ[Дж] = I[кг·м²] · α.
+@source(UP_M58332_SECOND_LAW_ROTATION)
+rule TorqueEqualsInertiaTimesAngularAcceleration(
+    b: RigidBody,
+    t: Quantity,
+    i: Quantity,
+    a: Quantity,
+) strict {
+    label en official "§10.7: the net torque on a body equals its moment of inertia times its angular acceleration";
+    label ru unofficial "§10.7: результирующий момент силы на теле равен произведению его момента инерции на угловое ускорение";
+    when applied_torque(b, t)
+        and moment_of_inertia(b, i)
+        and angular_acceleration(b, a)
+        and magnitude(t) == unit_convert(magnitude(i), "kg_m2")
+                            * unit_convert(magnitude(a), "per_s2");
+    then torque_accounts_for_rotation(b);
+}
+
+@source(UP_M58332_SECOND_LAW_ROTATION)
+rule TorqueDisagreesWithRotation(b: RigidBody, t: Quantity, i: Quantity, a: Quantity) strict {
+    label en official "§10.7: a torque different from Iα refutes the account of the rotation";
+    label ru unofficial "§10.7: момент силы, отличный от Iα, опровергает описание вращения";
+    when applied_torque(b, t)
+        and moment_of_inertia(b, i)
+        and angular_acceleration(b, a)
+        and magnitude(t) != unit_convert(magnitude(i), "kg_m2")
+                            * unit_convert(magnitude(a), "per_s2");
+    then not torque_accounts_for_rotation(b);
+}

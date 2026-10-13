@@ -1,0 +1,23 @@
+name: Selected OpenStax mechanics reader checks
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  readers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the exact published CLI
+        run: npm install -g @arxo/cli@0.2.4
+      - name: Check model pins and selected native examples
+        run: python3 tools/check.py --packages

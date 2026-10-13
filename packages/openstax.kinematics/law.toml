@@ -1,0 +1,37 @@
+[package]
+name = "openstax.kinematics"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:openstax:clir:kinematics"
+
+[dependencies]
+"units.si" = "0.1.0"
+"bipm.si_brochure" = "0.1.0"
+"openstax.measurement" = "0.1.0"
+
+[features]
+enabled = ["law.units/0.1"]
+semanticLayer = "L1"
+
+# Каталожная метадата (DECISION-0051; docs/PACKAGE-METADATA.ru.md).
+[metadata]
+act = "openstax-kinematics"
+title = "OpenStax University Physics, т. 1, гл. 3–4: кинематика — перемещение против пути, четыре уравнения равноускоренного движения как проверка расчёта, свободное падение, движение по окружности и относительное движение"
+primarySource = "M58285"
+jurisdiction = "none"
+instrument = "treatise"
+sourceFidelity = "pinned_official_bytes"
+issuer = "OpenStax, Rice University — University Physics Volume 1 (osbooks-university-physics-bundle, commit d0ed34a)"
+legalStatus = "doctrine"
+verifiedAgainstSource = true
+# Лицензия CC BY-NC-SA 4.0 — см. шапку sources.law.
+
+# Сценарии пакета (DECISION-0127): мир — потребитель, затем зависимости.
+[[tests]]
+family = "openstax_kinematics"
+suites = [
+  "tests/01-velocity-and-path.lawtest",
+  "tests/02-constant-acceleration.lawtest",
+  "tests/03-free-fall-and-circular.lawtest",
+]
+world = ["openstax.kinematics", "openstax.measurement", "bipm.si_brochure", "units.si"]

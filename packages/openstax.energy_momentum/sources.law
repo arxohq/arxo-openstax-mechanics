@@ -1,0 +1,697 @@
+// Source-модель: закреплённые байты 19 модулей CNXML
+// University Physics Volume 1, chapters 7–9 и 16 фрагментов по идентификаторам элементов —
+// определения и нормативные утверждения учебника.
+//
+// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
+// `corpus/tools/sources/sync/sync_openstax_fragments.py`; сверка без записи —
+// его же ключом `--check`. Тексты вырезаются из `sources/energy-momentum/*.cnxml`,
+// поэтому разойтись с публикацией они не могут.
+//
+// ПРОВЕНАНС. Байты — CNXML-исходники модулей на коммите main
+// d0ed34a5851119a42e3d972dfc0ff49e4663977c репозитория
+// github.com/openstax/osbooks-university-physics-bundle (2026-06-11).
+// PINNED_OFFICIAL_BYTES: это те самые байты, которые издатель публикует, а не
+// извлечение из рендера. `retrieved_at` — константа (DECISION-0005 п. 6).
+//
+// ЛИЦЕНЗИЯ ИСТОЧНИКА — CC BY-NC-SA 4.0. University Physics распространяется
+// под Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+// (лицензия объявлена в самом `university-physics-volume-N.collection.xml`,
+// элемент `md:license`). У неё ДВА ограничения, которых нет у прочих
+// источников корпуса: некоммерческое использование и share-alike. Закрепление
+// байтов с атрибуцией лицензией допускается; ограничение названо здесь и в
+// `[metadata]` пакета — решение владельца проекта 06.09.2026.
+//
+// ЕДИНИЦА ЦИТИРОВАНИЯ — ЭЛЕМЕНТ МОДУЛЯ. Локатор `module/<модуль>#<id>`;
+// разметка CNXML внутри фрагмента сохранена как есть (§13).
+
+language "law.core" version "0.2";
+package openstax.energy_momentum version "0.1.0";
+namespace "urn:openstax:clir:energy-momentum";
+
+source M58307 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 7 Work and Kinetic Energy, module m58307";
+    label en official "Introduction";
+}
+
+edition M58307_MAIN of M58307 {
+    label en official "m58307/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58307/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58307_CNXML of M58307_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58307/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:959920a247c929ba24cbfe08aef08371383930f158e26c8a185bf40cd97a3c1e";
+    local_path "sources/energy-momentum/m58307.cnxml";
+}
+
+source M58719 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 7 Work and Kinetic Energy, module m58719";
+    label en official "Work";
+}
+
+edition M58719_MAIN of M58719 {
+    label en official "m58719/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58719/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58719_CNXML of M58719_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58719/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:c94baea42a6817b5cc6bace6974f2dce1192a419ad6d353861c7daffb63ed6af";
+    local_path "sources/energy-momentum/m58719.cnxml";
+}
+
+source M58308 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 7 Work and Kinetic Energy, module m58308";
+    label en official "Kinetic Energy";
+}
+
+edition M58308_MAIN of M58308 {
+    label en official "m58308/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58308/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58308_CNXML of M58308_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58308/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:b62469b558e3ffe9e3c6c0f7d7930119aba89a5886c7a95dbe0670d065c2cc77";
+    local_path "sources/energy-momentum/m58308.cnxml";
+}
+
+source M58309 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 7 Work and Kinetic Energy, module m58309";
+    label en official "Work-Energy Theorem";
+}
+
+edition M58309_MAIN of M58309 {
+    label en official "m58309/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58309/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58309_CNXML of M58309_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58309/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:b4262183ef5296717c5797f734ac1b6eec5d67ed731580a5388bc364eeb7b8bf";
+    local_path "sources/energy-momentum/m58309.cnxml";
+}
+
+source M58310 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 7 Work and Kinetic Energy, module m58310";
+    label en official "Power";
+}
+
+edition M58310_MAIN of M58310 {
+    label en official "m58310/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58310/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58310_CNXML of M58310_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58310/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:4b37b5573d47afdd966e97df64602c0678a86c2e4c4f955092ab970acf82a8e6";
+    local_path "sources/energy-momentum/m58310.cnxml";
+}
+
+source M58311 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 8 Potential Energy and Conservation of Energy, module m58311";
+    label en official "Introduction";
+}
+
+edition M58311_MAIN of M58311 {
+    label en official "m58311/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58311/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58311_CNXML of M58311_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58311/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:83664fbd33b67e19854afff63638d834193dc3654de9afdff4eb4e12c24d0247";
+    local_path "sources/energy-momentum/m58311.cnxml";
+}
+
+source M58312 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 8 Potential Energy and Conservation of Energy, module m58312";
+    label en official "Potential Energy of a System";
+}
+
+edition M58312_MAIN of M58312 {
+    label en official "m58312/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58312/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58312_CNXML of M58312_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58312/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:fcbabc3fe134d824e02352bc6bc72453f4433269cd1f64c7ded35672eab7289a";
+    local_path "sources/energy-momentum/m58312.cnxml";
+}
+
+source M58313 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 8 Potential Energy and Conservation of Energy, module m58313";
+    label en official "Conservative and Non-Conservative Forces";
+}
+
+edition M58313_MAIN of M58313 {
+    label en official "m58313/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58313/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58313_CNXML of M58313_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58313/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:47f9563b225b86f809f4b778ca5b6bf588e0378a88426c0e1a9fb999e638620e";
+    local_path "sources/energy-momentum/m58313.cnxml";
+}
+
+source M58314 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 8 Potential Energy and Conservation of Energy, module m58314";
+    label en official "Conservation of Energy";
+}
+
+edition M58314_MAIN of M58314 {
+    label en official "m58314/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58314/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58314_CNXML of M58314_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58314/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:6d99ce22b67a1d00e08301da806d71001f105e39e9577a95da3b5d640e927745";
+    local_path "sources/energy-momentum/m58314.cnxml";
+}
+
+source M58315 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 8 Potential Energy and Conservation of Energy, module m58315";
+    label en official "Potential Energy Diagrams and Stability";
+}
+
+edition M58315_MAIN of M58315 {
+    label en official "m58315/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58315/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58315_CNXML of M58315_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58315/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:99812477eb69940e6299746237f821233fcf100badbe88a8eaf8e190dc2cd1af";
+    local_path "sources/energy-momentum/m58315.cnxml";
+}
+
+source M58661 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 8 Potential Energy and Conservation of Energy, module m58661";
+    label en official "Sources of Energy";
+}
+
+edition M58661_MAIN of M58661 {
+    label en official "m58661/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58661/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58661_CNXML of M58661_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58661/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:68efd9d273e788e2be248f74e6048d82368e11b4ca143a8937cf673cb67c3b95";
+    local_path "sources/energy-momentum/m58661.cnxml";
+}
+
+source M58317 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 9 Linear Momentum and Collisions, module m58317";
+    label en official "Introduction";
+}
+
+edition M58317_MAIN of M58317 {
+    label en official "m58317/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58317/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58317_CNXML of M58317_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58317/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:8e97e3f65681e897fb7b5ebb1900d699a4c1e44edd1c7aa6eee4b7068343638d";
+    local_path "sources/energy-momentum/m58317.cnxml";
+}
+
+source M58318 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 9 Linear Momentum and Collisions, module m58318";
+    label en official "Linear Momentum";
+}
+
+edition M58318_MAIN of M58318 {
+    label en official "m58318/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58318/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58318_CNXML of M58318_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58318/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:d6b2374a712a7269d988551296255df6dd913162ac0f98e1bc49a15734f935ef";
+    local_path "sources/energy-momentum/m58318.cnxml";
+}
+
+source M58319 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 9 Linear Momentum and Collisions, module m58319";
+    label en official "Impulse and Collisions";
+}
+
+edition M58319_MAIN of M58319 {
+    label en official "m58319/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58319/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58319_CNXML of M58319_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58319/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:18685bddb3f94872875a5d0ae68b65f696ea8ded26a3053d5dc70ab40f6bb5cb";
+    local_path "sources/energy-momentum/m58319.cnxml";
+}
+
+source M58320 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 9 Linear Momentum and Collisions, module m58320";
+    label en official "Conservation of Linear Momentum";
+}
+
+edition M58320_MAIN of M58320 {
+    label en official "m58320/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58320/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58320_CNXML of M58320_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58320/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:a8b61db8ac228b71e7b42b39e533b1f0f0b3c65d98ced8a3cd0591b1e4bf1005";
+    local_path "sources/energy-momentum/m58320.cnxml";
+}
+
+source M58321 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 9 Linear Momentum and Collisions, module m58321";
+    label en official "Types of Collisions";
+}
+
+edition M58321_MAIN of M58321 {
+    label en official "m58321/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58321/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    in_force [@2026-04-23, infinity);
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58321_CNXML of M58321_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58321/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:016befc8ed5d8c8120e2bb620347ca18b85540ea8d81957a572f87b83ba8925b";
+    local_path "sources/energy-momentum/m58321.cnxml";
+}
+
+source M58322 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 9 Linear Momentum and Collisions, module m58322";
+    label en official "Collisions in Multiple Dimensions";
+}
+
+edition M58322_MAIN of M58322 {
+    label en official "m58322/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58322/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58322_CNXML of M58322_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58322/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:dbaf991c9c4db07249355a79a3b440fb3f11f55dc9e0b64b348e392e4e353c0f";
+    local_path "sources/energy-momentum/m58322.cnxml";
+}
+
+source M58323 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 9 Linear Momentum and Collisions, module m58323";
+    label en official "Center of Mass";
+}
+
+edition M58323_MAIN of M58323 {
+    label en official "m58323/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58323/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58323_CNXML of M58323_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58323/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:0b4a2b51c899079c9905949b3b4c6e1bf1e7ab57e25067701da478b33206fded";
+    local_path "sources/energy-momentum/m58323.cnxml";
+}
+
+source M58324 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 9 Linear Momentum and Collisions, module m58324";
+    label en official "Rocket Propulsion";
+}
+
+edition M58324_MAIN of M58324 {
+    label en official "m58324/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58324/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58324_CNXML of M58324_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58324/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:acd75a9fb181ad0138a96a50d28481b80d33d91e170da33495fb9e79715422fe";
+    local_path "sources/energy-momentum/m58324.cnxml";
+}
+
+// ПРЕЖНЯЯ РЕДАКЦИЯ m58321 «Types of Collisions»: состояние на коммите 204a1f03c799
+// (2024-11-08), действовало до 2026-04-23. Держится в корпусе потому, что
+// правка была содержательной: `law_editions` между датами показывает смену
+// нормы, а не опечатку.
+edition M58321_PRIOR of M58321 {
+    label en official "m58321/index.cnxml at commit 204a1f0 (2024-11-08), superseded 2026-04-23";
+    label ru unofficial "Файл m58321/index.cnxml на коммите 204a1f0 (2024-11-08); заменён 2026-04-23";
+    language en;
+    officiality official;
+    adopted @2024-11-08;
+    in_force [@2024-11-08, @2026-04-23);
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58321_PRIOR_CNXML of M58321_PRIOR {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/204a1f03c799884fdb8581c10daf0b741c152b3c/modules/m58321/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:e6076898dff04cf85d90f545ff354f19d05510c1d70d466cd1e2a0255f61019e";
+    local_path "sources/energy-momentum/m58321@204a1f03c799.cnxml";
+}
+
+// m58321 «Types of Collisions» — fs-id1167131501190, ПРЕЖНЯЯ редакция
+fragment UP_M58321_PERFECTLY_INELASTIC_PRIOR in M58321_PRIOR {
+    kind defn;
+    locator "module/m58321#fs-id1167131501190";
+    text en official """<definition id="fs-id1167131501190">
+<term>perfectly inelastic</term>
+<meaning id="fs-id1167134507564">collision after which all objects are motionless, the final kinetic energy is zero, and the loss of kinetic energy is a maximum</meaning>
+</definition>""";
+    content_hash "sha256:bbe5137d7d75122a688fb02d8dd9835a33877d256ac72ff78f7f373944fbb1b4";
+}
+
+// m58719 «Work» — fs-id1165039354076
+fragment UP_M58719_WORK in M58719_MAIN {
+    kind defn;
+    locator "module/m58719#fs-id1165039354076";
+    text en official """<definition id="fs-id1165039354076">
+<term>work</term>
+<meaning id="fs-id1165035663968">done when a force acts on something that undergoes a displacement from one position to another</meaning>
+</definition>""";
+    content_hash "sha256:0cfb757360444a5687d20cddd6bb45117d3979a8b4ea382ca04de64e4fd8db98";
+}
+
+// m58308 «Kinetic Energy» — fs-id1165036767566
+fragment UP_M58308_KINETIC_ENERGY in M58308_MAIN {
+    kind defn;
+    locator "module/m58308#fs-id1165036767566";
+    text en official """<definition id="fs-id1165036767566">
+<term>kinetic energy</term>
+<meaning id="fs-id1165038247619">energy of motion, one-half an object’s mass times the square of its speed</meaning>
+</definition>""";
+    content_hash "sha256:556f651d98ea8423fd94cbec674057993c0e81a81b810aebd494a9c72ebf7aef";
+}
+
+// m58309 «Work-Energy Theorem» — fs-id1165038306067
+fragment UP_M58309_WORK_ENERGY_THEOREM in M58309_MAIN {
+    kind defn;
+    locator "module/m58309#fs-id1165038306067";
+    text en official """<definition id="fs-id1165038306067">
+<term>work-energy theorem</term>
+<meaning id="fs-id1165037270191">net work done on a particle is equal to the change in its kinetic energy</meaning>
+</definition>""";
+    content_hash "sha256:54f8ed276b48b06b63cd1e3f3f0c63bd33c8479205f3a98eb58185d6d05556d5";
+}
+
+// m58309 «Work-Energy Theorem» — fs-id1165036884203
+fragment UP_M58309_THEOREM_STATEMENT in M58309_MAIN {
+    kind section;
+    locator "module/m58309#fs-id1165036884203";
+    text en official """<note id="fs-id1165036884203">
+<title>Work-Energy Theorem</title>
+<para id="fs-id1165036972359">The net work done on a particle equals the change in the particle’s kinetic energy:</para>
+<equation id="fs-id1165037940073"><m:math><m:mrow><m:msub><m:mi>W</m:mi><m:mrow><m:mtext>net</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mi>B</m:mi></m:msub><m:mo>−</m:mo><m:msub><m:mi>K</m:mi><m:mi>A</m:mi></m:msub><m:mo>.</m:mo></m:mrow></m:math>
+</equation>
+</note>""";
+    content_hash "sha256:f108debdca7f4be90b356154ea60921abcc1089d0adabc41def40ef6e8be96d8";
+}
+
+// m58310 «Power» — fs-id1165038026773
+fragment UP_M58310_AVERAGE_POWER in M58310_MAIN {
+    kind defn;
+    locator "module/m58310#fs-id1165038026773";
+    text en official """<definition id="fs-id1165038026773">
+<term>average power</term>
+<meaning id="fs-id1165036771180">work done in a time interval divided by the time interval</meaning>
+</definition>""";
+    content_hash "sha256:ae987d52d74ed44ff73f4a4121dd3cee95150f1c2605899bcce5a010fead72c5";
+}
+
+// m58313 «Conservative and Non-Conservative Forces» — fs-id1165039295908
+fragment UP_M58313_CONSERVATIVE_FORCE in M58313_MAIN {
+    kind defn;
+    locator "module/m58313#fs-id1165039295908";
+    text en official """<definition id="fs-id1165039295908">
+<term>conservative force</term>
+<meaning id="fs-id1165035706005">force that does work independent of path</meaning>
+</definition>""";
+    content_hash "sha256:6da0f41bc61462dc5b46016db884c50a06da88f444eedcefb29063a4f26f7a24";
+}
+
+// m58313 «Conservative and Non-Conservative Forces» — fs-id1165039477062
+fragment UP_M58313_NON_CONSERVATIVE_FORCE in M58313_MAIN {
+    kind defn;
+    locator "module/m58313#fs-id1165039477062";
+    text en official """<definition id="fs-id1165039477062">
+<term>non-conservative force</term>
+<meaning id="fs-id1165039052463">force that does work that depends on path</meaning>
+</definition>""";
+    content_hash "sha256:e6747327c01e51cec70998be552cdef6523258b0d0da877613f566840a0a67f8";
+}
+
+// m58314 «Conservation of Energy» — fs-id1165038016114
+fragment UP_M58314_MECHANICAL_ENERGY in M58314_MAIN {
+    kind defn;
+    locator "module/m58314#fs-id1165038016114";
+    text en official """<definition id="fs-id1165038016114">
+<term>mechanical energy</term>
+<meaning id="fs-id1165037047747">sum of the kinetic and potential energies</meaning>
+</definition>""";
+    content_hash "sha256:0ba3d4e6e06e5cf3fdda2e1630bafe1453cca9dc3c16fde233e0ee0a133946c0";
+}
+
+// m58314 «Conservation of Energy» — fs-id1165038024912
+fragment UP_M58314_ENERGY_CONSERVATION in M58314_MAIN {
+    kind defn;
+    locator "module/m58314#fs-id1165038024912";
+    text en official """<definition id="fs-id1165038024912">
+<term>energy conservation</term>
+<meaning id="fs-id1165037181302">total energy of an isolated system is constant</meaning>
+</definition>""";
+    content_hash "sha256:ed05226683ccf398605f08fa15403f1187f8520aca4dd00500ca90279b8484a0";
+}
+
+// m58318 «Linear Momentum» — fs-id1167133546182
+fragment UP_M58318_MOMENTUM in M58318_MAIN {
+    kind defn;
+    locator "module/m58318#fs-id1167133546182";
+    text en official """<definition id="fs-id1167133546182">
+<term>momentum</term>
+<meaning id="fs-id1167133532866">measure of the quantity of motion that an object has; it takes into account both how fast the object is moving, and its mass; specifically, it is the product of mass and velocity; it is a vector quantity</meaning>
+</definition>""";
+    content_hash "sha256:67d336d251c393f8a56aa81b8fb76d61d4bdd5a9fa387d21fcebe58b9edadf6b";
+}
+
+// m58320 «Conservation of Linear Momentum» — fs-id1167131257470
+fragment UP_M58320_SYSTEM in M58320_MAIN {
+    kind defn;
+    locator "module/m58320#fs-id1167131257470";
+    text en official """<definition id="fs-id1167131257470">
+<term>system</term>
+<meaning id="fs-id1167131586212">object or collection of objects whose motion is currently under investigation; however, your system is defined at the start of the problem, you must keep that definition for the entire problem</meaning>
+</definition>""";
+    content_hash "sha256:a9e8d622b22f07eae04b3ea01cfcaf132e1b8427522e7eb04c78b4eb354e2ebe";
+}
+
+// m58320 «Conservation of Linear Momentum» — fs-id1167134928870
+fragment UP_M58320_CLOSED_SYSTEM in M58320_MAIN {
+    kind defn;
+    locator "module/m58320#fs-id1167134928870";
+    text en official """<definition id="fs-id1167134928870">
+<term>closed system</term>
+<meaning id="fs-id1167131586266">system for which the mass is constant and the net external force on the system is zero</meaning>
+</definition>""";
+    content_hash "sha256:a3864c470c780bd185f0364cc3c2653c046a75e9fbc37e4d521d75ad183dfa99";
+}
+
+// m58320 «Conservation of Linear Momentum» — fs-id1167134540321
+fragment UP_M58320_LAW_OF_CONSERVATION in M58320_MAIN {
+    kind defn;
+    locator "module/m58320#fs-id1167134540321";
+    text en official """<definition id="fs-id1167134540321">
+<term>Law of Conservation of Momentum</term>
+<meaning id="fs-id1167134540326">total momentum of a closed system cannot change</meaning>
+</definition>""";
+    content_hash "sha256:c3d07c068c4c85c0b0c6f5fd768f74c572df25127186547e6cb05f93d1b0ac19";
+}
+
+// m58321 «Types of Collisions» — fs-id1167134866786
+fragment UP_M58321_ELASTIC in M58321_MAIN {
+    kind defn;
+    locator "module/m58321#fs-id1167134866786";
+    text en official """<definition id="fs-id1167134866786">
+<term>elastic</term>
+<meaning id="fs-id1167134570090">collision that conserves kinetic energy</meaning>
+</definition>""";
+    content_hash "sha256:6599809339c1c4f97bdd6fe4657eedb31d4bab2e2abbff92b34078731a914de0";
+}
+
+// m58321 «Types of Collisions» — fs-id1167131552107
+fragment UP_M58321_INELASTIC in M58321_MAIN {
+    kind defn;
+    locator "module/m58321#fs-id1167131552107";
+    text en official """<definition id="fs-id1167131552107">
+<term>inelastic</term>
+<meaning id="fs-id1167134942503">collision that does not conserve kinetic energy</meaning>
+</definition>""";
+    content_hash "sha256:a057b45563364b2ce8d71d75efd6758d23282907d2f89b03200a8b25b2deb289";
+}
+
+// m58321 «Types of Collisions» — fs-id1167131501190
+fragment UP_M58321_PERFECTLY_INELASTIC in M58321_MAIN {
+    kind defn;
+    locator "module/m58321#fs-id1167131501190";
+    text en official """<definition id="fs-id1167131501190">
+<term>perfectly inelastic</term>
+<meaning id="fs-id1167134507564">collision after which all objects are stuck together, moving with the same velocity; momentum is conserved, and the loss of kinetic energy is a maximum</meaning>
+</definition>""";
+    content_hash "sha256:41ba864dbcf742b8a9409335a21d855a7805591306759164d2cfc74d1f52d430";
+}

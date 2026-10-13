@@ -1,0 +1,225 @@
+language "law.core" version "0.2";
+package openstax.rotation_equilibrium version "0.1.0";
+namespace "urn:openstax:clir:rotation-equilibrium";
+
+// §10.4: K = ½Iω². Момент инерции 4 кг·м² при 3 с⁻¹ даёт 18 Дж. Тот же
+// джоуль, что у поступательной энергии, — и это проверяет алгебра, а не
+// договорённость об именах.
+test "urn:query:rot-t01a-rotational-kinetic-energy" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01a-i": moment_of_inertia(entity_ref("urn:case:rot:wheel"), 4 kg_m2) { origin case_input; }
+        assert "t01a-w": angular_velocity(entity_ref("urn:case:rot:wheel"), 3 per_s) { origin case_input; }
+    }
+
+    evaluate truth(rotational_kinetic_energy(entity_ref("urn:case:rot:wheel"), 18 J));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(RotationalKineticEnergyFromInertiaAndSpeed);
+}
+
+// §11.2: L = Iω даёт 12 кг·м²/с.
+test "urn:query:rot-t01b-angular-momentum" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01b-i": moment_of_inertia(entity_ref("urn:case:rot:wheel"), 4 kg_m2) { origin case_input; }
+        assert "t01b-w": angular_velocity(entity_ref("urn:case:rot:wheel"), 3 per_s) { origin case_input; }
+    }
+
+    evaluate truth(angular_momentum(entity_ref("urn:case:rot:wheel"), 12 kg_m2_per_s));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AngularMomentumFromInertiaAndSpeed);
+}
+
+// §11.3: внешнего момента не предъявлено, моменты импульса совпали —
+// сохранение выведено. Условие здесь СВОЁ: не отсутствие внешней силы, а
+// отсутствие внешнего МОМЕНТА.
+test "urn:query:rot-t01c-angular-momentum-conserved" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01c-sp": spin_process(entity_ref("urn:case:rot:skater"), entity_ref("urn:case:rot:pull")) { origin case_input; }
+        assert "t01c-l0": angular_momentum_before(entity_ref("urn:case:rot:skater"), entity_ref("urn:case:rot:pull"), 12 kg_m2_per_s) { origin case_input; }
+        assert "t01c-l1": angular_momentum_after(entity_ref("urn:case:rot:skater"), entity_ref("urn:case:rot:pull"), 12 kg_m2_per_s) { origin case_input; }
+    }
+
+    evaluate truth(angular_momentum_conserved(entity_ref("urn:case:rot:skater"), entity_ref("urn:case:rot:pull")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(NoTorqueConservesAngularMomentum);
+}
+
+// ОБРАТНАЯ СТОРОНА: предъявлен внешний момент 5 Дж (та же единица, что у
+// энергии, — §10.6 предупреждает не путать), и моменты импульса разошлись.
+// Сохранение ОПРОВЕРГНУТО.
+test "urn:query:rot-t01d-external-torque-breaks-conservation" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01d-sp": spin_process(entity_ref("urn:case:rot:brake"), entity_ref("urn:case:rot:stop")) { origin case_input; }
+        assert "t01d-t": external_torque_on(entity_ref("urn:case:rot:brake"), entity_ref("urn:case:rot:stop"), 5 J) { origin case_input; }
+        assert "t01d-l0": angular_momentum_before(entity_ref("urn:case:rot:brake"), entity_ref("urn:case:rot:stop"), 12 kg_m2_per_s) { origin case_input; }
+        assert "t01d-l1": angular_momentum_after(entity_ref("urn:case:rot:brake"), entity_ref("urn:case:rot:stop"), 4 kg_m2_per_s) { origin case_input; }
+    }
+
+    evaluate truth(angular_momentum_conserved(entity_ref("urn:case:rot:brake"), entity_ref("urn:case:rot:stop")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AngularMomentumChangedWhenTotalsDiffer);
+}
+
+// §12.1: ОБА условия выполнены — тело в равновесии.
+test "urn:query:rot-t01e-static-equilibrium" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01e-bp": body_presented(entity_ref("urn:case:rot:beam")) { origin case_input; }
+        assert "t01e-f": net_force_on_body(entity_ref("urn:case:rot:beam"), 0 N) { origin case_input; }
+        assert "t01e-t": net_torque_on_body(entity_ref("urn:case:rot:beam"), 0 J) { origin case_input; }
+    }
+
+    evaluate truth(static_equilibrium(entity_ref("urn:case:rot:beam")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(BothConditionsGiveEquilibrium);
+}
+
+// ГЛАВНАЯ СЦЕНА ГЛАВЫ 12: ПЕРВОЕ УСЛОВИЕ ВЫПОЛНЕНО, ВТОРОЕ — НЕТ. Две
+// равные противоположные силы в разных точках дают нулевую результирующую и
+// ненулевой момент: тело не ускоряется, но вращается. Равновесие
+// ОПРОВЕРГНУТО, и опровергнуто ИМЕННО вторым условием — `why_not` называет
+// каким. Одного условия мало, и это выведено, а не оговорено.
+test "urn:query:rot-t01f-first-condition-alone-is-not-enough" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01f-bp": body_presented(entity_ref("urn:case:rot:couple")) { origin case_input; }
+        assert "t01f-f": net_force_on_body(entity_ref("urn:case:rot:couple"), 0 N) { origin case_input; }
+        assert "t01f-t": net_torque_on_body(entity_ref("urn:case:rot:couple"), 8 J) { origin case_input; }
+    }
+
+    evaluate truth(static_equilibrium(entity_ref("urn:case:rot:couple")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(FailedSecondConditionBreaksEquilibrium);
+}
+
+// И первое условие у той же пары сил ВЫПОЛНЕНО — чтобы видно было, что
+// опровергло равновесие не оно.
+test "urn:query:rot-t01g-first-condition-does-hold" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01g-bp": body_presented(entity_ref("urn:case:rot:couple")) { origin case_input; }
+        assert "t01g-f": net_force_on_body(entity_ref("urn:case:rot:couple"), 0 N) { origin case_input; }
+    }
+
+    evaluate truth(first_equilibrium_condition(entity_ref("urn:case:rot:couple")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ZeroNetForceIsFirstCondition);
+}
+
+// §10.7: τ = Iα. 4 кг·м² на 2 с⁻² даёт 8 Дж; заявлено 8 — сходится.
+// (Прежде здесь стояло 16 Дж = I·α·α — тело правила ошибочно умножало на α
+// дважды; источник, m58332: «τ = Iα», один множитель. α несёт локальный
+// тег per_s2 пакета: реестровый per_s — это с⁻¹, а ускорение — с⁻².)
+test "urn:query:rot-t01h-second-law-for-rotation" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01h-i": moment_of_inertia(entity_ref("urn:case:rot:disc"), 4 kg_m2) { origin case_input; }
+        assert "t01h-a": angular_acceleration(entity_ref("urn:case:rot:disc"), 2 per_s2) { origin case_input; }
+        assert "t01h-t": applied_torque(entity_ref("urn:case:rot:disc"), 8 J) { origin case_input; }
+    }
+
+    evaluate truth(torque_accounts_for_rotation(entity_ref("urn:case:rot:disc")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(TorqueEqualsInertiaTimesAngularAcceleration);
+}
+
+// ОБРАТНАЯ СТОРОНА: заявлен момент 20 Дж вместо верных 8 (τ = Iα = 4·2) —
+// описание вращения ОПРОВЕРГНУТО.
+test "urn:query:rot-t01i-second-law-for-rotation-refuted" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01i-i": moment_of_inertia(entity_ref("urn:case:rot:disc2"), 4 kg_m2) { origin case_input; }
+        assert "t01i-a": angular_acceleration(entity_ref("urn:case:rot:disc2"), 2 per_s2) { origin case_input; }
+        assert "t01i-t": applied_torque(entity_ref("urn:case:rot:disc2"), 20 J) { origin case_input; }
+    }
+
+    evaluate truth(torque_accounts_for_rotation(entity_ref("urn:case:rot:disc2")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(TorqueDisagreesWithRotation);
+}
+
+// Почему тело не в равновесии — вопросом к системе.
+test "urn:query:rot-t01j-why-not-in-equilibrium" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01j-bp": body_presented(entity_ref("urn:case:rot:couple")) { origin case_input; }
+        assert "t01j-f": net_force_on_body(entity_ref("urn:case:rot:couple"), 0 N) { origin case_input; }
+        assert "t01j-t": net_torque_on_body(entity_ref("urn:case:rot:couple"), 8 J) { origin case_input; }
+    }
+
+    evaluate why_not(static_equilibrium(entity_ref("urn:case:rot:couple")));
+
+    expect evaluation_status == COMPUTED;
+}

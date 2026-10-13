@@ -1,0 +1,135 @@
+// §5.1–5.5: сила, инерция и первый закон, второй закон, масса и вес, третий закон.
+//
+// МАССА И ВЕС РАЗЛИЧАЮТСЯ ЕДИНИЦЕЙ, И ЭТО ЛОВИТ АЛГЕБРА. §5.4 отделяет массу
+// (килограммы, мера инертности) от веса (ньютоны, сила тяжести): w = mg.
+// Ровно здесь размерный контроль работает сам по себе — подать вес в
+// килограммах невозможно молча, и §49.1 назовёт обе единицы. Это первое
+// место цепочки, где путаница школьника ловится не правилом, а типом.
+
+language "law.core" version "0.2";
+package openstax.dynamics version "0.1.0";
+namespace "urn:openstax:clir:dynamics";
+
+use self::{
+    System,
+    UP_M58296_FIRST_LAW,
+    UP_M58297_SECOND_LAW,
+    UP_M58298_WEIGHT,
+    UP_M58299_THIRD_LAW,
+};
+
+// --- Что дело предъявляет о системе -------------------------------------------
+
+@source(UP_M58297_SECOND_LAW)
+pub relation mass_of(s: System, m: Quantity) kind empirical {
+    label en official "§5.3: the mass of the system — the quantity of matter, a measure of its inertia";
+    label ru unofficial "§5.3: масса системы — количество вещества, мера её инертности";
+}
+
+@source(UP_M58297_SECOND_LAW)
+pub relation net_force_on(s: System, f: Quantity) kind empirical {
+    label en official "§5.3: the net external force on the system — the vector sum of all external forces";
+    label ru unofficial "§5.3: результирующая внешняя сила на систему — векторная сумма всех внешних сил";
+}
+
+@source(UP_M58298_WEIGHT)
+pub relation gravitational_field(s: System, g: Quantity) kind empirical {
+    label en official "§5.4: the acceleration due to gravity at the place of the system";
+    label ru unofficial "§5.4: ускорение свободного падения в месте нахождения системы";
+}
+
+// --- §5.4: вес есть масса на g --------------------------------------------------
+
+pub relation weight_of(s: System, w: Quantity) kind institutional {
+    label en official "§5.4: w = mg — the weight of the system, the force of gravity on it";
+    label ru unofficial "§5.4: w = mg — вес системы, сила тяжести, действующая на неё";
+}
+
+@source(UP_M58298_WEIGHT)
+rule WeightIsMassTimesGravity(s: System, m: Quantity, g: Quantity) strict {
+    label en official "§5.4: w = mg — weight is the mass multiplied by the acceleration due to gravity";
+    label ru unofficial "§5.4: w = mg — вес есть масса, умноженная на ускорение свободного падения";
+    when mass_of(s, m) and gravitational_field(s, g);
+    then weight_of(s, quantity_of(unit_convert(magnitude(m), "kg")
+                                  * unit_convert(magnitude(g), "m_per_s2"), "N"));
+}
+
+// --- §5.2: инерция и первый закон -----------------------------------------------
+
+@source(UP_M58296_FIRST_LAW)
+relation in_inertial_frame(s: System) kind empirical {
+    label en official "§5.2: the case states the system is observed from an inertial reference frame";
+    label ru unofficial "§5.2: дело сообщает, что система наблюдается из инерциальной системы отсчёта";
+}
+
+pub relation state_of_motion_unchanged(s: System) kind institutional {
+    label en official "§5.2: Newton's first law — the system remains at rest or in uniform motion in a straight line";
+    label ru unofficial "§5.2: первый закон Ньютона — система сохраняет покой или равномерное прямолинейное движение";
+}
+
+// Первый закон — про НУЛЕВУЮ результирующую, а не про отсутствие сил вообще.
+// §5.2 говорит именно так: «unless acted upon by a NET external force».
+@source(UP_M58296_FIRST_LAW)
+rule ZeroNetForceKeepsState(s: System, f: Quantity) strict {
+    label en official "§5.2: a body at rest remains at rest, and a body in motion remains in motion at constant velocity, unless acted upon by a net external force";
+    label ru unofficial "§5.2: покоящееся тело остаётся в покое, а движущееся сохраняет постоянную скорость, пока на него не подействует результирующая внешняя сила";
+    when in_inertial_frame(s) and net_force_on(s, f) and f == 0 * f;
+    then state_of_motion_unchanged(s);
+}
+
+@source(UP_M58296_FIRST_LAW)
+rule NonzeroNetForceChangesState(s: System, f: Quantity) strict {
+    label en official "§5.2: a nonzero net external force refutes that the state of motion is unchanged";
+    label ru unofficial "§5.2: ненулевая результирующая внешняя сила опровергает сохранение состояния движения";
+    when in_inertial_frame(s) and net_force_on(s, f) and f != 0 * f;
+    then not state_of_motion_unchanged(s);
+}
+
+// МОСТ К ЗАКОНУ I PRINCIPIA. Ньютон говорит то же самое иначе: тело
+// «cogitur statum suum mutare» — вынуждено изменить состояние — приложенными
+// силами. Латинский пакет выводит это своим правилом, и здесь его вывод
+// ЧИТАЕТСЯ, а не переписывается: барьер закона I у Ньютона и «net external
+// force» у OpenStax суть одно утверждение, и различие между ними — в языке
+// изложения, а не в норме. Прочтения здесь не нужны: расхождения нет.
+@source(UP_M58296_FIRST_LAW)
+relation compelled_to_change_state(s: System, c: la.newton.principia::Corpus) kind institutional {
+    label en official "§5.2 read through Lex. I: the body is compelled to change its state by impressed forces";
+    label ru unofficial "§5.2 в прочтении Lex. I: тело вынуждено изменить своё состояние приложенными силами";
+}
+
+@source(UP_M58296_FIRST_LAW)
+rule PrincipiaFirstLawAgrees(s: System, c: la.newton.principia::Corpus) strict {
+    label en official "§5.2 and Lex. I say the same: a body compelled by impressed forces to change its state does not keep its state of motion";
+    label ru unofficial "§5.2 и Lex. I говорят одно: тело, вынужденное приложенными силами изменить состояние, своего состояния движения не сохраняет";
+    when la.newton.principia::cogitur_statum_mutare(c) and identified_with(s, c);
+    then compelled_to_change_state(s, c);
+}
+
+// Связка «система дела — тело Principia» подаётся ДЕЛОМ: у двух пакетов свои
+// сущности, и отождествить их вправе только тот, кто предъявил обе.
+@source(UP_M58296_FIRST_LAW)
+pub relation identified_with(s: System, c: la.newton.principia::Corpus) kind empirical {
+    label en official "the case states that the system and the Principia body are one and the same";
+    label ru unofficial "дело сообщает, что система и тело Principia — одно и то же";
+}
+
+// --- §5.5: третий закон ---------------------------------------------------------
+
+@source(UP_M58299_THIRD_LAW)
+relation exerts_force_on(a: System, b: System, f: Quantity) kind empirical {
+    label en official "§5.5: the case presents the force the first system exerts on the second";
+    label ru unofficial "§5.5: дело предъявляет силу, с которой первая система действует на вторую";
+}
+
+relation reaction_force(b: System, a: System, f: Quantity) kind institutional {
+    label en official "§5.5: whenever one body exerts a force on a second, the second exerts a force equal in magnitude and opposite in direction on the first";
+    label ru unofficial "§5.5: если одно тело действует на другое с некоторой силой, второе действует на первое с силой, равной по модулю и противоположной по направлению";
+}
+
+@source(UP_M58299_THIRD_LAW)
+rule ThirdLawGivesEqualOppositeForce(a: System, b: System, f: Quantity) strict {
+    label en official "§5.5: the reaction is equal in magnitude and opposite in direction to the action";
+    label ru unofficial "§5.5: противодействие равно по модулю и противоположно по направлению действию";
+    when exerts_force_on(a, b, f);
+    then reaction_force(b, a, quantity_of((0 - 1) * unit_convert(magnitude(f), "N"), "N"));
+}

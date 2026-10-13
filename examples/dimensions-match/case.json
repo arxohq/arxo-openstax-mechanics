@@ -1,0 +1,302 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:5fc75578732d72b28635160c5897e5c66fe61963d027c21d4a4c48d007d3b45c",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-eq",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:eq:a",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#equation_presented"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:fd84a6c4411a892ecd0d628286d2539166e5a86f2e93f755d8dab0ffff696348",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-ref",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:eq:a",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:meas:term:s",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#reference_term"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:1f7d49c0fc4dfeffe054a93436eb2077c1cc76d72aa1b02aaf7ecc401ee19df9",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-t1",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:eq:a",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:meas:term:s",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#term_of"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:ac8ad3e16d12962cefb40b558b854a0f862385f92ba4385ccfce9288638fd545",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-t2",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:eq:a",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:meas:term:vt",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#term_of"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:6038a29a73a1d491c3807fe4fd3a7b763053afeca03ee9cad3ab908fcf54dc54",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-t3",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:eq:a",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:meas:term:at2",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#term_of"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:6658314343db01ebd7e87be8609ce991371fbb5220fb9abfa66376bb1d8a68a7",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-s-l",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:term:s",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:openstax:clir:measurement#Length",
+            "kind": "const_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 1
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#dimension_exponent"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:09bc7284a35cdbe3d67ec3f0c74dfc7d578d0cd63c504b5e93a7a99a63cc555f",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-s-t",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:term:s",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:openstax:clir:measurement#Time",
+            "kind": "const_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#dimension_exponent"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:782a9d7bf4052853c2dadd5619dbc2ec42d128b30b1d7351acf56d09ca3815bf",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-vt-l",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:term:vt",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:openstax:clir:measurement#Length",
+            "kind": "const_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 1
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#dimension_exponent"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:0fba1609b0962b4040e59b88b90d56f1215af83361d182737e17fa35c2bd0d0d",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-vt-t",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:term:vt",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:openstax:clir:measurement#Time",
+            "kind": "const_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#dimension_exponent"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:91c91bf9d9f414b041b2f2f54dcae0d15096f841a966059eb17b4ce53d9ddbcd",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-at2-l",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:term:at2",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:openstax:clir:measurement#Length",
+            "kind": "const_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 1
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#dimension_exponent"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    },
+    {
+      "contentHash": "sha256:cfb88b16fb406e4048b09756d0ae30c5b3182fa8d8166fd94fa56c0932c1479d",
+      "evidence": [],
+      "id": "urn:openstax:clir:measurement#t01a-at2-t",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:meas:term:at2",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:openstax:clir:measurement#Time",
+            "kind": "const_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Integer"
+            },
+            "value": 0
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:measurement#dimension_exponent"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:measurement"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-09-06T12:00:00Z",
+    "knowledgeTime": "2026-09-06T12:00:00Z",
+    "legalTime": "2026-09-06",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

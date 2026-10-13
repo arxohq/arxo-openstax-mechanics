@@ -1,0 +1,864 @@
+// Source-модель: закреплённые байты 27 модулей CNXML
+// University Physics Volume 1, chapters 10–13 и 17 фрагментов по идентификаторам элементов —
+// определения и нормативные утверждения учебника.
+//
+// ФАЙЛ ПОРОЖДАЕТСЯ. Правится только генератором —
+// `corpus/tools/sources/sync/sync_openstax_fragments.py`; сверка без записи —
+// его же ключом `--check`. Тексты вырезаются из `sources/rotation-equilibrium/*.cnxml`,
+// поэтому разойтись с публикацией они не могут.
+//
+// ПРОВЕНАНС. Байты — CNXML-исходники модулей на коммите main
+// d0ed34a5851119a42e3d972dfc0ff49e4663977c репозитория
+// github.com/openstax/osbooks-university-physics-bundle (2026-06-11).
+// PINNED_OFFICIAL_BYTES: это те самые байты, которые издатель публикует, а не
+// извлечение из рендера. `retrieved_at` — константа (DECISION-0005 п. 6).
+//
+// ЛИЦЕНЗИЯ ИСТОЧНИКА — CC BY-NC-SA 4.0. University Physics распространяется
+// под Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+// (лицензия объявлена в самом `university-physics-volume-N.collection.xml`,
+// элемент `md:license`). У неё ДВА ограничения, которых нет у прочих
+// источников корпуса: некоммерческое использование и share-alike. Закрепление
+// байтов с атрибуцией лицензией допускается; ограничение названо здесь и в
+// `[metadata]` пакета — решение владельца проекта 06.09.2026.
+//
+// ЕДИНИЦА ЦИТИРОВАНИЯ — ЭЛЕМЕНТ МОДУЛЯ. Локатор `module/<модуль>#<id>`;
+// разметка CNXML внутри фрагмента сохранена как есть (§13).
+
+language "law.core" version "0.2";
+package openstax.rotation_equilibrium version "0.1.0";
+namespace "urn:openstax:clir:rotation-equilibrium";
+
+source M58325 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58325";
+    label en official "Introduction";
+}
+
+edition M58325_MAIN of M58325 {
+    label en official "m58325/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58325/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58325_CNXML of M58325_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58325/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:1c7b79d5bd03a5aa7bfeda34ba2b91b3fe610b55e4506bc11849d57acc74f9aa";
+    local_path "sources/rotation-equilibrium/m58325.cnxml";
+}
+
+source M58326 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58326";
+    label en official "Rotational Variables";
+}
+
+edition M58326_MAIN of M58326 {
+    label en official "m58326/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58326/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58326_CNXML of M58326_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58326/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:fbfdd445eff3cfcbf4c9f57a1394fb7dc83baa2a0355ae06407b89d7b9730067";
+    local_path "sources/rotation-equilibrium/m58326.cnxml";
+}
+
+source M58327 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58327";
+    label en official "Rotation with Constant Angular Acceleration";
+}
+
+edition M58327_MAIN of M58327 {
+    label en official "m58327/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58327/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58327_CNXML of M58327_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58327/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:7dd0e77b681d0f9adb168d34019928e47029870f932579d2edb05a957ee52b81";
+    local_path "sources/rotation-equilibrium/m58327.cnxml";
+}
+
+source M58328 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58328";
+    label en official "Relating Angular and Translational Quantities";
+}
+
+edition M58328_MAIN of M58328 {
+    label en official "m58328/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58328/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58328_CNXML of M58328_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58328/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:324238e452461a3e6585e9254ee12409c52d338fbf4f944076f511b138d0240e";
+    local_path "sources/rotation-equilibrium/m58328.cnxml";
+}
+
+source M58329 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58329";
+    label en official "Moment of Inertia and Rotational Kinetic Energy";
+}
+
+edition M58329_MAIN of M58329 {
+    label en official "m58329/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58329/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58329_CNXML of M58329_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58329/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:0ff9bfd392605f4f10761a4c233a1e22031c2b45958f1e05ba7d00b2ca865054";
+    local_path "sources/rotation-equilibrium/m58329.cnxml";
+}
+
+source M58330 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58330";
+    label en official "Calculating Moments of Inertia";
+}
+
+edition M58330_MAIN of M58330 {
+    label en official "m58330/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58330/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58330_CNXML of M58330_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58330/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:95aa0380cb3acdd16b669d2e036b0f8e9180ffc565c753527e2bdee2333d1bfb";
+    local_path "sources/rotation-equilibrium/m58330.cnxml";
+}
+
+source M58331 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58331";
+    label en official "Torque";
+}
+
+edition M58331_MAIN of M58331 {
+    label en official "m58331/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58331/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58331_CNXML of M58331_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58331/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:4ca991076039973e0e8f227bd93cd20b49b88d4ed5b2ae0a0747b98048f59e48";
+    local_path "sources/rotation-equilibrium/m58331.cnxml";
+}
+
+source M58332 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58332";
+    label en official "Newton's Second Law for Rotation";
+}
+
+edition M58332_MAIN of M58332 {
+    label en official "m58332/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58332/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58332_CNXML of M58332_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58332/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:668c1ec72eaa28c570a27095ae0ca6d09697e6203cca2f97c0fc8c1190256a93";
+    local_path "sources/rotation-equilibrium/m58332.cnxml";
+}
+
+source M58333 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 10 Fixed-Axis Rotation, module m58333";
+    label en official "Work and Power for Rotational Motion";
+}
+
+edition M58333_MAIN of M58333 {
+    label en official "m58333/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58333/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58333_CNXML of M58333_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58333/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:4c3b6eefc7d4507cf5b2113b7845222ac47922ad98435ca5d8914f589ceb1bfc";
+    local_path "sources/rotation-equilibrium/m58333.cnxml";
+}
+
+source M58334 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 11 Angular Momentum, module m58334";
+    label en official "Introduction";
+}
+
+edition M58334_MAIN of M58334 {
+    label en official "m58334/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58334/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58334_CNXML of M58334_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58334/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:76e1fde4671842880a2d8d04ee82d8eefae18eea444a3de78b55a47433266b28";
+    local_path "sources/rotation-equilibrium/m58334.cnxml";
+}
+
+source M58335 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 11 Angular Momentum, module m58335";
+    label en official "Rolling Motion";
+}
+
+edition M58335_MAIN of M58335 {
+    label en official "m58335/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58335/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58335_CNXML of M58335_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58335/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:90f931fdd8bd0c40da2fdb6003bf8a0985a560db1b12aa3eeca788af321a1a9e";
+    local_path "sources/rotation-equilibrium/m58335.cnxml";
+}
+
+source M58336 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 11 Angular Momentum, module m58336";
+    label en official "Angular Momentum";
+}
+
+edition M58336_MAIN of M58336 {
+    label en official "m58336/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58336/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58336_CNXML of M58336_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58336/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:a42269d65f505bb3873692fd4c6173527a1f533d439969bbbff81ffabc6d5389";
+    local_path "sources/rotation-equilibrium/m58336.cnxml";
+}
+
+source M58337 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 11 Angular Momentum, module m58337";
+    label en official "Conservation of Angular Momentum";
+}
+
+edition M58337_MAIN of M58337 {
+    label en official "m58337/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58337/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58337_CNXML of M58337_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58337/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:5eab3839b0d147388156a47b21db8c2443588dda499246b1c18e4da2d68c983f";
+    local_path "sources/rotation-equilibrium/m58337.cnxml";
+}
+
+source M58338 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 11 Angular Momentum, module m58338";
+    label en official "Precession of a Gyroscope";
+}
+
+edition M58338_MAIN of M58338 {
+    label en official "m58338/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58338/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58338_CNXML of M58338_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58338/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:95baac6239e1db4df871cc77433e16bb642ccdacf6361e26c4b1d43473275677";
+    local_path "sources/rotation-equilibrium/m58338.cnxml";
+}
+
+source M58339 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 12 Static Equilibrium and Elasticity, module m58339";
+    label en official "Introduction";
+}
+
+edition M58339_MAIN of M58339 {
+    label en official "m58339/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58339/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58339_CNXML of M58339_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58339/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:7b220142ca928345112eb1512aaafbd73dc4214a63586507e8f2a95e9870547a";
+    local_path "sources/rotation-equilibrium/m58339.cnxml";
+}
+
+source M58340 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 12 Static Equilibrium and Elasticity, module m58340";
+    label en official "Conditions for Static Equilibrium";
+}
+
+edition M58340_MAIN of M58340 {
+    label en official "m58340/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58340/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58340_CNXML of M58340_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58340/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:2956100d74fddacc628b87c75869cd548e3781c703ce94c74a0cdc61c84ebfdb";
+    local_path "sources/rotation-equilibrium/m58340.cnxml";
+}
+
+source M58341 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 12 Static Equilibrium and Elasticity, module m58341";
+    label en official "Examples of Static Equilibrium";
+}
+
+edition M58341_MAIN of M58341 {
+    label en official "m58341/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58341/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58341_CNXML of M58341_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58341/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:332fb005903cdd75a6308bc66366aac9316d82a9257b9983e9c22fd004ef742c";
+    local_path "sources/rotation-equilibrium/m58341.cnxml";
+}
+
+source M58342 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 12 Static Equilibrium and Elasticity, module m58342";
+    label en official "Stress, Strain, and Elastic Modulus";
+}
+
+edition M58342_MAIN of M58342 {
+    label en official "m58342/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58342/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58342_CNXML of M58342_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58342/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:09de7770510b44ced69dab961308484b4a5deb4f3e6c3ce584bc49dd047754da";
+    local_path "sources/rotation-equilibrium/m58342.cnxml";
+}
+
+source M58343 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 12 Static Equilibrium and Elasticity, module m58343";
+    label en official "Elasticity and Plasticity";
+}
+
+edition M58343_MAIN of M58343 {
+    label en official "m58343/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58343/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58343_CNXML of M58343_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58343/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:964df18d2501dde6f9c088d1fdf91bb8040ba0e06c687ca91a4c3c58424b27fb";
+    local_path "sources/rotation-equilibrium/m58343.cnxml";
+}
+
+source M58344 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 13 Gravitation, module m58344";
+    label en official "Introduction";
+}
+
+edition M58344_MAIN of M58344 {
+    label en official "m58344/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58344/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58344_CNXML of M58344_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58344/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:0ee1a96dada93655a9a0ac16cf0965ae66d964ec3e5fd71e246333868cfc99a8";
+    local_path "sources/rotation-equilibrium/m58344.cnxml";
+}
+
+source M58345 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 13 Gravitation, module m58345";
+    label en official "Newton's Law of Universal Gravitation";
+}
+
+edition M58345_MAIN of M58345 {
+    label en official "m58345/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58345/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58345_CNXML of M58345_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58345/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:f3dfa17943340e976226b5b29bd34607feabd0a181a122e848084ef838ceb884";
+    local_path "sources/rotation-equilibrium/m58345.cnxml";
+}
+
+source M58346 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 13 Gravitation, module m58346";
+    label en official "Gravitation Near Earth's Surface";
+}
+
+edition M58346_MAIN of M58346 {
+    label en official "m58346/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58346/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58346_CNXML of M58346_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58346/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:80f4d08a2fe4267ff037b5dbbca0186090e516c32b8d4c474eda7e1529abc6d1";
+    local_path "sources/rotation-equilibrium/m58346.cnxml";
+}
+
+source M58347 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 13 Gravitation, module m58347";
+    label en official "Gravitational Potential Energy and Total Energy";
+}
+
+edition M58347_MAIN of M58347 {
+    label en official "m58347/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58347/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58347_CNXML of M58347_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58347/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:d9dbe274a59a9d17cbc93f759d299f496c3f402b83458157e5c19e943bc09bd7";
+    local_path "sources/rotation-equilibrium/m58347.cnxml";
+}
+
+source M58348 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 13 Gravitation, module m58348";
+    label en official "Satellite Orbits and Energy";
+}
+
+edition M58348_MAIN of M58348 {
+    label en official "m58348/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58348/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58348_CNXML of M58348_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58348/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:14d7a166da291e88e7b2bdbe6f6c6669597ea2273f969002f67dcff03fcab1a7";
+    local_path "sources/rotation-equilibrium/m58348.cnxml";
+}
+
+source M58350 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 13 Gravitation, module m58350";
+    label en official "Kepler's Laws of Planetary Motion";
+}
+
+edition M58350_MAIN of M58350 {
+    label en official "m58350/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58350/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58350_CNXML of M58350_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58350/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:4107961d3aed1171e9a5a1c868daf2028dd36b1e6e1611c7467126a4b69c6454";
+    local_path "sources/rotation-equilibrium/m58350.cnxml";
+}
+
+source M58351 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 13 Gravitation, module m58351";
+    label en official "Tidal Forces";
+}
+
+edition M58351_MAIN of M58351 {
+    label en official "m58351/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58351/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58351_CNXML of M58351_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58351/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:adfa9f4780968a63b768be3a330fc866b7132eec78d5d311ce0a59008f27a3a6";
+    local_path "sources/rotation-equilibrium/m58351.cnxml";
+}
+
+source M58352 {
+    kind treatise;
+    jurisdiction "none";
+    number "OpenStax University Physics, ch. 13 Gravitation, module m58352";
+    label en official "Einstein's Theory of Gravity";
+}
+
+edition M58352_MAIN of M58352 {
+    label en official "m58352/index.cnxml at commit d0ed34a (main, 2026-06-11)";
+    label ru unofficial "Файл m58352/index.cnxml на коммите d0ed34a ветки main";
+    language en;
+    officiality official;
+    adopted @2026-06-11;
+    materialization_status PINNED_OFFICIAL_BYTES;
+}
+
+publication M58352_CNXML of M58352_MAIN {
+    media_type "application/xml; charset=utf-8";
+    uri "https://raw.githubusercontent.com/openstax/osbooks-university-physics-bundle/d0ed34a5851119a42e3d972dfc0ff49e4663977c/modules/m58352/index.cnxml";
+    retrieved_at @2026-09-06T00:00:00Z;
+    content_hash "sha256:e0b6b32a78d00cf8e5bef5dda55d3a9eb20d01c228cd3d40ee7bc5a7fb3ea055";
+    local_path "sources/rotation-equilibrium/m58352.cnxml";
+}
+
+// m58329 «Moment of Inertia and Rotational Kinetic Energy» — fs-id1167132283419
+fragment UP_M58329_MOMENT_OF_INERTIA in M58329_MAIN {
+    kind defn;
+    locator "module/m58329#fs-id1167132283419";
+    text en official """<definition id="fs-id1167132283419">
+<term>moment of inertia</term>
+<meaning id="fs-id1167132283425">rotational mass of rigid bodies that relates to how easy or hard it will be to change the angular velocity of the rotating rigid body</meaning>
+</definition>""";
+    content_hash "sha256:5a9924139b0f0e834f712e312a09398ce8611d671ead2c21b78e3ac073fa1ef1";
+}
+
+// m58329 «Moment of Inertia and Rotational Kinetic Energy» — fs-id1167132283430
+fragment UP_M58329_ROTATIONAL_KINETIC_ENERGY in M58329_MAIN {
+    kind defn;
+    locator "module/m58329#fs-id1167132283430";
+    text en official """<definition id="fs-id1167132283430">
+<term>rotational kinetic energy</term>
+<meaning id="fs-id1167132205291">kinetic energy due to the rotation of an object; this is part of its total kinetic energy</meaning>
+</definition>""";
+    content_hash "sha256:e2dc42abddb8cf926538feb662b5d75a9af79fc94eae28264044c51d565c7d61";
+}
+
+// m58331 «Torque» — fs-id1167133606821
+fragment UP_M58331_TORQUE in M58331_MAIN {
+    kind defn;
+    locator "module/m58331#fs-id1167133606821";
+    text en official """<definition id="fs-id1167133606821">
+<term>torque</term>
+<meaning id="fs-id1167132306479">cross product of a force and a lever arm to a given axis</meaning>
+</definition>""";
+    content_hash "sha256:b105674f6ccf51d226ca2c674d04f3b6a122fb47b171cd4d109b643ac6a38bba";
+}
+
+// m58331 «Torque» — fs-id1167132312261
+fragment UP_M58331_LEVER_ARM in M58331_MAIN {
+    kind defn;
+    locator "module/m58331#fs-id1167132312261";
+    text en official """<definition id="fs-id1167132312261">
+<term>lever arm</term>
+<meaning id="fs-id1167133606817">perpendicular distance from the line that the force vector lies on to a given axis</meaning>
+</definition>""";
+    content_hash "sha256:935d1a9254021b559ce84492673472633e780140c82a4b5004691f27d52e0195";
+}
+
+// m58332 «Newton's Second Law for Rotation» — fs-id1167131118823
+fragment UP_M58332_SECOND_LAW_ROTATION in M58332_MAIN {
+    kind defn;
+    locator "module/m58332#fs-id1167131118823";
+    text en official """<definition id="fs-id1167131118823">
+<term>Newton’s second law for rotation</term>
+<meaning id="fs-id1167131118830">sum of the torques on a rotating system equals its moment of inertia times its angular acceleration</meaning>
+</definition>""";
+    content_hash "sha256:08384342359e106385c3caa5faf49578c0d4c21338b131aaf3535d1a03a7c883";
+}
+
+// m58332 «Newton's Second Law for Rotation» — fs-id1167134886602
+fragment UP_M58332_SECOND_LAW_ROTATION_STATEMENT in M58332_MAIN {
+    kind section;
+    locator "module/m58332#fs-id1167134886602";
+    text en official """<note id="fs-id1167134886602">
+<title>Newton’s Second Law for Rotation</title>
+<para id="fs-id1167134511100">If more than one torque acts on a rigid body about a fixed axis, then the sum of the torques equals the moment of inertia times the angular acceleration:</para>
+<equation id="fs-id1167134508536"><m:math><m:mrow><m:msub><m:mi>τ</m:mi><m:mi>net</m:mi></m:msub><m:mo>=</m:mo><m:mstyle displaystyle="true"><m:munder><m:mo>∑</m:mo><m:mi>i</m:mi></m:munder><m:mrow><m:msub><m:mi>τ</m:mi><m:mi>i</m:mi></m:msub></m:mrow></m:mstyle><m:mo>=</m:mo><m:mi>I</m:mi><m:mi>α</m:mi><m:mo>.</m:mo></m:mrow></m:math></equation>
+</note>""";
+    content_hash "sha256:8981b90b2c50c780b6f971a1b2173e398ba03b95a48d2d21521de354406cb9c3";
+}
+
+// m58336 «Angular Momentum» — fs-id1165037215309
+fragment UP_M58336_ANGULAR_MOMENTUM in M58336_MAIN {
+    kind defn;
+    locator "module/m58336#fs-id1165037215309";
+    text en official """<definition id="fs-id1165037215309"><term>angular momentum</term>
+<meaning id="fs-id1165037215313">rotational analog of linear momentum, found by taking the product of moment of inertia and angular velocity</meaning>
+</definition>""";
+    content_hash "sha256:f2aca482bece64f504ae14b62558034d252a1795d9651367dfc8dfa5c74e4846";
+}
+
+// m58337 «Conservation of Angular Momentum» — fs-id1165037004448
+fragment UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM in M58337_MAIN {
+    kind defn;
+    locator "module/m58337#fs-id1165037004448";
+    text en official """<definition id="fs-id1165037004448">
+<term>law of conservation of angular momentum</term>
+<meaning id="fs-id1165037075507">angular momentum is conserved, that is, the initial angular momentum is equal to the final angular momentum when no external torque is applied to the system</meaning>
+</definition>""";
+    content_hash "sha256:75822048d59bb732de1630375973905c0d9a9611f6e3243307f60fc977e42023";
+}
+
+// m58340 «Conditions for Static Equilibrium» — fs-id1163713557656
+fragment UP_M58340_EQUILIBRIUM in M58340_MAIN {
+    kind defn;
+    locator "module/m58340#fs-id1163713557656";
+    text en official """<definition id="fs-id1163713557656">
+<term>equilibrium</term>
+<meaning id="fs-id1163713525583">body is in equilibrium when its linear and angular accelerations are both zero relative to an inertial frame of reference</meaning>
+</definition>""";
+    content_hash "sha256:e5eacdf2a4774598df78d58cf8e8e08886fcad7a1d62f98a9ddc3880858ea255";
+}
+
+// m58340 «Conditions for Static Equilibrium» — fs-id1163709774761
+fragment UP_M58340_STATIC_EQUILIBRIUM in M58340_MAIN {
+    kind defn;
+    locator "module/m58340#fs-id1163709774761";
+    text en official """<definition id="fs-id1163709774761">
+<term>static equilibrium</term>
+<meaning id="fs-id1163713276572">body is in static equilibrium when it is at rest in our selected inertial frame of reference</meaning>
+</definition>""";
+    content_hash "sha256:e1107c82aa34404ba991a8e79f2fd90f147f0280469ebe97ce2be5c263e48221";
+}
+
+// m58340 «Conditions for Static Equilibrium» — fs-id1163713530656
+fragment UP_M58340_FIRST_EQUILIBRIUM_CONDITION in M58340_MAIN {
+    kind defn;
+    locator "module/m58340#fs-id1163713530656";
+    text en official """<definition id="fs-id1163713530656">
+<term>first equilibrium condition</term>
+<meaning id="fs-id1163713428816">expresses translational equilibrium; all external forces acting on the body balance out and their vector sum is zero</meaning>
+</definition>""";
+    content_hash "sha256:cccec8d304b4476604f711225f79add3461a3a38120ee37903bdca6d62e95322";
+}
+
+// m58340 «Conditions for Static Equilibrium» — fs-id1163709759627
+fragment UP_M58340_SECOND_EQUILIBRIUM_CONDITION in M58340_MAIN {
+    kind defn;
+    locator "module/m58340#fs-id1163709759627";
+    text en official """<definition id="fs-id1163709759627">
+<term>second equilibrium condition</term>
+<meaning id="fs-id1163709750024">expresses rotational equilibrium; all torques due to external forces acting on the body balance out and their vector sum is zero</meaning>
+</definition>""";
+    content_hash "sha256:67cd9f0376c08786b96253b2f9bfe5a8fa85a7d4165596b9d8db63b194ec47d8";
+}
+
+// m58345 «Newton's Law of Universal Gravitation» — fs-id1168328193986
+fragment UP_M58345_LAW_OF_GRAVITATION in M58345_MAIN {
+    kind defn;
+    locator "module/m58345#fs-id1168328193986";
+    text en official """<definition id="fs-id1168328193986">
+<term>Newton’s law of gravitation</term>
+<meaning id="fs-id1168327988168">every mass attracts every other mass with a force proportional to the product of their masses, inversely proportional to the square of the distance between them, and with direction along the line connecting the center of mass of each</meaning>
+</definition>""";
+    content_hash "sha256:de88a69a76312a8bfc6931e64e43d9574f8e1a86d0f6e828bc7d6a56b7eb7e4b";
+}
+
+// m58345 «Newton's Law of Universal Gravitation» — fs-id1168328252700
+fragment UP_M58345_GRAVITATIONAL_CONSTANT in M58345_MAIN {
+    kind defn;
+    locator "module/m58345#fs-id1168328252700";
+    text en official """<definition id="fs-id1168328252700">
+<term>universal gravitational constant</term>
+<meaning id="fs-id1168328252706">constant representing the strength of the gravitational force, that is believed to be the same throughout the universe</meaning>
+</definition>""";
+    content_hash "sha256:37c65123149d74dd150c107e42b3f7f115d26ac781979e88e1c2edfff7ce5875";
+}
+
+// m58350 «Kepler's Laws of Planetary Motion» — fs-id1168329517229
+fragment UP_M58350_KEPLER_FIRST_LAW in M58350_MAIN {
+    kind defn;
+    locator "module/m58350#fs-id1168329517229";
+    text en official """<definition id="fs-id1168329517229">
+<term>Kepler’s first law</term>
+<meaning id="fs-id1168326765861">law stating that every planet moves along an ellipse, with the Sun located at a focus of the ellipse</meaning>
+</definition>""";
+    content_hash "sha256:c02d8a5e97cfeb611d539bcb8a802e7d38f8ed7714a6ce4903a5e1772fdc6b9e";
+}
+
+// m58350 «Kepler's Laws of Planetary Motion» — fs-id1168326790250
+fragment UP_M58350_KEPLER_SECOND_LAW in M58350_MAIN {
+    kind defn;
+    locator "module/m58350#fs-id1168326790250";
+    text en official """<definition id="fs-id1168326790250">
+<term>Kepler’s second law</term>
+<meaning id="fs-id1168329461373">law stating that a planet sweeps out equal areas in equal times, meaning it has a constant areal velocity</meaning>
+</definition>""";
+    content_hash "sha256:8acfee16a206f15031be4cbc7ce3a124b2f74641b7184fb91ff69c8a9d3b08a4";
+}
+
+// m58350 «Kepler's Laws of Planetary Motion» — fs-id1168329137868
+fragment UP_M58350_KEPLER_THIRD_LAW in M58350_MAIN {
+    kind defn;
+    locator "module/m58350#fs-id1168329137868";
+    text en official """<definition id="fs-id1168329137868">
+<term>Kepler’s third law</term>
+<meaning id="fs-id1168329188942">law stating that the square of the period is proportional to the cube of the semi-major axis of the orbit</meaning>
+</definition>""";
+    content_hash "sha256:dd45350d7d3755d93ff6416ff2bb378c81d9c0ea4d3e560d2904b29d95b85728";
+}

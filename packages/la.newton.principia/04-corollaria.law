@@ -1,0 +1,225 @@
+// Единицы 13–18: Corollaria I–VI. МОДУЛЬ-ВЛАДЕЛЕЦ ЭТАЛОНОВ ВЕСА И РАССТОЯНИЯ.
+//
+// ЧТО ВЗЯТО ПРАВИЛАМИ:
+//   Corol. II  — равновесие весов и рычага: «Pondera igitur A & P, quæ sunt
+//                reciproce ut radii …, idem pollebunt & sic consistent in
+//                æquilibrio» (свойство Libræ, Vectis & Axis in Peritrochio),
+//                и перевес большего произведения;
+//   Corol. III — сохранение количества движения при взаимодействии: сумма
+//                сонаправленных минус противоположные, знаковой записью по
+//                оси (in eandem partem / in contrarias); скорость после
+//                отражения «ut motus post ad motum ante»;
+//   Corol. IV  — расстояния тел от общего центра тяжести обратны телам.
+//
+// ОБЪЯВЛЕННЫЕ ГРАНИЦЫ (остаток единиц, назван и в articles.json):
+//   Corol. I   — диагональ параллелограмма сил: геометрия направлений вне
+//                коллинеарного случая, векторной алгебры у Core 0.1 нет;
+//   Corol. II  — общая композиция и разложение по наклонным (клин, винт) —
+//                та же граница; взят исполнимый рычаг;
+//   Corol. III (хвост) — косые соударения через Corol. 2 — та же граница;
+//   Corol. IV (хвост) — сохранение состояния центра у произвольной системы:
+//                требует траекторий во времени, непрерывная динамика;
+//   Corol. V, VI — сравнение движений МЕЖДУ системами отсчёта: вопрос о двух
+//                исполнениях одной системы правил на двух делах — слой
+//                сценариев, правилом одного дела невыразим.
+//
+// ДЕЛЕНИЕ ЧАСТЕЙ ДВИЖЕНИЯ (VelocitasPostReflexionem) ТРЕБУЕТ ТОЧНОСТИ §58:
+// частное motus post / motus ante с не-10-гладким знаменателем — точная
+// дробь Rational, и пришивка выхода откажет громко (E-0074). Числа опытов
+// схолии 10-гладки, как у самого Ньютона: 18/6 = 3.
+
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+use self::{
+    Corpus,
+    PRIN_14,
+    PRIN_15,
+    PRIN_16,
+    UnaParsMateriae,
+    UnaParsMotus,
+    UnaParsVelocitatis,
+    quantitas_materiae,
+};
+
+@source(PRIN_14)
+const UnaParsPonderis: Quantity = 1 pars_ponderis {
+    label ru unofficial "эталон части веса («pondera A & P» — Corol. II)";
+}
+@source(PRIN_14)
+const UnaParsDistantiae: Quantity = 1 pars_distantiae {
+    label ru unofficial "эталон части расстояния (радиусы OK, OL — Corol. II; расстояния от центра — Corol. IIII)";
+}
+
+// --- Corol. II: рычаг и весы --------------------------------------------------
+
+relation pondus_suspensum_a_radio(w: Corpus, p: Quantity, r: Quantity) kind empirical {
+    label ru unofficial "дано: груз с весом p подвешен на радиусе r от оси колеса (Corol. II)";
+}
+relation libra_in_aequilibrio(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "грузы состоят в равновесии: веса обратны радиусам (Corol. II)";
+}
+relation pondus_praevalet(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "вес a перевешивает: его сила двигать колесо тем больше (Corol. II: «erit vis ejus ad movendam rotam tanto major»)";
+}
+
+@source(PRIN_14)
+rule PonderaReciproceUtRadii(
+    a: Corpus,
+    b: Corpus,
+    pa: Quantity,
+    ra: Quantity,
+    pb: Quantity,
+    rb: Quantity,
+) strict {
+    label ru unofficial "Corol. II. Веса, обратные радиусам подвеса, равносильны и состоят в равновесии — свойство весов, рычага и ворота";
+    when pondus_suspensum_a_radio(a, pa, ra) and pondus_suspensum_a_radio(b, pb, rb)
+        and ((pa / UnaParsPonderis) * (ra / UnaParsDistantiae) == (pb / UnaParsPonderis) * (rb / UnaParsDistantiae));
+    then libra_in_aequilibrio(a, b);
+}
+
+@source(PRIN_14)
+rule PondusMaiusPraevalet(
+    a: Corpus,
+    b: Corpus,
+    pa: Quantity,
+    ra: Quantity,
+    pb: Quantity,
+    rb: Quantity,
+) strict {
+    label ru unofficial "Corol. II. Вес, больший обратной пропорции, перевешивает";
+    when pondus_suspensum_a_radio(a, pa, ra) and pondus_suspensum_a_radio(b, pb, rb)
+        and ((pa / UnaParsPonderis) * (ra / UnaParsDistantiae) > (pb / UnaParsPonderis) * (rb / UnaParsDistantiae));
+    then pondus_praevalet(a, b);
+}
+
+// --- Corol. III: сохранение количества движения --------------------------------
+
+relation congressus_in_eadem_recta(a: Corpus, b: Corpus) kind empirical {
+    label ru unofficial "дано: два тела сходятся на одной прямой — соударение, столкновение (Corol. III: «B sequatur in eadem recta»)";
+}
+relation motus_ante_secundum_plagas(c: Corpus, in_ortum: Quantity, in_occasum: Quantity) kind empirical {
+    label ru unofficial "дано: движение тела до соударения по двум сторонам оси, в частях движения; недвижущаяся сторона — ноль частей";
+}
+relation motus_post_secundum_plagas(c: Corpus, in_ortum: Quantity, in_occasum: Quantity) kind empirical {
+    label ru unofficial "дано: движение тела после соударения по двум сторонам оси, в частях движения";
+}
+relation quantitas_motus_conservata(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "количество движения (суммарный импульс) — сумма сонаправленных минус противоположные — сохраняется, не изменилось от столкновения тел между собой (Corol. III)";
+}
+relation quantitas_motus_mutata_contra_corollarium(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "дело утверждает изменение количества движения от взаимодействия — противоречие королларию III, объявленное громко";
+}
+relation velocitas_ante_reflexionem(c: Corpus, v: Quantity) kind empirical {
+    label ru unofficial "дано: скорость тела до отражения, в частях скорости (Corol. III)";
+}
+relation velocitas_post_reflexionem(c: Corpus, v: Quantity) kind institutional {
+    label ru unofficial "скорость тела после отражения: к скорости до — как движение после к движению до (Corol. III)";
+}
+
+@source(PRIN_15)
+rule QuantitasMotusNonMutatur(
+    a: Corpus,
+    b: Corpus,
+    ea: Quantity,
+    wa: Quantity,
+    eb: Quantity,
+    wb: Quantity,
+    ea2: Quantity,
+    wa2: Quantity,
+    eb2: Quantity,
+    wb2: Quantity,
+) strict {
+    label la official "Quantitas motus quæ colligitur capiendo summam motuum factorum ad eandem partem, & diﬀerentiam factorum ad contrarias, non mutatur ab actione corporum inter se";
+    label ru unofficial "Corol. III. Количество движения, собираемое суммой сонаправленных и разностью противоположных, не меняется от действия тел между собой: 6+10 = 9+7";
+    when congressus_in_eadem_recta(a, b)
+        and motus_ante_secundum_plagas(a, ea, wa) and motus_ante_secundum_plagas(b, eb, wb)
+        and motus_post_secundum_plagas(a, ea2, wa2) and motus_post_secundum_plagas(b, eb2, wb2)
+        and ((ea / UnaParsMotus) - (wa / UnaParsMotus) + (eb / UnaParsMotus) - (wb / UnaParsMotus)
+             == (ea2 / UnaParsMotus) - (wa2 / UnaParsMotus) + (eb2 / UnaParsMotus) - (wb2 / UnaParsMotus));
+    then quantitas_motus_conservata(a, b);
+}
+
+@source(PRIN_15)
+rule QuantitasMotusMutataAsserta(
+    a: Corpus,
+    b: Corpus,
+    ea: Quantity,
+    wa: Quantity,
+    eb: Quantity,
+    wb: Quantity,
+    ea2: Quantity,
+    wa2: Quantity,
+    eb2: Quantity,
+    wb2: Quantity,
+) strict {
+    label ru unofficial "Corol. III. Сторож: соударение, в котором знаковая сумма движений изменилась, объявляется противоречием королларию, а не проглатывается";
+    when congressus_in_eadem_recta(a, b)
+        and motus_ante_secundum_plagas(a, ea, wa) and motus_ante_secundum_plagas(b, eb, wb)
+        and motus_post_secundum_plagas(a, ea2, wa2) and motus_post_secundum_plagas(b, eb2, wb2)
+        and ((ea / UnaParsMotus) - (wa / UnaParsMotus) + (eb / UnaParsMotus) - (wb / UnaParsMotus)
+             != (ea2 / UnaParsMotus) - (wa2 / UnaParsMotus) + (eb2 / UnaParsMotus) - (wb2 / UnaParsMotus));
+    then quantitas_motus_mutata_contra_corollarium(a, b);
+}
+
+@source(PRIN_15)
+rule VelocitasPostReflexionem(
+    c: Corpus,
+    v: Quantity,
+    e1: Quantity,
+    w1: Quantity,
+    e2: Quantity,
+    w2: Quantity,
+) strict {
+    label ru unofficial "Corol. III. Скорость после отражения относится к скорости до, как движение после к движению до: движение 6→18 при скорости 2 даёт скорость 6";
+    when velocitas_ante_reflexionem(c, v)
+        and motus_ante_secundum_plagas(c, e1, w1)
+        and motus_post_secundum_plagas(c, e2, w2)
+        and ((e1 / UnaParsMotus) + (w1 / UnaParsMotus) > 0.0);
+    then velocitas_post_reflexionem(c, with_unit((v / UnaParsVelocitatis) * (((e2 / UnaParsMotus) + (w2 / UnaParsMotus)) / ((e1 / UnaParsMotus) + (w1 / UnaParsMotus))), "pars_velocitatis"));
+}
+
+// --- Corol. IIII: общий центр тяжести ------------------------------------------
+
+relation distantia_a_centro_communi(c: Corpus, d: Quantity) kind empirical {
+    label ru unofficial "дано: расстояние тела от общего центра тяжести, в частях расстояния (Corol. IIII)";
+}
+relation centrum_commune_recte_constitutum(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "общий центр тяжести двух тел положен верно: расстояния обратны телам (Corol. IIII)";
+}
+relation centrum_commune_male_constitutum(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "заявленный центр тяжести противоречит обратной пропорции расстояний и тел — объявлено громко (Corol. IIII)";
+}
+
+@source(PRIN_16)
+rule DistantiaeReciproceUtCorpora(
+    a: Corpus,
+    b: Corpus,
+    ma: Quantity,
+    mb: Quantity,
+    da: Quantity,
+    db: Quantity,
+) strict {
+    label ru unofficial "Corol. IIII. Расстояния центров тел от общего центра тяжести обратны телам: m_a·d_a = m_b·d_b";
+    when quantitas_materiae(a, ma) and quantitas_materiae(b, mb)
+        and distantia_a_centro_communi(a, da) and distantia_a_centro_communi(b, db)
+        and ((ma / UnaParsMateriae) * (da / UnaParsDistantiae) == (mb / UnaParsMateriae) * (db / UnaParsDistantiae));
+    then centrum_commune_recte_constitutum(a, b);
+}
+
+@source(PRIN_16)
+rule DistantiaeNonReciprocae(
+    a: Corpus,
+    b: Corpus,
+    ma: Quantity,
+    mb: Quantity,
+    da: Quantity,
+    db: Quantity,
+) strict {
+    label ru unofficial "Corol. IIII. Сторож: расстояния, не обратные телам, объявляются неверным положением центра";
+    when quantitas_materiae(a, ma) and quantitas_materiae(b, mb)
+        and distantia_a_centro_communi(a, da) and distantia_a_centro_communi(b, db)
+        and ((ma / UnaParsMateriae) * (da / UnaParsDistantiae) != (mb / UnaParsMateriae) * (db / UnaParsDistantiae));
+    then centrum_commune_male_constitutum(a, b);
+}
