@@ -1,0 +1,15 @@
+{
+  "format": "law.package-info/0.1",
+  "purpose": "Брошюра SI (BIPM): определяющие константы, базовые и производные единицы, префиксы и внесистемные единицы; переопределение 20.05.2019 как смена редакции",
+  "limitations": [
+    "Пакет формализует определения и таблицы брошюры; метрологические измерения и неопределённости констант не моделируются.",
+    "Правила заведены у 30 закреплённых фрагментов из 38: остальные закреплены байтами публикации, но исполняемых норм не несут. Отсутствие карточки означает «в модели нормы нет», а не «право молчит».",
+    "Деонтических позиций (§§122–140) пакет не объявляет: требования выражены институциональными предикатами, и запрос positions по ним не отвечает."
+  ],
+  "examples": [
+    "tests/01-kilogram-redefinition.lawtest",
+    "tests/02-units-unchanged-across-editions.lawtest"
+  ],
+  "repository": "https://github.com/arxohq/arxo-openstax-mechanics",
+  "deliveryLicenseNote": "Publisher texts and textual adaptations, including embedded copies, retain separate terms in the repository NOTICE. Apache-2.0 covers independently authored Arxo code."
+}

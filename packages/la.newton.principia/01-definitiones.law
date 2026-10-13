@@ -1,0 +1,266 @@
+// Единицы 1–8: Def. I–VIII первого издания. МОДУЛЬ-ВЛАДЕЛЕЦ ЭТАЛОНОВ.
+//
+// ЭТАЛОН — ЭТО ПРОВЕРКА ЕДИНИЦЫ (E-0068, приём phys.zadachnik): деление на
+// эталон обращает величину в число «частей», и величина в чужой единице
+// роняет правило громко на первом же делении. Пришивка выхода — with_unit
+// (E-0074), тег стоит литералом на месте пришивки.
+//
+// «ЧАСТИ» — ЕДИНИЦЫ САМОГО ТЕКСТА (см. 00-package.law): первоиздание
+// считает свои примеры в partes, и никаких иных единиц не знает. Мера сил —
+// по определениям VII и VIII: vis acceleratrix меряется порождаемой
+// скоростью (partes velocitatis), vis motrix — порождаемым движением
+// (partes motus); отдельных тегов силы поэтому нет намеренно.
+//
+// ЦЕПЬ ОПРЕДЕЛЕНИЙ НЕСУЩАЯ, НЕ ГЛОССАРИЙ: плотность×объём → масса (Def. I)
+// → количество движения (Def. II) и вместе с ускорительной мерой → движущая
+// сила (Def. VIII); удар/давление/центростремительная → приложенная сила
+// (Def. IV), тяжесть/магнетизм/удержание планет → центростремительная
+// (Def. V) — и эту цепь читают посылками законы модуля 03.
+
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+use self::{
+    Corpus,
+    PRIN_1,
+    PRIN_2,
+    PRIN_3,
+    PRIN_4,
+    PRIN_5,
+    PRIN_6,
+    PRIN_7,
+    PRIN_8,
+};
+
+// --- Эталоны «частей» ---------------------------------------------------------
+
+@source(PRIN_1)
+const UnaParsDensitatis: Quantity = 1 pars_densitatis {
+    label ru unofficial "эталон части плотности: делением на него плотность обращается в число частей (Def. I, E-0068)";
+}
+@source(PRIN_1)
+const UnaParsSpatii: Quantity = 1 pars_spatii {
+    label ru unofficial "эталон части объёма («Magnitudine», «in duplo spatio» — Def. I)";
+}
+@source(PRIN_1)
+const UnaParsMateriae: Quantity = 1 pars_materiae {
+    label ru unofficial "эталон части материи (массы) — Def. I";
+}
+@source(PRIN_2)
+const UnaParsVelocitatis: Quantity = 1 pars_velocitatis {
+    label ru unofficial "эталон части скорости («cum Velocitatis parte una» — схолия, ед. 9)";
+}
+@source(PRIN_2)
+const UnaParsMotus: Quantity = 1 pars_motus {
+    label ru unofficial "эталон части движения («ponantur motus illis esse partium sex & decem» — Corol. III)";
+}
+
+// --- Def. I: количество материи -----------------------------------------------
+
+relation densitas_corporis(c: Corpus, d: Quantity) kind empirical {
+    label ru unofficial "дано: плотность тела в частях плотности (Def. I)";
+}
+relation magnitudo_corporis(c: Corpus, v: Quantity) kind empirical {
+    label ru unofficial "дано: объём тела («Magnitudine») в частях объёма (Def. I)";
+}
+relation corpus_datum_massa(c: Corpus, m: Quantity) kind empirical {
+    label ru unofficial "дано: количество материи тела напрямую, в частях материи (Def. I)";
+}
+relation quantitas_materiae(c: Corpus, m: Quantity) kind institutional {
+    label la official "Quantitas Materiæ";
+    label ru unofficial "количество материи (масса) тела — Def. I";
+}
+
+@source(PRIN_1)
+rule QuantitasMateriaeConjunctim(c: Corpus, d: Quantity, v: Quantity) strict {
+    label ru unofficial "Def. I. Количество материи есть мера, возникающая из плотности и объёма совместно: воздух вдвое плотнее в двойном объёме — четырёхкратен";
+    when densitas_corporis(c, d) and magnitudo_corporis(c, v);
+    then quantitas_materiae(c, with_unit((d / UnaParsDensitatis) * (v / UnaParsSpatii), "pars_materiae"));
+}
+
+@source(PRIN_1)
+rule MassaNomineCorporis(c: Corpus, m: Quantity) strict {
+    label ru unofficial "Def. I. «Hanc autem quantitatem sub nomine corporis vel Massæ … intelligo»: масса, данная делом напрямую, и есть количество материи";
+    when corpus_datum_massa(c, m);
+    then quantitas_materiae(c, m);
+}
+
+// --- Def. II: количество движения ---------------------------------------------
+
+relation velocitas_corporis(c: Corpus, v: Quantity) kind empirical {
+    label ru unofficial "дано: скорость тела в частях скорости (Def. II)";
+}
+pub relation quantitas_motus(c: Corpus, p: Quantity) kind institutional {
+    label la official "Quantitas motus";
+    label ru unofficial "количество движения (импульс) тела — Def. II";
+}
+
+@source(PRIN_2)
+rule QuantitasMotusConjunctim(c: Corpus, v: Quantity, m: Quantity) strict {
+    label ru unofficial "Def. II. Количество движения есть мера из скорости и количества материи совместно: в теле вдвое большем при равной скорости — вдвое, при двойной — вчетверо";
+    when velocitas_corporis(c, v) and quantitas_materiae(c, m);
+    then quantitas_motus(c, with_unit((v / UnaParsVelocitatis) * (m / UnaParsMateriae), "pars_motus"));
+}
+
+// --- Def. III: врождённая сила (vis inertiæ) ----------------------------------
+
+relation vis_insita(c: Corpus, q: Quantity) kind institutional {
+    label la official "Materiæ vis insita";
+    label ru unofficial "врождённая сила материи (vis inertiæ) — Def. III; мера в частях материи: «Hæc semper proportionalis est suo corpori»";
+}
+relation vis_insita_exercetur(c: Corpus) kind institutional {
+    label ru unofficial "врождённая сила проявляется — только при перемене состояния приложенной силой, как сопротивление и как напор (Def. III)";
+}
+
+@source(PRIN_3)
+rule VisInsitaProportionalisCorpori(c: Corpus, m: Quantity) strict {
+    label ru unofficial "Def. III. Врождённая сила всегда пропорциональна своему телу и не отличается от инерции массы иначе, чем способом понимания";
+    when quantitas_materiae(c, m);
+    then vis_insita(c, m);
+}
+
+@source(PRIN_3)
+rule ExercetInMutationeStatus(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Def. III. Тело проявляет врождённую силу единственно при перемене своего состояния, произведённой приложенной силой";
+    when vis_impressa_in(c, f);
+    then vis_insita_exercetur(c);
+}
+
+// --- Def. IV: приложенная сила и её происхождения -----------------------------
+
+relation ictus_in_corpus(c: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: удар (толчок, соударение) по телу, мера в частях движения-импульса (Def. IV: «ex ictu»)";
+}
+relation pressio_in_corpus(c: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: давление на тело, мера в частях движения (Def. IV: «ex pressione»)";
+}
+pub relation vis_impressa_in(c: Corpus, f: Quantity) kind institutional {
+    label la official "Vis impressa";
+    label ru unofficial "приложенная сила: действие на тело к перемене его состояния (Def. IV); мера — порождаемые части движения (Def. VIII)";
+}
+
+// Три происхождения — три правила (расщепление §206: «est autem vis impressa
+// diversarum originum, ut ex ictu, ex pressione, ex vi centripeta»).
+@source(PRIN_4)
+rule VisImpressaExIctu(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Def. IV. Приложенная сила бывает из удара";
+    when ictus_in_corpus(c, f);
+    then vis_impressa_in(c, f);
+}
+@source(PRIN_4)
+rule VisImpressaExPressione(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Def. IV. Приложенная сила бывает из давления";
+    when pressio_in_corpus(c, f);
+    then vis_impressa_in(c, f);
+}
+@source(PRIN_4)
+rule VisImpressaExViCentripeta(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Def. IV. Приложенная сила бывает из центростремительной силы";
+    when vis_centripeta_in(c, f);
+    then vis_impressa_in(c, f);
+}
+
+// --- Def. V: центростремительная сила и её род --------------------------------
+
+relation gravitas_in(c: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: тяжесть, которой тело стремится к центру Земли (Def. V)";
+}
+relation vis_magnetica_in(c: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: магнитная сила, которой железо ищет центр магнита (Def. V)";
+}
+relation vis_retinens_planetam_in(c: Corpus, f: Quantity) kind empirical {
+    label ru unofficial "дано: сила, какова бы она ни была, которой планета удерживается от прямолинейного движения (Def. V)";
+}
+relation vis_centripeta_in(c: Corpus, f: Quantity) kind institutional {
+    label la official "Vis centripeta";
+    label ru unofficial "центростремительная сила: которой тело тянется, толкается или как-либо стремится к точке как к центру (Def. V)";
+}
+
+@source(PRIN_5)
+rule GravitasEstCentripeta(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Def. V. «Hujus generis est gravitas»: тяжесть — центростремительная сила";
+    when gravitas_in(c, f);
+    then vis_centripeta_in(c, f);
+}
+@source(PRIN_5)
+rule VisMagneticaEstCentripeta(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Def. V. Магнитная сила — центростремительная";
+    when vis_magnetica_in(c, f);
+    then vis_centripeta_in(c, f);
+}
+@source(PRIN_5)
+rule VisRetinensPlanetamEstCentripeta(c: Corpus, f: Quantity) strict {
+    label ru unofficial "Def. V. Сила, удерживающая планеты на кривых, — центростремительная";
+    when vis_retinens_planetam_in(c, f);
+    then vis_centripeta_in(c, f);
+}
+
+// --- Def. VI: абсолютная мера -------------------------------------------------
+
+relation efficacia_causae_maior(x: Corpus, y: Corpus) kind empirical {
+    label ru unofficial "дано: действенность причины, распространяющей силу от центра, у x больше, чем у y (Def. VI: «virtus Magnetica major in uno magnete, minor in alio»)";
+}
+relation quantitas_absoluta_maior(x: Corpus, y: Corpus) kind institutional {
+    label ru unofficial "абсолютная мера центростремительной силы x больше, чем y (Def. VI)";
+}
+
+@source(PRIN_6)
+rule QuantitasAbsolutaProEfficacia(x: Corpus, y: Corpus) strict {
+    label ru unofficial "Def. VI. Абсолютная мера центростремительной силы больше или меньше по действенности причины, распространяющей её от центра";
+    when efficacia_causae_maior(x, y);
+    then quantitas_absoluta_maior(x, y);
+}
+
+// --- Def. VII: ускорительная мера ---------------------------------------------
+
+relation velocitas_genita_dato_tempore(c: Corpus, dv: Quantity) kind empirical {
+    label ru unofficial "дано: скорость, порождаемая силой в данное время, в частях скорости (Def. VII)";
+}
+relation vis_acceleratrix_in(c: Corpus, fa: Quantity) kind institutional {
+    label la official "Vis centripetæ quantitas acceleratrix";
+    label ru unofficial "ускорительная мера центростремительной силы: пропорциональна скорости, которую порождает в данное время (Def. VII)";
+}
+
+@source(PRIN_7)
+rule VisAcceleratrixMensuraVelocitatis(c: Corpus, dv: Quantity) strict {
+    label ru unofficial "Def. VII. Ускорительная мера силы есть порождаемая ею в данное время скорость";
+    when velocitas_genita_dato_tempore(c, dv);
+    then vis_acceleratrix_in(c, dv);
+}
+
+// --- Def. VIII: движущая мера и связь мер -------------------------------------
+
+relation motus_genitus_dato_tempore(c: Corpus, dp: Quantity) kind empirical {
+    label ru unofficial "дано: движение, порождаемое силой в данное время, в частях движения (Def. VIII)";
+}
+relation vis_motrix_in(c: Corpus, fm: Quantity) kind institutional {
+    label la official "Vis centripetæ quantitas motrix";
+    label ru unofficial "движущая мера центростремительной силы: пропорциональна движению, которое порождает в данное время; у тяжести это вес (Def. VIII)";
+}
+relation mensurae_motricis_discrepant(c: Corpus) kind institutional {
+    label ru unofficial "две меры движущей силы разошлись: порождённое движение не равно ускорительной мере, умноженной на количество материи, — вход противоречит Def. VIII";
+}
+
+@source(PRIN_8)
+rule VisMotrixMensuraMotus(c: Corpus, dp: Quantity) strict {
+    label ru unofficial "Def. VIII. Движущая мера силы есть порождаемое ею в данное время движение";
+    when motus_genitus_dato_tempore(c, dp);
+    then vis_motrix_in(c, dp);
+}
+
+@source(PRIN_8)
+rule VisMotrixExAcceleratriceDucta(c: Corpus, fa: Quantity, m: Quantity) strict {
+    label ru unofficial "Def. VIII. «Vis motrix ex vi acceleratrice ducta in quantitatem ejusdem materiæ»: движущая сила — ускорительная мера, умноженная на количество материи";
+    when vis_acceleratrix_in(c, fa) and quantitas_materiae(c, m);
+    then vis_motrix_in(c, with_unit((fa / UnaParsVelocitatis) * (m / UnaParsMateriae), "pars_motus"));
+}
+
+@source(PRIN_8)
+rule MensuraeMotricisDiscrepant(c: Corpus, dp: Quantity, fa: Quantity, m: Quantity) strict {
+    label ru unofficial "Def. VIII. Сторож согласованности мер: порождённое движение, разошедшееся с произведением ускорительной меры на материю, объявляется противоречием входа, а не проглатывается";
+    when motus_genitus_dato_tempore(c, dp) and vis_acceleratrix_in(c, fa)
+        and quantitas_materiae(c, m)
+        and ((dp / UnaParsMotus) != (fa / UnaParsVelocitatis) * (m / UnaParsMateriae));
+    then mensurae_motricis_discrepant(c);
+}

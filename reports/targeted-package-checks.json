@@ -1,0 +1,54 @@
+{
+  "cli": "0.2.4",
+  "scope": "one declared suite per package; not complete package/corpus execution",
+  "corpus": "not_checked",
+  "releaseVerified": false,
+  "packages": [
+    {
+      "spec": "openstax.measurement@0.1.0",
+      "suite": "tests/01-dimensional-consistency.lawtest",
+      "status": "passed",
+      "stderr": ""
+    },
+    {
+      "spec": "openstax.kinematics@0.1.0",
+      "suite": "tests/01-velocity-and-path.lawtest",
+      "status": "passed",
+      "stderr": ""
+    },
+    {
+      "spec": "openstax.dynamics@0.1.0",
+      "suite": "tests/01-forces-mass-weight.lawtest",
+      "status": "passed",
+      "stderr": ""
+    },
+    {
+      "spec": "openstax.energy_momentum@0.1.0",
+      "suite": "tests/01-work-energy-power.lawtest",
+      "status": "passed",
+      "stderr": ""
+    },
+    {
+      "spec": "openstax.rotation_equilibrium@0.1.0",
+      "suite": "tests/01-rotation-and-equilibrium.lawtest",
+      "status": "passed",
+      "stderr": ""
+    },
+    {
+      "spec": "units.si@0.1.0",
+      "status": "no_declared_scenarios"
+    },
+    {
+      "spec": "bipm.si_brochure@0.1.0",
+      "suite": "tests/01-kilogram-redefinition.lawtest",
+      "status": "passed",
+      "stderr": ""
+    },
+    {
+      "spec": "la.newton.principia@0.1.0",
+      "suite": "tests/01-aer-quadruplus.lawtest",
+      "status": "passed",
+      "stderr": ""
+    }
+  ]
+}

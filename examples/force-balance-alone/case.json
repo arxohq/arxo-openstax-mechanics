@@ -1,0 +1,84 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:907028b1f9b3a5b0d5365859576bf433c0da20ec2710a1ea44a5093dd7907523",
+      "evidence": [],
+      "id": "urn:openstax:clir:rotation-equilibrium#t01f-bp",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:rot:couple",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:rotation-equilibrium#body_presented"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:rotation-equilibrium"
+    },
+    {
+      "contentHash": "sha256:f3d1503baeb590238b89a5e1325e3bd7946ff79b1e041acc93063508013ea73e",
+      "evidence": [],
+      "id": "urn:openstax:clir:rotation-equilibrium#t01f-f",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:rot:couple",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "N",
+            "value": "0"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:rotation-equilibrium#net_force_on_body"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:rotation-equilibrium"
+    },
+    {
+      "contentHash": "sha256:040c43b62fcd4bd963010b5d2ac04316336cf344fe22337259836411702871c2",
+      "evidence": [],
+      "id": "urn:openstax:clir:rotation-equilibrium#t01f-t",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:rot:couple",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "J",
+            "value": "8"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:rotation-equilibrium#net_torque_on_body"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:rotation-equilibrium"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-09-06T12:00:00Z",
+    "knowledgeTime": "2026-09-06T12:00:00Z",
+    "legalTime": "2026-09-06",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

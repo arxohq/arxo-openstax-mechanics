@@ -1,0 +1,93 @@
+language "law.core" version "0.2";
+package openstax.energy_momentum version "0.1.0";
+namespace "urn:openstax:clir:energy-momentum";
+
+// УРОВЕНЬ РЕДАКЦИЙ: ОДНО ДЕЛО, ДВЕ ДАТЫ, РАЗНЫЕ ОТВЕТЫ.
+//
+// Грузовик врезался в стоящую машину, они сцепились и поехали дальше вместе.
+// По учебнику ДО errata 28340 (23.04.2026) абсолютно неупругим считалось
+// столкновение, «after which all objects are MOTIONLESS»; по учебнику ПОСЛЕ —
+// «stuck together, MOVING WITH THE SAME VELOCITY».
+//
+// Дело одно. Ответ зависит от даты права.
+
+// НА ДАТУ 01.04.2026 — прежняя редакция. Тела движутся, значит по тогдашнему
+// определению столкновение абсолютно неупругим НЕ выводится.
+test "urn:query:em-t03a-before-errata-moving-together-is-not-enough" {
+    given {
+        context {
+            decision_time @2026-04-01T12:00:00Z;
+            knowledge_time @2026-04-01T12:00:00Z;
+            legal_time @2026-04-01;
+            timezone "UTC";
+        }
+        assert "t03a-tg": objects_move_together_after(entity_ref("urn:case:em:truck"), entity_ref("urn:case:em:smash")) { origin case_input; }
+    }
+
+    evaluate truth(perfectly_inelastic_collision(entity_ref("urn:case:em:truck"), entity_ref("urn:case:em:smash")));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == NEITHER;
+    expect evaluation_status == COMPUTED;
+}
+
+// НА ДАТУ 01.05.2026 — действующая редакция. ТЕ ЖЕ ФАКТЫ дают вывод.
+// Разница между сценами 03a и 03b — только дата права.
+test "urn:query:em-t03b-after-errata-moving-together-suffices" {
+    given {
+        context {
+            decision_time @2026-05-01T12:00:00Z;
+            knowledge_time @2026-05-01T12:00:00Z;
+            legal_time @2026-05-01;
+            timezone "UTC";
+        }
+        assert "t03b-tg": objects_move_together_after(entity_ref("urn:case:em:truck"), entity_ref("urn:case:em:smash")) { origin case_input; }
+    }
+
+    evaluate truth(perfectly_inelastic_collision(entity_ref("urn:case:em:truck"), entity_ref("urn:case:em:smash")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(MovingTogetherIsPerfectlyInelastic);
+}
+
+// ОБРАТНАЯ ПРОВЕРКА: два одинаковых шара навстречу слиплись и ВСТАЛИ.
+// На дату 01.04.2026 прежнее определение их признаёт.
+test "urn:query:em-t03c-before-errata-motionless-suffices" {
+    given {
+        context {
+            decision_time @2026-04-01T12:00:00Z;
+            knowledge_time @2026-04-01T12:00:00Z;
+            legal_time @2026-04-01;
+            timezone "UTC";
+        }
+        assert "t03c-mo": objects_motionless_after(entity_ref("urn:case:em:heads"), entity_ref("urn:case:em:bump")) { origin case_input; }
+    }
+
+    evaluate truth(perfectly_inelastic_collision(entity_ref("urn:case:em:heads"), entity_ref("urn:case:em:bump")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AllMotionlessIsPerfectlyInelastic);
+}
+
+// А НА ДАТУ 01.05.2026 прежнее правило снято проекцией §31: те же факты о
+// неподвижности вывода уже не дают, потому что действующее определение
+// говорит об общей скорости, а не о покое. Пара со сценой 03c замыкает
+// квадрат: два дела × две даты, и все четыре ответа различны по основанию.
+test "urn:query:em-t03d-after-errata-motionless-alone-is-not-the-criterion" {
+    given {
+        context {
+            decision_time @2026-05-01T12:00:00Z;
+            knowledge_time @2026-05-01T12:00:00Z;
+            legal_time @2026-05-01;
+            timezone "UTC";
+        }
+        assert "t03d-mo": objects_motionless_after(entity_ref("urn:case:em:heads"), entity_ref("urn:case:em:bump")) { origin case_input; }
+    }
+
+    evaluate truth(perfectly_inelastic_collision(entity_ref("urn:case:em:heads"), entity_ref("urn:case:em:bump")));
+
+    expect truth_status == NEITHER;
+    expect evaluation_status == COMPUTED;
+}

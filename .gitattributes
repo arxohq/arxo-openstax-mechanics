@@ -1,0 +1,5 @@
+*.lawir.json linguist-generated=true
+examples/**/request.json linguist-generated=true
+examples/**/result.json linguist-generated=true
+*.law linguist-language=Rust
+*.lawtest linguist-language=Rust

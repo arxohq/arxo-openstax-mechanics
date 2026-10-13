@@ -1,0 +1,114 @@
+{
+  "assertions": [
+    {
+      "contentHash": "sha256:04d840beed8e3323dccdbda91fd50f9e48548eebbf3fe94e2a8273c979b39b84",
+      "evidence": [],
+      "id": "urn:openstax:clir:dynamics#t03c-k",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:dyn:crate3",
+            "kind": "entity_ref"
+          },
+          {
+            "id": "urn:case:dyn:floor",
+            "kind": "entity_ref"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:dynamics#contact_of"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:dynamics"
+    },
+    {
+      "contentHash": "sha256:1cd71441696a63c2522dac552b442faccbf0805658a1f6356cd0cec1c7139376",
+      "evidence": [],
+      "id": "urn:openstax:clir:dynamics#t03c-n",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:dyn:floor",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "N",
+            "value": "200"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:dynamics#normal_force"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:dynamics"
+    },
+    {
+      "contentHash": "sha256:dca79e3c1ed8e3e475a469b69ec66e9b0de124c6ae0ba4354b258fb37ad1c0d4",
+      "evidence": [],
+      "id": "urn:openstax:clir:dynamics#t03c-mu",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:dyn:floor",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Decimal"
+            },
+            "value": "0.4"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:dynamics#static_coefficient"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:dynamics"
+    },
+    {
+      "contentHash": "sha256:27f6a5be2dac7c8cfd02a6f0c318a2a72633c9f366b6e5a35c46e64d491fddb2",
+      "evidence": [],
+      "id": "urn:openstax:clir:dynamics#t03c-f",
+      "kind": "assertion",
+      "literal": {
+        "args": [
+          {
+            "id": "urn:case:dyn:crate3",
+            "kind": "entity_ref"
+          },
+          {
+            "kind": "value",
+            "type": {
+              "name": "urn:law:std#Quantity"
+            },
+            "unit": "N",
+            "value": "80"
+          }
+        ],
+        "kind": "literal",
+        "polarity": "positive",
+        "predicate": "urn:openstax:clir:dynamics#applied_parallel_force"
+      },
+      "origin": "case_input",
+      "package": "urn:openstax:clir:dynamics"
+    }
+  ],
+  "context": {
+    "decisionTime": "2026-09-06T12:00:00Z",
+    "knowledgeTime": "2026-09-06T12:00:00Z",
+    "legalTime": "2026-09-06",
+    "timezone": "UTC"
+  },
+  "options": {}
+}

@@ -1,0 +1,19 @@
+{
+  "kind": "truth",
+  "literal": {
+    "args": [
+      {
+        "id": "urn:case:em:pair",
+        "kind": "entity_ref"
+      },
+      {
+        "id": "urn:case:em:hit",
+        "kind": "entity_ref"
+      }
+    ],
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:openstax:clir:energy-momentum#momentum_conserved"
+  },
+  "queryId": "urn:openstax:clir:energy-momentum#test/urn%3Aquery%3Aem-t02a-closed-system-conserves-momentum/query/0"
+}

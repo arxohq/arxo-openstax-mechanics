@@ -1,0 +1,261 @@
+language "law.core" version "0.2";
+package openstax.kinematics version "0.1.0";
+namespace "urn:openstax:clir:kinematics";
+
+// §3.5: свободное падение ЕСТЬ равноускоренное движение с a = −g. Дело
+// называет g = 9.8 м/с² (значение места, не константа пакета), и правило
+// пишет в лист модуля 02 — дальше работают уравнения §3.4 без единой новой
+// формулы.
+test "urn:query:kin-t03a-free-fall-is-constant-acceleration" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03a-ff": in_free_fall(entity_ref("urn:case:kin:drop")) { origin case_input; }
+        assert "t03a-g": local_gravity(entity_ref("urn:case:kin:drop"), 9.8 m_per_s2) { origin case_input; }
+    }
+
+    evaluate truth(constant_acceleration(entity_ref("urn:case:kin:drop"), -9.8 m_per_s2));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(FreeFallIsConstantAcceleration);
+}
+
+// ЦЕПОЧКА ДО КОНЦА: у падающего с нулевой начальной скоростью через 4 с
+// скорость равна −39,2 м/с. Вывод идёт ЧЕРЕЗ модуль 02 — свободное падение
+// подставило ускорение, уравнение §3.4 его применило.
+test "urn:query:kin-t03b-free-fall-velocity-after-four-seconds" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03b-ff": in_free_fall(entity_ref("urn:case:kin:drop")) { origin case_input; }
+        assert "t03b-g": local_gravity(entity_ref("urn:case:kin:drop"), 9.8 m_per_s2) { origin case_input; }
+        assert "t03b-v0": initial_velocity(entity_ref("urn:case:kin:drop"), 0 m_per_s) { origin case_input; }
+        assert "t03b-t": elapsed_time(entity_ref("urn:case:kin:drop"), 4 s) { origin case_input; }
+    }
+
+    evaluate truth(final_velocity(entity_ref("urn:case:kin:drop"), -39.2 m_per_s));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(FreeFallIsConstantAcceleration);
+    expect applied(FinalVelocityUnderConstantAcceleration);
+}
+
+// ОБРАТНАЯ СТОРОНА ГРАНИЦЫ §3.5: «movement that results from gravitational
+// force ONLY». Объявленное сопротивление воздуха ОПРОВЕРГАЕТ свободное
+// падение — FALSE_ONLY, и уравнения §3.4 к такому отрезку не приложимы.
+test "urn:query:kin-t03c-air-resistance-refutes-free-fall" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03c-r": air_resistance_significant(entity_ref("urn:case:kin:parachute")) { origin case_input; }
+    }
+
+    evaluate truth(in_free_fall(entity_ref("urn:case:kin:parachute")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ResistanceRefutesFreeFall);
+}
+
+// §4.4, собственный пример источника: «a_c = v²/r = (2.5 m/s)²/2.0 m =
+// 3.1 m/s²». Точное значение — 3,125 м/с²; учебник округляет до двух
+// значащих цифр, движок хранит точное: округление §50 требует НАЗВАННОЙ
+// политики, и подставлять её за источник пакет не вправе.
+test "urn:query:kin-t03d-centripetal-acceleration" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03d-r": moves_on_circle(entity_ref("urn:case:kin:particle"), entity_ref("urn:case:kin:turn"), 2.0 m) { origin case_input; }
+        assert "t03d-v": speed_on_circle(entity_ref("urn:case:kin:particle"), entity_ref("urn:case:kin:turn"), 2.5 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(centripetal_acceleration(entity_ref("urn:case:kin:particle"),
+                                            entity_ref("urn:case:kin:turn"), 3.125 m_per_s2));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(CentripetalAccelerationFromSpeedAndRadius);
+}
+
+// §4.4, пример с маховиком подаёт САНТИМЕТРЫ: радиус 20,0 см и ускорение в
+// см/с². Приведение к метрам делает `unit_convert` явно, и ответ приходит в
+// м/с²: (1,34 м/с)² / 0,2 м = 8,978 м/с².
+test "urn:query:kin-t03e-flywheel-in-centimetres" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03e-r": moves_on_circle(entity_ref("urn:case:kin:rim"), entity_ref("urn:case:kin:spin"), 20.0 cm) { origin case_input; }
+        assert "t03e-v": speed_on_circle(entity_ref("urn:case:kin:rim"), entity_ref("urn:case:kin:spin"), 134.0 cm_per_s) { origin case_input; }
+    }
+
+    evaluate truth(centripetal_acceleration(entity_ref("urn:case:kin:rim"),
+                                            entity_ref("urn:case:kin:spin"), 8.978 m_per_s2));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+}
+
+// §4.4: постоянная путевая скорость на окружности — движение равномерное.
+test "urn:query:kin-t03f-uniform-circular-motion" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03f-r": moves_on_circle(entity_ref("urn:case:kin:particle"), entity_ref("urn:case:kin:turn"), 2.0 m) { origin case_input; }
+        assert "t03f-v": speed_on_circle(entity_ref("urn:case:kin:particle"), entity_ref("urn:case:kin:turn"), 2.5 m_per_s) { origin case_input; }
+        assert "t03f-c": speed_constant(entity_ref("urn:case:kin:particle"), entity_ref("urn:case:kin:turn")) { origin case_input; }
+    }
+
+    evaluate truth(uniform_circular_motion(entity_ref("urn:case:kin:particle"), entity_ref("urn:case:kin:turn")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ConstantSpeedOnCircleIsUniform);
+}
+
+// ОБРАТНАЯ СТОРОНА: объявленное изменение путевой скорости опровергает
+// равномерность — появляется тангенциальное ускорение.
+//
+// ЧИСЛА СЦЕНЫ ПОДОБРАНЫ 10-ГЛАДКИМИ СОЗНАТЕЛЬНО. Первая редакция брала
+// 8,0 м/с на радиусе 30,0 м; a_c = 64/30 = 32/15 м/с² не представимо
+// Decimal, и `quantity_of` отвечал INEXACT_DIVISION. Заметить это на глаз
+// нельзя: спрашивала сцена про равномерность, ответ FALSE_ONLY приходил
+// ВЕРНЫЙ, а неисполнимым становился ВЕСЬ документ — из-за постороннего
+// правила, сработавшего на тех же фактах. 6,0 м/с на 30,0 м дают 1,2 м/с².
+test "urn:query:kin-t03g-changing-speed-refutes-uniformity" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03g-r": moves_on_circle(entity_ref("urn:case:kin:runner"), entity_ref("urn:case:kin:bend"), 30.0 m) { origin case_input; }
+        assert "t03g-v": speed_on_circle(entity_ref("urn:case:kin:runner"), entity_ref("urn:case:kin:bend"), 6.0 m_per_s) { origin case_input; }
+        assert "t03g-c": speed_changes(entity_ref("urn:case:kin:runner"), entity_ref("urn:case:kin:bend")) { origin case_input; }
+    }
+
+    evaluate truth(uniform_circular_motion(entity_ref("urn:case:kin:runner"), entity_ref("urn:case:kin:bend")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ChangingSpeedRefutesUniformity);
+}
+
+// §4.5: пассажир идёт по поезду со скоростью 2 м/с, поезд идёт 30 м/с —
+// в системе земли пассажир движется со скоростью 32 м/с.
+test "urn:query:kin-t03h-relative-velocity-adds" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03h-vb": velocity_in_frame(entity_ref("urn:case:kin:passenger"),
+                                 entity_ref("urn:case:kin:train"), 2 m_per_s) { origin case_input; }
+        assert "t03h-vf": frame_velocity_in_frame(entity_ref("urn:case:kin:train"),
+                                       entity_ref("urn:case:kin:ground"), 30 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(relative_velocity(entity_ref("urn:case:kin:passenger"),
+                                     entity_ref("urn:case:kin:ground"), 32 m_per_s));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(RelativeVelocityAddsInOneDimension);
+}
+
+// §4.5: ПОКОЙ ЕСТЬ ПОКОЙ В НАЗВАННОЙ СИСТЕМЕ. Сидящий в поезде пассажир
+// покоится относительно поезда — и это ничего не говорит о земле.
+test "urn:query:kin-t03i-rest-is-frame-relative" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03i-a": velocity_in_frame(entity_ref("urn:case:kin:seated"),
+                                 entity_ref("urn:case:kin:train"), 0 m_per_s) { origin case_input; }
+        assert "t03i-b": velocity_in_frame(entity_ref("urn:case:kin:seated"),
+                                 entity_ref("urn:case:kin:ground"), 30 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(at_rest_in_frame(entity_ref("urn:case:kin:seated"), entity_ref("urn:case:kin:train")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ZeroVelocityIsRestInThatFrame);
+}
+
+// ТОТ ЖЕ ПАССАЖИР, ДРУГАЯ СИСТЕМА: относительно земли покой ОПРОВЕРГНУТ.
+// Пара с предыдущей сценой — обе стороны границы «покой относителен».
+test "urn:query:kin-t03j-not-at-rest-in-the-other-frame" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03j-a": velocity_in_frame(entity_ref("urn:case:kin:seated"),
+                                 entity_ref("urn:case:kin:train"), 0 m_per_s) { origin case_input; }
+        assert "t03j-b": velocity_in_frame(entity_ref("urn:case:kin:seated"),
+                                 entity_ref("urn:case:kin:ground"), 30 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(at_rest_in_frame(entity_ref("urn:case:kin:seated"), entity_ref("urn:case:kin:ground")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(NonzeroVelocityRefutesRest);
+}
+
+// §4.5, МОДУЛЬ СКОРОСТИ ПО КОМПОНЕНТАМ (E-0152): пример источника — автомобиль
+// 80 км/ч на восток и 70 км/ч на север относительно Земли: √(80² + 70²) =
+// √11300 = 106,30… → 106,3 км/ч. Корень сертифицированными границами.
+test "urn:query:kin-t03k-speed-from-velocity-components" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03k-x": velocity_component_in_frame(entity_ref("urn:case:kin:car"), entity_ref("urn:case:kin:earth"), "x", 80 km_per_h) { origin case_input; }
+        assert "t03k-y": velocity_component_in_frame(entity_ref("urn:case:kin:car"), entity_ref("urn:case:kin:earth"), "y", 70 km_per_h) { origin case_input; }
+    }
+
+    evaluate truth(speed_in_frame(entity_ref("urn:case:kin:car"), entity_ref("urn:case:kin:earth"), 106.3 km_per_h));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(SpeedFromVelocityComponents);
+}

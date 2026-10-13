@@ -1,0 +1,40 @@
+[package]
+name = "openstax.dynamics"
+version = "0.1.0"
+language = "0.2"
+namespace = "urn:openstax:clir:dynamics"
+
+[dependencies]
+"units.si" = "0.1.0"
+"bipm.si_brochure" = "0.1.0"
+"openstax.measurement" = "0.1.0"
+"openstax.kinematics" = "0.1.0"
+"la.newton.principia" = "0.1.0"
+
+[features]
+enabled = ["law.units/0.1"]
+semanticLayer = "L1"
+
+# Каталожная метадата (DECISION-0051; docs/PACKAGE-METADATA.ru.md).
+[metadata]
+act = "openstax-dynamics"
+title = "OpenStax University Physics, т. 1, гл. 5–6: динамика — три закона Ньютона, масса и вес, трение с границей μ_s·N, центростремительная сила; два прочтения второго закона против оригинала Principia"
+primarySource = "M58297"
+jurisdiction = "none"
+instrument = "treatise"
+sourceFidelity = "pinned_official_bytes"
+issuer = "OpenStax, Rice University — University Physics Volume 1 (osbooks-university-physics-bundle, commit d0ed34a)"
+legalStatus = "doctrine"
+verifiedAgainstSource = true
+# Лицензия CC BY-NC-SA 4.0 — см. шапку sources.law.
+
+# Сценарии пакета (DECISION-0127): мир — потребитель, затем зависимости.
+# Principia входит в мир: прочтение Lex. II читает её вывод о перемене
+# движения, и без её узлов мост был бы разомкнут молча.
+[[tests]]
+family = "openstax_dynamics"
+suites = [
+  "tests/01-forces-mass-weight.lawtest",
+  "tests/03-friction-boundary.lawtest",
+]
+world = ["openstax.dynamics", "openstax.kinematics", "openstax.measurement", "la.newton.principia", "bipm.si_brochure", "units.si"]

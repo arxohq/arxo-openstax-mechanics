@@ -1,0 +1,47 @@
+// Ненормативная аналитика: контрфактуал закона I на примере самого текста.
+//
+// Lex. I называет свой пример: «Projectilia perseverant in motibus suis nisi
+// quatenus a resistentia aeris retardantur & vi gravitatis impelluntur
+// deorsum» — снаряды упорствовали БЫ в движениях, не мешай им сопротивление
+// воздуха. Идеализация «без трения» — стандартный ход механики — и есть
+// контрфактуальный вопрос: какое явно предъявленное изменение входа сделало
+// бы сохранение состояния выводимым? Ответ: снять утверждение о
+// сопротивлении воздуха (candidate patch removeAssertion) — и презумпция
+// закона I перестаёт быть поражённой.
+//
+// Снаряд текста заведён константой и утверждён при пакете с доказательством
+// из закреплённых байтов: и его движение, и мешающее ему сопротивление
+// названы в самой формулировке закона.
+
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+use self::{
+    Corpus,
+    PRIN_10,
+    StatusCorporis,
+    resistentia_aeris_in,
+    status_corporis_posterius,
+    status_corporis_prius,
+};
+
+@source(PRIN_10)
+const ProjectileExemplum: Corpus = entity_ref("urn:la:newton:clir:principia#ProjectileExemplum") {
+    label ru unofficial "снаряд из примера закона I («Projectilia perseverant in motibus suis»)";
+}
+
+assert status_corporis_prius(ProjectileExemplum, MovendiUniformiter) { evidence PRINCIPIA_WIKISOURCE; }
+assert resistentia_aeris_in(ProjectileExemplum, 1 pars_motus) { evidence PRINCIPIA_WIKISOURCE; }
+
+// Стоимость правки входа задаётся входным Decimal и остаётся точной.
+function CounterfactualEditCost(cost: Decimal) -> Decimal = cost;
+
+counterfactual SiTolleresResistentiamAeris {
+    target status_corporis_posterius(ProjectileExemplum, MovendiUniformiter);
+    mutable resistentia_aeris_in;
+    immutable PRINCIPIA_WIKISOURCE;
+    cost CounterfactualEditCost;
+    constraint status_corporis_prius(ProjectileExemplum, MovendiUniformiter);
+    analysis::purpose "Идеализация «sublata aeris resistentia» как конечный candidate patch: снятие сопротивления воздуха делает сохранение состояния выводимым; базовая теория не меняется";
+}

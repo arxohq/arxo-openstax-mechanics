@@ -1,0 +1,36 @@
+{
+  "dependencyEdges": [
+    {
+      "features": [],
+      "from": "bipm.si_brochure",
+      "requested": "0.1.0",
+      "resolved": "0.1.0",
+      "to": "units.si"
+    }
+  ],
+  "languageSemantics": "law.core/0.2.11",
+  "lockVersion": "0.4",
+  "packages": [
+    {
+      "artifactHash": "sha256:66c0e7b54e87269674eb01b97eb54b5d7570427424a5edf2066f7deffc34a601",
+      "features": [
+        "core-executable"
+      ],
+      "name": "units.si",
+      "namespace": "urn:law:units:si",
+      "registryId": "law-dsl-dev",
+      "resolverUri": "registry://law-dsl-dev/units.si/0.1.0",
+      "sourceHash": "sha256:8c1171418932715c7d39a5d9c75454c1bfa6abf5ba17cfe7a9363a7ce7fe25ec",
+      "version": "0.1.0"
+    }
+  ],
+  "resolutionHash": "sha256:8133ea04e2a2850c6479b39e70888dd0e7813853df9ed66438d49a20eeb5d613",
+  "resources": [],
+  "root": {
+    "artifactHash": "sha256:7f72e6b76f0ef32064341daf2fbf59edf21ee9b4c181feed02c416a6b7cf22d1",
+    "name": "bipm.si_brochure",
+    "namespace": "urn:bipm:clir:si-brochure",
+    "sourceHash": "sha256:ce9a0ddc9bd189412576776d2cec543982e6c1f2dbc8c3aa0e427196bcb9372b",
+    "version": "0.1.0"
+  }
+}

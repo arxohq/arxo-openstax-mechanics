@@ -1,0 +1,205 @@
+// Единица 19: Scholium к законам — опыты и машины. МОДУЛЬ-ВЛАДЕЛЕЦ ЭТАЛОНОВ
+// СИЛЫ АГЕНТА И ЧАСТИ ВРЕМЕНИ.
+//
+// ЧТО ВЗЯТО ПРАВИЛАМИ:
+//   - подтверждение закона III соударением: перемены движений двух тел
+//     равны и противонаправленны («in partes contrarias mutatio motus erat
+//     corpori utriq; illata») — знаковой записью тех же отношений, что у
+//     Corol. III; числовые опыты схолии (9→2 и 0→7; 12,6→2,8; 14,5→5,14) —
+//     дела регрессии;
+//   - упругое отражение стеклянных шаров: относительная скорость
+//     расхождения к скорости схождения «ut 15 ad 16» — точный десятичный
+//     множитель 15/16 = 0,9375;
+//   - равенство взаимных притяжений магнита и железа, узнанное покоем на
+//     воде через закон I («in æquilibrio constituta quiescent»);
+//   - машины: агент удерживает сопротивление, когда скорости обратны силам
+//     («velocitates Agentis & Resistentis sint reciproce ut vires»), и
+//     побеждает при большем неравенстве скоростей;
+//   - Галилей: нисхождение тяжёлых в двойном отношении времени — сверкой
+//     двух падений крест-накрест, без деления (s_a·t_b² = s_b·t_a²).
+//
+// ЧТО НЕ ВЗЯТО И ПОЧЕМУ (объявленный остаток единицы): маятниковая методика
+// поправок на сопротивление воздуха (дуги RV, ST — геометрия хорд; скорость
+// «ut chorda arcus» берётся делом как факт, извлечения корня у языка нет);
+// коэффициенты шерсти (5/9) и пробки — их знаменатели не 10-гладки, точная
+// дробь не пришивается единицей (E-0074), взят стеклянный 15/16; парабола
+// снарядов — непрерывная динамика, граница пакета.
+
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+use self::{
+    Corpus,
+    PRIN_10,
+    PRIN_12,
+    PRIN_19,
+    UnaParsDistantiae,
+    UnaParsMotus,
+    UnaParsVelocitatis,
+    congressus_in_eadem_recta,
+    motus_ante_secundum_plagas,
+    motus_post_secundum_plagas,
+};
+
+@source(PRIN_19)
+const UnaParsVirium: Quantity = 1 pars_virium {
+    label ru unofficial "эталон части силы агента и сопротивления («vires» машинного правила — ед. 19)";
+}
+@source(PRIN_19)
+const UnaParsTemporis: Quantity = 1 pars_temporis {
+    label ru unofficial "эталон части времени (двойное отношение времени у Галилея — ед. 19)";
+}
+
+// --- Закон III в соударении: перемены движений равны и противонаправленны -----
+
+relation actio_et_reactio_aequales(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "опыт подтверждает закон III: перемены движений тел равны и противонаправленны, знаковая сумма перемен — ноль (ед. 19)";
+}
+
+@source(PRIN_19, PRIN_12)
+rule MutationesAequalesInPartesContrarias(
+    a: Corpus,
+    b: Corpus,
+    ea: Quantity,
+    wa: Quantity,
+    eb: Quantity,
+    wb: Quantity,
+    ea2: Quantity,
+    wa2: Quantity,
+    eb2: Quantity,
+    wb2: Quantity,
+) strict {
+    label ru unofficial "Ед. 19. В прямом соударении перемена движения нанесена обоим телам в противоположные стороны поровну — действие и противодействие равны";
+    when congressus_in_eadem_recta(a, b)
+        and motus_ante_secundum_plagas(a, ea, wa) and motus_ante_secundum_plagas(b, eb, wb)
+        and motus_post_secundum_plagas(a, ea2, wa2) and motus_post_secundum_plagas(b, eb2, wb2)
+        and ((ea2 / UnaParsMotus) - (wa2 / UnaParsMotus) - (ea / UnaParsMotus) + (wa / UnaParsMotus)
+             + (eb2 / UnaParsMotus) - (wb2 / UnaParsMotus) - (eb / UnaParsMotus) + (wb / UnaParsMotus) == 0.0);
+    then actio_et_reactio_aequales(a, b);
+}
+
+// --- Упругость: стеклянные шары 15/16 -----------------------------------------
+
+relation corpora_vitrea(a: Corpus, b: Corpus) kind empirical {
+    label ru unofficial "дано: оба тела — стеклянные шары; отношение скоростей расхождения и схождения у них взято правилом отражения, не этой посылкой (схолия к законам)";
+}
+relation velocitas_relativa_concursus(a: Corpus, b: Corpus, v: Quantity) kind empirical {
+    label ru unofficial "дано: относительная скорость схождения тел, в частях скорости (схолия к законам)";
+}
+relation velocitas_relativa_reditus(a: Corpus, b: Corpus, v: Quantity) kind institutional {
+    label ru unofficial "относительная скорость расхождения после отражения — к скорости схождения как 15 к 16 у стеклянных тел (ед. 19)";
+}
+
+@source(PRIN_19)
+rule ReditusCorporumVitreorum(a: Corpus, b: Corpus, v: Quantity) strict {
+    label ru unofficial "Ед. 19. Стеклянные тела расходятся с относительной скоростью, которая к скорости схождения как 15 к 16";
+    when corpora_vitrea(a, b) and velocitas_relativa_concursus(a, b, v);
+    then velocitas_relativa_reditus(a, b, with_unit((v / UnaParsVelocitatis) * 15 / 16.0, "pars_velocitatis"));
+}
+
+// --- Притяжения: магнит и железо на воде --------------------------------------
+
+relation trahunt_se_mutuo(a: Corpus, b: Corpus) kind empirical {
+    label ru unofficial "дано: тела взаимно притягивают друг друга («Corporibus duobus … se mutuo trahentibus», схолия к законам)";
+}
+relation fluitant_iuxta_quiescentia(a: Corpus, b: Corpus) kind empirical {
+    label ru unofficial "дано: тела плавают рядом в стоячей воде, ни одно не гонит другое, и покоятся в равновесии (опыт с магнитом и железом, схолия к законам)";
+}
+relation attractio_mutua_aequalis(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "взаимные притяжения равны — узнано покоем системы через закон I (ед. 19)";
+}
+
+@source(PRIN_19, PRIN_10)
+rule AttractioAequalisExQuiete(a: Corpus, b: Corpus) strict {
+    label ru unofficial "Ед. 19 → Lex. I. Взаимно притягивающиеся тела, покоящиеся рядом в равновесии, притягиваются поровну: неравенство гнало бы систему ускоренно в бесконечность вопреки закону I";
+    when trahunt_se_mutuo(a, b) and fluitant_iuxta_quiescentia(a, b);
+    then attractio_mutua_aequalis(a, b);
+}
+
+// --- Машины: скорости обратны силам -------------------------------------------
+
+relation vis_et_velocitas_agentis(i: Corpus, f: Quantity, v: Quantity) kind empirical {
+    label ru unofficial "дано: сила агента и скорость его точки приложения по определению сил, в частях силы и скорости (схолия к законам)";
+}
+relation vis_et_velocitas_resistentis(i: Corpus, f: Quantity, v: Quantity) kind empirical {
+    label ru unofficial "дано: сила сопротивления и скорость его точки, в частях силы и скорости (схолия к законам)";
+}
+relation agens_sustinet_resistentiam(i: Corpus) kind institutional {
+    label ru unofficial "агент удерживает сопротивление: скорости обратны силам, произведения равны (ед. 19)";
+}
+relation agens_vincit_resistentiam(i: Corpus) kind institutional {
+    label ru unofficial "агент побеждает сопротивление: его произведение силы на скорость больше (ед. 19: «majori cum velocitatum disparitate eandem vincet»)";
+}
+
+@source(PRIN_19)
+rule AgensSustinetResistentiam(
+    i: Corpus,
+    fa: Quantity,
+    va: Quantity,
+    fr: Quantity,
+    vr: Quantity,
+) strict {
+    label ru unofficial "Ед. 19. Если машина образована так, что скорости агента и сопротивления обратны силам, агент удерживает сопротивление";
+    when vis_et_velocitas_agentis(i, fa, va) and vis_et_velocitas_resistentis(i, fr, vr)
+        and ((fa / UnaParsVirium) * (va / UnaParsVelocitatis) == (fr / UnaParsVirium) * (vr / UnaParsVelocitatis));
+    then agens_sustinet_resistentiam(i);
+}
+
+@source(PRIN_19)
+rule AgensVincitResistentiam(
+    i: Corpus,
+    fa: Quantity,
+    va: Quantity,
+    fr: Quantity,
+    vr: Quantity,
+) strict {
+    label ru unofficial "Ед. 19. При большем неравенстве скоростей в пользу агента тот побеждает сопротивление";
+    when vis_et_velocitas_agentis(i, fa, va) and vis_et_velocitas_resistentis(i, fr, vr)
+        and ((fa / UnaParsVirium) * (va / UnaParsVelocitatis) > (fr / UnaParsVirium) * (vr / UnaParsVelocitatis));
+    then agens_vincit_resistentiam(i);
+}
+
+// --- Галилей: нисхождение в двойном отношении времени --------------------------
+
+relation descensus_gravis(c: Corpus, t: Quantity, s: Quantity) kind empirical {
+    label ru unofficial "дано: падение тяжёлого тела — время в частях времени, пройденное пространство в частях расстояния (схолия к законам)";
+}
+relation descensus_in_duplicata_ratione(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "два падения согласны с Галилеем: пространства относятся как квадраты времён (ед. 19: «descensum gravium esse in duplicata ratione temporis»)";
+}
+relation descensus_discrepat_a_duplicata_ratione(a: Corpus, b: Corpus) kind institutional {
+    label ru unofficial "два падения расходятся с двойным отношением времени — объявлено громко (ед. 19)";
+}
+
+@source(PRIN_19)
+rule DescensusInDuplicataRatione(
+    a: Corpus,
+    b: Corpus,
+    ta: Quantity,
+    sa: Quantity,
+    tb: Quantity,
+    sb: Quantity,
+) strict {
+    label ru unofficial "Ед. 19. Нисхождение тяжёлых — в двойном отношении времени: s_a·t_b² = s_b·t_a², сверка крест-накрест без деления";
+    when descensus_gravis(a, ta, sa) and descensus_gravis(b, tb, sb)
+        and ((sa / UnaParsDistantiae) * ((tb / UnaParsTemporis) * (tb / UnaParsTemporis))
+             == (sb / UnaParsDistantiae) * ((ta / UnaParsTemporis) * (ta / UnaParsTemporis)));
+    then descensus_in_duplicata_ratione(a, b);
+}
+
+@source(PRIN_19)
+rule DescensusDiscrepat(
+    a: Corpus,
+    b: Corpus,
+    ta: Quantity,
+    sa: Quantity,
+    tb: Quantity,
+    sb: Quantity,
+) strict {
+    label ru unofficial "Ед. 19. Сторож: падения, расходящиеся с двойным отношением времени, объявляются расхождением, а не проглатываются";
+    when descensus_gravis(a, ta, sa) and descensus_gravis(b, tb, sb)
+        and ((sa / UnaParsDistantiae) * ((tb / UnaParsTemporis) * (tb / UnaParsTemporis))
+             != (sb / UnaParsDistantiae) * ((ta / UnaParsTemporis) * (ta / UnaParsTemporis)));
+    then descensus_discrepat_a_duplicata_ratione(a, b);
+}

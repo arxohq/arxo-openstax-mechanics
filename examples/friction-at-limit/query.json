@@ -1,0 +1,15 @@
+{
+  "kind": "truth",
+  "literal": {
+    "args": [
+      {
+        "id": "urn:case:dyn:crate3",
+        "kind": "entity_ref"
+      }
+    ],
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:openstax:clir:dynamics#stays_at_rest"
+  },
+  "queryId": "urn:openstax:clir:dynamics#test/urn%3Aquery%3Adyn-t03c-exactly-at-the-maximum/query/0"
+}

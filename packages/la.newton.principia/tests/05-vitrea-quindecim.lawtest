@@ -1,0 +1,24 @@
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+// Схолия к законам: стеклянные шары расходятся как 15 к 16
+// («In vitreis autem proportio erat 15 ad 16 circiter»): 16 → 15.
+test "urn:query:prin-t05" {
+    given {
+        context {
+            decision_time @2026-08-31T12:00:00+05:00;
+            knowledge_time @2026-08-31T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+        assert "prin-t05-a0": corpora_vitrea(entity_ref("urn:case:prin:a"), entity_ref("urn:case:prin:b")) { origin case_input; }
+        assert "prin-t05-a1": velocitas_relativa_concursus(entity_ref("urn:case:prin:a"), entity_ref("urn:case:prin:b"), 16 pars_velocitatis) { origin case_input; }
+    }
+
+    evaluate truth(velocitas_relativa_reditus(entity_ref("urn:case:prin:a"), entity_ref("urn:case:prin:b"), 15 pars_velocitatis));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+}

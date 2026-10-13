@@ -1,0 +1,220 @@
+// §4.4 «Uniform and Nonuniform Circular Motion» и §4.5 «Relative Motion in
+// One and Two Dimensions»: центростремительное ускорение и сложение
+// скоростей.
+//
+// a_c = v²/r СЧИТАЕТСЯ ЦЕЛИКОМ. Мультимножитель числителя {m:2, s:−2},
+// знаменателя {m:1}; частное — {m:1, s:−2}, то есть м/с². Радиус и скорость
+// приводятся `unit_convert` к метру и м/с ЯВНО: пример §4.4 «flywheel has a
+// radius of 20.0 cm… 900.0 cm/s²» подаёт сантиметры, и без приведения тег
+// ответа не сошёлся бы с вычисленным мультимножителем.
+//
+// ТОЧНАЯ АРИФМЕТИКА ДИКТУЕТ ЧИСЛА ДЕЛА. `quantity_of` записывает величину
+// ДЕСЯТИЧНО (§18), поэтому не-10-гладкое частное — INEXACT_DIVISION, а не
+// молчаливое округление: округление приходит только явной политикой §50.
+// У a_c = v²/r это значит, что дело с v = 8 м/с и r = 30 м неисполнимо,
+// а с v = 6 м/с и r = 30 м — исполнимо. Ловушка в том, что отказ достаётся
+// ДОКУМЕНТУ: посторонний вопрос к тому же делу получит NON_EXECUTABLE, даже
+// если его собственный ответ выведен верно (замер 06.09.2026, сцена 03g).
+// Школьная традиция подбирать «красивые» данные оказывается здесь не
+// педагогикой, а требованием точной арифметики.
+//
+// СЛОЖЕНИЕ СКОРОСТЕЙ §4.5 — ОДНОМЕРНОЕ ЦЕЛИКОМ, ДВУМЕРНОЕ — ПО ОСЯМ И МОДУЛЕМ.
+// Одномерный случай — сложение величин ТОЖДЕСТВЕННОЙ единицы — выражается
+// полностью, и §4.5 начинает именно с него: «We introduce relative motion
+// in one dimension first, because the velocity vectors simplify to having
+// only two possible directions». Двумерный случай предъявляется делом
+// покомпонентно; до errata E-0152 корня для модуля в языке не было (§58
+// без sqrt), теперь модуль |v| = √(vx² + vy²) выводится правилом в конце
+// модуля сертифицированными границами (DECISION-0163) — пример §4.5 с
+// автомобилем 80 км/ч на восток и 70 км/ч на север даёт 106,3 км/ч.
+
+language "law.core" version "0.2";
+package openstax.kinematics version "0.1.0";
+namespace "urn:openstax:clir:kinematics";
+
+use self::{
+    Body,
+    Interval,
+    ReferenceFrame,
+    UP_M58292_CENTRIPETAL_ACCELERATION,
+    UP_M58292_TANGENTIAL_ACCELERATION,
+    UP_M58293_REFERENCE_FRAME,
+    UP_M58293_RELATIVE_VELOCITY,
+    UP_M58293_TWO_DIMENSIONAL_SPEED,
+};
+
+// --- §4.4: равномерное движение по окружности --------------------------------
+
+@source(UP_M58292_CENTRIPETAL_ACCELERATION)
+pub relation moves_on_circle(b: Body, i: Interval, radius: Quantity) kind empirical {
+    label en official "§4.4: the case states the body moves along a circular path of the given radius over the interval";
+    label ru unofficial "§4.4: дело сообщает, что на отрезке тело движется по окружности данного радиуса";
+}
+
+@source(UP_M58292_CENTRIPETAL_ACCELERATION)
+pub relation speed_on_circle(b: Body, i: Interval, speed: Quantity) kind empirical {
+    label en official "§4.4: the speed of the body on the circular path";
+    label ru unofficial "§4.4: путевая скорость тела на круговой траектории";
+}
+
+pub relation centripetal_acceleration(b: Body, i: Interval, value: Quantity) kind institutional {
+    label en official "§4.4: a_c = v²/r — the component of acceleration directed radially inward toward the centre of the circle";
+    label ru unofficial "§4.4: a_c = v²/r — составляющая ускорения, направленная радиально внутрь к центру окружности";
+}
+
+@source(UP_M58292_CENTRIPETAL_ACCELERATION)
+rule CentripetalAccelerationFromSpeedAndRadius(
+    b: Body,
+    i: Interval,
+    v: Quantity,
+    r: Quantity,
+) strict {
+    label en official "§4.4: a_c = v²/r";
+    label ru unofficial "§4.4: a_c = v²/r";
+    when moves_on_circle(b, i, r) and speed_on_circle(b, i, v);
+    then centripetal_acceleration(b, i,
+        quantity_of(unit_convert(magnitude(v), "m_per_s") * unit_convert(magnitude(v), "m_per_s")
+                    / unit_convert(magnitude(r), "m"), "m_per_s2"));
+}
+
+// §4.4: «Can centripetal acceleration change the speed of a particle
+// undergoing circular motion?» — нет. В РАВНОМЕРНОМ движении по окружности
+// путевая скорость постоянна, а тангенциальное ускорение отсутствует;
+// объявленное делом изменение скорости опровергает равномерность.
+pub relation uniform_circular_motion(b: Body, i: Interval) kind institutional {
+    label en official "§4.4: uniform circular motion — the particle moves at constant speed on a circle of fixed radius";
+    label ru unofficial "§4.4: равномерное движение по окружности — постоянная путевая скорость на окружности неизменного радиуса";
+}
+
+@source(UP_M58292_TANGENTIAL_ACCELERATION)
+pub relation speed_changes(b: Body, i: Interval) kind empirical {
+    label en official "§4.4: the case states the speed of the particle changes over the interval";
+    label ru unofficial "§4.4: дело сообщает, что путевая скорость частицы на отрезке меняется";
+}
+
+// ПОСТОЯНСТВО СКОРОСТИ ПРЕДЪЯВЛЯЕТСЯ ФАКТОМ, А НЕ УМОЛЧАНИЕМ. Первая
+// редакция читала `not_known(speed_changes(b, i))` — «раз об изменении не
+// сказано, скорость постоянна», — и правило вместе с парным отрицательным
+// становилось НЕИСПОЛНИМЫМ: у одной головы оказывались производитель,
+// читающий отсутствие факта, и производитель, пишущий её отрицание по
+// наличию того же факта (замер 06.09.2026, NON_EXECUTABLE). Дело сообщает
+// постоянство ПРЯМО — и это вернее по существу: §4.4 говорит «the particle
+// executing circular motion has a constant speed», то есть постоянство есть
+// свойство движения, наблюдаемое и сообщаемое, а не то, что домысливается из
+// молчания дела.
+@source(UP_M58292_CENTRIPETAL_ACCELERATION)
+pub relation speed_constant(b: Body, i: Interval) kind empirical {
+    label en official "§4.4: the case states the speed of the particle stays constant over the interval";
+    label ru unofficial "§4.4: дело сообщает, что путевая скорость частицы на отрезке остаётся постоянной";
+}
+
+@source(UP_M58292_CENTRIPETAL_ACCELERATION)
+rule ConstantSpeedOnCircleIsUniform(b: Body, i: Interval, r: Quantity, v: Quantity) strict {
+    label en official "§4.4: a particle on a circle of fixed radius whose speed stays constant is in uniform circular motion";
+    label ru unofficial "§4.4: частица на окружности неизменного радиуса с постоянной путевой скоростью движется равномерно по окружности";
+    when moves_on_circle(b, i, r)
+        and speed_on_circle(b, i, v)
+        and speed_constant(b, i);
+    then uniform_circular_motion(b, i);
+}
+
+@source(UP_M58292_TANGENTIAL_ACCELERATION)
+rule ChangingSpeedRefutesUniformity(b: Body, i: Interval) strict {
+    label en official "§4.4: if the speed of the particle is changing, an additional tangential acceleration appears and the motion is not uniform";
+    label ru unofficial "§4.4: если путевая скорость частицы меняется, появляется тангенциальное ускорение, и движение не равномерно";
+    when speed_changes(b, i);
+    then not uniform_circular_motion(b, i);
+}
+
+// --- §4.5: относительное движение -------------------------------------------
+
+@source(UP_M58293_REFERENCE_FRAME)
+relation velocity_in_frame(b: Body, f: ReferenceFrame, value: Quantity) kind empirical {
+    label en official "§4.5: the velocity of the body as observed from the named reference frame";
+    label ru unofficial "§4.5: скорость тела, наблюдаемая из названной системы отсчёта";
+}
+
+@source(UP_M58293_RELATIVE_VELOCITY)
+relation frame_velocity_in_frame(inner: ReferenceFrame, outer: ReferenceFrame, value: Quantity) kind empirical {
+    label en official "§4.5: the velocity of one reference frame as observed from another";
+    label ru unofficial "§4.5: скорость одной системы отсчёта, наблюдаемая из другой";
+}
+
+pub relation relative_velocity(b: Body, f: ReferenceFrame, value: Quantity) kind institutional {
+    label en official "§4.5: the velocity of the body in the outer frame — the sum of its velocity in the inner frame and the velocity of the inner frame";
+    label ru unofficial "§4.5: скорость тела во внешней системе — сумма его скорости во внутренней и скорости самой внутренней системы";
+}
+
+// Одномерное сложение скоростей: величины ТОЖДЕСТВЕННОЙ единицы складываются
+// §49.1. Скорость поезда в м/с и скорость пассажира в км/ч не сложатся молча —
+// отказ назовёт обе единицы.
+@source(UP_M58293_RELATIVE_VELOCITY)
+rule RelativeVelocityAddsInOneDimension(
+    b: Body,
+    inner: ReferenceFrame,
+    outer: ReferenceFrame,
+    vb: Quantity,
+    vf: Quantity,
+) strict {
+    label en official "§4.5: in one dimension the velocity in the outer frame is the sum of the velocity in the inner frame and the velocity of that frame";
+    label ru unofficial "§4.5: в одном измерении скорость во внешней системе есть сумма скорости во внутренней и скорости самой внутренней системы";
+    when velocity_in_frame(b, inner, vb)
+        and frame_velocity_in_frame(inner, outer, vf);
+    then relative_velocity(b, outer,
+        quantity_of(unit_convert(magnitude(vb), "m_per_s")
+                    + unit_convert(magnitude(vf), "m_per_s"), "m_per_s"));
+}
+
+// §4.5: покой есть покой ОТНОСИТЕЛЬНО НАЗВАННОЙ системы. Тело, покоящееся в
+// одной системе, движется в другой, и «покоится ли оно» без названной
+// системы — вопрос без ответа. Пакет отвечает на него только по паре
+// «тело — система».
+relation at_rest_in_frame(b: Body, f: ReferenceFrame) kind institutional {
+    label en official "§4.5: the body is at rest as observed from the named reference frame";
+    label ru unofficial "§4.5: тело покоится, если наблюдать его из названной системы отсчёта";
+}
+
+@source(UP_M58293_REFERENCE_FRAME)
+rule ZeroVelocityIsRestInThatFrame(b: Body, f: ReferenceFrame, v: Quantity) strict {
+    label en official "§4.5: zero velocity in a frame is rest in THAT frame — and says nothing about any other";
+    label ru unofficial "§4.5: нулевая скорость в системе есть покой В ЭТОЙ системе — и ничего не говорит ни о какой другой";
+    when velocity_in_frame(b, f, v) and v == 0 * v;
+    then at_rest_in_frame(b, f);
+}
+
+@source(UP_M58293_REFERENCE_FRAME)
+rule NonzeroVelocityRefutesRest(b: Body, f: ReferenceFrame, v: Quantity) strict {
+    label en official "§4.5: a nonzero velocity in a frame refutes rest in that frame";
+    label ru unofficial "§4.5: ненулевая скорость в системе опровергает покой в этой системе";
+    when velocity_in_frame(b, f, v) and v != 0 * v;
+    then not at_rest_in_frame(b, f);
+}
+
+// --- §4.5: модуль скорости по двум компонентам — корень границами (E-0152) -----------
+
+@source(UP_M58293_TWO_DIMENSIONAL_SPEED)
+relation velocity_component_in_frame(b: Body, f: ReferenceFrame, axis: Text, value: Quantity) kind empirical {
+    label en official "§4.5: the component of the body's velocity along the named axis, as measured in the frame";
+    label ru unofficial "§4.5: составляющая скорости тела вдоль названной оси, измеренная в системе отсчёта";
+}
+
+pub relation speed_in_frame(b: Body, f: ReferenceFrame, v: Quantity) kind institutional {
+    label en official "§4.5: |v| = √(vx² + vy²) — the speed in the frame from two velocity components, derived from certified bounds and rounded to a tenth of a kilometre per hour";
+    label ru unofficial "§4.5: |v| = √(vx² + vy²) — скорость в системе отсчёта по двум составляющим, выведенная сертифицированными границами и округлённая до десятой километра в час";
+}
+
+// Сумма квадратов составляющих делится на (1 км/ч)² — под корень идёт точная
+// безразмерная дробь; ячейка округления названа в метке.
+@source(UP_M58293_TWO_DIMENSIONAL_SPEED)
+rule SpeedFromVelocityComponents(b: Body, f: ReferenceFrame, vx: Quantity, vy: Quantity) strict {
+    label en official "§4.5: the speed is the square root of the sum of the squares of the two velocity components, evaluated as certified bounds";
+    label ru unofficial "§4.5: скорость есть корень из суммы квадратов двух составляющих скорости, вычисленный сертифицированными границами";
+    when velocity_component_in_frame(b, f, "x", vx) and velocity_component_in_frame(b, f, "y", vy);
+    then speed_in_frame(b, f, quantity_of(
+        bounds::round(
+            math::sqrt(scalar_of((unit_convert(magnitude(vx), "km_per_h") * unit_convert(magnitude(vx), "km_per_h")
+                                   + unit_convert(magnitude(vy), "km_per_h") * unit_convert(magnitude(vy), "km_per_h"))
+                                  / (magnitude(1 km_per_h) * magnitude(1 km_per_h))),
+                        "p16/0.1"),
+            1, "HALF_UP") * magnitude(1 km_per_h), "km_per_h"));
+}

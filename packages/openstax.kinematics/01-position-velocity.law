@@ -1,0 +1,148 @@
+// §3.1 «Position, Displacement, and Average Velocity», §3.2 «Instantaneous
+// Velocity and Speed»: положение, перемещение, пройденный путь, истёкшее
+// время, средняя скорость и средняя путевая скорость.
+//
+// ЕДИНИЦА ОТВЕТА ВЫВОДИТСЯ, А НЕ ПРИПИСЫВАЕТСЯ. Средняя скорость есть
+// частное перемещения и времени, и мультимножитель частного — {m:1, s:−1};
+// тег `m_per_s` в `quantity_of` не НАЗНАЧАЕТ единицу, а СВЕРЯЕТСЯ с той,
+// которую вычислила алгебра: «мультимножитель величины обязан совпасть с
+// раскрытием названной единицы, иначе UNIT_MISMATCH» (§259.1).
+//
+// ОТСЮДА ЯВНЫЙ ПЕРЕСЧЁТ НА ВХОДЕ, И ЭТО §1.3 ИСТОЧНИКА. Раз тег выхода
+// сверяется, правило обязано назвать ОДНУ единицу ответа — а дело вправе
+// подать километры и часы. Замер 06.09.2026: без пересчёта 300 км / 25 ч даёт
+// мультимножитель {km:1, h:−1}, тег `m_per_s` с ним не совпадает, и
+// документ получает RUNTIME_ERROR. Лечится не ослаблением проверки, а тем,
+// чего §1.3 и требует: входы приводятся `unit_convert` к когерентным
+// единицам ЯВНО, и только потом считаются. Умножение на коэффициент
+// пересчёта, о котором говорит §1.3, стоит в правиле буквально.
+//
+// Цена названа: пересчёт возможен лишь внутри размерности, поэтому дело,
+// подавшее массу там, где ждут длину, получит отказ `unit_convert` — то есть
+// ровно ту громкость, ради которой алгебра и заведена.
+//
+// ПЕРЕМЕЩЕНИЕ ПРОТИВ ПУТИ — ГЛАВНОЕ РАЗЛИЧЕНИЕ ГЛАВЫ 3. Оба измеряются в
+// метрах, поэтому алгебра их не различит НИКОГДА: у них одна размерность и
+// один масштаб. Различает их только норма — то, что дело сообщает о них
+// РАЗНЫМИ предикатами. Это ровно тот случай, где вторая громкость
+// (`openstax.measurement`, §49.1) бессильна, а первая (символьная) молчит,
+// и работает единственно словарь. Записано здесь потому, что соблазн свести
+// физику к проверке размерностей на этом примере и ломается.
+
+language "law.core" version "0.2";
+package openstax.kinematics version "0.1.0";
+namespace "urn:openstax:clir:kinematics";
+
+use self::{
+    Body,
+    Interval,
+    UP_M58282_AVERAGE_VELOCITY,
+    UP_M58282_DISPLACEMENT,
+    UP_M58282_DISTANCE_TRAVELED,
+    UP_M58282_ELAPSED_TIME,
+    UP_M58282_POSITION,
+    UP_M58283_AVERAGE_SPEED,
+};
+
+// --- Что дело предъявляет об отрезке движения --------------------------------
+
+@source(UP_M58282_POSITION)
+relation moves_over(b: Body, i: Interval) kind empirical {
+    label en official "the body moves over the interval the case presents";
+    label ru unofficial "тело движется на предъявленном делом отрезке";
+}
+
+@source(UP_M58282_DISPLACEMENT)
+relation displacement(i: Interval, value: Quantity) kind empirical {
+    label en official "§3.1: the displacement over the interval — the change in position of the object";
+    label ru unofficial "§3.1: перемещение на отрезке — изменение положения тела";
+}
+
+@source(UP_M58282_DISTANCE_TRAVELED)
+relation distance_traveled(i: Interval, value: Quantity) kind empirical {
+    label en official "§3.1: the distance travelled over the interval — the total length of the path travelled between two positions";
+    label ru unofficial "§3.1: пройденный путь на отрезке — полная длина траектории между двумя положениями";
+}
+
+@source(UP_M58282_ELAPSED_TIME)
+relation elapsed_time(i: Interval, value: Quantity) kind empirical {
+    label en official "§3.1: the elapsed time — the difference between the ending time and the beginning time";
+    label ru unofficial "§3.1: истёкшее время — разность конечного и начального моментов";
+}
+
+// --- §3.1: средняя скорость ---------------------------------------------------
+
+pub relation average_velocity(i: Interval, value: Quantity) kind institutional {
+    label en official "§3.1: average velocity — the displacement divided by the time over which the displacement occurs";
+    label ru unofficial "§3.1: средняя скорость — перемещение, делённое на время, за которое оно произошло";
+}
+
+@source(UP_M58282_AVERAGE_VELOCITY)
+rule AverageVelocityFromDisplacement(i: Interval, s: Quantity, t: Quantity) strict {
+    label en official "§3.1: average velocity is the displacement divided by the elapsed time; the unit of the answer follows from the units of the inputs";
+    label ru unofficial "§3.1: средняя скорость есть перемещение, делённое на истёкшее время; единица ответа следует из единиц входа";
+    when displacement(i, s) and elapsed_time(i, t);
+    then average_velocity(i, quantity_of(unit_convert(magnitude(s), "m")
+                                        / unit_convert(magnitude(t), "s"), "m_per_s"));
+}
+
+// --- §3.2: средняя путевая скорость -------------------------------------------
+
+pub relation average_speed(i: Interval, value: Quantity) kind institutional {
+    label en official "§3.2: average speed — the total distance travelled divided by elapsed time";
+    label ru unofficial "§3.2: средняя путевая скорость — полный пройденный путь, делённый на истёкшее время";
+}
+
+@source(UP_M58283_AVERAGE_SPEED)
+rule AverageSpeedFromDistance(i: Interval, d: Quantity, t: Quantity) strict {
+    label en official "§3.2: average speed is the total distance travelled divided by the elapsed time";
+    label ru unofficial "§3.2: средняя путевая скорость есть полный пройденный путь, делённый на истёкшее время";
+    when distance_traveled(i, d) and elapsed_time(i, t);
+    then average_speed(i, quantity_of(unit_convert(magnitude(d), "m")
+                                     / unit_convert(magnitude(t), "s"), "m_per_s"));
+}
+
+// --- Расхождение перемещения и пути ---------------------------------------------
+
+relation path_longer_than_displacement(i: Interval) kind institutional {
+    label en official "§3.1: on this interval the distance travelled exceeds the magnitude of the displacement — the body did not move along a straight line in one direction";
+    label ru unofficial "§3.1: на этом отрезке пройденный путь больше модуля перемещения — тело не шло по прямой в одну сторону";
+}
+
+// Сравнение величин ОДНОЙ единицы: путь и перемещение оба в метрах, и §49.1
+// их сравнивает. Разными их делает не единица, а предикат, которым дело их
+// сообщило.
+@source(UP_M58282_DISTANCE_TRAVELED, UP_M58282_DISPLACEMENT)
+rule PathExceedsDisplacement(i: Interval, s: Quantity, d: Quantity) strict {
+    label en official "§3.1: distance travelled greater than the displacement means the path was not a straight line in one direction";
+    label ru unofficial "§3.1: пройденный путь больше перемещения означает, что траектория не была прямой в одну сторону";
+    when displacement(i, s) and distance_traveled(i, d) and d > abs(s);
+    then path_longer_than_displacement(i);
+}
+
+// Обратная сторона: путь равен модулю перемещения — движение по прямой в одну
+// сторону. Отрицательная голова делает ответ на «была ли траектория кривой»
+// FALSE_ONLY, а не «не установлено».
+@source(UP_M58282_DISTANCE_TRAVELED, UP_M58282_DISPLACEMENT)
+rule StraightPathEqualsDisplacement(i: Interval, s: Quantity, d: Quantity) strict {
+    label en official "§3.1: distance travelled equal to the magnitude of the displacement refutes that the path departed from a straight line in one direction";
+    label ru unofficial "§3.1: пройденный путь, равный модулю перемещения, опровергает отклонение траектории от прямой в одну сторону";
+    when displacement(i, s) and distance_traveled(i, d) and d == abs(s);
+    then not path_longer_than_displacement(i);
+}
+
+// §3.1: вернувшееся в исходное положение тело имеет НУЛЕВОЕ перемещение и,
+// значит, нулевую среднюю скорость — при какой угодно средней путевой. Это
+// главный контрпример главы, и он ВЫВОДИТСЯ.
+relation returned_to_start(i: Interval) kind institutional {
+    label en official "§3.1: the body ended the interval where it began — its displacement is zero";
+    label ru unofficial "§3.1: тело закончило отрезок там же, где начало, — его перемещение нулевое";
+}
+
+@source(UP_M58282_DISPLACEMENT)
+rule ZeroDisplacementIsReturn(i: Interval, s: Quantity) strict {
+    label en official "§3.1: zero displacement means the body ended the interval at its starting position";
+    label ru unofficial "§3.1: нулевое перемещение означает, что тело закончило отрезок в исходном положении";
+    when displacement(i, s) and s == 0 * s;
+    then returned_to_start(i);
+}

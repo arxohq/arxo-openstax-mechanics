@@ -1,0 +1,280 @@
+language "law.core" version "0.2";
+package openstax.energy_momentum version "0.1.0";
+namespace "urn:openstax:clir:energy-momentum";
+
+// §9.3: система объявлена замкнутой, суммы импульсов совпали — импульс
+// СОХРАНЯЕТСЯ. Ответ выведен с условием, а не назван правилом «всегда».
+test "urn:query:em-t02a-closed-system-conserves-momentum" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02a-pr": process_over(entity_ref("urn:case:em:pair"), entity_ref("urn:case:em:hit")) { origin case_input; }
+        assert "t02a-cl": declared_closed(entity_ref("urn:case:em:pair"), entity_ref("urn:case:em:hit")) { origin case_input; }
+        assert "t02a-b": total_momentum_before(entity_ref("urn:case:em:pair"), entity_ref("urn:case:em:hit"), 40 kg_m_per_s) { origin case_input; }
+        assert "t02a-a": total_momentum_after(entity_ref("urn:case:em:pair"), entity_ref("urn:case:em:hit"), 40 kg_m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(momentum_conserved(entity_ref("urn:case:em:pair"), entity_ref("urn:case:em:hit")));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ClosedSystemConservesMomentum);
+    expect applied(DeclaredClosedIsClosed);
+}
+
+// ОБРАТНАЯ СТОРОНА ГРАНИЦЫ ЗАМКНУТОСТИ: та же система, но предъявлена
+// внешняя сила 12 Н. Замкнутость ОПРОВЕРГНУТА, и вместе с ней — право
+// ссылаться на закон сохранения. Объявление дела и факт спорят, побеждает
+// факт: §9.3 определяет замкнутость через отсутствие силы.
+test "urn:query:em-t02b-external-force-refutes-closure" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02b-pr": process_over(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll")) { origin case_input; }
+        assert "t02b-cl": declared_closed(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll")) { origin case_input; }
+        assert "t02b-f": external_force_on_system(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll"), 12 N) { origin case_input; }
+    }
+
+    evaluate truth(closed_system(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ExternalForceRefutesClosure);
+}
+
+// И следствие: на закон сохранения в такой системе ссылаться НЕЛЬЗЯ.
+// `refuted` читает опровергнутую замкнутость — не «не выведена».
+test "urn:query:em-t02c-open-system-has-no-conservation-law" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02c-pr": process_over(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll")) { origin case_input; }
+        assert "t02c-f": external_force_on_system(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll"), 12 N) { origin case_input; }
+    }
+
+    evaluate truth(conservation_not_available(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(OpenSystemHasNoConservationLaw);
+}
+
+// §9.4: суммарная кинетическая энергия одинакова до и после — столкновение
+// УПРУГОЕ.
+test "urn:query:em-t02d-elastic-collision" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02d-pr": process_over(entity_ref("urn:case:em:balls"), entity_ref("urn:case:em:click")) { origin case_input; }
+        assert "t02d-k0": total_kinetic_energy_before(entity_ref("urn:case:em:balls"), entity_ref("urn:case:em:click"), 90 J) { origin case_input; }
+        assert "t02d-k1": total_kinetic_energy_after(entity_ref("urn:case:em:balls"), entity_ref("urn:case:em:click"), 90 J) { origin case_input; }
+    }
+
+    evaluate truth(elastic_collision(entity_ref("urn:case:em:balls"), entity_ref("urn:case:em:click")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(KineticEnergyPreservedIsElastic);
+}
+
+// ОБРАТНАЯ СТОРОНА: энергия упала с 90 до 60 Дж — упругость ОПРОВЕРГНУТА,
+// и столкновение выводится НЕУПРУГИМ. Пара со сценой 02d.
+test "urn:query:em-t02e-inelastic-collision" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02e-pr": process_over(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash")) { origin case_input; }
+        assert "t02e-k0": total_kinetic_energy_before(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash"), 90 J) { origin case_input; }
+        assert "t02e-k1": total_kinetic_energy_after(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash"), 60 J) { origin case_input; }
+    }
+
+    evaluate truth(inelastic_collision(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(NotElasticIsInelastic);
+    expect applied(KineticEnergyLostRefutesElasticity);
+}
+
+// ТО, ЧТО §9.4 ВЕЛИТ НЕ ПУТАТЬ. То же неупругое столкновение в ЗАМКНУТОЙ
+// системе: кинетическая энергия НЕ сохранилась, а импульс — сохранился.
+// Разные величины сохраняются при разных условиях, и система отвечает на
+// оба вопроса порознь.
+test "urn:query:em-t02f-inelastic-still-conserves-momentum" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02f-pr": process_over(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash")) { origin case_input; }
+        assert "t02f-cl": declared_closed(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash")) { origin case_input; }
+        assert "t02f-k0": total_kinetic_energy_before(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash"), 90 J) { origin case_input; }
+        assert "t02f-k1": total_kinetic_energy_after(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash"), 60 J) { origin case_input; }
+        assert "t02f-p0": total_momentum_before(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash"), 30 kg_m_per_s) { origin case_input; }
+        assert "t02f-p1": total_momentum_after(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash"), 30 kg_m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(momentum_conserved_though_inelastic(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(InelasticStillConservesMomentum);
+}
+
+// §9.4: абсолютно неупругое определяется ОБЩЕЙ КОНЕЧНОЙ СКОРОСТЬЮ, а не
+// «наибольшей потерей энергии» — отдельный признак, не градация первого.
+test "urn:query:em-t02g-perfectly-inelastic" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02g-tg": objects_move_together_after(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash")) { origin case_input; }
+    }
+
+    evaluate truth(perfectly_inelastic_collision(entity_ref("urn:case:em:cars"), entity_ref("urn:case:em:crash")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(MovingTogetherIsPerfectlyInelastic);
+}
+
+// §8.3: действуют лишь консервативные силы, механическая энергия совпала —
+// СОХРАНЯЕТСЯ.
+test "urn:query:em-t02h-mechanical-energy-conserved" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02h-pr": process_over(entity_ref("urn:case:em:pendulum"), entity_ref("urn:case:em:swing")) { origin case_input; }
+        assert "t02h-fa": force_acts_in(entity_ref("urn:case:em:swing"), "gravity") { origin case_input; }
+        assert "t02h-e0": mechanical_energy_before(entity_ref("urn:case:em:pendulum"), entity_ref("urn:case:em:swing"), 25 J) { origin case_input; }
+        assert "t02h-e1": mechanical_energy_after(entity_ref("urn:case:em:pendulum"), entity_ref("urn:case:em:swing"), 25 J) { origin case_input; }
+    }
+
+    evaluate truth(mechanical_energy_conserved(entity_ref("urn:case:em:pendulum"), entity_ref("urn:case:em:swing")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ConservativeForcesConserveMechanicalEnergy);
+}
+
+// ОБРАТНАЯ СТОРОНА: то же качание с ТРЕНИЕМ. Механическая энергия
+// опровергнута, консервативность опровергнута — и вывод состоит не в том,
+// что энергия исчезла, а в том, что она ПОКИНУЛА МЕХАНИЧЕСКУЮ ФОРМУ.
+// Это то самое различение, ради которого §8.3 отделяет полную энергию от
+// механической.
+test "urn:query:em-t02i-friction-moves-energy-out-of-mechanical-form" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02i-pr": process_over(entity_ref("urn:case:em:sled"), entity_ref("urn:case:em:slide")) { origin case_input; }
+        assert "t02i-fa": force_acts_in(entity_ref("urn:case:em:slide"), "friction") { origin case_input; }
+        assert "t02i-nc": force_is_non_conservative(entity_ref("urn:case:em:slide"), "friction") { origin case_input; }
+        assert "t02i-e0": mechanical_energy_before(entity_ref("urn:case:em:sled"), entity_ref("urn:case:em:slide"), 25 J) { origin case_input; }
+        assert "t02i-e1": mechanical_energy_after(entity_ref("urn:case:em:sled"), entity_ref("urn:case:em:slide"), 18 J) { origin case_input; }
+    }
+
+    evaluate truth(energy_left_mechanical_form(entity_ref("urn:case:em:sled"), entity_ref("urn:case:em:slide")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(NonConservativeWorkMovesEnergyOut);
+}
+
+// ДВА УСЛОВИЯ РАСХОДЯТСЯ, И ЭТО ГЛАВНОЕ РАЗЛИЧЕНИЕ ВОЛНЫ. Сани с трением в
+// замкнутой системе: импульс сохраняется (замкнутость), механическая
+// энергия — нет (сила неконсервативна). Один и тот же процесс, два разных
+// ответа, и оба выведены.
+test "urn:query:em-t02j-momentum-yes-mechanical-energy-no" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02j-pr": process_over(entity_ref("urn:case:em:sled"), entity_ref("urn:case:em:slide")) { origin case_input; }
+        assert "t02j-fa": force_acts_in(entity_ref("urn:case:em:slide"), "friction") { origin case_input; }
+        assert "t02j-nc": force_is_non_conservative(entity_ref("urn:case:em:slide"), "friction") { origin case_input; }
+        assert "t02j-e0": mechanical_energy_before(entity_ref("urn:case:em:sled"), entity_ref("urn:case:em:slide"), 25 J) { origin case_input; }
+        assert "t02j-e1": mechanical_energy_after(entity_ref("urn:case:em:sled"), entity_ref("urn:case:em:slide"), 18 J) { origin case_input; }
+    }
+
+    evaluate truth(mechanical_energy_conserved(entity_ref("urn:case:em:sled"), entity_ref("urn:case:em:slide")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(MechanicalEnergyLostWhenTotalsDiffer);
+}
+
+// §9.1: импульс тела 4 кг со скоростью 10 м/с — 40 кг·м/с.
+test "urn:query:em-t02k-momentum-of-an-object" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02k-ms": mass_and_speed(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:throw"), 4 kg, 10 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(momentum_of(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:throw"), 40 kg_m_per_s));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(MomentumIsMassTimesVelocity);
+}
+
+// Почему импульс не сохранился — вопросом к системе.
+test "urn:query:em-t02l-why-not-conserved" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02l-pr": process_over(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll")) { origin case_input; }
+        assert "t02l-f": external_force_on_system(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll"), 12 N) { origin case_input; }
+        assert "t02l-p0": total_momentum_before(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll"), 30 kg_m_per_s) { origin case_input; }
+        assert "t02l-p1": total_momentum_after(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll"), 42 kg_m_per_s) { origin case_input; }
+    }
+
+    evaluate why_not(momentum_conserved(entity_ref("urn:case:em:cart"), entity_ref("urn:case:em:roll")));
+
+    expect evaluation_status == COMPUTED;
+}

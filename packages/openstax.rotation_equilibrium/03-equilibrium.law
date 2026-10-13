@@ -1,0 +1,114 @@
+// §12.1 «Conditions for Static Equilibrium»: ДВА условия, и одного мало.
+//
+// ПОЧЕМУ ТЕЛО В РАВНОВЕСИИ — ВОПРОС, НА КОТОРЫЙ НЕЛЬЗЯ ОТВЕТИТЬ ОДНИМ
+// ЧИСЛОМ. §12.1 даёт первое условие (результирующая сила нулевая) и второе
+// (результирующий момент нулевой) и подчёркивает их НЕЗАВИСИМОСТЬ: тело, к
+// которому приложены две равные противоположные силы в разных точках,
+// удовлетворяет первому условию и вращается. Пакет выводит каждое условие
+// отдельно и равновесие — лишь при обоих; отрицательная голова делает ответ
+// «нет» ВЫВОДОМ и называет, КАКОЕ из условий нарушено.
+
+language "law.core" version "0.2";
+package openstax.rotation_equilibrium version "0.1.0";
+namespace "urn:openstax:clir:rotation-equilibrium";
+
+use self::{
+    RigidBody,
+    UP_M58340_FIRST_EQUILIBRIUM_CONDITION,
+    UP_M58340_SECOND_EQUILIBRIUM_CONDITION,
+    UP_M58340_STATIC_EQUILIBRIUM,
+};
+
+// Связыватель §190: `refuted(P)` спрашивает, но не связывает (LDC-E4101).
+// Дело предъявляет тело, о равновесии которого спрашивают.
+@source(UP_M58340_STATIC_EQUILIBRIUM)
+relation body_presented(b: RigidBody) kind empirical {
+    label en official "§12.1: the case presents the body whose equilibrium is in question";
+    label ru unofficial "§12.1: дело предъявляет тело, о равновесии которого идёт речь";
+}
+
+@source(UP_M58340_FIRST_EQUILIBRIUM_CONDITION)
+relation net_force_on_body(b: RigidBody, f: Quantity) kind empirical {
+    label en official "§12.1: the net external force on the body";
+    label ru unofficial "§12.1: результирующая внешняя сила на теле";
+}
+
+@source(UP_M58340_SECOND_EQUILIBRIUM_CONDITION)
+relation net_torque_on_body(b: RigidBody, t: Quantity) kind empirical {
+    label en official "§12.1: the net external torque on the body about the chosen axis";
+    label ru unofficial "§12.1: результирующий внешний момент силы на теле относительно выбранной оси";
+}
+
+pub relation first_equilibrium_condition(b: RigidBody) kind institutional {
+    label en official "§12.1: the first equilibrium condition — the net external force on the body vanishes";
+    label ru unofficial "§12.1: первое условие равновесия — результирующая внешняя сила на теле обращается в нуль";
+}
+
+@source(UP_M58340_FIRST_EQUILIBRIUM_CONDITION)
+rule ZeroNetForceIsFirstCondition(b: RigidBody, f: Quantity) strict {
+    label en official "§12.1: a body whose net external force vanishes satisfies the first equilibrium condition";
+    label ru unofficial "§12.1: тело, результирующая внешняя сила на котором нулевая, удовлетворяет первому условию равновесия";
+    when net_force_on_body(b, f) and f == 0 * f;
+    then first_equilibrium_condition(b);
+}
+
+@source(UP_M58340_FIRST_EQUILIBRIUM_CONDITION)
+rule NonzeroNetForceFailsFirstCondition(b: RigidBody, f: Quantity) strict {
+    label en official "§12.1: a nonzero net external force refutes the first equilibrium condition";
+    label ru unofficial "§12.1: ненулевая результирующая внешняя сила опровергает первое условие равновесия";
+    when net_force_on_body(b, f) and f != 0 * f;
+    then not first_equilibrium_condition(b);
+}
+
+pub relation second_equilibrium_condition(b: RigidBody) kind institutional {
+    label en official "§12.1: the second equilibrium condition — the net external torque on the body vanishes";
+    label ru unofficial "§12.1: второе условие равновесия — результирующий внешний момент силы на теле обращается в нуль";
+}
+
+@source(UP_M58340_SECOND_EQUILIBRIUM_CONDITION)
+rule ZeroNetTorqueIsSecondCondition(b: RigidBody, t: Quantity) strict {
+    label en official "§12.1: a body whose net external torque vanishes satisfies the second equilibrium condition";
+    label ru unofficial "§12.1: тело, результирующий внешний момент силы на котором нулевой, удовлетворяет второму условию равновесия";
+    when net_torque_on_body(b, t) and t == 0 * t;
+    then second_equilibrium_condition(b);
+}
+
+@source(UP_M58340_SECOND_EQUILIBRIUM_CONDITION)
+rule NonzeroNetTorqueFailsSecondCondition(b: RigidBody, t: Quantity) strict {
+    label en official "§12.1: a nonzero net external torque refutes the second equilibrium condition";
+    label ru unofficial "§12.1: ненулевой результирующий внешний момент силы опровергает второе условие равновесия";
+    when net_torque_on_body(b, t) and t != 0 * t;
+    then not second_equilibrium_condition(b);
+}
+
+pub relation static_equilibrium(b: RigidBody) kind institutional {
+    label en official "§12.1: static equilibrium — the body is at rest and both equilibrium conditions hold";
+    label ru unofficial "§12.1: статическое равновесие — тело покоится, и выполнены оба условия равновесия";
+}
+
+@source(UP_M58340_STATIC_EQUILIBRIUM)
+rule BothConditionsGiveEquilibrium(b: RigidBody) strict {
+    label en official "§12.1: a body satisfying both the first and the second equilibrium condition is in equilibrium";
+    label ru unofficial "§12.1: тело, удовлетворяющее и первому, и второму условию равновесия, находится в равновесии";
+    when first_equilibrium_condition(b) and second_equilibrium_condition(b);
+    then static_equilibrium(b);
+}
+
+// ОДНОГО УСЛОВИЯ МАЛО, И ЭТО ВЫВОДИТСЯ. Нарушение любого из двух опровергает
+// равновесие; `why_not` называет, КАКОЕ именно, и это ответ на вопрос
+// «почему тело не в равновесии».
+@source(UP_M58340_STATIC_EQUILIBRIUM)
+rule FailedFirstConditionBreaksEquilibrium(b: RigidBody) strict {
+    label en official "§12.1: a body whose first equilibrium condition is refuted is not in equilibrium — it accelerates";
+    label ru unofficial "§12.1: тело с опровергнутым первым условием равновесия не находится в равновесии — оно ускоряется";
+    when body_presented(b) and refuted(first_equilibrium_condition(b));
+    then not static_equilibrium(b);
+}
+
+@source(UP_M58340_STATIC_EQUILIBRIUM)
+rule FailedSecondConditionBreaksEquilibrium(b: RigidBody) strict {
+    label en official "§12.1: a body whose second equilibrium condition is refuted is not in equilibrium — it rotates";
+    label ru unofficial "§12.1: тело с опровергнутым вторым условием равновесия не находится в равновесии — оно вращается";
+    when body_presented(b) and refuted(second_equilibrium_condition(b));
+    then not static_equilibrium(b);
+}

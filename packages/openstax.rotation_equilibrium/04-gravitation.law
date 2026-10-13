@@ -1,0 +1,202 @@
+// §13.1 «Newton's Law of Universal Gravitation» и §13.5 «Kepler's Laws of
+// Planetary Motion»: тяготение и ДВА ОСНОВАНИЯ ЗАКОНОВ КЕПЛЕРА.
+//
+// ВТОРОЙ МОСТ КОРПУСА, И УСТРОЕН ОН ИНАЧЕ, ЧЕМ ПЕРВЫЙ. Кеплер вывел свои
+// законы из наблюдений Тихо Браге (1609, 1619) — за десятилетия до «Начал»;
+// Ньютон вывел те же законы из закона тяготения. Утверждение ОДНО, оснований
+// ДВА, и они не спорят: наблюдение подтверждает вывод, вывод объясняет
+// наблюдение.
+//
+// ПОЭТОМУ ЗДЕСЬ НЕ `interpretation_group`. Прочтения нужны там, где
+// формулировки РАСХОДЯТСЯ и дело обязано выбрать, — так у второго закона
+// Ньютона на переменной массе (`openstax.second_law_readings`). Здесь
+// расхождения нет; навязать делу выбор между «Кеплер наблюдал» и «Ньютон
+// вывел» значило бы солгать о предмете. У одной головы просто два правила, и
+// дело вправе опереться на любое или на оба — `applied` в сцене покажет, на
+// какое именно оно опёрлось.
+//
+// ЧТО ЭТО ДАЁТ ПРАКТИЧЕСКИ. Система, спрошенная «почему орбита эллиптическая»,
+// отвечает либо «так наблюдал Кеплер», либо «так следует из закона тяготения
+// при предъявленных массах», либо обоими — и цепочка каждого ответа ведёт к
+// СВОЕМУ фрагменту учебника. Это ровно то различение источника знания, ради
+// которого мосты и заводятся.
+//
+// ПОСТОЯННАЯ ТЯГОТЕНИЯ ПРЕДЪЯВЛЯЕТСЯ ДЕЛОМ. G — измеряемая величина, и §13.1
+// приводит её значение с оговоркой о точности; вписать её константой пакета
+// значило бы выдать измерение за определение. Тот же довод, что у g в §3.5 тома 1.
+
+language "law.core" version "0.2";
+package openstax.rotation_equilibrium version "0.1.0";
+namespace "urn:openstax:clir:rotation-equilibrium";
+
+use self::{
+    CelestialBody,
+    UP_M58345_GRAVITATIONAL_CONSTANT,
+    UP_M58345_LAW_OF_GRAVITATION,
+    UP_M58350_KEPLER_FIRST_LAW,
+    UP_M58350_KEPLER_THIRD_LAW,
+};
+
+// --- §13.1: закон всемирного тяготения ---------------------------------------------
+
+@source(UP_M58345_LAW_OF_GRAVITATION)
+relation body_mass(c: CelestialBody, m: Quantity) kind empirical {
+    label en official "§13.1: the mass of the celestial body";
+    label ru unofficial "§13.1: масса небесного тела";
+}
+
+@source(UP_M58345_LAW_OF_GRAVITATION)
+relation separation(a: CelestialBody, b: CelestialBody, r: Quantity) kind empirical {
+    label en official "§13.1: the distance between the centres of the two bodies";
+    label ru unofficial "§13.1: расстояние между центрами двух тел";
+}
+
+@source(UP_M58345_GRAVITATIONAL_CONSTANT)
+relation gravitational_constant(g: Quantity) kind empirical {
+    label en official "§13.1: the universal gravitational constant, presented by the case — a measured quantity, not a definition";
+    label ru unofficial "§13.1: гравитационная постоянная, предъявленная делом, — измеряемая величина, а не определение";
+}
+
+@source(UP_M58345_LAW_OF_GRAVITATION)
+relation gravitational_attraction_asserted(a: CelestialBody, b: CelestialBody) kind empirical {
+    label en official "§13.1: the case asks about the gravitational attraction between the two bodies";
+    label ru unofficial "§13.1: дело спрашивает о гравитационном притяжении между двумя телами";
+}
+
+pub relation attracts_gravitationally(a: CelestialBody, b: CelestialBody) kind institutional {
+    label en official "§13.1: every particle of matter attracts every other particle — the two bodies attract each other gravitationally";
+    label ru unofficial "§13.1: всякая частица вещества притягивает всякую другую — два тела притягиваются гравитационно";
+}
+
+// §13.1 говорит «EVERY particle in the universe attracts every other» — закон
+// ВСЕМИРНОГО тяготения, и никаких условий на род тел он не ставит. Достаточно
+// того, что у обоих есть масса.
+@source(UP_M58345_LAW_OF_GRAVITATION)
+rule EveryMassAttractsEveryOther(
+    a: CelestialBody,
+    b: CelestialBody,
+    ma: Quantity,
+    mb: Quantity,
+) strict {
+    label en official "§13.1: all matter attracts all other matter — two bodies having mass attract each other";
+    label ru unofficial "§13.1: всякое вещество притягивает всякое другое — два тела, обладающие массой, притягиваются";
+    when gravitational_attraction_asserted(a, b)
+        and body_mass(a, ma)
+        and body_mass(b, mb);
+    then attracts_gravitationally(a, b);
+}
+
+// --- §13.5: законы Кеплера ДВУМЯ ПРОИЗВОДИТЕЛЯМИ ------------------------------------
+
+@source(UP_M58350_KEPLER_FIRST_LAW)
+relation orbits(a: CelestialBody, b: CelestialBody) kind empirical {
+    label en official "§13.5: the case states the first body orbits the second";
+    label ru unofficial "§13.5: дело сообщает, что первое тело обращается вокруг второго";
+}
+
+// ОСНОВАНИЕ ПЕРВОЕ: НАБЛЮДЕНИЕ. Кеплер получил закон из данных Браге, и дело
+// вправе сослаться на само наблюдение — так же, как ссылались астрономы за
+// восемьдесят лет до «Начал».
+@source(UP_M58350_KEPLER_FIRST_LAW)
+relation orbit_observed_elliptical(a: CelestialBody, b: CelestialBody) kind empirical {
+    label en official "§13.5: the case presents the observation that the orbit is an ellipse with the attracting body at one focus";
+    label ru unofficial "§13.5: дело предъявляет наблюдение, что орбита есть эллипс с притягивающим телом в одном из фокусов";
+}
+
+pub relation orbit_is_elliptical(a: CelestialBody, b: CelestialBody) kind institutional {
+    label en official "§13.5, Kepler's first law: the orbit of the body is an ellipse with the attracting body at one focus";
+    label ru unofficial "§13.5, первый закон Кеплера: орбита тела есть эллипс, в одном из фокусов которого находится притягивающее тело";
+}
+
+@source(UP_M58350_KEPLER_FIRST_LAW)
+rule KeplerFirstLawFromObservation(a: CelestialBody, b: CelestialBody) strict {
+    label en official "§13.5: Kepler's first law as Kepler had it — from the observations of Tycho Brahe, the orbit is an ellipse with the Sun at one focus";
+    label ru unofficial "§13.5: первый закон Кеплера в том виде, в каком его получил Кеплер, — из наблюдений Тихо Браге орбита есть эллипс с Солнцем в одном из фокусов";
+    when orbits(a, b) and orbit_observed_elliptical(a, b);
+    then orbit_is_elliptical(a, b);
+}
+
+// ОСНОВАНИЕ ВТОРОЕ: ВЫВОД ИЗ ТЯГОТЕНИЯ. §13.5 говорит прямо, что законы
+// Кеплера СЛЕДУЮТ из закона тяготения и второго закона Ньютона. Правило
+// читает вывод §13.1 — а не наблюдение, — и потому применимо там, где
+// наблюдений ещё нет: к предсказанной планете, к спутнику на расчётной
+// орбите.
+@source(UP_M58350_KEPLER_FIRST_LAW, UP_M58345_LAW_OF_GRAVITATION)
+rule KeplerFirstLawFromGravitation(a: CelestialBody, b: CelestialBody) strict {
+    label en official "§13.5: Kepler's laws follow from Newton's law of gravitation — a body orbiting under gravitational attraction alone moves on an ellipse with the attracting body at one focus";
+    label ru unofficial "§13.5: законы Кеплера следуют из закона тяготения Ньютона — тело, обращающееся под действием одного лишь тяготения, движется по эллипсу с притягивающим телом в одном из фокусов";
+    when orbits(a, b) and attracts_gravitationally(a, b);
+    then orbit_is_elliptical(a, b);
+}
+
+// --- Третий закон Кеплера: проверка предъявленного отношения ------------------------
+
+@source(UP_M58350_KEPLER_THIRD_LAW)
+relation orbital_period_squared(a: CelestialBody, value: Quantity) kind empirical {
+    label en official "§13.5: the square of the orbital period of the body, as the case presents it";
+    label ru unofficial "§13.5: квадрат периода обращения тела в том виде, в каком его предъявляет дело";
+}
+
+@source(UP_M58350_KEPLER_THIRD_LAW)
+relation semi_major_axis_cubed(a: CelestialBody, value: Quantity) kind empirical {
+    label en official "§13.5: the cube of the semi-major axis of the orbit, as the case presents it";
+    label ru unofficial "§13.5: куб большой полуоси орбиты в том виде, в каком его предъявляет дело";
+}
+
+pub relation third_law_ratio(a: CelestialBody, ratio: Rational) kind institutional {
+    label en official "§13.5, Kepler's third law: the ratio of the square of the period to the cube of the semi-major axis — the same for every body orbiting the same centre";
+    label ru unofficial "§13.5, третий закон Кеплера: отношение квадрата периода к кубу большой полуоси — одно и то же у всех тел, обращающихся вокруг одного центра";
+}
+
+// Отношение БЕЗРАЗМЕРНО лишь при тождественной единице числителя и
+// знаменателя, а s² и m³ различны. Поэтому дело предъявляет обе величины В
+// ОДНОЙ единице — как чистые числа с общим тегом, — и алгебра сокращает их
+// сама (E-0068). Приём тот же, что у относительной погрешности §1.6.
+@source(UP_M58350_KEPLER_THIRD_LAW)
+rule ThirdLawRatioFromPeriodAndAxis(a: CelestialBody, t2: Quantity, a3: Quantity) strict {
+    label en official "§13.5: the ratio of T² to a³ is computed from the two presented quantities and is the same for all bodies about one centre";
+    label ru unofficial "§13.5: отношение T² к a³ вычисляется из двух предъявленных величин и одинаково у всех тел вокруг одного центра";
+    when orbital_period_squared(a, t2) and semi_major_axis_cubed(a, a3);
+    then third_law_ratio(a, scalar_of(magnitude(t2) / magnitude(a3)));
+}
+
+pub relation third_law_holds_for_pair(a: CelestialBody, b: CelestialBody) kind institutional {
+    label en official "§13.5: the two bodies orbiting the same centre share the same ratio T²/a³, as Kepler's third law requires";
+    label ru unofficial "§13.5: два тела, обращающиеся вокруг одного центра, имеют одинаковое отношение T²/a³, как того требует третий закон Кеплера";
+}
+
+@source(UP_M58350_KEPLER_THIRD_LAW)
+rule SameRatioSatisfiesThirdLaw(
+    a: CelestialBody,
+    b: CelestialBody,
+    centre: CelestialBody,
+    ra: Rational,
+    rb: Rational,
+) strict {
+    label en official "§13.5: two bodies about the same centre whose ratios agree satisfy Kepler's third law";
+    label ru unofficial "§13.5: два тела вокруг одного центра, отношения которых совпали, удовлетворяют третьему закону Кеплера";
+    when orbits(a, centre)
+        and orbits(b, centre)
+        and third_law_ratio(a, ra)
+        and third_law_ratio(b, rb)
+        and ra == rb;
+    then third_law_holds_for_pair(a, b);
+}
+
+@source(UP_M58350_KEPLER_THIRD_LAW)
+rule DifferentRatiosRefuteThirdLaw(
+    a: CelestialBody,
+    b: CelestialBody,
+    centre: CelestialBody,
+    ra: Rational,
+    rb: Rational,
+) strict {
+    label en official "§13.5: two bodies about the same centre whose ratios differ refute Kepler's third law for that pair";
+    label ru unofficial "§13.5: два тела вокруг одного центра с разошедшимися отношениями опровергают для этой пары третий закон Кеплера";
+    when orbits(a, centre)
+        and orbits(b, centre)
+        and third_law_ratio(a, ra)
+        and third_law_ratio(b, rb)
+        and ra != rb;
+    then not third_law_holds_for_pair(a, b);
+}

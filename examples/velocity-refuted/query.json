@@ -1,0 +1,15 @@
+{
+  "kind": "truth",
+  "literal": {
+    "args": [
+      {
+        "id": "urn:case:kin:rocket2",
+        "kind": "entity_ref"
+      }
+    ],
+    "kind": "literal",
+    "polarity": "positive",
+    "predicate": "urn:openstax:clir:kinematics#final_velocity_claim_holds"
+  },
+  "queryId": "urn:openstax:clir:kinematics#test/urn%3Aquery%3Akin-t02b-rocket-wrong-answer-refuted/query/0"
+}

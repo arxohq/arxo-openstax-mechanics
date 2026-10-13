@@ -1,0 +1,162 @@
+language "law.core" version "0.2";
+package openstax.kinematics version "0.1.0";
+namespace "urn:openstax:clir:kinematics";
+
+// §3.4, собственный пример источника: «A rocket accelerates at a rate of
+// 20 m/s² during launch. How long does it take the rocket to reach a velocity
+// of 400 m/s?» — учебник решает v = v₀ + at относительно t и получает 20 с.
+// Пакет уравнений не решает (решателя в языке нет), но ПРОВЕРЯЕТ ответ:
+// 0 + 20·20 = 400 м/с.
+test "urn:query:kin-t02a-rocket-final-velocity" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02a-a": constant_acceleration(entity_ref("urn:case:kin:rocket"), 20 m_per_s2) { origin case_input; }
+        assert "t02a-v0": initial_velocity(entity_ref("urn:case:kin:rocket"), 0 m_per_s) { origin case_input; }
+        assert "t02a-t": elapsed_time(entity_ref("urn:case:kin:rocket"), 20 s) { origin case_input; }
+        assert "t02a-v": claimed_final_velocity(entity_ref("urn:case:kin:rocket"), 400 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(final_velocity_claim_holds(entity_ref("urn:case:kin:rocket")));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ClaimedFinalVelocityAgrees);
+}
+
+// ОБРАТНАЯ СТОРОНА ТОЙ ЖЕ ГРАНИЦЫ: та же задача, заявлено 380 м/с. Расчёт
+// ОПРОВЕРГНУТ — FALSE_ONLY, а не «не установлено». Система отвечает «нет»,
+// и доказательство называет вычисленное значение.
+test "urn:query:kin-t02b-rocket-wrong-answer-refuted" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02b-a": constant_acceleration(entity_ref("urn:case:kin:rocket2"), 20 m_per_s2) { origin case_input; }
+        assert "t02b-v0": initial_velocity(entity_ref("urn:case:kin:rocket2"), 0 m_per_s) { origin case_input; }
+        assert "t02b-t": elapsed_time(entity_ref("urn:case:kin:rocket2"), 20 s) { origin case_input; }
+        assert "t02b-v": claimed_final_velocity(entity_ref("urn:case:kin:rocket2"), 380 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(final_velocity_claim_holds(entity_ref("urn:case:kin:rocket2")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ClaimedFinalVelocityRefuted);
+}
+
+// Сама вычисленная скорость — вопросом к системе.
+test "urn:query:kin-t02c-computed-final-velocity" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02c-a": constant_acceleration(entity_ref("urn:case:kin:rocket"), 20 m_per_s2) { origin case_input; }
+        assert "t02c-v0": initial_velocity(entity_ref("urn:case:kin:rocket"), 0 m_per_s) { origin case_input; }
+        assert "t02c-t": elapsed_time(entity_ref("urn:case:kin:rocket"), 20 s) { origin case_input; }
+    }
+
+    evaluate truth(final_velocity(entity_ref("urn:case:kin:rocket"), 400 m_per_s));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(FinalVelocityUnderConstantAcceleration);
+}
+
+// §3.4, третье уравнение: x = v₀t + ½at². Частица с v₀ = 30 м/с и a = 30 м/с²
+// за 5 с проходит 30·5 + ½·30·25 = 150 + 375 = 525 м (собственная задача §3.4).
+test "urn:query:kin-t02d-displacement-under-constant-acceleration" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02d-a": constant_acceleration(entity_ref("urn:case:kin:particle"), 30 m_per_s2) { origin case_input; }
+        assert "t02d-v0": initial_velocity(entity_ref("urn:case:kin:particle"), 30 m_per_s) { origin case_input; }
+        assert "t02d-t": elapsed_time(entity_ref("urn:case:kin:particle"), 5 s) { origin case_input; }
+    }
+
+    evaluate truth(displacement_under_constant_acceleration(entity_ref("urn:case:kin:particle"), 525 m));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(DisplacementUnderConstantAcceleration);
+}
+
+// Заявленное перемещение 500 м вместо 525 — ОПРОВЕРГНУТО.
+test "urn:query:kin-t02e-displacement-claim-refuted" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02e-a": constant_acceleration(entity_ref("urn:case:kin:particle"), 30 m_per_s2) { origin case_input; }
+        assert "t02e-v0": initial_velocity(entity_ref("urn:case:kin:particle"), 30 m_per_s) { origin case_input; }
+        assert "t02e-t": elapsed_time(entity_ref("urn:case:kin:particle"), 5 s) { origin case_input; }
+        assert "t02e-x": claimed_displacement(entity_ref("urn:case:kin:particle"), 500 m) { origin case_input; }
+    }
+
+    evaluate truth(displacement_claim_holds(entity_ref("urn:case:kin:particle")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ClaimedDisplacementRefuted);
+}
+
+// §3.4, четвёртое уравнение — БЕЗ ВРЕМЕНИ: v² = v₀² + 2a(x − x₀).
+// v₀ = 0, a = 2 м/с², x = 25 м даёт v² = 100, то есть v = 10 м/с.
+test "urn:query:kin-t02f-timeless-equation" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02f-a": constant_acceleration(entity_ref("urn:case:kin:slide"), 2 m_per_s2) { origin case_input; }
+        assert "t02f-v0": initial_velocity(entity_ref("urn:case:kin:slide"), 0 m_per_s) { origin case_input; }
+        assert "t02f-v": claimed_final_velocity(entity_ref("urn:case:kin:slide"), 10 m_per_s) { origin case_input; }
+        assert "t02f-x": claimed_displacement(entity_ref("urn:case:kin:slide"), 25 m) { origin case_input; }
+    }
+
+    evaluate truth(velocity_squared_relation_holds(entity_ref("urn:case:kin:slide")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(TimelessEquationHolds);
+}
+
+// §3.3: изменение скорости 100 м/с за 4 с — среднее ускорение 25 м/с².
+test "urn:query:kin-t02g-average-acceleration" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t02g-dv": velocity_change(entity_ref("urn:case:kin:dragster"), 100 m_per_s) { origin case_input; }
+        assert "t02g-t": elapsed_time(entity_ref("urn:case:kin:dragster"), 4 s) { origin case_input; }
+    }
+
+    evaluate truth(average_acceleration(entity_ref("urn:case:kin:dragster"), 25 m_per_s2));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AverageAccelerationFromVelocityChange);
+}

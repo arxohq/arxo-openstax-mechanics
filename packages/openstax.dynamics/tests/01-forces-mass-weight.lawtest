@@ -1,0 +1,160 @@
+language "law.core" version "0.2";
+package openstax.dynamics version "0.1.0";
+namespace "urn:openstax:clir:dynamics";
+
+// §5.4, собственный пример источника: тело весом 180 Н при g = 9,8 м/с²
+// имеет массу 18 кг. Пакет считает в другую сторону — w = mg, — и сходится
+// на тех же числах.
+test "urn:query:dyn-t01a-weight-is-mass-times-gravity" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01a-m": mass_of(entity_ref("urn:case:dyn:crate"), 18 kg) { origin case_input; }
+        assert "t01a-g": gravitational_field(entity_ref("urn:case:dyn:crate"), 9.8 m_per_s2) { origin case_input; }
+    }
+
+    evaluate truth(weight_of(entity_ref("urn:case:dyn:crate"), 176.4 N));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(WeightIsMassTimesGravity);
+}
+
+// МАССА И ВЕС РАЗЛИЧАЮТСЯ ЕДИНИЦЕЙ, И ПУТАНИЦУ ЛОВИТ АЛГЕБРА, А НЕ ПРАВИЛО.
+// Дело подаёт «вес 176,4» в КИЛОГРАММАХ; сравнение величин разной
+// размерности отвергается §49.1 с названными единицами, и ответ не выводится.
+// Это то самое место, где типичная ошибка школьника перестаёт быть тихой.
+test "urn:query:dyn-t01b-weight-in-kilograms-is-refused" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01b-m": mass_of(entity_ref("urn:case:dyn:crate"), 18 kg) { origin case_input; }
+        assert "t01b-g": gravitational_field(entity_ref("urn:case:dyn:crate"), 9.8 m_per_s2) { origin case_input; }
+    }
+
+    evaluate truth(weight_of(entity_ref("urn:case:dyn:crate"), 176.4 kg));
+
+    expect truth_status == NEITHER;
+}
+
+// §5.2: нулевая результирующая сила — состояние движения сохраняется.
+test "urn:query:dyn-t01c-zero-net-force-keeps-state" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01c-i": in_inertial_frame(entity_ref("urn:case:dyn:puck")) { origin case_input; }
+        assert "t01c-f": net_force_on(entity_ref("urn:case:dyn:puck"), 0 N) { origin case_input; }
+    }
+
+    evaluate truth(state_of_motion_unchanged(entity_ref("urn:case:dyn:puck")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ZeroNetForceKeepsState);
+}
+
+// ОБРАТНАЯ СТОРОНА ТОЙ ЖЕ ГРАНИЦЫ: ненулевая результирующая ОПРОВЕРГАЕТ
+// сохранение состояния. FALSE_ONLY.
+test "urn:query:dyn-t01d-nonzero-net-force-changes-state" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01d-i": in_inertial_frame(entity_ref("urn:case:dyn:puck2")) { origin case_input; }
+        assert "t01d-f": net_force_on(entity_ref("urn:case:dyn:puck2"), 5 N) { origin case_input; }
+    }
+
+    evaluate truth(state_of_motion_unchanged(entity_ref("urn:case:dyn:puck2")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(NonzeroNetForceChangesState);
+}
+
+// МОСТ К ЗАКОНУ I PRINCIPIA БЕЗ ПРОЧТЕНИЙ. Для первого закона расхождения
+// между Ньютоном и OpenStax нет: «cogitur statum suum mutare» и «unless
+// acted upon by a net external force» — одно утверждение. Латинский пакет
+// выводит принуждение своим правилом, здесь его вывод ЧИТАЕТСЯ.
+test "urn:query:dyn-t01e-principia-first-law-agrees" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01e-id": identified_with(entity_ref("urn:case:dyn:puck2"),
+                               entity_ref("urn:case:dyn:corpus3")) { origin case_input; }
+        assert "t01e-v": la.newton.principia::vis_impressa_in(entity_ref("urn:case:dyn:corpus3"), 5 pars_motus) { origin case_input; }
+    }
+
+    evaluate truth(compelled_to_change_state(entity_ref("urn:case:dyn:puck2"),
+                                             entity_ref("urn:case:dyn:corpus3")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(PrincipiaFirstLawAgrees);
+}
+
+// §5.5: противодействие равно по модулю и противоположно по направлению.
+test "urn:query:dyn-t01f-third-law-reaction" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01f-e": exerts_force_on(entity_ref("urn:case:dyn:skater"),
+                               entity_ref("urn:case:dyn:wall"), 45 N) { origin case_input; }
+    }
+
+    evaluate truth(reaction_force(entity_ref("urn:case:dyn:wall"),
+                                  entity_ref("urn:case:dyn:skater"), -45 N));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(ThirdLawGivesEqualOppositeForce);
+}
+
+// §6.3: ЦЕПОЧКА ЧЕРЕЗ ТРИ ПАКЕТА. Радиус и скорость предъявляет дело,
+// кинематика считает a_c = v²/r = 1,2 м/с², динамика умножает на массу 50 кг
+// и даёт 60 Н. Ни один шаг не повторён дважды.
+test "urn:query:dyn-t01g-centripetal-force-through-three-packages" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01g-as": moves_as(entity_ref("urn:case:dyn:rider"), entity_ref("urn:case:dyn:kbody")) { origin case_input; }
+        assert "t01g-m": mass_of(entity_ref("urn:case:dyn:rider"), 50 kg) { origin case_input; }
+        assert "t01g-r": openstax.kinematics::moves_on_circle(entity_ref("urn:case:dyn:kbody"),
+                                                    entity_ref("urn:case:dyn:kturn"), 30.0 m) { origin case_input; }
+        assert "t01g-v": openstax.kinematics::speed_on_circle(entity_ref("urn:case:dyn:kbody"),
+                                                    entity_ref("urn:case:dyn:kturn"), 6.0 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(centripetal_force(entity_ref("urn:case:dyn:rider"), 60 N));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(CentripetalForceIsMassTimesCentripetalAcceleration);
+}

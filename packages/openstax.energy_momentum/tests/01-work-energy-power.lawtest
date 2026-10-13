@@ -1,0 +1,130 @@
+language "law.core" version "0.2";
+package openstax.energy_momentum version "0.1.0";
+namespace "urn:openstax:clir:energy-momentum";
+
+
+// §7.1: сила 6 Н на пути 50 м даёт 300 Дж. ДЖОУЛЬ ВЫВЕДЕН: `N · m` даёт
+// {kg:1, m:2, s:−2}, и раскрытие джоуля из реестра даёт тот же набор.
+test "urn:query:em-t01a-work-of-constant-force" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01a-fd": constant_force_along_displacement(entity_ref("urn:case:em:push"), 6 N, 50 m) { origin case_input; }
+    }
+
+    evaluate truth(work_done(entity_ref("urn:case:em:push"), 300 J));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(WorkOfConstantForce);
+}
+
+// ТА ЖЕ РАБОТА В ЧУЖОЙ ЕДИНИЦЕ: заявлено 300 Н. Мультимножитель работы
+// {kg:1, m:2, s:−2} против {kg:1, m:1, s:−2} у ньютона — алгебра
+// отвергает сравнение с названными единицами. Пара со сценой 01a.
+test "urn:query:em-t01b-work-in-newtons-is-refused" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01b-fd": constant_force_along_displacement(entity_ref("urn:case:em:push2"), 6 N, 50 m) { origin case_input; }
+    }
+
+    evaluate truth(work_done(entity_ref("urn:case:em:push2"), 300 N));
+
+    expect truth_status == NEITHER;
+}
+
+// §7.2: K = ½mv². Тело 4 кг со скоростью 10 м/с несёт 200 Дж — тот же
+// джоуль, полученный другим путём.
+test "urn:query:em-t01c-kinetic-energy" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01c-ms": mass_and_speed(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:throw"), 4 kg, 10 m_per_s) { origin case_input; }
+    }
+
+    evaluate truth(kinetic_energy(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:throw"), 200 J));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(KineticEnergyFromMassAndSpeed);
+}
+
+// §7.3: работа 300 Дж при росте кинетической энергии с 100 до 400 Дж —
+// теорема выполняется. Приравнивание работы и разности энергий законно
+// потому, что мультимножители обеих сторон совпали.
+test "urn:query:em-t01d-work-energy-theorem-holds" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01d-fd": constant_force_along_displacement(entity_ref("urn:case:em:push"), 6 N, 50 m) { origin case_input; }
+        assert "t01d-k0": kinetic_energy_before(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:push"), 100 J) { origin case_input; }
+        assert "t01d-k1": kinetic_energy_after(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:push"), 400 J) { origin case_input; }
+    }
+
+    evaluate truth(work_energy_theorem_holds(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:push")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(NetWorkEqualsChangeOfKineticEnergy);
+}
+
+// ОБРАТНАЯ СТОРОНА: энергия выросла с 100 до 350 при работе 300 Дж.
+// Описание процесса ОПРОВЕРГНУТО — FALSE_ONLY. Система отвечает «нет», а
+// не «не знаю»: где-то потеряно 50 Дж, и дело обязано это объяснить.
+test "urn:query:em-t01e-work-energy-theorem-refuted" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01e-fd": constant_force_along_displacement(entity_ref("urn:case:em:push3"), 6 N, 50 m) { origin case_input; }
+        assert "t01e-k0": kinetic_energy_before(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:push3"), 100 J) { origin case_input; }
+        assert "t01e-k1": kinetic_energy_after(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:push3"), 350 J) { origin case_input; }
+    }
+
+    evaluate truth(work_energy_theorem_holds(entity_ref("urn:case:em:ball"), entity_ref("urn:case:em:push3")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(WorkEnergyTheoremRefuted);
+}
+
+// §7.4: 300 Дж за 6 с — 50 Вт. Ватт выведен как джоуль в секунду.
+test "urn:query:em-t01f-average-power" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t01f-fd": constant_force_along_displacement(entity_ref("urn:case:em:push"), 6 N, 50 m) { origin case_input; }
+        assert "t01f-t": work_took(entity_ref("urn:case:em:push"), 6 s) { origin case_input; }
+    }
+
+    evaluate truth(average_power(entity_ref("urn:case:em:push"), 50 W));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(AveragePowerIsWorkOverTime);
+}

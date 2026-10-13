@@ -1,0 +1,53 @@
+language "law.core" version "0.2";
+package openstax.rotation_equilibrium version "0.1.0";
+namespace "urn:openstax:clir:rotation-equilibrium";
+
+// Регрессия находки Н3 (линия rotation): тело TorqueEqualsInertiaTimesAngularAcceleration
+// и TorqueDisagreesWithRotation умножало на α ДВАЖДЫ (I·α·α) вместо τ = Iα
+// (источник §10.7, m58332: «τ = Iα», один множитель). Оба сценария краснеют
+// на теле с двойным α и зеленеют на исправленном.
+
+// Прямая сцена: I = 4 кг·м², α = 3 с⁻², τ = 12 Дж = I·α. Двойное-α тело
+// считало 4·3·3 = 36 ≠ 12 и отвечало FALSE_ONLY.
+test "urn:query:rot-t03a-torque-equals-inertia-times-acceleration" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03a-i": moment_of_inertia(entity_ref("urn:case:rot:fly"), 4 kg_m2) { origin case_input; }
+        assert "t03a-a": angular_acceleration(entity_ref("urn:case:rot:fly"), 3 per_s2) { origin case_input; }
+        assert "t03a-t": applied_torque(entity_ref("urn:case:rot:fly"), 12 J) { origin case_input; }
+    }
+
+    evaluate truth(torque_accounts_for_rotation(entity_ref("urn:case:rot:fly")));
+
+    expect truth_status == TRUE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(TorqueEqualsInertiaTimesAngularAcceleration);
+}
+
+// Проба на ложный успех: τ = 36 Дж — это I·α·α, а не I·α, и описанием
+// вращения оно НЕ является. Тело с двойным α отвечало здесь TRUE_ONLY;
+// верный ответ — FALSE_ONLY через TorqueDisagreesWithRotation.
+test "urn:query:rot-t03b-torque-squared-alpha-is-not-an-account" {
+    given {
+        context {
+            decision_time @2026-09-06T12:00:00Z;
+            knowledge_time @2026-09-06T12:00:00Z;
+            legal_time @2026-09-06;
+            timezone "UTC";
+        }
+        assert "t03b-i": moment_of_inertia(entity_ref("urn:case:rot:fly2"), 4 kg_m2) { origin case_input; }
+        assert "t03b-a": angular_acceleration(entity_ref("urn:case:rot:fly2"), 3 per_s2) { origin case_input; }
+        assert "t03b-t": applied_torque(entity_ref("urn:case:rot:fly2"), 36 J) { origin case_input; }
+    }
+
+    evaluate truth(torque_accounts_for_rotation(entity_ref("urn:case:rot:fly2")));
+
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+    expect applied(TorqueDisagreesWithRotation);
+}

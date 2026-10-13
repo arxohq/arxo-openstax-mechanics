@@ -1,0 +1,17 @@
+{
+  "format": "law.package-info/0.1",
+  "purpose": "OpenStax University Physics, т. 1, гл. 7–9: работа, энергия, импульс — сохранение как утверждение УСЛОВНОЕ; замкнутость системы и консервативность сил как разные условия разных законов",
+  "limitations": [
+    "Пакет формализует положения учебника как правила и расчёты; упражнения и иллюстрации учебника не переносятся.",
+    "Пакет применяет формулировки источника к предъявленным данным; доказательства и рассуждения авторов источника не перепроверяются, а физическая истинность теории из ответа не следует."
+  ],
+  "examples": [
+    "tests/01-work-energy-power.lawtest",
+    "tests/02-conservation.lawtest",
+    "tests/03-editions.lawtest"
+  ],
+  "license": "Модель, сценарии и изложение распространяются под Apache-2.0 (см. LICENSE). Закреплённый текст — модули учебника OpenStax University Physics (Rice University), лицензия Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0; объявлена элементом md:license в university-physics-volume-1.collection.xml): только некоммерческое использование, переработки — на тех же условиях. Репозиторий openstax/osbooks-university-physics-bundle на коммите d0ed34a5851119a42e3d972dfc0ff49e4663977c; бесплатно на https://openstax.org/details/books/university-physics-volume-1 . Выдержки не изменены по смыслу; OpenStax и Rice University этот пакет не одобряли.",
+  "maintainer": "Rifat Dzhumagulov (hi@arxo.io)",
+  "repository": "https://github.com/arxohq/arxo-openstax-mechanics",
+  "deliveryLicenseNote": "Publisher texts and textual adaptations, including embedded copies, retain separate terms in the repository NOTICE. Apache-2.0 covers independently authored Arxo code."
+}

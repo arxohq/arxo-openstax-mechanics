@@ -1,0 +1,24 @@
+language "law.core" version "0.2";
+package la.newton.principia version "0.1.0";
+namespace "urn:la:newton:clir:principia";
+
+// Lex. I: удар принуждает переменить состояние — презумпция поражена
+// («nisi quatenus a viribus impressis cogitur statum illum mutare»).
+test "urn:query:prin-t03" {
+    given {
+        context {
+            decision_time @2026-08-31T12:00:00+05:00;
+            knowledge_time @2026-08-31T12:00:00+05:00;
+            legal_time @2026-08-31;
+            timezone "Asia/Qyzylorda";
+        }
+        assert "prin-t03-a0": status_corporis_prius(entity_ref("urn:case:prin:corpus"), MovendiUniformiter) { origin case_input; }
+        assert "prin-t03-a1": ictus_in_corpus(entity_ref("urn:case:prin:corpus"), 1 pars_motus) { origin case_input; }
+    }
+
+    evaluate truth(status_corporis_posterius(entity_ref("urn:case:prin:corpus"), MovendiUniformiter));
+
+    expect result_kind == PROPOSITION;
+    expect truth_status == FALSE_ONLY;
+    expect evaluation_status == COMPUTED;
+}

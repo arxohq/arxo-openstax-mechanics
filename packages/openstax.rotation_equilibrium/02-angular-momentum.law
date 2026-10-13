@@ -1,0 +1,122 @@
+// §11.2 «Angular Momentum», §11.3 «Conservation of Angular Momentum».
+//
+// ТРЕТЬЕ СОХРАНЕНИЕ ЦЕПОЧКИ, И УСЛОВИЕ У НЕГО СВОЁ. Импульс сохраняется при
+// отсутствии внешней СИЛЫ, момент импульса — при отсутствии внешнего МОМЕНТА
+// силы. §11.3 говорит именно так: «conserved if no external torque acts on
+// the system». Различие не формальное: фигуристка, притянувшая руки,
+// раскручивается — внешние силы на неё действуют (тяжесть, реакция льда), а
+// момента относительно оси вращения они не создают. Пакет держит это условие
+// отдельным, как и два предыдущих.
+
+language "law.core" version "0.2";
+package openstax.rotation_equilibrium version "0.1.0";
+namespace "urn:openstax:clir:rotation-equilibrium";
+
+use self::{
+    RigidBody,
+    UP_M58336_ANGULAR_MOMENTUM,
+    UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM,
+    angular_velocity,
+    moment_of_inertia,
+};
+
+pub relation angular_momentum(b: RigidBody, l: Quantity) kind institutional {
+    label en official "§11.2: L = Iω — the angular momentum of a rotating rigid body about its axis";
+    label ru unofficial "§11.2: L = Iω — момент импульса вращающегося твёрдого тела относительно оси";
+}
+
+@source(UP_M58336_ANGULAR_MOMENTUM)
+rule AngularMomentumFromInertiaAndSpeed(b: RigidBody, i: Quantity, w: Quantity) strict {
+    label en official "§11.2: the angular momentum of a rigid body is its moment of inertia times its angular velocity";
+    label ru unofficial "§11.2: момент импульса твёрдого тела есть произведение его момента инерции на угловую скорость";
+    when moment_of_inertia(b, i) and angular_velocity(b, w);
+    then angular_momentum(b, quantity_of(unit_convert(magnitude(i), "kg_m2")
+                                         * unit_convert(magnitude(w), "per_s"), "kg_m2_per_s"));
+}
+
+@source(UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM)
+relation spin_process(b: RigidBody, p: openstax.energy_momentum::Process) kind empirical {
+    label en official "§11.3: the case presents the process the rotating body undergoes";
+    label ru unofficial "§11.3: дело предъявляет процесс, происходящий с вращающимся телом";
+}
+
+@source(UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM)
+relation external_torque_on(b: RigidBody, p: openstax.energy_momentum::Process, t: Quantity) kind empirical {
+    label en official "§11.3: an external torque acting on the system during the process";
+    label ru unofficial "§11.3: внешний момент силы, действующий на систему в течение процесса";
+}
+
+@source(UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM)
+relation angular_momentum_before(b: RigidBody, p: openstax.energy_momentum::Process, l: Quantity) kind empirical {
+    label en official "§11.3: the angular momentum of the system before the process";
+    label ru unofficial "§11.3: момент импульса системы до процесса";
+}
+
+@source(UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM)
+relation angular_momentum_after(b: RigidBody, p: openstax.energy_momentum::Process, l: Quantity) kind empirical {
+    label en official "§11.3: the angular momentum of the system after the process";
+    label ru unofficial "§11.3: момент импульса системы после процесса";
+}
+
+pub relation no_external_torque(b: RigidBody, p: openstax.energy_momentum::Process) kind institutional {
+    label en official "§11.3: no external torque acts on the system during the process";
+    label ru unofficial "§11.3: в течение процесса на систему не действует внешний момент силы";
+}
+
+@source(UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM)
+rule NoTorquePresentedMeansNone(b: RigidBody, p: openstax.energy_momentum::Process) defeasible {
+    label en official "§11.3: a presented spin process with no external torque presented is taken to have none — a presumption the case may rebut";
+    label ru unofficial "§11.3: предъявленный процесс вращения без предъявленного внешнего момента считается свободным от него — презумпция, которую дело вправе опровергнуть";
+    when spin_process(b, p);
+    then no_external_torque(b, p);
+}
+
+@source(UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM)
+rule ExternalTorqueRefutesIt(
+    b: RigidBody,
+    p: openstax.energy_momentum::Process,
+    t: Quantity,
+) strict {
+    label en official "§11.3: a nonzero external torque refutes that none acts";
+    label ru unofficial "§11.3: ненулевой внешний момент силы опровергает его отсутствие";
+    when external_torque_on(b, p, t) and t != 0 * t;
+    then not no_external_torque(b, p);
+}
+
+pub relation angular_momentum_conserved(b: RigidBody, p: openstax.energy_momentum::Process) kind institutional {
+    label en official "§11.3: the angular momentum of the system is the same before and after the process";
+    label ru unofficial "§11.3: момент импульса системы одинаков до и после процесса";
+}
+
+// Оспоримое, как и сохранение импульса, и по той же причине (§111): читает
+// вывод оспоримого правила о моменте.
+@source(UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM)
+rule NoTorqueConservesAngularMomentum(
+    b: RigidBody,
+    p: openstax.energy_momentum::Process,
+    l0: Quantity,
+    l1: Quantity,
+) defeasible {
+    label en official "§11.3: the angular momentum of a system is conserved if no external torque acts on it";
+    label ru unofficial "§11.3: момент импульса системы сохраняется, если на неё не действует внешний момент силы";
+    when no_external_torque(b, p)
+        and angular_momentum_before(b, p, l0)
+        and angular_momentum_after(b, p, l1)
+        and magnitude(l0) == magnitude(l1);
+    then angular_momentum_conserved(b, p);
+}
+
+@source(UP_M58337_CONSERVATION_OF_ANGULAR_MOMENTUM)
+rule AngularMomentumChangedWhenTotalsDiffer(
+    b: RigidBody,
+    p: openstax.energy_momentum::Process,
+    l0: Quantity,
+    l1: Quantity,
+) strict {
+    label en official "§11.3: angular momentum that differs before and after is not conserved in this process";
+    label ru unofficial "§11.3: момент импульса, разошедшийся до и после, в этом процессе не сохраняется";
+    when angular_momentum_before(b, p, l0)
+        and angular_momentum_after(b, p, l1)
+        and magnitude(l0) != magnitude(l1);
+    then not angular_momentum_conserved(b, p);
+}
