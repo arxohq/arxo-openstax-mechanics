@@ -33,7 +33,7 @@ Models arrive through GitHub and the [v0.1.0 archive](https://github.com/arxohq/
 
 All model versions are `0.1.0`; semantics are `law.core/0.2.11`. Chapters below identify selected source material, not complete chapter coverage.
 
-| Model | Selected chapters | Explore the original model | Own rules | Captured modules / fragments |
+| Model | Selected chapters | Explore the original model | Own rules | CNXML snapshots / fragments |
 |---|---|---|---:|---:|
 | `openstax.measurement@0.1.0` | 1–2: measurement, dimensions, vectors | [.law files](packages/openstax.measurement) | 36 | 13 / 27 |
 | `openstax.kinematics@0.1.0` | 3–4: motion and acceleration | [.law files](packages/openstax.kinematics) | 22 | 13 / 15 |
@@ -112,7 +112,7 @@ Read the actual friction rules in [03-friction.law](packages/openstax.dynamics/0
 
 ## Depth and boundaries
 
-Captured text, executable rules and complete formalization are different claims. Counts above include **own-package nodes only**, excluding imports. The [machine-readable depth report](reports/formalization-depth.json) records package/source hashes, implementation hashes, editions, per-division classifications where admitted, and unmeasured publications.
+Captured text, executable rules and complete formalization are different claims. Counts above include **own-package nodes only**, excluding imports. CNXML snapshots count captured files: energy/momentum has 19 distinct modules in 20 snapshots, including the earlier collision definition. The [machine-readable depth report](reports/formalization-depth.json) records package/source hashes, implementation hashes, editions, per-division classifications where admitted, and unmeasured publications.
 
 | Package | Depth measurement | Why / measured denominator |
 |---|---|---|
@@ -127,7 +127,7 @@ Captured text, executable rules and complete formalization are different claims.
 
 Depth uses the existing `boundaries.depth`; no second classifier or invented coverage percentage is introduced. An executable division can still omit assumptions, consequences or alternative readings. For OpenStax, module/fragment/rule counts are an inventory, **not a completeness percentage**.
 
-This selected slice is not the entire book, all of mechanics or a general simulation engine. Continuous trajectories, general vector geometry, fluids, waves, experimental uncertainty and domains outside the retained rules remain boundaries. Scalar/unit calculations and declared assumptions have the meaning of their original models. The historical Principia dependency is explicitly a different source/reading. Empirical facts must be supplied. Institutional relation tags describe model-derived classifications; these models do not contain deontic norm templates.
+This selected slice is not the entire book, all of mechanics or a general simulation engine. Continuous trajectories, general vector geometry, fluids, waves, general uncertainty propagation and domains outside the retained rules remain boundaries. Scalar/unit calculations and declared assumptions have the meaning of their original models. The historical Principia dependency is explicitly a different source/reading. Empirical facts must be supplied. Institutional relation tags describe model-derived classifications; these models do not contain deontic norm templates.
 
 ## Reproduce the selected checks
 
