@@ -52,7 +52,12 @@
     "recomputedPackages": 5,
     "sourceAndModelBytesChanged": 0,
     "publicReproduction": "passed locally; Python 3.12 standard library only",
-    "linux": "pending depth-only CI",
+    "linux": {
+      "status": "passed",
+      "workflow": "https://github.com/arxohq/arxo-openstax-mechanics/actions/runs/38548881032",
+      "commit": "9d4dbdae1b1843fe038dcc5ce7758a9c69b2d8e8",
+      "checks": "eight new regression tests and exact recomputation of all five packages on Python 3.12; no runtime scenarios repeated"
+    },
     "readerExecution": "original 0.1.0 evidence retained; unchanged models/examples; runtime scenarios not repeated",
     "releaseVerified": false,
     "corpus": "not_checked"
