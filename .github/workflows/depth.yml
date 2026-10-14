@@ -1,0 +1,20 @@
+name: OpenStax depth measurement
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  depth:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: CNXML measurement regression tests
+        run: python3 tools/depth/test_cnxml_depth.py
+      - name: Reproduce all five hash-checked measurements
+        run: python3 tools/measure_depth.py --check

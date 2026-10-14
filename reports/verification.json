@@ -35,10 +35,26 @@
   "published": true,
   "releaseVerified": false,
   "corpus": "not_checked",
-  "sourceDepth": "OpenStax CNXML completeness not_measured; inventory separate; Newton own 19 declared divisions classified by existing boundaries.depth",
+  "sourceDepth": "measured on five OpenStax packages: 86 exact-edition module snapshots and 13154 addressable elements; structural evidence only",
   "originalVsFreshOwnCLIR": "all eight canonical byte hashes equal",
   "anonymousClone": "passed",
   "anonymousReadmeExample": "passed; canonical equality",
   "inventory": "338 allowlisted files including manifest; machine paths/caches/private materials excluded",
-  "sourceStability": "200 captured files rechecked against source after preparation"
+  "sourceStability": "200 captured files rechecked against source after preparation",
+  "depthUpdate": {
+    "date": "2026-10-14",
+    "version": "0.1.1",
+    "measurementTests": {
+      "passed": 24,
+      "newCNXML": 8,
+      "existingRegression": 16
+    },
+    "recomputedPackages": 5,
+    "sourceAndModelBytesChanged": 0,
+    "publicReproduction": "passed locally; Python 3.12 standard library only",
+    "linux": "pending depth-only CI",
+    "readerExecution": "original 0.1.0 evidence retained; unchanged models/examples; runtime scenarios not repeated",
+    "releaseVerified": false,
+    "corpus": "not_checked"
+  }
 }
