@@ -25,7 +25,7 @@ law eval examples/friction-above-limit
 
 At **90 N**, the result is `FALSE_ONLY`. The original model performs the comparison and unit arithmetic. The repository contains no second implementation of the formula.
 
-Models arrive through GitHub and the [v0.1.0 archive](https://github.com/arxohq/arxo-openstax-mechanics/releases/tag/v0.1.0). There is no model npm package; npm installs the runtime.
+Models arrive through GitHub and the [v0.1.1 archive](https://github.com/arxohq/arxo-openstax-mechanics/releases/tag/v0.1.1). There is no model npm package; npm installs the runtime.
 
 ![Model, input, answer and proof](assets/flow.svg)
 
@@ -112,20 +112,37 @@ Read the actual friction rules in [03-friction.law](packages/openstax.dynamics/0
 
 ## Depth and boundaries
 
-Captured text, executable rules and complete formalization are different claims. Counts above include **own-package nodes only**, excluding imports. CNXML snapshots count captured files: energy/momentum has 19 distinct modules in 20 snapshots, including the earlier collision definition. The [machine-readable depth report](reports/formalization-depth.json) records package/source hashes, implementation hashes, editions, per-division classifications where admitted, and unmeasured publications.
+Depth is now measured for all five OpenStax packages using the common `boundaries.depth` classifier, extended to read intrinsic CNXML divisions. Two axes are reported: **module snapshots** (coarse textbook divisions) and **addressable elements** (fine structural units).
 
-| Package | Depth measurement | Why / measured denominator |
-|---|---|---|
-| `openstax.measurement@0.1.0` | `not_measured` | CNXML element division is not admitted by the existing depth classifier; denominator unavailable |
-| `openstax.kinematics@0.1.0` | `not_measured` | CNXML element division is not admitted by the existing depth classifier; denominator unavailable |
-| `openstax.dynamics@0.1.0` | `not_measured` | CNXML element division is not admitted by the existing depth classifier; denominator unavailable |
-| `openstax.energy_momentum@0.1.0` | `not_measured` | CNXML element division is not admitted by the existing depth classifier; denominator unavailable |
-| `openstax.rotation_equilibrium@0.1.0` | `not_measured` | CNXML element division is not admitted by the existing depth classifier; denominator unavailable |
-| `units.si@0.1.0` | `not_measured` | No admitted source-division declaration; denominator unavailable |
-| `bipm.si_brochure@0.1.0` | `not_measured` | No admitted source-division declaration; denominator unavailable |
-| `la.newton.principia@0.1.0` | `measured` | 19 declared divisions: 16 EXECUTABLE, 3 SOURCE_ONLY; structural classification, not full semantic completeness |
+| Package | Executable module snapshots / measured | Executable elements / measured | Other module levels |
+|---|---:|---:|---|
+| `openstax.measurement` | **7 / 13** | 22 / 1812 | 0 ANCHORED; 6 without a selected fragment |
+| `openstax.kinematics` | **7 / 13** | 13 / 2014 | 0 ANCHORED; 6 without a selected fragment |
+| `openstax.dynamics` | **5 / 13** | 6 / 2300 | 1 ANCHORED; 7 without a selected fragment |
+| `openstax.energy_momentum` | **10 / 20** | 14 / 3161 | 0 ANCHORED; 10 without a selected fragment |
+| `openstax.rotation_equilibrium` | **7 / 27** | 10 / 3867 | 1 ANCHORED; 19 without a selected fragment |
 
-Depth uses the existing `boundaries.depth`; no second classifier or invented coverage percentage is introduced. An executable division can still omit assumptions, consequences or alternative readings. For OpenStax, module/fragment/rule counts are an inventory, **not a completeness percentage**.
+These ratios measure structural depth within the **captured source slice**, not complete chapters or the entire textbook. `EXECUTABLE` means at least one ordinary deriving/checking node is anchored to that unit. It does not mean every assertion, assumption or consequence of the unit has been formalized. Several rules can refer to one unit; imports are excluded.
+
+The coarse denominator is every captured CNXML publication snapshot belonging to the model. Energy/momentum contains **19 distinct modules in 20 snapshots**: the earlier collision definition is measured against its own exact edition. The fine denominator is every CNXML element with an explicit `id` in `content` or `glossary`, including nested elements. Metadata and MathML internals are excluded. An anchor counts only for the exact identified element, with no automatic upgrade of its parent section, children or other editions.
+
+| Level | What the measurement establishes |
+|---|---|
+| `EXECUTABLE` | An ordinary deriving/checking node is anchored here |
+| `INTERPRETED` | Deriving is available only behind a chosen interpretation |
+| `ANCHORED` | A non-deriving semantic node is anchored here |
+| `SOURCE_ONLY` | A selected fragment exists, with no semantic node anchored to it |
+| `—` | No selected model fragment or anchor; the raw XML may still be in the archive |
+
+The [per-unit report](reports/formalization-depth.json) includes both axes for every source snapshot, exact editions, package/source hashes and classifier hashes. It also records the remaining dependencies: `units.si` and `bipm.si_brochure` retain `not_measured` because they lack an admitted source-division denominator; `la.newton.principia` retains its earlier 19-division measurement (16 EXECUTABLE, 3 SOURCE_ONLY). Only the five requested OpenStax measurements were expanded.
+
+Reproduce all five measurements with **Python 3.12 and the standard library**:
+
+```sh
+python3.12 tools/measure_depth.py --check
+```
+
+The adapter verifies original model/source bytes before parsing and calls the captured common classifier in [tools/depth](tools/depth). It does not implement another classifier, formula or evaluator. CNXML measurements bind to the exact source publication hash and edition; malformed XML, duplicate IDs, absent source hashes or stale fragment IDs fail explicitly. A passing recomputation is reproducibility of structural evidence, not subject acceptance.
 
 This selected slice is not the entire book, all of mechanics or a general simulation engine. Continuous trajectories, general vector geometry, fluids, waves, general uncertainty propagation and domains outside the retained rules remain boundaries. Scalar/unit calculations and declared assumptions have the meaning of their original models. The historical Principia dependency is explicitly a different source/reading. Empirical facts must be supplied. Institutional relation tags describe model-derived classifications; these models do not contain deontic norm templates.
 

@@ -1,10 +1,11 @@
 format = "law.canon-publication/1"
-version = "0.1.0"
+version = "0.1.1"
 repository = "https://github.com/arxohq/arxo-openstax-mechanics"
-releasedAt = "2026-10-13T22:45:10.533195Z"
+releasedAt = "2026-10-14T10:20:13.219137Z"
 packages = ["openstax.measurement@0.1.0", "openstax.kinematics@0.1.0", "openstax.dynamics@0.1.0", "openstax.energy_momentum@0.1.0", "openstax.rotation_equilibrium@0.1.0", "units.si@0.1.0", "bipm.si_brochure@0.1.0", "la.newton.principia@0.1.0"]
 files = [
   ".gitattributes",
+  ".github/workflows/depth.yml",
   ".github/workflows/verify.yml",
   ".gitignore",
   "LICENSE",
@@ -340,6 +341,10 @@ files = [
   "source-pin.json",
   "toolchain.lock.json",
   "tools/canon_publication.py",
-  "tools/check.py"
+  "tools/check.py",
+  "tools/depth/boundaries.py",
+  "tools/depth/corpus/tools/lib/act_split.py",
+  "tools/depth/test_cnxml_depth.py",
+  "tools/measure_depth.py"
 ]
 requiredFiles = ["README.md", "LICENSE", "NOTICE", "source-pin.json", "toolchain.lock.json", "models.json", "reports/formalization-depth.json", "reports/verification.json", "examples/index.json", "assets/cover.svg", "assets/flow.svg", "assets/editions.svg", "assets/unfold-friction.svg"]
