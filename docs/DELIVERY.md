@@ -26,3 +26,5 @@ No model npm package, private authoring materials, source-history export, full c
 Public Ubuntu/Node 20 CI passed at commit `8d2be5dd09bb5c39f896ac53def4d1e434e8e19b`: https://github.com/arxohq/arxo-openstax-mechanics/actions/runs/38479699988. Later changes record delivery evidence and clarify snapshot counts/boundaries only; model and example bytes are unchanged. Anonymous HTTPS clone and the README example passed.
 
 The 0.1.1 change ran 24 addressed measurement tests (16 existing regressions plus eight new CNXML tests), then recomputed all five packages from hash-checked immutable inputs. Reader execution evidence from 0.1.0 remains applicable: no executable model or example bytes changed. No full corpus or runtime suites were repeated for this measurement/documentation update.
+
+The addressed [0.1.1 Linux depth CI](https://github.com/arxohq/arxo-openstax-mechanics/actions/runs/38548881032) passed at `9d4dbdae1b1843fe038dcc5ce7758a9c69b2d8e8`: eight CNXML regression tests and exact five-package recomputation. Subsequent changes record this evidence and strengthen required delivery files; classifier, models and measurement rows remain unchanged.
